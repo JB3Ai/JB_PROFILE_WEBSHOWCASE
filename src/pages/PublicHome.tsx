@@ -5,6 +5,8 @@ import FounderBriefSection from '../sections/FounderBriefSection'
 import ProjectShowcaseSection from '../sections/ProjectShowcaseSection'
 import VideoVaultSection from '../sections/VideoVaultSection'
 import EvidencePreviewSection from '../sections/EvidencePreviewSection'
+import DailyShowSection from '../sections/DailyShowSection'
+import PublicFeedSection from '../sections/PublicFeedSection'
 import TimelineSection from '../sections/TimelineSection'
 import GTR3Section from '../sections/GTR3Section'
 import InvestorRoomSection from '../sections/InvestorRoomSection'
@@ -29,6 +31,8 @@ export default function PublicHome() {
       <FounderBriefSection />
       <ProjectShowcaseSection />
       <VideoVaultSection />
+      <DailyShowSection />
+      <PublicFeedSection />
       <EvidencePreviewSection />
       <InvestorRoomSection />
       <TimelineSection />

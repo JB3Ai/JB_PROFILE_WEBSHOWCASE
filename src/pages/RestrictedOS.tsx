@@ -4,6 +4,8 @@ import ProjectShowcaseApp from '../os-apps/ProjectShowcaseApp'
 import VideoVaultApp from '../os-apps/VideoVaultApp'
 import EvidenceVaultApp from '../os-apps/EvidenceVaultApp'
 import FounderBriefApp from '../os-apps/FounderBriefApp'
+import DailyShowApp from '../os-apps/DailyShowApp'
+import PublicFeedApp from '../os-apps/PublicFeedApp'
 import TimelineApp from '../os-apps/TimelineApp'
 import GTR3App from '../os-apps/GTR3App'
 import InvestorRoomApp from '../os-apps/InvestorRoomApp'
@@ -52,6 +54,18 @@ export default function RestrictedOS() {
         {openApp === 'video-vault' && (
           <div className="max-w-6xl">
             <VideoVaultApp />
+          </div>
+        )}
+
+        {openApp === 'jb3-daily' && (
+          <div className="max-w-6xl">
+            <DailyShowApp />
+          </div>
+        )}
+
+        {openApp === 'public-feed' && (
+          <div className="max-w-6xl">
+            <PublicFeedApp />
           </div>
         )}
 

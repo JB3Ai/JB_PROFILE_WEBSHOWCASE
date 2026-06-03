@@ -32,3 +32,10 @@
 - Added controlled access document records with public, request, PIN, and private access levels.
 - Updated public homepage order and restricted OS registry to include Investor Room.
 - Verified build after Milestone 8.
+
+## 2026-06-03 23:45 UTC
+- Added JB³ Daily Show and Public Feed public content shells.
+- Created `dailyShow.content.ts`, `feed.content.ts`, `DailyShowCard`, and `FeedPostCard`.
+- Added `DailyShowSection`, `PublicFeedSection`, `DailyShowApp`, and `PublicFeedApp`.
+- Updated homepage order and Restricted OS app registry to include both new shells.
+- Verified production build after Milestone 9.
