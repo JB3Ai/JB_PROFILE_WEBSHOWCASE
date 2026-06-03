@@ -1,9 +1,12 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import FounderBriefSection from '../sections/FounderBriefSection'
 import ProjectShowcaseSection from '../sections/ProjectShowcaseSection'
 import VideoVaultSection from '../sections/VideoVaultSection'
 import EvidencePreviewSection from '../sections/EvidencePreviewSection'
+import TimelineSection from '../sections/TimelineSection'
+import GTR3Section from '../sections/GTR3Section'
 
 export default function PublicHome() {
   const nav = useNavigate()
@@ -16,14 +19,17 @@ export default function PublicHome() {
 
         <div className="mt-8 flex flex-wrap gap-3">
           <button onClick={() => nav('/login')} className="px-4 py-2 bg-cyan-500 text-black rounded">Enter OS</button>
-          <button onClick={() => alert('Founder Brief placeholder')} className="px-4 py-2 bg-gray-700 text-white rounded">View Founder Brief</button>
+          <button onClick={() => alert('Founder Brief is available from the OS dock')} className="px-4 py-2 bg-gray-700 text-white rounded">Open Founder Brief</button>
           <button onClick={() => nav('/request-access')} className="px-4 py-2 bg-yellow-600 text-black rounded">Request Investor Access</button>
         </div>
       </motion.div>
 
+      <FounderBriefSection />
       <ProjectShowcaseSection />
       <VideoVaultSection />
       <EvidencePreviewSection />
+      <TimelineSection />
+      <GTR3Section />
     </div>
   )
 }

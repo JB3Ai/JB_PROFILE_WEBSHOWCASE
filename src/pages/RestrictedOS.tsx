@@ -3,6 +3,9 @@ import { appRegistry } from '../data/appRegistry'
 import ProjectShowcaseApp from '../os-apps/ProjectShowcaseApp'
 import VideoVaultApp from '../os-apps/VideoVaultApp'
 import EvidenceVaultApp from '../os-apps/EvidenceVaultApp'
+import FounderBriefApp from '../os-apps/FounderBriefApp'
+import TimelineApp from '../os-apps/TimelineApp'
+import GTR3App from '../os-apps/GTR3App'
 
 function TopBar() {
   return <div className="h-10 bg-black/30 flex items-center px-4 text-gray-200">Tactical Intelligence OS</div>
@@ -32,6 +35,12 @@ export default function RestrictedOS() {
           </div>
         )}
 
+        {openApp === 'founder-brief' && (
+          <div className="max-w-6xl">
+            <FounderBriefApp />
+          </div>
+        )}
+
         {openApp === 'project-showcase' && (
           <div className="max-w-5xl">
             <ProjectShowcaseApp />
@@ -47,6 +56,18 @@ export default function RestrictedOS() {
         {openApp === 'evidence-vault' && (
           <div className="max-w-6xl">
             <EvidenceVaultApp />
+          </div>
+        )}
+
+        {openApp === 'timeline' && (
+          <div className="max-w-6xl">
+            <TimelineApp />
+          </div>
+        )}
+
+        {openApp === 'gtr3' && (
+          <div className="max-w-6xl">
+            <GTR3App />
           </div>
         )}
       </main>
