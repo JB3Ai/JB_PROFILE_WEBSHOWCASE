@@ -19,3 +19,9 @@
 - Added `FounderBriefApp` and `TimelineApp` to the OS dock registry.
 - Updated public homepage order with Founder Brief and Timeline placement.
 - Verified production build after Milestone 5.
+
+## 2026-06-03 18:00 UTC
+- Added Connect Hub content, social and contact records, and priority contact hierarchy.
+- Created `ConnectSection` for the public homepage and `ConnectApp` for the OS shell.
+- Added structured `social.content.ts` and `SocialLinkCard` component.
+- Verified production build after Milestone 7.

@@ -6,6 +6,7 @@ import EvidenceVaultApp from '../os-apps/EvidenceVaultApp'
 import FounderBriefApp from '../os-apps/FounderBriefApp'
 import TimelineApp from '../os-apps/TimelineApp'
 import GTR3App from '../os-apps/GTR3App'
+import ConnectApp from '../os-apps/ConnectApp'
 
 function TopBar() {
   return <div className="h-10 bg-black/30 flex items-center px-4 text-gray-200">Tactical Intelligence OS</div>
@@ -68,6 +69,12 @@ export default function RestrictedOS() {
         {openApp === 'gtr3' && (
           <div className="max-w-6xl">
             <GTR3App />
+          </div>
+        )}
+
+        {openApp === 'connect' && (
+          <div className="max-w-6xl">
+            <ConnectApp />
           </div>
         )}
       </main>

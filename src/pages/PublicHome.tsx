@@ -7,6 +7,7 @@ import VideoVaultSection from '../sections/VideoVaultSection'
 import EvidencePreviewSection from '../sections/EvidencePreviewSection'
 import TimelineSection from '../sections/TimelineSection'
 import GTR3Section from '../sections/GTR3Section'
+import ConnectSection from '../sections/ConnectSection'
 
 export default function PublicHome() {
   const nav = useNavigate()
@@ -30,6 +31,7 @@ export default function PublicHome() {
       <EvidencePreviewSection />
       <TimelineSection />
       <GTR3Section />
+      <ConnectSection />
     </div>
   )
 }
