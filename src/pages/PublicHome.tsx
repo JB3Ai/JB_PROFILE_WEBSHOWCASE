@@ -7,6 +7,7 @@ import VideoVaultSection from '../sections/VideoVaultSection'
 import EvidencePreviewSection from '../sections/EvidencePreviewSection'
 import TimelineSection from '../sections/TimelineSection'
 import GTR3Section from '../sections/GTR3Section'
+import InvestorRoomSection from '../sections/InvestorRoomSection'
 import ConnectSection from '../sections/ConnectSection'
 
 export default function PublicHome() {
@@ -29,6 +30,7 @@ export default function PublicHome() {
       <ProjectShowcaseSection />
       <VideoVaultSection />
       <EvidencePreviewSection />
+      <InvestorRoomSection />
       <TimelineSection />
       <GTR3Section />
       <ConnectSection />

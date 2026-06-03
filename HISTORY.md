@@ -25,3 +25,10 @@
 - Created `ConnectSection` for the public homepage and `ConnectApp` for the OS shell.
 - Added structured `social.content.ts` and `SocialLinkCard` component.
 - Verified production build after Milestone 7.
+
+## 2026-06-03 22:30 UTC
+- Added Investor Room content registry and executive investment access layer.
+- Created `InvestorCard`, `InvestorRoomSection`, and `InvestorRoomApp` for public and OS investor review.
+- Added controlled access document records with public, request, PIN, and private access levels.
+- Updated public homepage order and restricted OS registry to include Investor Room.
+- Verified build after Milestone 8.

@@ -6,6 +6,7 @@ import EvidenceVaultApp from '../os-apps/EvidenceVaultApp'
 import FounderBriefApp from '../os-apps/FounderBriefApp'
 import TimelineApp from '../os-apps/TimelineApp'
 import GTR3App from '../os-apps/GTR3App'
+import InvestorRoomApp from '../os-apps/InvestorRoomApp'
 import ConnectApp from '../os-apps/ConnectApp'
 
 function TopBar() {
@@ -69,6 +70,12 @@ export default function RestrictedOS() {
         {openApp === 'gtr3' && (
           <div className="max-w-6xl">
             <GTR3App />
+          </div>
+        )}
+
+        {openApp === 'investor-room' && (
+          <div className="max-w-6xl">
+            <InvestorRoomApp />
           </div>
         )}
 
