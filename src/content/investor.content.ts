@@ -18,103 +18,111 @@ export const investorRecords: InvestorRecord[] = [
     title: 'Public Investor Overview',
     category: 'Public Overview',
     visibility: 'Public',
-    status: 'Open',
-    summary: 'Investor-ready executive overview of market position, opportunity thesis, and founder-led value creation.',
-    documentType: 'Executive Summary',
+    status: 'Available',
+    summary:
+      'A concise overview of Jonathan Blackburn’s founder profile, track record, JB³Ai direction, and current product ecosystem.',
+    documentType: 'Overview',
     accessLevel: 'Public',
     fileUrl: '#',
-    tags: ['overview', 'strategy', 'investor'],
-    cautionNote: 'Public-facing overview for verified interest, intentionally high-level and safe.'
+    tags: ['investor', 'overview', 'founder'],
+    cautionNote: ''
   },
   {
     id: 'founder-market-fit',
     title: 'Founder-Market Fit',
     category: 'Founder-Market Fit',
-    visibility: 'Public',
-    status: 'Open',
-    summary: 'A concise founder-to-market narrative showing strategic alignment, domain expertise, and product differentiation.',
-    documentType: 'Market Fit Brief',
+    visibility: 'Public Preview',
+    status: 'Available',
+    summary:
+      'A structured explanation of why Jonathan’s background in automation, diagnostics, recovery systems, compliance, and AI supports the JB³Ai build direction.',
+    documentType: 'Profile',
     accessLevel: 'Public',
     fileUrl: '#',
-    tags: ['founder', 'market', 'fit'],
-    cautionNote: 'Public summary only; deep diligence details are reserved for later review.'
+    tags: ['founder-market-fit', 'jb3ai', 'systems'],
+    cautionNote: 'Keep claims public-safe and avoid exposing sensitive intelligence capabilities.'
   },
   {
     id: 'business-proof-points',
     title: 'Business Proof Points',
     category: 'Proof Points',
-    visibility: 'Public',
-    status: 'Open',
-    summary: 'High-level proof points that validate revenue model, team execution, and customer trust signals.',
-    documentType: 'Proof Brief',
+    visibility: 'Public Preview',
+    status: 'Available',
+    summary:
+      'A high-level list of verified or evidence-backed business milestones, awards, technical builds, and historical execution proof.',
+    documentType: 'Proof Summary',
     accessLevel: 'Public',
     fileUrl: '#',
-    tags: ['proof', 'business', 'validation'],
-    cautionNote: 'Public proof points are curated to signal traction while avoiding sensitive detail.'
+    tags: ['proof', 'awards', 'execution'],
+    cautionNote: 'Use careful wording for iMED, awards, accreditation, and financial claims.'
   },
   {
     id: 'financial-commercial-pack',
-    title: 'Locked Financial / Commercial Pack',
+    title: 'Financial / Commercial Pack',
     category: 'Locked Documents',
-    visibility: 'Request Access',
+    visibility: 'Investor Only',
     status: 'Locked',
-    summary: 'A controlled pack of commercial metrics, revenue scenarios, and topline financial assumptions.',
-    documentType: 'Financial Pack',
-    accessLevel: 'Request Access',
+    summary:
+      'Controlled-access financial and commercial material for formal investor or strategic partner review.',
+    documentType: 'Private Pack',
+    accessLevel: 'PIN Required',
     fileUrl: '#',
-    tags: ['financial', 'commercial', 'metrics'],
-    cautionNote: 'Access request required before any financial disclosures can be shared.'
+    tags: ['financial', 'commercial', 'private'],
+    cautionNote: 'Never expose publicly. Requires approved access.'
   },
   {
     id: 'founder-due-diligence-pack',
-    title: 'Locked Founder Due Diligence Pack',
+    title: 'Founder Due Diligence Pack',
     category: 'Due Diligence',
-    visibility: 'PIN Required',
+    visibility: 'Investor Only',
     status: 'Locked',
-    summary: 'A private pack for authorized review with controlled founder background and verification notes.',
-    documentType: 'Due Diligence Pack',
-    accessLevel: 'PIN Required',
+    summary:
+      'Controlled-access founder due diligence material for verified review.',
+    documentType: 'Private Pack',
+    accessLevel: 'Request Access',
     fileUrl: '#',
-    tags: ['founder', 'due diligence', 'background'],
-    cautionNote: 'PIN entry is required to simulate secure access to sensitive founder records.'
+    tags: ['due-diligence', 'founder', 'private'],
+    cautionNote: 'Contains sensitive personal, legal, and verification material. Keep locked.'
   },
   {
     id: 'product-strategy-pack',
-    title: 'Locked Product Strategy Pack',
-    category: 'Locked Documents',
-    visibility: 'PIN Required',
+    title: 'Product Strategy Pack',
+    category: 'Roadmap',
+    visibility: 'Investor Only',
     status: 'Locked',
-    summary: 'A locked dossier of product strategy, roadmaps, and competitive positioning materials.',
-    documentType: 'Strategy Pack',
-    accessLevel: 'PIN Required',
+    summary:
+      'Private strategy material covering product direction, platform roadmap, commercial logic, and future build layers.',
+    documentType: 'Private Pack',
+    accessLevel: 'Request Access',
     fileUrl: '#',
     tags: ['product', 'strategy', 'roadmap'],
-    cautionNote: 'Product strategy is held behind controlled access to preserve review confidentiality.'
+    cautionNote: 'Do not expose proprietary product logic publicly.'
   },
   {
     id: 'private-roadmap',
-    title: 'Locked Private Roadmap',
+    title: 'Private Roadmap',
     category: 'Roadmap',
-    visibility: 'Private',
-    status: 'Restricted',
-    summary: 'A private roadmap overview for reviewed partners, showing timing, milestones, and execution risk management.',
-    documentType: 'Private Roadmap',
-    accessLevel: 'Private',
+    visibility: 'Investor Only',
+    status: 'Locked',
+    summary:
+      'Restricted roadmap material for future JB³Ai products, Jonathan Blackburn OS extensions, and commercial rollout planning.',
+    documentType: 'Roadmap',
+    accessLevel: 'PIN Required',
     fileUrl: '#',
-    tags: ['roadmap', 'planning', 'milestones'],
-    cautionNote: 'Private roadmap access is reserved for invited, verified investors only.'
+    tags: ['roadmap', 'future', 'private'],
+    cautionNote: 'Preview title only. Content remains restricted.'
   },
   {
     id: 'full-cv-certificate-pack',
-    title: 'Locked Full CV / Certificate Pack',
+    title: 'Full CV / Certificate Pack',
     category: 'Due Diligence',
-    visibility: 'Private',
-    status: 'Restricted',
-    summary: 'A full credentials pack for authorized diligence, including certifications and career proof statements.',
-    documentType: 'CV / Certificate Pack',
-    accessLevel: 'Private',
+    visibility: 'Investor Only',
+    status: 'Locked',
+    summary:
+      'Full unmasked credential, certificate, profile, and supporting document pack for approved investor review.',
+    documentType: 'Private Pack',
+    accessLevel: 'PIN Required',
     fileUrl: '#',
-    tags: ['CV', 'certificates', 'credentials'],
-    cautionNote: 'Private credentials are not available in the public investor shell.'
+    tags: ['cv', 'certificates', 'credentials'],
+    cautionNote: 'Public site should only show safe summaries, not unmasked documents.'
   }
 ]
