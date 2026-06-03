@@ -8,25 +8,27 @@ type FeedPostCardProps = {
 
 export default function FeedPostCard({ post, onRead }: FeedPostCardProps) {
   return (
-    <div className="rounded-3xl border border-white/10 bg-surface/80 p-6 shadow-2xl backdrop-blur-sm text-white">
+    <div className="card card-interactive p-5">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h3 className="text-xl font-semibold">{post.title}</h3>
-          <div className="mt-2 text-sm text-gray-400">{post.category}</div>
+          <h3 className="text-lg font-semibold">{post.title}</h3>
+          <div className="mt-2">
+            <span className="badge-neutral text-xs px-2 py-1">{post.category}</span>
+          </div>
         </div>
-        <div className="text-right text-sm text-gray-400">
+        <div className="text-right text-xs text-gray-400">
           <div>{post.date}</div>
           <div>{post.readTime}</div>
         </div>
       </div>
 
-      <p className="mt-5 text-sm leading-6 text-gray-300">{post.summary}</p>
-      <p className="mt-4 rounded-3xl bg-black/40 px-4 py-3 text-sm text-gray-200">Jonathan’s Take: {post.jonathanTake}</p>
-      <div className="mt-5 flex flex-wrap gap-3 items-center justify-between">
-        <div className="text-xs uppercase tracking-[0.2em] text-gray-400">Source: {post.sourceLabel}</div>
+      <p className="mt-4 text-sm leading-6 text-gray-300">{post.summary}</p>
+      <p className="mt-3 rounded-lg bg-black/40 px-3 py-2 text-sm text-gray-200 italic">Jonathan's Take: {post.jonathanTake}</p>
+      <div className="mt-5 flex flex-wrap gap-2 items-center justify-between">
+        <div className="text-xs text-gray-400">Source: {post.sourceLabel}</div>
         <button
           onClick={() => onRead?.(post)}
-          className="rounded-3xl bg-amber-400 px-4 py-3 text-sm font-semibold text-black"
+          className="btn-accent"
         >
           Read
         </button>

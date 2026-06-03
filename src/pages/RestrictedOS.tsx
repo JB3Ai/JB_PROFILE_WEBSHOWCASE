@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
+import { GlassPanel, AppWindowHeader } from '../components/primitives'
 import { appRegistry } from '../data/appRegistry'
 import ProjectShowcaseApp from '../os-apps/ProjectShowcaseApp'
 import VideoVaultApp from '../os-apps/VideoVaultApp'
@@ -12,16 +14,37 @@ import InvestorRoomApp from '../os-apps/InvestorRoomApp'
 import ConnectApp from '../os-apps/ConnectApp'
 
 function TopBar() {
-  return <div className="h-10 bg-black/30 flex items-center px-4 text-gray-200">Tactical Intelligence OS</div>
+  return (
+    <div className="h-12 bg-gradient-to-r from-gray-900/80 to-black/80 border-b border-white/10 flex items-center px-6 text-gray-200 backdrop-blur-sm">
+      <span className="text-sm font-semibold text-cyan-300">⚙️</span>
+      <span className="ml-3 text-sm font-medium">Tactical Intelligence OS</span>
+    </div>
+  )
 }
 
-function Dock({ onLaunch }: { onLaunch: (id: string) => void }) {
+function Dock({ onLaunch, onClose }: { onLaunch: (id: string) => void; onClose: () => void }) {
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex gap-4 bg-black/30 px-4 py-2 rounded">
-      {appRegistry.map((a) => (
-        <button key={a.id} onClick={() => onLaunch(a.id)} className="text-sm text-white px-3 py-1">{a.name}</button>
+    <motion.div
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 flex gap-2 bg-gradient-to-br from-black/60 to-white/5 border border-white/20 px-4 py-3 rounded-lg backdrop-blur-md shadow-lg"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5 }}
+    >
+      {appRegistry.map((a, idx) => (
+        <motion.button
+          key={a.id}
+          onClick={() => onLaunch(a.id)}
+          className="text-xs text-white px-3 py-1.5 rounded bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-200"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 + idx * 0.05 }}
+        >
+          {a.name}
+        </motion.button>
       ))}
-    </div>
+    </motion.div>
   )
 }
 
@@ -33,10 +56,28 @@ export default function RestrictedOS() {
       <TopBar />
       <main className="p-8">
         {!openApp && (
-          <div className="max-w-3xl bg-surface/70 p-6 rounded shadow">
-            <h3 className="text-lg">Welcome to Tactical Intelligence OS</h3>
-            <p className="text-gray-300 mt-2">Use the dock to open an app.</p>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl"
+          >
+            <GlassPanel size="lg" animate={false}>
+              <h3 className="text-2xl font-semibold text-white">Welcome to Tactical Intelligence OS</h3>
+              <p className="text-gray-300 mt-3">Select an app from the dock to begin. Each module provides specialized access to different aspects of the Jonathan Blackburn ecosystem.</p>
+              <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-2">
+                {appRegistry.slice(0, 6).map((app) => (
+                  <button
+                    key={app.id}
+                    onClick={() => setOpenApp(app.id)}
+                    className="text-xs py-2 px-3 rounded bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-200"
+                  >
+                    {app.name}
+                  </button>
+                ))}
+              </div>
+            </GlassPanel>
+          </motion.div>
         )}
 
         {openApp === 'founder-brief' && (
@@ -99,7 +140,7 @@ export default function RestrictedOS() {
           </div>
         )}
       </main>
-      <Dock onLaunch={(id) => setOpenApp(id)} />
+      <Dock onLaunch={(id) => setOpenApp(id)} onClose={() => setOpenApp(null)} />
     </div>
   )
 }

@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
+import { AppWindowHeader } from '../components/primitives'
 import { projects } from '../content/projects.content'
 import ProjectCard from '../components/cards/ProjectCard'
 
@@ -9,23 +11,60 @@ export default function ProjectShowcaseApp() {
 
   const filtered = projects.filter((p) => filter === 'All' || p.status === filter)
 
-  return (
-    <div className="p-4 bg-white/5 rounded">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg text-white">Project Showcase</h3>
-        <div className="flex gap-2">
-          {FILTERS.map((f) => (
-            <button key={f} onClick={() => setFilter(f)} className={`px-2 py-1 rounded text-sm ${filter===f? 'bg-sky-500 text-black':'bg-white/5 text-white'}`}>
-              {f}
-            </button>
-          ))}
-        </div>
-      </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.1
+      }
+    }
+  }
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {filtered.map((p) => (
-          <ProjectCard key={p.id} project={p} />
-        ))}
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+  }
+
+  return (
+    <div className="glass-panel-lg rounded-lg overflow-hidden flex flex-col">
+      <AppWindowHeader title="Project Showcase" icon="📁" />
+      
+      <div className="p-6 flex-1">
+        <div className="mb-6">
+          <p className="text-xs text-gray-400 mb-3 uppercase tracking-wide">Filter by Status</p>
+          <div className="flex gap-2 flex-wrap">
+            {FILTERS.map((f) => (
+              <motion.button
+                key={f}
+                onClick={() => setFilter(f)}
+                className={`px-3 py-1.5 rounded text-xs font-medium transition-all duration-200 ${
+                  filter === f
+                    ? 'bg-cyan-500 text-black shadow-lg'
+                    : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {f}
+              </motion.button>
+            ))}
+          </div>
+        </div>
+
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {filtered.map((p) => (
+            <motion.div key={p.id} variants={itemVariants}>
+              <ProjectCard project={p} />
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </div>
   )
