@@ -4,7 +4,7 @@ Jonathan Blackburn OS is a premium public founder platform with a companion `/os
 
 ## Current Status
 
-- Public deployment preparation complete through Milestone 15
+- Deployment preparation complete through Milestone 15
 - Content remains placeholder-safe by design
 - No backend, CMS, real auth, live media, or sensitive document delivery in v1
 
