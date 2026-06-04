@@ -24,9 +24,10 @@ export default function VideoVaultSection() {
   }
 
   return (
-    <section className="section bg-[color:var(--bg)] text-white">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="section text-white">
+      <div className="container-shell">
         <SectionHeader
+          eyebrow="Video Layer"
           title="Video Vault"
           subtitle="Founder briefings, product demos, project walkthroughs, media clips, and GTR3 teasers."
         />
@@ -38,11 +39,11 @@ export default function VideoVaultSection() {
           viewport={{ once: true, margin: '-100px' }}
           variants={containerVariants}
         >
-          <GlassPanel size="lg" animate={true} hover={true}>
-            <div className="h-72 rounded-lg bg-slate-900/90 flex items-center justify-center text-slate-400 mb-5">Featured video placeholder</div>
-            <div className="text-xs text-cyan-300 uppercase tracking-wide">{featured.category}</div>
-            <h3 className="text-2xl font-semibold mt-3">{featured.title}</h3>
-            <p className="mt-4 text-gray-300">{featured.summary}</p>
+          <GlassPanel size="lg" animate={true} hover={true} className="section-frame">
+            <div className="flex h-72 items-end rounded-[1.25rem] border border-white/10 bg-[linear-gradient(180deg,rgba(88,214,218,0.2),rgba(6,12,18,0.14)),rgba(7,14,21,0.8)] p-6 text-slate-300">Featured video placeholder</div>
+            <div className="mt-5 text-caption text-[color:var(--accent-cyan)]">{featured.category}</div>
+            <h3 className="mt-3 text-heading text-white">{featured.title}</h3>
+            <p className="mt-4 text-body">{featured.summary}</p>
             <div className="mt-6 flex gap-3 flex-wrap">
               <PremiumButton variant="primary" size="md">Watch Video</PremiumButton>
               <PremiumButton variant="secondary" size="md">View Project</PremiumButton>
@@ -52,8 +53,9 @@ export default function VideoVaultSection() {
           <motion.div className="grid gap-4" variants={containerVariants}>
             {videos.slice(1, 4).map((video) => (
               <motion.div key={video.id} variants={itemVariants} className="glass-panel-md">
-                <h4 className="font-semibold text-white">{video.title}</h4>
-                <p className="text-sm text-gray-300 mt-2">{video.summary}</p>
+                <p className="text-caption">Quick Brief</p>
+                <h4 className="mt-3 font-semibold text-white">{video.title}</h4>
+                <p className="mt-3 text-body-sm">{video.summary}</p>
               </motion.div>
             ))}
           </motion.div>

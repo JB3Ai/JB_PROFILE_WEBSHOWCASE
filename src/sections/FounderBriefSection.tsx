@@ -1,5 +1,6 @@
 import React from 'react'
 import { founderProfile } from '../content/founder.content'
+import { GlassPanel, PremiumButton, SectionHeader, StatusBadge } from '../components/primitives'
 
 const summaryCards = [
   {
@@ -18,35 +19,41 @@ const summaryCards = [
 
 export default function FounderBriefSection() {
   return (
-    <section className="py-16 bg-[color:var(--bg)] text-white">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="rounded-[2rem] border border-white/10 bg-surface/80 p-10 shadow-2xl">
+    <section className="section text-white">
+      <div className="container-shell">
+        <GlassPanel size="lg" animate={false} className="section-frame">
           <div className="space-y-6">
-            <div>
-              <h2 className="text-3xl font-bold">Founder Brief</h2>
-              <p className="mt-3 text-cyan-300">{founderProfile.positioningLine}</p>
-              <p className="mt-4 text-gray-300 max-w-2xl">{founderProfile.publicSummary}</p>
-              <blockquote className="mt-6 rounded-3xl border border-white/10 bg-black/30 p-6 text-xl italic text-gray-100">
-                {founderProfile.coreQuote}
-              </blockquote>
+            <SectionHeader
+              eyebrow="Founder Profile"
+              title="Founder Brief"
+              subtitle={founderProfile.publicSummary}
+            />
+
+            <div className="flex flex-wrap gap-3">
+              <StatusBadge variant="primary">Executive Story Layer</StatusBadge>
+              <StatusBadge variant="success">{founderProfile.positioningLine}</StatusBadge>
             </div>
+
+            <blockquote className="meta-note mt-6 text-xl italic text-white md:text-2xl">
+                {founderProfile.coreQuote}
+            </blockquote>
 
             <div className="grid gap-4 md:grid-cols-3">
               {summaryCards.map((card) => (
-                <div key={card.title} className="rounded-3xl border border-white/10 bg-black/20 p-6">
-                  <h3 className="text-lg font-semibold text-white">{card.title}</h3>
-                  <p className="mt-3 text-gray-300">{card.description}</p>
+                <div key={card.title} className="card h-full">
+                  <h3 className="text-heading-sm text-white">{card.title}</h3>
+                  <p className="mt-4 text-body">{card.description}</p>
                 </div>
               ))}
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <button className="rounded-full bg-sky-500 px-5 py-3 text-black">Open Founder Brief</button>
-              <button className="rounded-full bg-white/10 px-5 py-3 text-white">View Timeline</button>
-              <button className="rounded-full bg-gray-700 px-5 py-3 text-white">Download CV placeholder</button>
+              <PremiumButton variant="primary">Open Founder Brief</PremiumButton>
+              <PremiumButton variant="secondary">View Timeline</PremiumButton>
+              <PremiumButton variant="ghost">CV Placeholder</PremiumButton>
             </div>
           </div>
-        </div>
+        </GlassPanel>
       </div>
     </section>
   )

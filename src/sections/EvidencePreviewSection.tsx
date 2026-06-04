@@ -1,21 +1,25 @@
 import React from 'react'
 import { evidenceItems } from '../content/evidence.content'
 import EvidenceCard from '../components/cards/EvidenceCard'
+import { GlassPanel, PremiumButton, SectionHeader } from '../components/primitives'
 
 const visibleItems = evidenceItems.filter((item) => item.visibility === 'Public' || item.visibility === 'Public Preview').slice(0, 6)
 
 export default function EvidencePreviewSection() {
   return (
-    <section className="py-16 bg-[color:var(--bg)] text-white">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="section text-white">
+      <div className="container-shell">
+        <GlassPanel size="lg" animate={false} className="section-frame">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <h2 className="text-3xl font-bold">Evidence Vault</h2>
-            <p className="mt-2 text-gray-400">Verified documents, awards, certificates, recommendations, and historical proof layers.</p>
-          </div>
+          <SectionHeader
+            eyebrow="Proof Layer"
+            title="Evidence Vault"
+            subtitle="Verified documents, awards, certificates, recommendations, and historical proof layers."
+            className="max-w-3xl"
+          />
           <div className="flex flex-wrap gap-3">
-            <button className="rounded-full bg-sky-500 px-4 py-2 text-black">Open Evidence Vault</button>
-            <button className="rounded-full bg-white/10 px-4 py-2 text-white">Request Investor Access</button>
+            <PremiumButton variant="primary">Open Evidence Vault</PremiumButton>
+            <PremiumButton variant="secondary">Request Investor Access</PremiumButton>
           </div>
         </div>
 
@@ -24,6 +28,7 @@ export default function EvidencePreviewSection() {
             <EvidenceCard key={item.id} item={item} />
           ))}
         </div>
+        </GlassPanel>
       </div>
     </section>
   )

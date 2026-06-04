@@ -31,7 +31,7 @@ export default function PremiumButton({
   const sizeClass = {
     sm: 'btn-sm',
     md: 'btn',
-    lg: 'btn px-6 py-3 text-base'
+    lg: 'btn-lg'
   }[size]
   
   return (
@@ -41,7 +41,7 @@ export default function PremiumButton({
       disabled={disabled}
       whileHover={{ scale: disabled ? 1 : 1.02 }}
       whileTap={{ scale: disabled ? 1 : 0.98 }}
-      className={`${variantClass} ${sizeClass} ${className} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+      className={`${variantClass} ${sizeClass} ${className} ${disabled ? 'opacity-50 cursor-not-allowed saturate-50' : ''}`}
     >
       {children}
     </motion.button>

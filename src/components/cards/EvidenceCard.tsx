@@ -1,4 +1,5 @@
 import React from 'react'
+import { PremiumButton, StatusBadge } from '../primitives'
 
 type EvidenceItem = {
   id: string
@@ -16,22 +17,23 @@ type EvidenceItem = {
 
 export default function EvidenceCard({ item }: { item: EvidenceItem }) {
   return (
-    <div className="card card-interactive p-5">
+    <div className="card card-interactive h-full">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h4 className="text-lg font-semibold">{item.title}</h4>
-          <div className="flex gap-2 mt-2 flex-wrap">
-            <span className="badge-neutral text-xs px-2 py-1">{item.category}</span>
-            <span className="badge-neutral text-xs px-2 py-1">{item.documentType}</span>
+          <p className="text-caption">Evidence Vault</p>
+          <h4 className="mt-3 text-heading-sm text-white">{item.title}</h4>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <StatusBadge variant="neutral" size="sm">{item.category}</StatusBadge>
+            <StatusBadge variant="neutral" size="sm">{item.documentType}</StatusBadge>
           </div>
         </div>
-        <div className="badge-primary text-xs px-2 py-1">{item.visibility}</div>
+        <StatusBadge variant="primary" size="sm">{item.visibility}</StatusBadge>
       </div>
-      <p className="mt-4 text-sm text-gray-300">{item.summary}</p>
-      {item.cautionNote && <p className="mt-3 rounded-lg bg-amber-500/10 px-3 py-2 text-xs text-amber-200">⚠️ {item.cautionNote}</p>}
-      <div className="mt-5 flex flex-wrap gap-2">
-        <button className="btn-primary btn-sm">View Details</button>
-        <button className="btn-ghost btn-sm">Open Document</button>
+      <p className="mt-4 text-body">{item.summary}</p>
+      {item.cautionNote ? <p className="meta-note mt-4 border-amber-200/15 bg-amber-300/10 text-amber-100">Caution: {item.cautionNote}</p> : null}
+      <div className="mt-6 flex flex-wrap gap-2">
+        <PremiumButton variant="primary" size="sm">View Details</PremiumButton>
+        <PremiumButton variant="ghost" size="sm">Open Document</PremiumButton>
       </div>
     </div>
   )

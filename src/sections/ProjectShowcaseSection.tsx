@@ -25,6 +25,7 @@ export default function ProjectShowcaseSection() {
     <section className="section bg-[color:var(--bg)] text-white">
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeader
+          eyebrow="Build Inventory"
           title="Project Showcase"
           subtitle="Systems, products, demos, and creative builds from the Jonathan Blackburn OS ecosystem."
         />

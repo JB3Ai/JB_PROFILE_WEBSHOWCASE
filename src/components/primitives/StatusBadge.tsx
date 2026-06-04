@@ -4,9 +4,10 @@ interface StatusBadgeProps {
   children: React.ReactNode
   variant?: 'primary' | 'success' | 'warning' | 'danger' | 'neutral'
   size?: 'sm' | 'md'
+  className?: string
 }
 
-export default function StatusBadge({ children, variant = 'primary', size = 'md' }: StatusBadgeProps) {
+export default function StatusBadge({ children, variant = 'primary', size = 'md', className = '' }: StatusBadgeProps) {
   const variantClass = {
     primary: 'badge-primary',
     success: 'badge-success',
@@ -15,10 +16,10 @@ export default function StatusBadge({ children, variant = 'primary', size = 'md'
     neutral: 'badge-neutral'
   }[variant]
   
-  const sizeClass = size === 'sm' ? 'text-xs px-2 py-1' : 'text-xs px-3 py-1'
+  const sizeClass = size === 'sm' ? 'px-2.5 py-1 text-[10px]' : 'px-3 py-1.5 text-[11px]'
   
   return (
-    <span className={`${variantClass} ${sizeClass}`}>
+    <span className={`${variantClass} ${sizeClass} ${className}`}>
       {children}
     </span>
   )

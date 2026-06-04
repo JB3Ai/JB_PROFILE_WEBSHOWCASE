@@ -7,14 +7,24 @@ interface GlassPanelProps {
   className?: string
   animate?: boolean
   hover?: boolean
+  tone?: 'default' | 'muted'
 }
 
-export default function GlassPanel({ children, size = 'md', className = '', animate = true, hover = false }: GlassPanelProps) {
+export default function GlassPanel({
+  children,
+  size = 'md',
+  className = '',
+  animate = true,
+  hover = false,
+  tone = 'default'
+}: GlassPanelProps) {
   const sizeClass = {
     sm: 'glass-panel-sm',
     md: 'glass-panel-md',
     lg: 'glass-panel-lg'
   }[size]
+
+  const toneClass = tone === 'muted' ? 'panel-muted' : ''
   
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -39,7 +49,7 @@ export default function GlassPanel({ children, size = 'md', className = '', anim
       whileInView={animate ? 'visible' : undefined}
       viewport={animate ? { once: true, margin: '-100px' } : undefined}
       whileHover={hover ? hoverVariants.hover : undefined}
-      className={`${sizeClass} ${className} transition-all duration-300`}
+      className={`${sizeClass} ${toneClass} ${className} transition-all duration-300`}
     >
       {children}
     </motion.div>

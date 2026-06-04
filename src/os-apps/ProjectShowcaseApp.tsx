@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { AppWindowHeader } from '../components/primitives'
+import { GlassPanel } from '../components/primitives'
 import { projects } from '../content/projects.content'
 import ProjectCard from '../components/cards/ProjectCard'
 
@@ -28,21 +28,19 @@ export default function ProjectShowcaseApp() {
   }
 
   return (
-    <div className="glass-panel-lg rounded-lg overflow-hidden flex flex-col">
-      <AppWindowHeader title="Project Showcase" icon="📁" />
-      
-      <div className="p-6 flex-1">
+    <div className="space-y-6">
+      <GlassPanel size="md" animate={false}>
         <div className="mb-6">
-          <p className="text-xs text-gray-400 mb-3 uppercase tracking-wide">Filter by Status</p>
+          <p className="text-caption mb-3">Filter by Status</p>
           <div className="flex gap-2 flex-wrap">
             {FILTERS.map((f) => (
               <motion.button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`px-3 py-1.5 rounded text-xs font-medium transition-all duration-200 ${
+                className={`filter-pill ${
                   filter === f
-                    ? 'bg-cyan-500 text-black shadow-lg'
-                    : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'
+                    ? 'filter-pill-active'
+                    : ''
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -52,20 +50,20 @@ export default function ProjectShowcaseApp() {
             ))}
           </div>
         </div>
+      </GlassPanel>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-4"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {filtered.map((p) => (
-            <motion.div key={p.id} variants={itemVariants}>
-              <ProjectCard project={p} />
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
+      <motion.div
+        className="grid grid-cols-1 gap-4 md:grid-cols-2"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {filtered.map((p) => (
+          <motion.div key={p.id} variants={itemVariants}>
+            <ProjectCard project={p} />
+          </motion.div>
+        ))}
+      </motion.div>
     </div>
   )
 }

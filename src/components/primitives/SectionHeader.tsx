@@ -4,11 +4,20 @@ import { motion } from 'framer-motion'
 interface SectionHeaderProps {
   title: string
   subtitle?: string
+  eyebrow?: string
   align?: 'left' | 'center'
   animate?: boolean
+  className?: string
 }
 
-export default function SectionHeader({ title, subtitle, align = 'center', animate = true }: SectionHeaderProps) {
+export default function SectionHeader({
+  title,
+  subtitle,
+  eyebrow,
+  align = 'left',
+  animate = true,
+  className = ''
+}: SectionHeaderProps) {
   const alignClass = align === 'center' ? 'text-center' : 'text-left'
   
   const containerVariants = {
@@ -26,11 +35,14 @@ export default function SectionHeader({ title, subtitle, align = 'center', anima
       initial={animate ? 'hidden' : undefined}
       whileInView={animate ? 'visible' : undefined}
       viewport={animate ? { once: true, margin: '-100px' } : undefined}
-      className={alignClass}
+      className={`${alignClass} ${className}`}
     >
-      <h2 className="section-heading text-white">{title}</h2>
+      {eyebrow ? <div className={`eyebrow ${align === 'center' ? 'justify-center' : ''}`}>{eyebrow}</div> : null}
+      <h2 className="mt-4 text-heading-lg text-white">{title}</h2>
       {subtitle && (
-        <p className="section-subheading text-gray-400">{subtitle}</p>
+        <p className="mt-4 max-w-3xl text-body-lg text-[color:var(--text-secondary)]">
+          {subtitle}
+        </p>
       )}
     </motion.div>
   )

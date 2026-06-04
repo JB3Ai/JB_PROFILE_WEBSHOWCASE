@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import { socialLinks } from '../content/social.content'
 import SocialLinkCard from '../components/cards/SocialLinkCard'
+import { GlassPanel, StatusBadge } from '../components/primitives'
 
 const groups = ['All', ...Array.from(new Set(socialLinks.map((link) => link.group)))]
 
@@ -23,51 +24,51 @@ export default function ConnectApp() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-[2rem] border border-white/10 bg-surface/80 p-8 shadow-2xl">
+      <GlassPanel size="lg" animate={false}>
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <div className="text-sm uppercase tracking-[0.24em] text-cyan-300">Connect Hub</div>
-            <h2 className="mt-2 text-3xl font-semibold text-white">Contact and channel dashboard</h2>
-            <p className="mt-3 text-gray-300 max-w-2xl">A controlled contact hierarchy for the founder story, proof channels, and the JB³Ai network.</p>
+            <div className="eyebrow">Connect Hub</div>
+            <h2 className="mt-2 text-heading text-white">Contact and channel dashboard</h2>
+            <p className="mt-3 max-w-2xl text-body">A controlled contact hierarchy for the founder story, proof channels, and the JB³Ai network.</p>
           </div>
-          <div className="rounded-3xl bg-black/30 p-5 text-gray-200 border border-white/10 shadow-lg">
-            <div className="text-sm uppercase tracking-[0.24em] text-cyan-300">Network map</div>
-            <div className="mt-4 h-24 w-48 rounded-3xl bg-white/5" />
-          </div>
+          <GlassPanel size="md" animate={false} tone="muted" className="w-full max-w-xs">
+            <div className="text-caption">Network map</div>
+            <div className="mt-4 h-24 rounded-3xl bg-white/5" />
+          </GlassPanel>
         </div>
-      </div>
+      </GlassPanel>
 
       <div className="grid gap-6 lg:grid-cols-[240px_1fr]">
-        <aside className="rounded-3xl border border-white/10 bg-black/20 p-5 shadow-lg">
-          <div className="mb-5 text-sm uppercase tracking-[0.24em] text-cyan-300">Filter groups</div>
+        <GlassPanel size="md" animate={false} tone="muted" className="h-fit">
+          <div className="mb-5 text-caption">Filter groups</div>
           <div className="space-y-2">
             {groups.map((group) => (
               <button
                 key={group}
                 onClick={() => setSelectedGroup(group)}
-                className={`w-full rounded-2xl px-4 py-3 text-left text-sm ${selectedGroup === group ? 'bg-sky-500 text-black' : 'bg-white/5 text-white'}`}>
+                className={`filter-pill w-full text-left ${selectedGroup === group ? 'filter-pill-active' : ''}`}>
                 {group}
               </button>
             ))}
           </div>
-        </aside>
+        </GlassPanel>
 
         <div className="space-y-6">
-          <div className="rounded-3xl border border-white/10 bg-surface/80 p-5 shadow-lg">
+          <GlassPanel size="md" animate={false}>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <div className="text-sm uppercase tracking-[0.24em] text-cyan-300">Search</div>
-                <p className="mt-2 text-gray-400">Search contacts, platforms, and purpose text.</p>
+                <div className="eyebrow">Search</div>
+                <p className="mt-2 text-body-sm">Search contacts, platforms, and purpose text.</p>
               </div>
               <input
                 type="search"
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
                 placeholder="Search contacts or platforms"
-                className="w-full rounded-3xl border border-white/10 bg-black/30 px-4 py-3 text-white placeholder:text-gray-500 sm:w-80"
+                className="input-shell sm:w-80"
               />
             </div>
-          </div>
+          </GlassPanel>
 
           <div className="grid gap-6 md:grid-cols-2">
             {filteredLinks.map((item) => (

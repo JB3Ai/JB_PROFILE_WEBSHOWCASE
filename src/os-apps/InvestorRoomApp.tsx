@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import { investorRecords } from '../content/investor.content'
 import InvestorCard from '../components/cards/InvestorCard'
+import { GlassPanel, PremiumButton, StatusBadge } from '../components/primitives'
 
 const categories = ['All', ...Array.from(new Set(investorRecords.map((record) => record.category)))]
 
@@ -33,23 +34,22 @@ export default function InvestorRoomApp() {
   }
 
   return (
-    <div className="min-h-screen bg-[color:var(--bg)] text-white">
-      <div className="grid gap-8 lg:grid-cols-[320px_1fr] p-8">
-        <aside className="space-y-6 rounded-[2rem] border border-white/10 bg-surface/80 p-6 shadow-2xl">
+    <div className="grid gap-8 lg:grid-cols-[320px_1fr] text-white">
+        <GlassPanel size="md" animate={false} className="h-fit space-y-6">
           <div>
-            <div className="text-sm uppercase tracking-[0.24em] text-emerald-300">Investor Room</div>
-            <h1 className="mt-3 text-3xl font-semibold">Executive Investor Dashboard</h1>
-            <p className="mt-4 text-gray-300">A structured review layer for trusted investor overview, proof, and controlled access documents.</p>
+            <div className="eyebrow">Investor Room</div>
+            <h1 className="mt-4 text-heading text-white">Executive Investor Dashboard</h1>
+            <p className="mt-4 text-body">A structured review layer for trusted investor overview, proof, and controlled access documents.</p>
           </div>
 
           <div className="space-y-4 rounded-3xl border border-white/10 bg-black/40 p-5">
-            <h2 className="text-lg font-semibold">Category filter</h2>
+            <h2 className="text-heading-sm text-white">Category filter</h2>
             <div className="grid gap-2">
               {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`w-full rounded-3xl px-4 py-3 text-left text-sm ${selectedCategory === category ? 'bg-emerald-400 text-black' : 'bg-white/5 text-white'}`}>
+                  className={`filter-pill w-full text-left ${selectedCategory === category ? 'filter-pill-active' : ''}`}>
                   {category}
                 </button>
               ))}
@@ -57,24 +57,24 @@ export default function InvestorRoomApp() {
           </div>
 
           <div className="space-y-3 rounded-3xl border border-white/10 bg-black/40 p-5">
-            <h2 className="text-lg font-semibold">Review actions</h2>
-            <button onClick={() => setPanel('request')} className="w-full rounded-3xl bg-amber-400 px-4 py-3 text-black">Request Investor Access</button>
-            <button onClick={() => setPanel('pin')} className="w-full rounded-3xl bg-white/10 px-4 py-3 text-white">Enter PIN Placeholder</button>
+            <h2 className="text-heading-sm text-white">Review actions</h2>
+            <PremiumButton onClick={() => setPanel('request')} variant="accent" className="w-full">Request Investor Access</PremiumButton>
+            <PremiumButton onClick={() => setPanel('pin')} variant="secondary" className="w-full">Enter PIN Placeholder</PremiumButton>
           </div>
-        </aside>
+        </GlassPanel>
 
         <main className="space-y-8">
-          <div className="space-y-6 rounded-[2rem] border border-white/10 bg-surface/80 p-8 shadow-2xl">
+          <GlassPanel size="lg" animate={false} className="space-y-6">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <div className="text-sm uppercase tracking-[0.24em] text-cyan-300">Public overview panel</div>
-                <h2 className="mt-2 text-3xl font-semibold">Verified public insights</h2>
+                <div className="eyebrow">Public overview panel</div>
+                <h2 className="mt-2 text-heading text-white">Verified public insights</h2>
               </div>
               <input
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
                 placeholder="Search investor items"
-                className="w-full rounded-3xl border border-white/10 bg-black/20 px-4 py-3 text-white placeholder:text-gray-500 sm:w-80"
+                className="input-shell sm:w-80"
               />
             </div>
             <div className="grid gap-6 lg:grid-cols-3">
@@ -82,44 +82,44 @@ export default function InvestorRoomApp() {
                 <InvestorCard key={item.id} item={item} onAction={handleAction} />
               ))}
             </div>
-          </div>
+          </GlassPanel>
 
-          <div className="rounded-[2rem] border border-white/10 bg-black/20 p-8 shadow-2xl">
+          <GlassPanel size="lg" animate={false} tone="muted">
             <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <div className="text-sm uppercase tracking-[0.24em] text-emerald-300">Locked document vault</div>
-                <h2 className="mt-2 text-3xl font-semibold">Controlled access documents</h2>
+                <div className="eyebrow">Locked document vault</div>
+                <h2 className="mt-2 text-heading text-white">Controlled access documents</h2>
               </div>
-              <div className="rounded-3xl bg-white/10 px-4 py-2 text-sm text-gray-200">{lockedDocuments.length} items</div>
+              <StatusBadge variant="neutral">{lockedDocuments.length} items</StatusBadge>
             </div>
             <div className="grid gap-6 md:grid-cols-2">
               {lockedDocuments.map((item) => (
                 <InvestorCard key={item.id} item={item} onAction={handleAction} />
               ))}
             </div>
-          </div>
+          </GlassPanel>
 
           {panel !== 'none' ? (
-            <div className="rounded-[2rem] border border-emerald-300/20 bg-emerald-300/5 p-8 text-white shadow-2xl">
+            <GlassPanel size="lg" animate={false}>
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <div className="text-sm uppercase tracking-[0.24em] text-emerald-300">Access placeholder</div>
-                  <h3 className="mt-2 text-2xl font-semibold">{panel === 'open' ? 'Public document preview' : panel === 'request' ? 'Investor access request' : 'PIN entry required'}</h3>
+                  <div className="eyebrow">Access placeholder</div>
+                  <h3 className="mt-2 text-heading-sm text-white">{panel === 'open' ? 'Public document preview' : panel === 'request' ? 'Investor access request' : 'PIN entry required'}</h3>
                 </div>
-                <button onClick={() => setPanel('none')} className="rounded-3xl bg-white/10 px-4 py-3 text-sm text-white">Close panel</button>
+                <PremiumButton onClick={() => setPanel('none')} variant="secondary">Close panel</PremiumButton>
               </div>
 
-              <div className="mt-6 rounded-3xl border border-white/10 bg-black/30 p-6 text-sm leading-7 text-gray-200">
+              <div className="meta-note mt-6">
                 {panel === 'open' && (
                   <>
                     <p>“{activeItem.title}” is a public review asset. Real files are not available yet; this is a safe preview placeholder.</p>
-                    <p className="mt-4 text-gray-400">Status: {activeItem.status}. Document type: {activeItem.documentType}.</p>
+                    <p className="mt-4 text-[color:var(--text-dim)]">Status: {activeItem.status}. Document type: {activeItem.documentType}.</p>
                   </>
                 )}
                 {panel === 'request' && (
                   <>
                     <p>This placeholder simulates an investor access request. Actual approval, secure review, and document delivery are not enabled yet.</p>
-                    <p className="mt-4 text-gray-400">Submit your interest and await verification in the next milestone.</p>
+                    <p className="mt-4 text-[color:var(--text-dim)]">Submit your interest and await verification in the next milestone.</p>
                   </>
                 )}
                 {panel === 'pin' && (
@@ -129,17 +129,16 @@ export default function InvestorRoomApp() {
                       <input
                         type="password"
                         placeholder="Enter PIN"
-                        className="w-full rounded-3xl border border-white/10 bg-black/30 px-4 py-3 text-white placeholder:text-gray-500 sm:w-64"
+                        className="input-shell sm:w-64"
                       />
-                      <button className="rounded-3xl bg-amber-400 px-5 py-3 text-black">Submit PIN</button>
+                      <PremiumButton variant="accent">Submit PIN</PremiumButton>
                     </div>
                   </>
                 )}
               </div>
-            </div>
+            </GlassPanel>
           ) : null}
         </main>
-      </div>
     </div>
   )
 }
