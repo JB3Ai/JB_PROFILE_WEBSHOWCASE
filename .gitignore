@@ -7,6 +7,7 @@ dist/
 # local env files
 .env
 .env.*
+.env.local
 
 # logs
 npm-debug.log*
@@ -19,3 +20,6 @@ Thumbs.db
 
 # editor settings
 .vscode/
+
+# vite cache
+.vite/

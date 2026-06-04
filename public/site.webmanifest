@@ -1,0 +1,17 @@
+{
+  "name": "Jonathan Blackburn OS",
+  "short_name": "JB OS",
+  "description": "Premium public founder platform and placeholder-safe profile experience.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#08121B",
+  "theme_color": "#08121B",
+  "icons": [
+    {
+      "src": "/assets/icons/favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
