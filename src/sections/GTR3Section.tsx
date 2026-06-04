@@ -4,9 +4,9 @@ import { GlassPanel, PremiumButton, SectionHeader, StatusBadge } from '../compon
 
 export default function GTR3Section() {
   return (
-    <section className="section text-white">
+    <section id="gtr3" className="section section-anchor text-white">
       <div className="container-shell">
-        <GlassPanel size="lg" animate={false} className="section-frame">
+        <GlassPanel size="lg" className="section-frame">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
             <div>
               <StatusBadge variant="warning">{gtr3Content.status}</StatusBadge>

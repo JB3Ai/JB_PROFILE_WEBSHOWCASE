@@ -6,7 +6,7 @@ const publicEvents = timelineEvents.filter((event) => event.visibility === 'Publ
 
 export default function TimelineSection() {
   return (
-    <section className="section text-white">
+    <section id="timeline" className="section section-anchor text-white">
       <div className="container-shell">
         <div className="flex flex-col gap-4">
           <SectionHeader

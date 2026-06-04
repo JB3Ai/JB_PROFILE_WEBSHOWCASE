@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { SectionHeader, PremiumButton, GlassPanel } from '../components/primitives'
 import { videos } from '../content/videos.content'
 import VideoCard from '../components/cards/VideoCard'
+import { scrollToSection } from '../utils/scrollToSection'
 
 const featured = videos[0]
 
@@ -24,7 +25,7 @@ export default function VideoVaultSection() {
   }
 
   return (
-    <section className="section text-white">
+    <section id="video-vault" className="section section-anchor text-white">
       <div className="container-shell">
         <SectionHeader
           eyebrow="Video Layer"
@@ -46,7 +47,7 @@ export default function VideoVaultSection() {
             <p className="mt-4 text-body">{featured.summary}</p>
             <div className="mt-6 flex gap-3 flex-wrap">
               <PremiumButton variant="primary" size="md">Watch Video</PremiumButton>
-              <PremiumButton variant="secondary" size="md">View Project</PremiumButton>
+              <PremiumButton variant="secondary" size="md" onClick={() => scrollToSection('projects')}>View Project</PremiumButton>
             </div>
           </GlassPanel>
           

@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { founderProfile } from '../content/founder.content'
 import { GlassPanel, PremiumButton, SectionHeader, StatusBadge } from '../components/primitives'
+import { scrollToSection } from '../utils/scrollToSection'
 
 const summaryCards = [
   {
@@ -18,10 +20,12 @@ const summaryCards = [
 ]
 
 export default function FounderBriefSection() {
+  const nav = useNavigate()
+
   return (
-    <section id="founder-brief" className="section text-white">
+    <section id="founder-brief" className="section section-anchor text-white">
       <div className="container-shell">
-        <GlassPanel size="lg" animate={false} className="section-frame">
+        <GlassPanel size="lg" className="section-frame">
           <div className="space-y-6">
             <SectionHeader
               eyebrow="Founder Profile"
@@ -48,9 +52,9 @@ export default function FounderBriefSection() {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <PremiumButton variant="primary">Open Founder Brief</PremiumButton>
-              <PremiumButton variant="secondary">View Timeline</PremiumButton>
-              <PremiumButton variant="ghost">CV Placeholder</PremiumButton>
+              <PremiumButton variant="primary" onClick={() => scrollToSection('founder-brief')}>Open Founder Brief</PremiumButton>
+              <PremiumButton variant="secondary" onClick={() => scrollToSection('timeline')}>View Timeline</PremiumButton>
+              <PremiumButton variant="ghost" onClick={() => nav('/request-access')}>CV Placeholder</PremiumButton>
             </div>
           </div>
         </GlassPanel>

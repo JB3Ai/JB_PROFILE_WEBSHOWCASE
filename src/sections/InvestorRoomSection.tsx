@@ -1,16 +1,20 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { investorRecords } from '../content/investor.content'
 import InvestorCard from '../components/cards/InvestorCard'
 import { GlassPanel, PremiumButton, SectionHeader, StatusBadge } from '../components/primitives'
+import { scrollToSection } from '../utils/scrollToSection'
 
 const publicCards = investorRecords.filter((record) => record.accessLevel === 'Public')
 const vaultCards = investorRecords.filter((record) => ['financial-commercial-pack', 'founder-due-diligence-pack', 'product-strategy-pack'].includes(record.id))
 
 export default function InvestorRoomSection() {
+  const nav = useNavigate()
+
   return (
-    <section className="section text-white">
+    <section id="investor-room" className="section section-anchor text-white">
       <div className="container-shell">
-        <GlassPanel size="lg" animate={false} className="section-frame">
+        <GlassPanel size="lg" className="section-frame">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <SectionHeader
               eyebrow="Investor Review Layer"
@@ -19,8 +23,8 @@ export default function InvestorRoomSection() {
               className="max-w-3xl"
             />
             <div className="flex flex-wrap gap-3">
-              <PremiumButton variant="accent">Request Investor Access</PremiumButton>
-              <PremiumButton variant="secondary">Open Public Overview</PremiumButton>
+              <PremiumButton variant="accent" onClick={() => nav('/request-access')}>Request Investor Access</PremiumButton>
+              <PremiumButton variant="secondary" onClick={() => scrollToSection('investor-room')}>Open Public Overview</PremiumButton>
             </div>
           </div>
 

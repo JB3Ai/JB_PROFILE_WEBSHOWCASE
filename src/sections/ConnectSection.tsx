@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { socialLinks } from '../content/social.content'
 import SocialLinkCard from '../components/cards/SocialLinkCard'
 import { GlassPanel, PremiumButton, SectionHeader } from '../components/primitives'
@@ -12,10 +13,12 @@ const secondaryLinks = socialLinks
   .sort((a, b) => a.priority - b.priority)
 
 export default function ConnectSection() {
+  const nav = useNavigate()
+
   return (
-    <section className="section text-white">
+    <section id="connect" className="section section-anchor text-white">
       <div className="container-shell">
-        <GlassPanel size="lg" animate={false} className="section-frame">
+        <GlassPanel size="lg" className="section-frame">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <SectionHeader
               eyebrow="Network Layer"
@@ -24,8 +27,8 @@ export default function ConnectSection() {
               className="max-w-3xl"
             />
             <div className="flex flex-wrap gap-3">
-              <PremiumButton variant="primary">Book a Call</PremiumButton>
-              <PremiumButton variant="secondary">Send Email</PremiumButton>
+              <PremiumButton variant="primary" onClick={() => nav('/request-access')}>Book a Call</PremiumButton>
+              <PremiumButton variant="secondary" onClick={() => nav('/request-access')}>Send Email</PremiumButton>
             </div>
           </div>
 

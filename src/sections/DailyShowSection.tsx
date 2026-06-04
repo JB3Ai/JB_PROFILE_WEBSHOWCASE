@@ -7,7 +7,7 @@ const featuredEpisode = dailyShowEpisodes[0]
 
 export default function DailyShowSection() {
   return (
-    <section className="section text-white">
+    <section id="jb3-daily-show" className="section section-anchor text-white">
       <div className="container-shell">
         <GlassPanel size="lg" animate={false} className="section-frame">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">

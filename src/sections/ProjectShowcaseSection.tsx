@@ -22,7 +22,7 @@ export default function ProjectShowcaseSection() {
   }
 
   return (
-    <section className="section bg-[color:var(--bg)] text-white">
+    <section id="projects" className="section section-anchor bg-[color:var(--bg)] text-white">
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeader
           eyebrow="Build Inventory"

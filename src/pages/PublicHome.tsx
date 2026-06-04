@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import PublicNav from '../components/navigation/PublicNav'
 import { GlassPanel, PremiumButton, StatusBadge } from '../components/primitives'
 import FounderBriefSection from '../sections/FounderBriefSection'
 import ProjectShowcaseSection from '../sections/ProjectShowcaseSection'
@@ -12,18 +13,21 @@ import TimelineSection from '../sections/TimelineSection'
 import GTR3Section from '../sections/GTR3Section'
 import InvestorRoomSection from '../sections/InvestorRoomSection'
 import ConnectSection from '../sections/ConnectSection'
+import { scrollToSection } from '../utils/scrollToSection'
 
 export default function PublicHome() {
   const nav = useNavigate()
 
   const handleFounderBriefClick = () => {
-    const founderBrief = document.getElementById('founder-brief')
-    if (founderBrief) {
-      founderBrief.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      return
-    }
+    scrollToSection('founder-brief', {
+      fallback: () => nav('/os')
+    })
+  }
 
-    nav('/os')
+  const handleProjectsClick = () => {
+    scrollToSection('projects', {
+      fallback: () => nav('/os')
+    })
   }
   
   const containerVariants = {
@@ -37,14 +41,16 @@ export default function PublicHome() {
   
   return (
     <div className="page-shell">
+      <PublicNav />
       <div className="hero-orb left-[-8rem] top-[4rem] h-64 w-64 bg-cyan-300/20" />
       <div className="hero-orb right-[-5rem] top-[10rem] h-56 w-56 bg-emerald-300/15" />
       <div className="hero-orb bottom-[20rem] right-[18%] h-48 w-48 bg-amber-200/10" />
       <motion.div
+        id="hero"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="container-shell-wide relative z-10 py-16 md:py-24"
+        className="container-shell-wide section-anchor relative z-10 py-16 md:py-24"
       >
         <GlassPanel size="lg" animate={false} className="section-frame">
           <div className="grid gap-10 lg:grid-cols-[1.3fr_0.8fr] lg:items-end">
@@ -67,6 +73,7 @@ export default function PublicHome() {
               <motion.div className="mt-10 flex flex-wrap gap-4" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.36, duration: 0.6 }}>
                 <PremiumButton variant="primary" size="lg" onClick={() => nav('/login')}>Enter OS</PremiumButton>
                 <PremiumButton variant="secondary" size="lg" onClick={handleFounderBriefClick}>Open Founder Brief</PremiumButton>
+                <PremiumButton variant="ghost" size="lg" onClick={handleProjectsClick}>View Projects</PremiumButton>
                 <PremiumButton variant="accent" size="lg" onClick={() => nav('/request-access')}>Request Investor Access</PremiumButton>
               </motion.div>
             </div>
