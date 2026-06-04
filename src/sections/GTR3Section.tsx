@@ -1,6 +1,8 @@
 import React from 'react'
 import { gtr3Content } from '../content/gtr3.content'
 import { GlassPanel, PremiumButton, SectionHeader, StatusBadge } from '../components/primitives'
+import AssetThumbnail from '../components/media/AssetThumbnail'
+import { assetRegistry } from '../data/assetRegistry'
 
 export default function GTR3Section() {
   return (
@@ -19,6 +21,12 @@ export default function GTR3Section() {
               <p className="mt-4 max-w-3xl text-body-lg">{gtr3Content.headline}</p>
             </div>
             <div className="glass-panel-md max-w-xl">
+              <AssetThumbnail
+                src={assetRegistry.gtr3Placeholder}
+                fallbackSrc={assetRegistry.gtr3Placeholder}
+                alt="GTR3 preview placeholder artwork"
+                className="mb-5 h-48"
+              />
               <p className="text-caption text-amber-200">Story Preview</p>
               <p className="mt-4 text-body">{gtr3Content.longTeaser}</p>
             </div>

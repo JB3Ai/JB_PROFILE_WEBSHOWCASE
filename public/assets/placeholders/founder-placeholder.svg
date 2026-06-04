@@ -1,0 +1,24 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#08121B"/>
+  <rect x="32" y="32" width="1136" height="736" rx="40" stroke="url(#a)" stroke-opacity="0.25" stroke-width="2"/>
+  <circle cx="360" cy="338" r="120" fill="url(#b)" fill-opacity="0.9"/>
+  <path d="M228 628C252.073 515.03 352.068 434 472 434C591.932 434 691.927 515.03 716 628" fill="#0E1B28"/>
+  <path d="M820 220H1032" stroke="#58D6DA" stroke-width="6" stroke-linecap="round"/>
+  <path d="M820 286H1068" stroke="#D7DEE5" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+  <path d="M820 340H1038" stroke="#94A8BA" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+  <path d="M820 430H1010" stroke="#74D3A4" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+  <path d="M820 484H1084" stroke="#D7DEE5" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+  <text x="96" y="112" fill="#F6F7F1" font-family="Manrope, Arial, sans-serif" font-size="34" letter-spacing="6">FOUNDER PROFILE</text>
+  <text x="96" y="680" fill="#94A8BA" font-family="Manrope, Arial, sans-serif" font-size="28">Public-safe portrait placeholder for Jonathan Blackburn OS</text>
+  <defs>
+    <linearGradient id="a" x1="68" y1="58" x2="1120" y2="748" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#58D6DA"/>
+      <stop offset="0.56" stop-color="#74D3A4"/>
+      <stop offset="1" stop-color="#E9C98F"/>
+    </linearGradient>
+    <linearGradient id="b" x1="240" y1="220" x2="480" y2="458" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#58D6DA"/>
+      <stop offset="1" stop-color="#74D3A4"/>
+    </linearGradient>
+  </defs>
+</svg>

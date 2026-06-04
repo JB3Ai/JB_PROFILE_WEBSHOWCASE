@@ -4,6 +4,8 @@ import { SectionHeader, PremiumButton, GlassPanel } from '../components/primitiv
 import { videos } from '../content/videos.content'
 import VideoCard from '../components/cards/VideoCard'
 import { scrollToSection } from '../utils/scrollToSection'
+import AssetThumbnail from '../components/media/AssetThumbnail'
+import { assetRegistry } from '../data/assetRegistry'
 
 const featured = videos[0]
 
@@ -41,7 +43,18 @@ export default function VideoVaultSection() {
           variants={containerVariants}
         >
           <GlassPanel size="lg" animate={true} hover={true} className="section-frame">
-            <div className="flex h-72 items-end rounded-[1.25rem] border border-white/10 bg-[linear-gradient(180deg,rgba(88,214,218,0.2),rgba(6,12,18,0.14)),rgba(7,14,21,0.8)] p-6 text-slate-300">Featured video placeholder</div>
+            <AssetThumbnail
+              src={featured.thumbnail}
+              fallbackSrc={assetRegistry.videoPlaceholder}
+              alt={`${featured.title} featured video preview`}
+              className="h-72 rounded-[1.25rem]"
+              overlay={
+                <div className="flex items-end justify-between gap-3">
+                  <span className="badge-primary">Featured Video</span>
+                  <span className="badge-neutral">{featured.duration}</span>
+                </div>
+              }
+            />
             <div className="mt-5 text-caption text-[color:var(--accent-cyan)]">{featured.category}</div>
             <h3 className="mt-3 text-heading text-white">{featured.title}</h3>
             <p className="mt-4 text-body">{featured.summary}</p>

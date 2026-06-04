@@ -2,6 +2,8 @@ import React from 'react'
 import { dailyShowEpisodes } from '../content/dailyShow.content'
 import DailyShowCard from '../components/cards/DailyShowCard'
 import { GlassPanel, PremiumButton, SectionHeader } from '../components/primitives'
+import AssetThumbnail from '../components/media/AssetThumbnail'
+import { assetRegistry } from '../data/assetRegistry'
 
 const featuredEpisode = dailyShowEpisodes[0]
 
@@ -25,6 +27,18 @@ export default function DailyShowSection() {
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.3fr_1fr]">
             <div className="glass-panel-lg">
+              <AssetThumbnail
+                src={featuredEpisode.thumbnail}
+                fallbackSrc={assetRegistry.dailyShowPlaceholder}
+                alt={`${featuredEpisode.title} featured episode preview`}
+                className="mb-6 h-56"
+                overlay={
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="badge-warning">Featured Episode</span>
+                    <span className="badge-neutral">{featuredEpisode.date}</span>
+                  </div>
+                }
+              />
               <div className="text-caption text-amber-200">Featured Episode</div>
               <h3 className="mt-4 text-heading text-white">{featuredEpisode.title}</h3>
               <div className="mt-3 flex flex-wrap gap-3 text-body-sm">

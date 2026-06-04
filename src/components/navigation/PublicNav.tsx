@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PremiumButton } from '../primitives'
 import { scrollToSection } from '../../utils/scrollToSection'
+import { assetRegistry } from '../../data/assetRegistry'
 
 const navLinks = [
   { id: 'founder-brief', label: 'Founder' },
@@ -57,7 +58,14 @@ export default function PublicNav() {
       <div className="container-shell-wide">
         <div className="public-nav-shell">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <div className="text-sm font-semibold text-white md:text-base">Jonathan Blackburn OS</div>
+            <div className="flex items-center gap-3">
+              <img
+                src={assetRegistry.logoMark}
+                alt="Jonathan Blackburn OS logo mark"
+                className="h-9 w-9 rounded-xl border border-white/10 bg-white/5 p-1.5"
+              />
+              <div className="text-sm font-semibold text-white md:text-base">Jonathan Blackburn OS</div>
+            </div>
 
             <div className="public-nav-links">
               {navLinks.map((link) => (

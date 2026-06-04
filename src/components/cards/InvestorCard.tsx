@@ -1,6 +1,8 @@
 import React from 'react'
 import { PremiumButton, StatusBadge } from '../primitives'
 import type { InvestorItem } from '../../types/content.types'
+import AssetThumbnail from '../media/AssetThumbnail'
+import { assetRegistry } from '../../data/assetRegistry'
 
 type InvestorCardProps = {
   item: InvestorItem
@@ -28,6 +30,18 @@ export default function InvestorCard({ item, onAction }: InvestorCardProps) {
 
   return (
     <div className="card card-interactive h-full">
+      <AssetThumbnail
+        src={item.fileUrl.startsWith('/assets/') ? item.fileUrl : undefined}
+        fallbackSrc={item.accessLevel === 'Public' ? assetRegistry.investorPlaceholder : assetRegistry.pdfPlaceholder}
+        alt={`${item.title} document preview`}
+        className="h-40"
+        overlay={
+          <div className="flex items-center justify-between gap-3">
+            <StatusBadge variant="warning" size="sm">{item.accessLevel}</StatusBadge>
+            <StatusBadge variant="neutral" size="sm">{item.documentType}</StatusBadge>
+          </div>
+        }
+      />
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-caption">Investor Room</p>

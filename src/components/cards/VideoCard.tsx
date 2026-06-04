@@ -1,14 +1,24 @@
 import React from 'react'
 import { PremiumButton, StatusBadge } from '../primitives'
 import type { VideoItem } from '../../types/content.types'
+import AssetThumbnail from '../media/AssetThumbnail'
+import { assetRegistry } from '../../data/assetRegistry'
 
 export default function VideoCard({ video }: { video: VideoItem }) {
   return (
     <div className="card card-interactive h-full">
-      <div className="flex h-44 items-end justify-between rounded-[1rem] border border-white/10 bg-[linear-gradient(180deg,rgba(88,214,218,0.16),rgba(6,12,18,0.12)),rgba(5,10,16,0.78)] p-5">
-        <StatusBadge variant="primary" size="sm">{video.category}</StatusBadge>
-        <StatusBadge variant="neutral" size="sm">{video.duration}</StatusBadge>
-      </div>
+      <AssetThumbnail
+        src={video.thumbnail}
+        fallbackSrc={assetRegistry.videoPlaceholder}
+        alt={`${video.title} video preview`}
+        className="h-44"
+        overlay={
+          <div className="flex items-end justify-between gap-3">
+            <StatusBadge variant="primary" size="sm">{video.category}</StatusBadge>
+            <StatusBadge variant="neutral" size="sm">{video.duration}</StatusBadge>
+          </div>
+        }
+      />
       <div className="mt-5">
         <div className="flex items-start justify-between gap-3">
           <div>

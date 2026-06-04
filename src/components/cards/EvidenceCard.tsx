@@ -1,10 +1,19 @@
 import React from 'react'
 import { PremiumButton, StatusBadge } from '../primitives'
 import type { EvidenceItem } from '../../types/content.types'
+import AssetThumbnail from '../media/AssetThumbnail'
+import { assetRegistry } from '../../data/assetRegistry'
 
 export default function EvidenceCard({ item }: { item: EvidenceItem }) {
   return (
     <div className="card card-interactive h-full">
+      <AssetThumbnail
+        src={item.thumbnail}
+        fallbackSrc={assetRegistry.evidencePlaceholder}
+        alt={`${item.title} evidence preview`}
+        className="h-44"
+        overlay={<StatusBadge variant="primary" size="sm">{item.visibility}</StatusBadge>}
+      />
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-caption">Evidence Vault</p>

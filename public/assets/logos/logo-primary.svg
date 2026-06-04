@@ -1,0 +1,29 @@
+<svg width="640" height="180" viewBox="0 0 640 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="180" rx="32" fill="#08121B"/>
+  <rect x="8" y="8" width="624" height="164" rx="24" stroke="url(#a)" stroke-opacity="0.45"/>
+  <g transform="translate(24 24)">
+    <rect width="132" height="132" rx="32" fill="#0C1722"/>
+    <rect x="8" y="8" width="116" height="116" rx="24" stroke="url(#b)" stroke-width="2"/>
+    <path d="M38 26H62.5C87.0767 26 107 45.9233 107 70.5V111H82.5C57.9233 111 38 91.0767 38 66.5V26Z" fill="url(#c)"/>
+    <path d="M71 43H83.5C100.345 43 114 56.6553 114 73.5V104H101.5C84.6553 104 71 90.3447 71 73.5V43Z" fill="#0A1520" fill-opacity="0.78"/>
+    <path d="M95 34L120 59" stroke="#E9C98F" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <text x="180" y="76" fill="#F6F7F1" font-family="Manrope, Arial, sans-serif" font-size="18" letter-spacing="6">JONATHAN BLACKBURN OS</text>
+  <text x="180" y="112" fill="#D7DEE5" font-family="Fraunces, Georgia, serif" font-size="36">Executive systems, proof, and founder platform</text>
+  <text x="180" y="142" fill="#94A8BA" font-family="Manrope, Arial, sans-serif" font-size="16">Premium public layer placeholder identity</text>
+  <defs>
+    <linearGradient id="a" x1="38" y1="12" x2="602" y2="176" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#58D6DA"/>
+      <stop offset="0.48" stop-color="#74D3A4"/>
+      <stop offset="1" stop-color="#E9C98F"/>
+    </linearGradient>
+    <linearGradient id="b" x1="18" y1="12" x2="112" y2="122" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#58D6DA"/>
+      <stop offset="1" stop-color="#E9C98F"/>
+    </linearGradient>
+    <linearGradient id="c" x1="38" y1="26" x2="107" y2="111" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#58D6DA"/>
+      <stop offset="1" stop-color="#74D3A4"/>
+    </linearGradient>
+  </defs>
+</svg>
