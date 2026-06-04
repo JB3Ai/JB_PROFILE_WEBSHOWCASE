@@ -19,7 +19,7 @@ const summaryCards = [
 
 export default function FounderBriefSection() {
   return (
-    <section className="section text-white">
+    <section id="founder-brief" className="section text-white">
       <div className="container-shell">
         <GlassPanel size="lg" animate={false} className="section-frame">
           <div className="space-y-6">

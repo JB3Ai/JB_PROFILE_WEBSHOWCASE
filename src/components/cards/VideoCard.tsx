@@ -1,21 +1,8 @@
 import React from 'react'
 import { PremiumButton, StatusBadge } from '../primitives'
+import type { VideoItem } from '../../types/content.types'
 
-type Video = {
-  id: string
-  title: string
-  category: string
-  status: string
-  duration: string
-  summary: string
-  relatedProjectId: string | null
-  thumbnail: string
-  videoUrl: string
-  access: string
-  tags: string[]
-}
-
-export default function VideoCard({ video }: { video: Video }) {
+export default function VideoCard({ video }: { video: VideoItem }) {
   return (
     <div className="card card-interactive h-full">
       <div className="flex h-44 items-end justify-between rounded-[1rem] border border-white/10 bg-[linear-gradient(180deg,rgba(88,214,218,0.16),rgba(6,12,18,0.12)),rgba(5,10,16,0.78)] p-5">

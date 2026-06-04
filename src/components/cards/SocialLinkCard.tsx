@@ -1,20 +1,8 @@
 import React from 'react'
 import { PremiumButton, StatusBadge } from '../primitives'
+import type { SocialLink } from '../../types/content.types'
 
-type SocialLinkItem = {
-  id: string
-  label: string
-  group: string
-  platform: string
-  purpose: string
-  url: string
-  visibility: string
-  priority: number
-  iconName: string
-  cautionNote?: string
-}
-
-export default function SocialLinkCard({ item }: { item: SocialLinkItem }) {
+export default function SocialLinkCard({ item }: { item: SocialLink }) {
   return (
     <div className="card card-interactive h-full">
       <div className="flex items-start justify-between gap-4">

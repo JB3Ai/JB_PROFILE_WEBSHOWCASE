@@ -1,4 +1,6 @@
-export const evidenceItems = [
+import type { EvidenceItem } from '../types/content.types'
+
+export const evidenceItems: EvidenceItem[] = [
   {
     id: "executive-cv-portfolio",
     title: "Executive CV Portfolio",

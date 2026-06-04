@@ -1,19 +1,11 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { AppWindowHeader, GlassPanel, PremiumButton, StatusBadge } from '../components/primitives'
-import { appRegistry } from '../data/appRegistry'
-import ProjectShowcaseApp from '../os-apps/ProjectShowcaseApp'
-import VideoVaultApp from '../os-apps/VideoVaultApp'
-import EvidenceVaultApp from '../os-apps/EvidenceVaultApp'
-import FounderBriefApp from '../os-apps/FounderBriefApp'
-import DailyShowApp from '../os-apps/DailyShowApp'
-import PublicFeedApp from '../os-apps/PublicFeedApp'
-import TimelineApp from '../os-apps/TimelineApp'
-import GTR3App from '../os-apps/GTR3App'
-import InvestorRoomApp from '../os-apps/InvestorRoomApp'
-import ConnectApp from '../os-apps/ConnectApp'
+import { appComponents } from '../data/appComponents'
+import { appRegistry, isAppId } from '../data/appRegistry'
+import type { AppId } from '../types/content.types'
 
-function TopBar({ currentApp }: { currentApp: string | null }) {
+function TopBar({ currentApp }: { currentApp: AppId | null }) {
   return (
     <div className="os-topbar">
       <div className="flex items-center gap-4">
@@ -35,7 +27,7 @@ function TopBar({ currentApp }: { currentApp: string | null }) {
   )
 }
 
-function Dock({ onLaunch, onClose }: { onLaunch: (id: string) => void; onClose: () => void }) {
+function Dock({ onLaunch, onClose }: { onLaunch: (id: AppId) => void; onClose: () => void }) {
   return (
     <motion.div
       className="os-dock"
@@ -66,40 +58,15 @@ function Dock({ onLaunch, onClose }: { onLaunch: (id: string) => void; onClose: 
   )
 }
 
-function renderApp(openApp: string) {
-  switch (openApp) {
-    case 'founder-brief':
-      return <FounderBriefApp />
-    case 'project-showcase':
-      return <ProjectShowcaseApp />
-    case 'video-vault':
-      return <VideoVaultApp />
-    case 'jb3-daily':
-      return <DailyShowApp />
-    case 'public-feed':
-      return <PublicFeedApp />
-    case 'evidence-vault':
-      return <EvidenceVaultApp />
-    case 'timeline':
-      return <TimelineApp />
-    case 'gtr3':
-      return <GTR3App />
-    case 'investor-room':
-      return <InvestorRoomApp />
-    case 'connect':
-      return <ConnectApp />
-    default:
-      return null
-  }
-}
-
 export default function RestrictedOS() {
-  const [openApp, setOpenApp] = useState<string | null>(null)
-  const activeApp = appRegistry.find((app) => app.id === openApp)
+  const [openApp, setOpenApp] = useState<AppId | string | null>(null)
+  const currentAppId = openApp && isAppId(openApp) ? openApp : null
+  const activeApp = currentAppId ? appRegistry.find((app) => app.id === currentAppId) : undefined
+  const ActiveAppComponent = currentAppId ? appComponents[currentAppId] : null
 
   return (
     <div className="os-shell">
-      <TopBar currentApp={openApp} />
+      <TopBar currentApp={currentAppId} />
       <main className="container-shell-wide relative z-10 px-6 py-10">
         {!openApp && (
           <motion.div
@@ -145,7 +112,7 @@ export default function RestrictedOS() {
           </motion.div>
         )}
 
-        {openApp && activeApp && (
+        {openApp && (
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
@@ -153,14 +120,31 @@ export default function RestrictedOS() {
             className="os-window"
           >
             <AppWindowHeader
-              title={activeApp.name}
-              icon={activeApp.icon}
-              meta={activeApp.meta}
+              title={activeApp?.name ?? 'Unknown Module'}
+              icon={activeApp?.icon ?? '·'}
+              meta={activeApp?.meta ?? 'Unsupported app ID selected'}
               onClose={() => setOpenApp(null)}
-              actions={<StatusBadge variant="success" size="sm">Module Active</StatusBadge>}
+              actions={
+                <StatusBadge variant={activeApp ? 'success' : 'warning'} size="sm">
+                  {activeApp ? 'Module Active' : 'Fallback View'}
+                </StatusBadge>
+              }
             />
             <div className="os-window-body">
-              {renderApp(openApp)}
+              {ActiveAppComponent ? (
+                <ActiveAppComponent />
+              ) : (
+                <GlassPanel size="lg" animate={false} tone="muted">
+                  <div className="eyebrow">Module Unavailable</div>
+                  <h3 className="mt-3 text-heading text-white">This app could not be opened.</h3>
+                  <p className="mt-4 max-w-2xl text-body">
+                    The selected app ID is not registered in the current OS mapping. Return to the desktop and choose another module.
+                  </p>
+                  <div className="mt-6">
+                    <PremiumButton variant="secondary" onClick={() => setOpenApp(null)}>Back to Desktop</PremiumButton>
+                  </div>
+                </GlassPanel>
+              )}
             </div>
           </motion.div>
         )}

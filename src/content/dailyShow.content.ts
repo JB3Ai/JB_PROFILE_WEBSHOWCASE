@@ -1,18 +1,4 @@
-export type DailyShowEpisode = {
-  id: string
-  episodeNumber: number
-  title: string
-  category: 'Founder Notes' | 'AI for Business' | 'Systems Thinking' | 'Build Log' | 'GTR3 Reflection'
-  status: 'Published' | 'Draft' | 'Coming Soon' | 'Demo Cut'
-  date: string
-  videoUrl: string
-  thumbnail: string
-  summary: string
-  articleNotes: string
-  relatedProjectId: string
-  tags: string[]
-  access: 'Public' | 'Subscriber' | 'Preview'
-}
+import type { DailyShowEpisode } from '../types/content.types'
 
 export const dailyShowEpisodes: DailyShowEpisode[] = [
   {

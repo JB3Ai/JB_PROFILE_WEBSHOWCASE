@@ -1,16 +1,6 @@
-export type InvestorRecord = {
-  id: string
-  title: string
-  category: string
-  visibility: string
-  status: string
-  summary: string
-  documentType: string
-  accessLevel: 'Public' | 'Request Access' | 'PIN Required' | 'Private'
-  fileUrl: string
-  tags: string[]
-  cautionNote: string
-}
+import type { InvestorItem } from '../types/content.types'
+
+export type InvestorRecord = InvestorItem
 
 export const investorRecords: InvestorRecord[] = [
   {

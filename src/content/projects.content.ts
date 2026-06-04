@@ -1,4 +1,6 @@
-export const projects = [
+import type { ProjectItem } from '../types/content.types'
+
+export const projects: ProjectItem[] = [
   {
     id: 'dukebox-london',
     name: 'The DukeBox of London',

@@ -1,6 +1,6 @@
 import React from 'react'
-import type { FeedPost } from '../../content/feed.content'
 import { PremiumButton, StatusBadge } from '../primitives'
+import type { FeedPost } from '../../types/content.types'
 
 type FeedPostCardProps = {
   post: FeedPost

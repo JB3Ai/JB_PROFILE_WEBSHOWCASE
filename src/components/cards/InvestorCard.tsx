@@ -1,10 +1,10 @@
 import React from 'react'
-import type { InvestorRecord } from '../../content/investor.content'
 import { PremiumButton, StatusBadge } from '../primitives'
+import type { InvestorItem } from '../../types/content.types'
 
 type InvestorCardProps = {
-  item: InvestorRecord
-  onAction?: (action: 'open' | 'request' | 'pin', item: InvestorRecord) => void
+  item: InvestorItem
+  onAction?: (action: 'open' | 'request' | 'pin', item: InvestorItem) => void
 }
 
 export default function InvestorCard({ item, onAction }: InvestorCardProps) {

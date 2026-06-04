@@ -15,6 +15,16 @@ import ConnectSection from '../sections/ConnectSection'
 
 export default function PublicHome() {
   const nav = useNavigate()
+
+  const handleFounderBriefClick = () => {
+    const founderBrief = document.getElementById('founder-brief')
+    if (founderBrief) {
+      founderBrief.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      return
+    }
+
+    nav('/os')
+  }
   
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -56,7 +66,7 @@ export default function PublicHome() {
 
               <motion.div className="mt-10 flex flex-wrap gap-4" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.36, duration: 0.6 }}>
                 <PremiumButton variant="primary" size="lg" onClick={() => nav('/login')}>Enter OS</PremiumButton>
-                <PremiumButton variant="secondary" size="lg" onClick={() => alert('Founder Brief is available from the OS dock')}>Open Founder Brief</PremiumButton>
+                <PremiumButton variant="secondary" size="lg" onClick={handleFounderBriefClick}>Open Founder Brief</PremiumButton>
                 <PremiumButton variant="accent" size="lg" onClick={() => nav('/request-access')}>Request Investor Access</PremiumButton>
               </motion.div>
             </div>

@@ -1,18 +1,4 @@
-export type FeedPost = {
-  id: string
-  title: string
-  category: 'AI for Business' | 'Systems Thinking' | 'Founder Notes' | 'Product Update' | 'GTR3 Journal' | 'Security Signal'
-  date: string
-  readTime: string
-  sourceLabel: string
-  sourceUrl: string
-  summary: string
-  jonathanTake: string
-  businessImpact: string
-  relatedProjectId: string
-  tags: string[]
-  status: 'Published' | 'Draft' | 'Coming Soon' | 'Demo Cut'
-}
+import type { FeedPost } from '../types/content.types'
 
 export const feedPosts: FeedPost[] = [
   {

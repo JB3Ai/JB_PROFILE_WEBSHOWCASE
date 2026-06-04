@@ -1,4 +1,6 @@
-export const timelineEvents = [
+import type { TimelineEvent } from '../types/content.types'
+
+export const timelineEvents: TimelineEvent[] = [
   {
     id: 'early-technical-foundation',
     period: '2004–2010',

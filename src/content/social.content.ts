@@ -1,4 +1,6 @@
-export const socialLinks = [
+import type { SocialLink } from '../types/content.types'
+
+export const socialLinks: SocialLink[] = [
   {
     id: 'book-call',
     label: 'Book a Call',

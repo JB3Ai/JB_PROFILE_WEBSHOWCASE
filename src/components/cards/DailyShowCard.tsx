@@ -1,6 +1,6 @@
 import React from 'react'
-import type { DailyShowEpisode } from '../../content/dailyShow.content'
 import { PremiumButton, StatusBadge } from '../primitives'
+import type { DailyShowEpisode } from '../../types/content.types'
 
 type DailyShowCardProps = {
   episode: DailyShowEpisode

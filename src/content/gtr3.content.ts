@@ -1,4 +1,6 @@
-export const gtr3Content = {
+import type { GTR3Content } from '../types/content.types'
+
+export const gtr3Content: GTR3Content = {
   title: 'GTR3',
   status: 'Coming Soon',
   headline: 'The third rise is still being written.',

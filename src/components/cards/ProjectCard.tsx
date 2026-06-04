@@ -1,18 +1,8 @@
 import React from 'react'
 import { PremiumButton, StatusBadge } from '../primitives'
+import type { ProjectItem } from '../../types/content.types'
 
-type Project = {
-  id: string
-  name: string
-  category: string
-  status: string
-  summary: string
-  pdf?: string
-  video?: string
-  image?: string
-}
-
-export default function ProjectCard({ project }: { project: Project }) {
+export default function ProjectCard({ project }: { project: ProjectItem }) {
   return (
     <div className="card card-interactive h-full">
       <div className="flex items-start justify-between gap-4">

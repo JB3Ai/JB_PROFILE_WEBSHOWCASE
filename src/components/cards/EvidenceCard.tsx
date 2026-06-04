@@ -1,19 +1,6 @@
 import React from 'react'
 import { PremiumButton, StatusBadge } from '../primitives'
-
-type EvidenceItem = {
-  id: string
-  title: string
-  category: string
-  status: string
-  visibility: string
-  summary: string
-  documentType: string
-  fileUrl: string
-  thumbnail: string
-  tags: string[]
-  cautionNote: string
-}
+import type { EvidenceItem } from '../../types/content.types'
 
 export default function EvidenceCard({ item }: { item: EvidenceItem }) {
   return (

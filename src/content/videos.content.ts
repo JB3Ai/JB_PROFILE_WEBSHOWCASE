@@ -1,4 +1,6 @@
-export const videos = [
+import type { VideoItem } from '../types/content.types'
+
+export const videos: VideoItem[] = [
   {
     id: 'jonathan-blackburn-os-intro',
     title: 'Jonathan Blackburn OS Intro',
