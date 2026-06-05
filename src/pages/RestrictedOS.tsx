@@ -15,7 +15,7 @@ function TopBar({ currentApp }: { currentApp: AppId | null }) {
           <span className="status-dot status-dot-gold" />
         </div>
         <div>
-          <div className="text-sm font-semibold text-white">Tactical Intelligence OS</div>
+          <div className="text-sm font-semibold text-white">Executive Intelligence OS</div>
           <div className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--text-dim)]">Controlled founder review environment</div>
         </div>
       </div>
@@ -79,7 +79,7 @@ export default function RestrictedOS() {
           >
             <GlassPanel size="lg" animate={false} className="section-frame">
               <StatusBadge variant="primary">Desktop Ready</StatusBadge>
-              <h3 className="mt-6 text-display text-white">Tactical Intelligence OS</h3>
+              <h3 className="mt-6 text-display text-white">Executive Intelligence OS</h3>
               <p className="mt-4 max-w-2xl text-body-lg">
                 A controlled operating shell for founder proof, strategic surface areas, and investor-safe previews. Select any app from the dock to enter its working view.
               </p>
