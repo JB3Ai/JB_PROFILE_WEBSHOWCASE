@@ -29,32 +29,34 @@ function TopBar({ currentApp }: { currentApp: AppId | null }) {
 
 function Dock({ onLaunch, onClose }: { onLaunch: (id: AppId) => void; onClose: () => void }) {
   return (
-    <motion.div
-      className="os-dock"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5 }}
-    >
-      {appRegistry.map((a, idx) => (
-        <motion.button
-          key={a.id}
-          onClick={() => onLaunch(a.id)}
-          className="os-dock-button"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 + idx * 0.05 }}
-        >
-          <span className="text-sm text-[color:var(--accent-cyan)]">{a.icon}</span>
-          <span className="font-medium text-white">{a.name}</span>
-        </motion.button>
-      ))}
-      <button onClick={onClose} className="os-dock-button min-w-[92px]">
-        <span className="text-sm text-[color:var(--accent-gold)]">×</span>
-        <span className="font-medium text-white">Clear</span>
-      </button>
-    </motion.div>
+    <div className="os-dock-wrap">
+      <motion.div
+        className="os-dock"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+      >
+        {appRegistry.map((a, idx) => (
+          <motion.button
+            key={a.id}
+            onClick={() => onLaunch(a.id)}
+            className="os-dock-button"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 + idx * 0.05 }}
+          >
+            <span className="text-sm text-[color:var(--accent-cyan)]">{a.icon}</span>
+            <span className="font-medium text-white">{a.name}</span>
+          </motion.button>
+        ))}
+        <button onClick={onClose} className="os-dock-button os-dock-button-clear">
+          <span className="text-sm text-[color:var(--accent-gold)]">×</span>
+          <span className="font-medium text-white">Clear</span>
+        </button>
+      </motion.div>
+    </div>
   )
 }
 
@@ -67,7 +69,7 @@ export default function RestrictedOS() {
   return (
     <div className="os-shell">
       <TopBar currentApp={currentAppId} />
-      <main className="container-shell-wide relative z-10 px-6 py-10">
+      <main className="container-shell-wide os-main">
         {!openApp && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}

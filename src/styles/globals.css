@@ -591,6 +591,10 @@ textarea {
       linear-gradient(180deg, #061018 0%, #08131d 40%, #050b12 100%);
   }
 
+  .os-main {
+    @apply container-shell-wide relative z-10 px-6 pt-10 pb-40 md:pb-44;
+  }
+
   .os-topbar {
     @apply sticky top-0 z-30 flex items-center justify-between border-b px-6 py-3 backdrop-blur-xl;
     border-color: rgba(173, 198, 220, 0.1);
@@ -613,19 +617,45 @@ textarea {
       linear-gradient(180deg, rgba(9, 17, 26, 0.92), rgba(7, 12, 18, 0.96));
   }
 
+  .os-dock-wrap {
+    @apply fixed bottom-4 left-1/2 z-30 w-full -translate-x-1/2 px-2 sm:bottom-6 sm:px-4;
+    pointer-events: none;
+  }
+
   .os-dock {
-    @apply fixed bottom-6 left-1/2 z-30 flex -translate-x-1/2 gap-2 overflow-x-auto rounded-[1.4rem] border px-3 py-3 backdrop-blur-2xl;
-    max-width: calc(100vw - 2rem);
+    @apply mx-auto flex w-full items-stretch gap-2 overflow-x-auto rounded-[1.4rem] border px-2.5 py-2.5 backdrop-blur-2xl sm:px-3 sm:py-3;
+    max-width: min(100%, 82rem);
     border-color: rgba(173, 198, 220, 0.14);
     background: rgba(9, 18, 27, 0.76);
     box-shadow: 0 24px 55px rgba(1, 6, 12, 0.35);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(88, 214, 218, 0.35) rgba(255, 255, 255, 0.04);
+    pointer-events: auto;
+  }
+
+  .os-dock::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .os-dock::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 999px;
+  }
+
+  .os-dock::-webkit-scrollbar-thumb {
+    background: rgba(88, 214, 218, 0.35);
+    border-radius: 999px;
   }
 
   .os-dock-button {
-    @apply flex min-w-[116px] flex-col items-center gap-1 rounded-2xl px-3 py-2 text-center text-xs transition-all duration-200;
+    @apply flex min-w-[96px] shrink-0 flex-col items-center gap-1 rounded-2xl px-2.5 py-2 text-center text-xs transition-all duration-200 sm:min-w-[116px] sm:px-3;
     border: 1px solid rgba(173, 198, 220, 0.1);
     background: rgba(255, 255, 255, 0.04);
     color: var(--text-secondary);
+  }
+
+  .os-dock-button-clear {
+    @apply min-w-[84px] sm:min-w-[92px];
   }
 
   .os-dock-button:hover {
