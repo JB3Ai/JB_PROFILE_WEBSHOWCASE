@@ -3,17 +3,25 @@ import { useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import BootSequence, { BOOT_SESSION_KEY } from '../components/boot/BootSequence'
 import PublicNav from '../components/navigation/PublicNav'
-import { GlassPanel, PremiumButton, StatusBadge } from '../components/primitives'
-import FounderBriefSection from '../sections/FounderBriefSection'
-import ProjectShowcaseSection from '../sections/ProjectShowcaseSection'
-import VideoVaultSection from '../sections/VideoVaultSection'
-import EvidencePreviewSection from '../sections/EvidencePreviewSection'
-import DailyShowSection from '../sections/DailyShowSection'
-import PublicFeedSection from '../sections/PublicFeedSection'
-import TimelineSection from '../sections/TimelineSection'
-import GTR3Section from '../sections/GTR3Section'
-import InvestorRoomSection from '../sections/InvestorRoomSection'
-import ConnectSection from '../sections/ConnectSection'
+import { PremiumButton } from '../components/primitives'
+import ConnectStrip from '../components/public/ConnectStrip'
+import EditorialSection from '../components/public/EditorialSection'
+import GTR3Spotlight from '../components/public/GTR3Spotlight'
+import ManifestoPanel from '../components/public/ManifestoPanel'
+import ProofBand, { type ProofBandItem } from '../components/public/ProofBand'
+import PublicHeroCinematic from '../components/public/PublicHeroCinematic'
+import SelectedWorkRail from '../components/public/SelectedWorkRail'
+import { dailyShowEpisodes } from '../content/dailyShow.content'
+import { evidenceItems } from '../content/evidence.content'
+import { feedPosts } from '../content/feed.content'
+import { founderProfile } from '../content/founder.content'
+import { gtr3Content } from '../content/gtr3.content'
+import { investorRecords } from '../content/investor.content'
+import { projects } from '../content/projects.content'
+import { socialLinks } from '../content/social.content'
+import { timelineEvents } from '../content/timeline.content'
+import { videos } from '../content/videos.content'
+import { assetRegistry } from '../data/assetRegistry'
 import { scrollToSection } from '../utils/scrollToSection'
 
 export default function PublicHome() {
@@ -46,31 +54,75 @@ export default function PublicHome() {
     setBootStatus('ready')
   }, [])
 
-  const handleFounderBriefClick = () => {
+  const handleFounderBriefClick = useCallback(() => {
     scrollToSection('founder-brief', {
-      fallback: () => nav('/os')
+      fallback: () => nav('/request-access')
     })
-  }
+  }, [nav])
 
-  const handleProjectsClick = () => {
+  const handleProjectsClick = useCallback(() => {
     scrollToSection('projects', {
-      fallback: () => nav('/os')
+      fallback: () => nav('/request-access')
     })
-  }
-  
-  const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: 'easeOut' }
+  }, [nav])
+
+  const handleTimelineClick = useCallback(() => {
+    scrollToSection('timeline')
+  }, [])
+
+  const mediaSignalItems: ProofBandItem[] = [
+    {
+      id: videos[0].id,
+      title: videos[0].title,
+      summary: videos[0].summary,
+      meta: `${videos[0].category} • ${videos[0].status}`,
+      image: videos[0].thumbnail,
+      fallbackImage: assetRegistry.videoPlaceholder
+    },
+    {
+      id: dailyShowEpisodes[0].id,
+      anchorId: 'jb3-daily-show',
+      title: dailyShowEpisodes[0].title,
+      summary: dailyShowEpisodes[0].summary,
+      meta: `${dailyShowEpisodes[0].category} • ${dailyShowEpisodes[0].status}`,
+      image: dailyShowEpisodes[0].thumbnail,
+      fallbackImage: assetRegistry.dailyShowPlaceholder
+    },
+    {
+      id: feedPosts[0].id,
+      anchorId: 'public-feed',
+      title: feedPosts[0].title,
+      summary: feedPosts[0].summary,
+      meta: `${feedPosts[0].category} • ${feedPosts[0].readTime}`,
+      fallbackImage: assetRegistry.videoPlaceholder
+    },
+    {
+      id: videos[2].id,
+      title: videos[2].title,
+      summary: videos[2].summary,
+      meta: `${videos[2].category} • ${videos[2].status}`,
+      image: videos[2].thumbnail,
+      fallbackImage: assetRegistry.videoPlaceholder
     }
-  }
+  ]
+
+  const trustPreviewItems: ProofBandItem[] = evidenceItems
+    .filter((item) => item.visibility !== 'Investor Only')
+    .slice(0, 4)
+    .map((item, index) => ({
+      id: item.id,
+      anchorId: index === 0 ? 'evidence-vault' : undefined,
+      title: item.title,
+      summary: item.summary,
+      meta: `${item.category} • ${item.visibility}`,
+      image: item.thumbnail,
+      fallbackImage: assetRegistry.evidencePlaceholder
+    }))
 
   if (bootStatus === 'checking') {
     return null
   }
-  
+
   return (
     <AnimatePresence mode="wait">
       {bootStatus === 'booting' ? (
@@ -84,80 +136,126 @@ export default function PublicHome() {
           transition={{ duration: revealedFromBoot ? 0.55 : 0, ease: 'easeOut' }}
         >
           <PublicNav />
-          <div className="hero-orb left-[-8rem] top-[4rem] h-64 w-64 bg-cyan-300/20" />
-          <div className="hero-orb right-[-5rem] top-[10rem] h-56 w-56 bg-emerald-300/15" />
-          <div className="hero-orb bottom-[20rem] right-[18%] h-48 w-48 bg-amber-200/10" />
-          <motion.div
-            id="hero"
-            variants={containerVariants}
-            initial={revealedFromBoot ? 'hidden' : false}
-            animate="visible"
-            className="container-shell-wide section-anchor relative z-10 py-16 md:py-24"
+          <div className="hero-orb left-[-10rem] top-[4rem] h-72 w-72 bg-cyan-300/14" />
+          <div className="hero-orb right-[-8rem] top-[14rem] h-72 w-72 bg-emerald-300/12" />
+          <div className="hero-orb bottom-[22rem] right-[8%] h-60 w-60 bg-amber-200/10" />
+
+          <PublicHeroCinematic
+            onFounderStory={handleFounderBriefClick}
+            onProjects={handleProjectsClick}
+            onRequestAccess={() => nav('/request-access')}
+            onEnterPrivateOS={() => nav('/login')}
+          />
+
+          <ManifestoPanel />
+
+          <EditorialSection
+            id="timeline"
+            lead="Founder Journey"
+            title="A founder path shaped by engineering, recovery, care, and rebuilding."
+            intro="The public journey is presented as narrative sequence rather than a grid of milestones, keeping the emphasis on rhythm, pressure, and progression."
           >
-            <GlassPanel size="lg" animate={false} className="section-frame">
-              <div className="grid gap-10 lg:grid-cols-[1.3fr_0.8fr] lg:items-end">
-                <div>
-                  <motion.div className="flex flex-wrap gap-3" initial={revealedFromBoot ? { opacity: 0, y: 10 } : false} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05, duration: 0.6 }}>
-                    <StatusBadge variant="primary">Founder Platform</StatusBadge>
-                    <StatusBadge variant="neutral">Premium Public Layer</StatusBadge>
-                  </motion.div>
-
-                  <motion.h1 className="mt-8 text-display-lg text-white" initial={revealedFromBoot ? { opacity: 0, y: 10 } : false} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12, duration: 0.6 }}>
-                    Jonathan Blackburn OS
-                  </motion.h1>
-                  <motion.p className="mt-6 max-w-3xl text-body-lg" initial={revealedFromBoot ? { opacity: 0, y: 10 } : false} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.6 }}>
-                    A premium founder platform for executive proof, resilient systems thinking, strategic recovery, and controlled intelligence storytelling.
-                  </motion.p>
-                  <motion.p className="mt-4 max-w-2xl text-body italic text-[color:var(--text-muted)]" initial={revealedFromBoot ? { opacity: 0, y: 10 } : false} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.28, duration: 0.6 }}>
-                    Chaos is not solved by hope. Chaos is solved by systems.
-                  </motion.p>
-
-                  <motion.div className="mt-10 flex flex-wrap gap-4" initial={revealedFromBoot ? { opacity: 0, y: 10 } : false} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.36, duration: 0.6 }}>
-                    <PremiumButton variant="primary" size="lg" onClick={() => nav('/login')}>Enter OS</PremiumButton>
-                    <PremiumButton variant="secondary" size="lg" onClick={handleFounderBriefClick}>Open Founder Brief</PremiumButton>
-                    <PremiumButton variant="ghost" size="lg" onClick={handleProjectsClick}>View Projects</PremiumButton>
-                    <PremiumButton variant="accent" size="lg" onClick={() => nav('/request-access')}>Request Investor Access</PremiumButton>
-                  </motion.div>
-                </div>
-
-                <motion.div
-                  initial={revealedFromBoot ? { opacity: 0, y: 12 } : false}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.42, duration: 0.6 }}
-                  className="grid gap-4"
+            <div className="journey-track">
+              {timelineEvents.map((event, index) => (
+                <motion.article
+                  key={event.id}
+                  className="journey-item"
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ delay: index * 0.04, duration: 0.55, ease: 'easeOut' }}
                 >
-                  <div className="glass-panel-md">
-                    <p className="eyebrow">Platform Positioning</p>
-                    <p className="mt-4 text-heading-sm text-white">Founder. Systems Architect. Builder under pressure.</p>
-                    <p className="mt-4 text-body-sm">Designed to feel executive, trustworthy, and controlled before deeper media, assets, and secure layers come online.</p>
+                  <div className="journey-period">{event.period}</div>
+                  <div className="journey-content">
+                    <p className="public-meta-line">
+                      <span>{event.category}</span>
+                      <span>{event.visibility}</span>
+                    </p>
+                    <h3 className="selected-work-row-title">{event.title}</h3>
+                    <p className="public-copy">{event.summary}</p>
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="glass-panel-sm">
-                      <p className="text-caption">Public Systems</p>
-                      <p className="mt-3 text-2xl font-semibold text-white">11</p>
-                      <p className="mt-2 text-body-sm">Curated surface areas</p>
-                    </div>
-                    <div className="glass-panel-sm">
-                      <p className="text-caption">Current State</p>
-                      <p className="mt-3 text-2xl font-semibold text-white">v1</p>
-                      <p className="mt-2 text-body-sm">Safe placeholder content only</p>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </GlassPanel>
-          </motion.div>
+                </motion.article>
+              ))}
+            </div>
+          </EditorialSection>
 
-          <FounderBriefSection />
-          <ProjectShowcaseSection />
-          <VideoVaultSection />
-          <DailyShowSection />
-          <PublicFeedSection />
-          <EvidencePreviewSection />
-          <InvestorRoomSection />
-          <TimelineSection />
-          <GTR3Section />
-          <ConnectSection />
+          <SelectedWorkRail
+            projects={projects}
+            onRequestAccess={() => nav('/request-access')}
+            onEnterPrivateOS={() => nav('/login')}
+          />
+
+          <ProofBand
+            id="video-vault"
+            lead="Media and Signals"
+            title="A refined public stream of founder briefings, product previews, and signal notes."
+            intro="Video Vault, JB³ Daily Show, and the public feed are combined into a tighter preview band so the homepage feels curated rather than overfilled."
+            items={mediaSignalItems}
+            ctaLabel="Enter Private OS"
+            onCta={() => nav('/login')}
+          />
+
+          <ProofBand
+            id="evidence-vault"
+            lead="Evidence and Trust"
+            title="Proof is shown with restraint, context, and public-safe boundaries."
+            intro="The trust layer stays minimal here: enough signal to establish credibility, without exposing private packs, investor files, or sensitive operating material."
+            items={trustPreviewItems}
+            ctaLabel="Request Evidence Access"
+            onCta={() => nav('/request-access')}
+          />
+
+          <EditorialSection
+            id="investor-room"
+            lead="Investor Access"
+            title="A premium review room for verified access, not theatre."
+            intro={founderProfile.investorSummary}
+            actions={
+              <PremiumButton variant="accent" onClick={() => nav('/request-access')}>
+                Request Investor Access
+              </PremiumButton>
+            }
+          >
+            <motion.div
+              className="investor-room-preview"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.65, ease: 'easeOut' }}
+            >
+              <div className="investor-room-copy">
+                <p className="public-copy">
+                  Public previews acknowledge the existence of due diligence, strategy, and commercial material without exposing private content or creating false secrecy theatre.
+                </p>
+              </div>
+              <div className="investor-room-list">
+                {investorRecords.slice(0, 4).map((record) => (
+                  <div key={record.id} className="investor-room-item">
+                    <div>
+                      <p className="public-meta-line">
+                        <span>{record.category}</span>
+                        <span>{record.visibility}</span>
+                      </p>
+                      <h3 className="selected-work-row-title">{record.title}</h3>
+                    </div>
+                    <p className="public-copy-sm">{record.summary}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </EditorialSection>
+
+          <GTR3Spotlight
+            content={gtr3Content}
+            onPrimaryAction={() => nav('/request-access')}
+            onSecondaryAction={handleTimelineClick}
+          />
+
+          <ConnectStrip
+            links={socialLinks}
+            onRequestAccess={() => nav('/request-access')}
+            onEnterPrivateOS={() => nav('/login')}
+          />
         </motion.div>
       )}
     </AnimatePresence>

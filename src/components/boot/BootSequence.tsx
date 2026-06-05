@@ -49,7 +49,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
         >
           <div className="flex items-start justify-between gap-6">
             <div>
-              <p className="eyebrow">Public Entry Layer</p>
+              <p className="eyebrow">Founder Profile Layer</p>
               <h1 className="mt-5 text-display boot-title">INITIALISING JONATHAN BLACKBURN OS</h1>
             </div>
 
@@ -92,7 +92,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
           <div className="mt-10 space-y-3">
             <div className="flex items-center justify-between gap-4">
               <p className="text-caption">Preview Layer</p>
-              <p className="text-body-sm">Preparing public systems</p>
+              <p className="text-body-sm">Preparing public profile surface</p>
             </div>
 
             <div className="boot-progress-track">
