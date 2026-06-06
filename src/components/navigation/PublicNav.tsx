@@ -54,17 +54,20 @@ export default function PublicNav() {
   }, [])
 
   return (
-    <div className="sticky top-4 z-40 px-4 pt-4 md:px-6">
+    <div className="sticky top-3 z-40 px-4 pt-4 md:top-4 md:px-6">
       <div className="container-shell-wide">
         <div className="public-nav-shell">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
+            <div className="public-nav-brand">
               <img
                 src={assetRegistry.logoMark}
                 alt="Jonathan Blackburn OS logo mark"
-                className="h-9 w-9 rounded-xl border border-white/10 bg-white/5 p-1.5"
+                className="h-8 w-8 rounded-full border border-white/10 bg-white/5 p-1.5"
               />
-              <div className="text-sm font-semibold text-white md:text-base">Jonathan Blackburn OS</div>
+              <div>
+                <div className="text-sm font-semibold tracking-[-0.01em] text-white">Jonathan Blackburn OS</div>
+                <div className="public-nav-caption">Founder platform</div>
+              </div>
             </div>
 
             <div className="public-nav-links">
@@ -79,7 +82,7 @@ export default function PublicNav() {
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="public-nav-actions">
               <PremiumButton variant="secondary" size="sm" onClick={() => nav('/login')}>
                 Enter OS
               </PremiumButton>
