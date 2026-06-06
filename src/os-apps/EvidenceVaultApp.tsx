@@ -64,7 +64,7 @@ export default function EvidenceVaultApp() {
             </div>
             <div className="grid gap-2 sm:grid-cols-2">
               <PremiumButton variant="primary">Request Access</PremiumButton>
-              <PremiumButton variant="secondary">View Investigator Notes</PremiumButton>
+              <PremiumButton variant="secondary">Review Notes</PremiumButton>
             </div>
           </div>
         </GlassPanel>

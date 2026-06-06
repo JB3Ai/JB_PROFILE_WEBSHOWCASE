@@ -118,13 +118,13 @@ export default function InvestorRoomApp() {
                 )}
                 {panel === 'request' && (
                   <>
-                    <p>This placeholder simulates an investor access request. Actual approval, secure review, and document delivery are not enabled yet.</p>
+                    <p>This placeholder simulates an investor access request. Actual approval, document review, and delivery are not enabled yet.</p>
                     <p className="mt-4 text-[color:var(--text-dim)]">Submit your interest and await verification in the next milestone.</p>
                   </>
                 )}
                 {panel === 'pin' && (
                   <>
-                    <p>Enter a PIN to unlock a secure preview layer. No PIN is validated in this placeholder mode.</p>
+                    <p>Enter a PIN to unlock the preview layer. No PIN is validated in this placeholder mode.</p>
                     <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                       <input
                         type="password"

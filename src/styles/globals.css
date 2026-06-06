@@ -1040,58 +1040,408 @@ textarea {
     @apply flex flex-wrap gap-3;
   }
 
-  .os-shell {
+  .os-shell,
+  .os-desktop {
     @apply relative min-h-screen overflow-hidden text-white;
     background:
-      radial-gradient(circle at top right, rgba(88, 214, 218, 0.08), transparent 18%),
-      radial-gradient(circle at bottom left, rgba(116, 211, 164, 0.08), transparent 22%),
-      linear-gradient(180deg, #061018 0%, #08131d 40%, #050b12 100%);
+      radial-gradient(circle at 12% 12%, rgba(88, 214, 218, 0.08), transparent 18%),
+      radial-gradient(circle at 84% 16%, rgba(233, 201, 143, 0.08), transparent 18%),
+      radial-gradient(circle at 16% 84%, rgba(116, 211, 164, 0.08), transparent 20%),
+      linear-gradient(180deg, #041018 0%, #08131d 38%, #040a11 100%);
   }
 
-  .os-main {
-    @apply container-shell-wide relative z-10 px-6 pt-10 pb-44 md:pb-48;
+  .os-desktop-glow {
+    position: absolute;
+    border-radius: 999px;
+    pointer-events: none;
+    filter: blur(90px);
+    opacity: 0.42;
+  }
+
+  .os-desktop-glow-left {
+    left: 4%;
+    top: 8%;
+    width: 24rem;
+    height: 24rem;
+    background: rgba(88, 214, 218, 0.16);
+  }
+
+  .os-desktop-glow-right {
+    right: 4%;
+    top: 18%;
+    width: 22rem;
+    height: 22rem;
+    background: rgba(233, 201, 143, 0.12);
+  }
+
+  .os-desktop-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.016) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.014) 1px, transparent 1px);
+    background-size: 190px 190px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 88%);
+    opacity: 0.18;
   }
 
   .os-topbar {
-    @apply sticky top-0 z-30 flex items-center justify-between border-b px-6 py-3 backdrop-blur-xl;
+    @apply sticky top-0 z-30 border-b backdrop-blur-2xl;
+    border-color: rgba(173, 198, 220, 0.08);
+    background: rgba(5, 12, 18, 0.74);
+    box-shadow: 0 10px 24px rgba(1, 6, 12, 0.16);
+  }
+
+  .os-topbar-shell {
+    @apply mx-auto flex max-w-[92rem] items-center justify-between gap-4 px-4 py-3 md:px-6;
+  }
+
+  .os-topbar-brand {
+    @apply flex min-w-0 items-center gap-3;
+  }
+
+  .os-topbar-brandmark {
+    @apply flex items-center gap-1.5 rounded-full border px-3 py-2;
+    border-color: rgba(173, 198, 220, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .os-topbar-title {
+    @apply text-sm font-semibold text-white md:text-[15px];
+  }
+
+  .os-topbar-meta,
+  .os-topbar-active-label,
+  .os-topbar-active-meta,
+  .os-topbar-date {
+    @apply text-[10px] uppercase tracking-[0.22em];
+    color: rgba(148, 168, 186, 0.74);
+  }
+
+  .os-topbar-center {
+    @apply hidden min-w-0 flex-1 rounded-full border px-4 py-2.5 xl:block;
+    border-color: rgba(173, 198, 220, 0.08);
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  .os-topbar-active-title {
+    @apply mt-1 truncate text-sm font-semibold text-white;
+  }
+
+  .os-topbar-status {
+    @apply flex items-center gap-2 sm:gap-3;
+  }
+
+  .os-topbar-action {
+    @apply rounded-full border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors duration-200;
+    border-color: rgba(173, 198, 220, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(215, 222, 229, 0.84);
+  }
+
+  .os-topbar-action:hover {
+    border-color: rgba(88, 214, 218, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+  }
+
+  .os-main {
+    @apply relative z-10 px-4 pt-6 pb-52 md:px-6 md:pt-10 md:pb-56;
+  }
+
+  .os-workspace {
+    @apply mx-auto w-full max-w-[92rem];
+  }
+
+  .os-desktop-layout {
+    @apply grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_320px] xl:items-start;
+  }
+
+  .os-desktop-primary,
+  .os-panel-stack {
+    @apply grid gap-6;
+  }
+
+  .os-desktop-card {
+    @apply relative overflow-hidden rounded-[1.8rem] border p-5 md:p-6;
+    border-color: rgba(173, 198, 220, 0.12);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.012)),
+      linear-gradient(180deg, rgba(11, 20, 30, 0.92), rgba(7, 13, 20, 0.96));
+    box-shadow: 0 24px 58px rgba(1, 6, 12, 0.3);
+    backdrop-filter: blur(22px);
+  }
+
+  .os-desktop-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at top right, rgba(88, 214, 218, 0.08), transparent 26%),
+      radial-gradient(circle at bottom left, rgba(233, 201, 143, 0.06), transparent 24%);
+  }
+
+  .os-desktop-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .os-desktop-card-primary {
+    background:
+      radial-gradient(circle at 18% 18%, rgba(88, 214, 218, 0.1), transparent 22%),
+      radial-gradient(circle at 82% 16%, rgba(233, 201, 143, 0.08), transparent 20%),
+      linear-gradient(180deg, rgba(15, 26, 38, 0.92), rgba(8, 14, 22, 0.96));
+    box-shadow: 0 28px 66px rgba(1, 6, 12, 0.34);
+  }
+
+  .os-desktop-card-muted,
+  .os-status-panel {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.008)),
+      linear-gradient(180deg, rgba(9, 17, 26, 0.94), rgba(6, 12, 18, 0.98));
+  }
+
+  .os-desktop-actions {
+    @apply mt-8 flex flex-wrap gap-3;
+  }
+
+  .os-desktop-meta {
+    @apply mt-6 flex flex-wrap gap-3 text-[11px] uppercase tracking-[0.2em];
+    color: rgba(148, 168, 186, 0.78);
+  }
+
+  .os-desktop-meta span {
+    @apply rounded-full border px-3 py-1.5;
+    border-color: rgba(173, 198, 220, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .os-launcher {
+    @apply grid gap-6;
+  }
+
+  .os-launcher-header {
+    @apply flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between;
+  }
+
+  .os-launcher-header-side {
+    @apply flex flex-col gap-3 md:flex-row md:items-start md:justify-between md:gap-4;
+  }
+
+  .os-launcher-toolbar {
+    @apply flex flex-col gap-3 md:flex-row md:items-center md:justify-between;
+  }
+
+  .os-launcher-search {
+    @apply md:max-w-sm;
+  }
+
+  .os-launcher-hint {
+    @apply text-[10px] uppercase tracking-[0.22em];
+    color: rgba(148, 168, 186, 0.74);
+  }
+
+  .os-launcher-close {
+    @apply rounded-full border px-3.5 py-2 text-xs font-medium transition-colors duration-200;
+    border-color: rgba(173, 198, 220, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+  }
+
+  .os-launcher-close:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+  }
+
+  .os-launcher-grid {
+    @apply grid gap-4 md:grid-cols-2;
+  }
+
+  .os-launcher-button {
+    @apply flex h-full flex-col gap-4 rounded-[1.45rem] border p-4 text-left transition-all duration-200 md:p-5;
     border-color: rgba(173, 198, 220, 0.1);
-    background: rgba(7, 15, 23, 0.82);
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--text-secondary);
+  }
+
+  .os-launcher-button:hover {
+    border-color: rgba(88, 214, 218, 0.22);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 16px 34px rgba(1, 7, 16, 0.18);
+  }
+
+  .os-launcher-icon,
+  .os-dock-button-icon,
+  .os-window-icon {
+    @apply flex items-center justify-center rounded-[1rem];
+    border: 1px solid rgba(173, 198, 220, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--accent-cyan);
+  }
+
+  .os-launcher-icon {
+    @apply h-12 w-12 text-lg;
+  }
+
+  .os-launcher-name,
+  .os-window-title {
+    @apply text-sm font-semibold text-white md:text-base;
+  }
+
+  .os-launcher-meta,
+  .os-window-meta {
+    @apply mt-2 text-[11px] uppercase tracking-[0.2em];
+    color: rgba(148, 168, 186, 0.74);
+  }
+
+  .os-launcher-empty {
+    @apply rounded-[1.3rem] border p-4 text-sm leading-7 md:col-span-2;
+    border-color: rgba(173, 198, 220, 0.08);
+    background: rgba(255, 255, 255, 0.035);
+    color: rgba(215, 222, 229, 0.8);
+  }
+
+  .os-launcher-overlay {
+    @apply fixed inset-0 z-50 flex items-start justify-center px-4 pb-8 pt-20 md:px-6 md:pt-24;
+  }
+
+  .os-launcher-backdrop {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    background: rgba(3, 8, 13, 0.66);
+    backdrop-filter: blur(12px);
+  }
+
+  .os-launcher-overlay-frame {
+    @apply relative z-10 w-full max-w-5xl;
+  }
+
+  .os-launcher-overlay-panel {
+    box-shadow: 0 36px 80px rgba(1, 6, 12, 0.42);
+  }
+
+  .os-status-list {
+    @apply mt-6 grid gap-3;
+  }
+
+  .os-status-item,
+  .os-status-current {
+    @apply rounded-[1.2rem] border p-4;
+    border-color: rgba(173, 198, 220, 0.08);
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  .os-status-label {
+    @apply text-[10px] font-semibold uppercase tracking-[0.24em];
+    color: rgba(148, 168, 186, 0.74);
+  }
+
+  .os-status-value,
+  .os-status-current-title {
+    @apply mt-2 text-sm font-semibold text-white;
+  }
+
+  .os-window-layout {
+    @apply grid gap-6 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-start;
   }
 
   .os-window {
     @apply overflow-hidden;
-    border-radius: calc(var(--radius-panel) + 0.15rem);
+    border-radius: calc(var(--radius-panel) + 0.2rem);
     border: 1px solid rgba(173, 198, 220, 0.12);
-    background: linear-gradient(180deg, rgba(12, 21, 31, 0.9), rgba(8, 14, 22, 0.98));
-    box-shadow: 0 30px 70px rgba(1, 6, 12, 0.42);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)),
+      linear-gradient(180deg, rgba(11, 19, 29, 0.9), rgba(7, 12, 18, 0.96));
+    box-shadow: 0 34px 78px rgba(1, 6, 12, 0.42);
     backdrop-filter: blur(24px);
   }
 
-  .os-window-body {
-    @apply p-6 md:p-8;
+  .os-window-header {
+    @apply flex flex-col gap-4 border-b px-5 py-4 md:flex-row md:items-center md:justify-between md:px-6;
+    border-color: rgba(173, 198, 220, 0.08);
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0)),
-      linear-gradient(180deg, rgba(9, 17, 26, 0.92), rgba(7, 12, 18, 0.96));
+      linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)),
+      rgba(6, 12, 18, 0.56);
+  }
+
+  .os-window-header-main {
+    @apply flex min-w-0 items-center gap-4;
+  }
+
+  .os-window-controls {
+    @apply flex items-center gap-2;
+  }
+
+  .os-window-title-group {
+    @apply flex min-w-0 items-center gap-3;
+  }
+
+  .os-window-icon {
+    @apply h-10 w-10 shrink-0 text-base;
+  }
+
+  .os-window-header-actions {
+    @apply flex flex-wrap items-center gap-2;
+  }
+
+  .os-window-close {
+    @apply rounded-full border px-3.5 py-2 text-xs font-medium transition-colors duration-200;
+    border-color: rgba(173, 198, 220, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+  }
+
+  .os-window-close:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+  }
+
+  .os-window-body {
+    @apply p-5 md:p-8;
+    max-height: calc(100vh - 16rem);
+    overflow: auto;
+    overscroll-behavior: contain;
+    padding-bottom: 9rem;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
+      linear-gradient(180deg, rgba(8, 15, 23, 0.94), rgba(6, 11, 17, 0.98));
   }
 
   .os-dock-wrap {
-    @apply fixed bottom-3 left-1/2 z-30 w-full -translate-x-1/2 px-2 sm:bottom-6 sm:px-4;
+    @apply fixed inset-x-0 bottom-0 z-40 px-3 pb-3 md:px-4 md:pb-6;
+    pointer-events: none;
+  }
+
+  .os-dock-shell {
+    @apply mx-auto flex w-full max-w-[92rem] flex-col items-center gap-2;
+  }
+
+  .os-dock-hint {
+    @apply rounded-full border px-3 py-1 text-[10px] uppercase tracking-[0.22em] md:hidden;
+    border-color: rgba(173, 198, 220, 0.08);
+    background: rgba(5, 12, 18, 0.7);
+    color: rgba(148, 168, 186, 0.74);
     pointer-events: none;
   }
 
   .os-dock {
-    @apply mx-auto flex w-full items-stretch gap-2 overflow-x-auto rounded-[1.4rem] border px-2 py-2 backdrop-blur-2xl sm:px-3 sm:py-3;
-    max-width: min(calc(100vw - 1rem), 82rem);
-    border-color: rgba(173, 198, 220, 0.14);
-    background: rgba(9, 18, 27, 0.76);
-    box-shadow: 0 24px 55px rgba(1, 6, 12, 0.35);
+    @apply flex w-full items-stretch gap-2 overflow-x-auto rounded-[1.6rem] border px-2.5 py-2.5 backdrop-blur-2xl md:px-3 md:py-3;
+    width: min(100%, 76rem);
+    border-color: rgba(173, 198, 220, 0.12);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+      rgba(7, 15, 22, 0.82);
+    box-shadow: 0 26px 62px rgba(1, 6, 12, 0.35);
     scrollbar-width: thin;
     scrollbar-color: rgba(88, 214, 218, 0.35) rgba(255, 255, 255, 0.04);
     pointer-events: auto;
   }
 
   .os-dock::-webkit-scrollbar {
-    height: 8px;
+    height: 7px;
   }
 
   .os-dock::-webkit-scrollbar-track {
@@ -1105,26 +1455,49 @@ textarea {
   }
 
   .os-dock-button {
-    @apply flex min-w-[88px] shrink-0 flex-col items-center gap-1 rounded-2xl px-2 py-1.5 text-center text-[11px] transition-all duration-200 sm:min-w-[116px] sm:px-3 sm:py-2 sm:text-xs;
-    border: 1px solid rgba(173, 198, 220, 0.1);
+    @apply relative flex min-w-[92px] shrink-0 flex-col items-center gap-1.5 rounded-[1.25rem] border px-2.5 py-2 text-center transition-all duration-200 sm:min-w-[112px] sm:px-3;
+    border-color: rgba(173, 198, 220, 0.1);
     background: rgba(255, 255, 255, 0.04);
     color: var(--text-secondary);
   }
 
-  .os-dock-button-clear {
-    @apply min-w-[84px] sm:min-w-[92px];
-  }
-
   .os-dock-button:hover {
     transform: translateY(-2px);
-    border-color: rgba(88, 214, 218, 0.22);
-    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(88, 214, 218, 0.2);
+    background: rgba(255, 255, 255, 0.075);
   }
 
   .os-dock-button-active {
-    border-color: rgba(88, 214, 218, 0.26);
+    border-color: rgba(88, 214, 218, 0.24);
     background: linear-gradient(180deg, rgba(88, 214, 218, 0.14), rgba(255, 255, 255, 0.06));
     color: var(--text-primary);
+    box-shadow: 0 12px 26px rgba(20, 84, 94, 0.2);
+  }
+
+  .os-dock-button-utility {
+    min-width: 96px;
+  }
+
+  .os-dock-button-icon {
+    @apply h-9 w-9 text-sm;
+  }
+
+  .os-dock-button-label {
+    @apply text-[11px] font-semibold text-white;
+  }
+
+  .os-dock-button-meta {
+    @apply hidden text-[9px] uppercase tracking-[0.16em] sm:block;
+    color: rgba(148, 168, 186, 0.74);
+  }
+
+  .os-dock-button-indicator {
+    @apply absolute bottom-1.5 left-1/2 h-1.5 w-1.5 -translate-x-1/2 rounded-full opacity-0;
+    background: var(--accent-gold);
+  }
+
+  .os-dock-button-active .os-dock-button-indicator {
+    opacity: 1;
   }
 
   .status-dot {
@@ -1331,25 +1704,92 @@ textarea {
       padding: 0.85rem;
     }
 
+    .os-topbar-shell {
+      gap: 0.8rem;
+      padding-top: 0.85rem;
+      padding-bottom: 0.85rem;
+    }
+
+    .os-topbar-brandmark {
+      padding-inline: 0.65rem;
+      padding-block: 0.55rem;
+    }
+
+    .os-topbar-status {
+      gap: 0.45rem;
+    }
+
+    .os-topbar-action {
+      padding-inline: 0.75rem;
+      padding-block: 0.48rem;
+      font-size: 10px;
+    }
+
+    .os-topbar-date {
+      display: none;
+    }
+
     .os-main {
-      @apply px-4 pt-8 pb-48;
+      @apply pt-5 pb-52;
+    }
+
+    .os-desktop-card {
+      border-radius: 1.45rem;
+      padding: 1rem;
+    }
+
+    .os-desktop-actions {
+      margin-top: 1.35rem;
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .os-desktop-meta {
+      margin-top: 1rem;
+      gap: 0.45rem;
+      font-size: 10px;
+    }
+
+    .os-launcher-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .os-launcher-header-side {
+      gap: 0.75rem;
+    }
+
+    .os-launcher-overlay {
+      padding-top: 4.5rem;
+      padding-inline: 0.75rem;
+    }
+
+    .os-window-header {
+      padding: 1rem;
     }
 
     .os-window-body {
-      @apply p-5;
-    }
-
-    .os-dock-wrap {
-      bottom: 0.55rem;
+      max-height: calc(100vh - 15rem);
+      padding: 1rem;
+      padding-bottom: 11rem;
     }
 
     .os-dock {
+      width: 100%;
       gap: 0.45rem;
       border-radius: 1.25rem;
     }
 
-    .os-dock-button-clear {
-      min-width: 78px;
+    .os-dock-button {
+      min-width: 84px;
+      padding-inline: 0.55rem;
+    }
+
+    .os-dock-button-label {
+      font-size: 10px;
+    }
+
+    .os-dock-button-utility {
+      min-width: 82px;
     }
   }
 }
