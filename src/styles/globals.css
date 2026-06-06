@@ -1404,6 +1404,7 @@ textarea {
     max-height: calc(100vh - 16rem);
     overflow: auto;
     overscroll-behavior: contain;
+    padding-bottom: 9rem;
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
       linear-gradient(180deg, rgba(8, 15, 23, 0.94), rgba(6, 11, 17, 0.98));
@@ -1769,6 +1770,7 @@ textarea {
     .os-window-body {
       max-height: calc(100vh - 15rem);
       padding: 1rem;
+      padding-bottom: 11rem;
     }
 
     .os-dock {

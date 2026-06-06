@@ -157,19 +157,16 @@ export default function RestrictedOS() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              onClick={() => setLauncherOpen(false)}
             >
-              <button
-                type="button"
-                aria-label="Close launcher"
-                className="os-launcher-backdrop"
-                onClick={() => setLauncherOpen(false)}
-              />
+              <div aria-hidden="true" className="os-launcher-backdrop" />
               <motion.div
                 initial={{ opacity: 0, y: 18, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 10, scale: 0.98 }}
                 transition={{ duration: 0.22 }}
                 className="os-launcher-overlay-frame"
+                onClick={(event) => event.stopPropagation()}
               >
                 <ExecutiveLauncher
                   apps={appRegistry}
