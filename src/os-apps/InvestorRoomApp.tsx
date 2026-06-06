@@ -1,7 +1,13 @@
 import React, { useMemo, useState } from 'react'
+import {
+  OsActionStrip,
+  OsInteriorSection,
+  OsMetricCard,
+  OsPreviewCard
+} from '../components/os'
 import { investorRecords } from '../content/investor.content'
-import InvestorCard from '../components/cards/InvestorCard'
-import { GlassPanel, PremiumButton, StatusBadge } from '../components/primitives'
+import { PremiumButton, StatusBadge } from '../components/primitives'
+import { assetRegistry } from '../data/assetRegistry'
 
 const categories = ['All', ...Array.from(new Set(investorRecords.map((record) => record.category)))]
 
@@ -23,8 +29,8 @@ export default function InvestorRoomApp() {
     })
   }, [search, selectedCategory])
 
-  const lockedDocuments = investorRecords.filter((record) => record.accessLevel !== 'Public')
-  const publicOverview = investorRecords.filter((record) => record.accessLevel === 'Public')
+  const restrictedRecords = filteredRecords.filter((record) => record.accessLevel !== 'Public')
+  const publicOverview = filteredRecords.filter((record) => record.accessLevel === 'Public')
 
   const handleAction = (action: 'open' | 'request' | 'pin', item: typeof investorRecords[number]) => {
     setActiveItem(item)
@@ -33,112 +39,216 @@ export default function InvestorRoomApp() {
     else setPanel('pin')
   }
 
-  return (
-    <div className="grid gap-8 lg:grid-cols-[320px_1fr] text-white">
-        <GlassPanel size="md" animate={false} className="h-fit space-y-6">
-          <div>
-            <div className="eyebrow">Investor Room</div>
-            <h1 className="mt-4 text-heading text-white">Executive Investor Dashboard</h1>
-            <p className="mt-4 text-body">A structured review layer for trusted investor overview, proof, and controlled access documents.</p>
-          </div>
+  const panelTitle =
+    panel === 'open'
+      ? 'Public document preview'
+      : panel === 'request'
+      ? 'Investor access request'
+      : 'PIN placeholder'
 
-          <div className="space-y-4 rounded-3xl border border-white/10 bg-black/40 p-5">
-            <h2 className="text-heading-sm text-white">Category filter</h2>
-            <div className="grid gap-2">
-              {categories.map((category) => (
+  const getActionLabel = (accessLevel: string) => {
+    if (accessLevel === 'Public') return 'Open Preview'
+    if (accessLevel === 'PIN Required') return 'PIN Placeholder'
+    return 'Request Access'
+  }
+
+  return (
+    <div className="os-interior-layout text-white">
+      <div className="os-interior-sidebar">
+        <OsInteriorSection
+          eyebrow="Investor Controls"
+          title="Review filters"
+          intro="Search the review layer and move between public-safe documents and controlled-access placeholders."
+          className="os-filter-panel"
+        >
+          <div className="os-filter-panel">
+            <input
+              type="search"
+              aria-label="Search investor review items"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Search investor items"
+              className="input-shell os-search-input"
+            />
+            <div className="os-filter-stack">
+              {categories.map((item) => (
                 <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`filter-pill w-full text-left ${selectedCategory === category ? 'filter-pill-active' : ''}`}>
-                  {category}
+                  key={item}
+                  type="button"
+                  onClick={() => setSelectedCategory(item)}
+                  className={`filter-pill os-filter-button ${selectedCategory === item ? 'filter-pill-active' : ''}`}
+                >
+                  {item}
                 </button>
               ))}
             </div>
           </div>
+        </OsInteriorSection>
 
-          <div className="space-y-3 rounded-3xl border border-white/10 bg-black/40 p-5">
-            <h2 className="text-heading-sm text-white">Review actions</h2>
-            <PremiumButton onClick={() => setPanel('request')} variant="accent" className="w-full">Request Investor Access</PremiumButton>
-            <PremiumButton onClick={() => setPanel('pin')} variant="secondary" className="w-full">Enter PIN Placeholder</PremiumButton>
-          </div>
-        </GlassPanel>
+        <OsInteriorSection eyebrow="Review Actions" title="Controlled next steps" intro="Access workflows stay simulated and placeholder-safe in this milestone.">
+          <OsActionStrip
+            note="No real investor delivery, approval, or document exchange is active in this build."
+            actions={
+              <>
+                <PremiumButton onClick={() => setPanel('request')} variant="accent">
+                  Request Access
+                </PremiumButton>
+                <PremiumButton onClick={() => setPanel('pin')} variant="secondary">
+                  PIN Placeholder
+                </PremiumButton>
+              </>
+            }
+          />
+        </OsInteriorSection>
 
-        <main className="space-y-8">
-          <GlassPanel size="lg" animate={false} className="space-y-6">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <div className="eyebrow">Public overview panel</div>
-                <h2 className="mt-2 text-heading text-white">Verified public insights</h2>
-              </div>
-              <input
-                value={search}
-                onChange={(event) => setSearch(event.target.value)}
-                placeholder="Search investor items"
-                className="input-shell sm:w-80"
-              />
-            </div>
-            <div className="grid gap-6 lg:grid-cols-3">
+        <div className="os-metrics-grid xl:grid-cols-1">
+          <OsMetricCard label="Public previews" value={`${publicOverview.length}`} detail="Open review items" tone="accent" />
+          <OsMetricCard label="Controlled items" value={`${restrictedRecords.length}`} detail="Request or PIN placeholders" tone="warning" />
+        </div>
+      </div>
+
+      <main className="os-interior-stack">
+        <OsInteriorSection
+          eyebrow="Investor Room"
+          title="A controlled review layer for investor-safe material."
+          intro="The module is designed to preview structure and access states without claiming a live vault or exposing real due-diligence files."
+          side={<StatusBadge variant="neutral">Preview-only access</StatusBadge>}
+        >
+          {publicOverview.length > 0 ? (
+            <div className="os-preview-grid">
               {publicOverview.map((item) => (
-                <InvestorCard key={item.id} item={item} onAction={handleAction} />
-              ))}
-            </div>
-          </GlassPanel>
-
-          <GlassPanel size="lg" animate={false} tone="muted">
-            <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <div className="eyebrow">Locked document vault</div>
-                <h2 className="mt-2 text-heading text-white">Controlled access documents</h2>
-              </div>
-              <StatusBadge variant="neutral">{lockedDocuments.length} items</StatusBadge>
-            </div>
-            <div className="grid gap-6 md:grid-cols-2">
-              {lockedDocuments.map((item) => (
-                <InvestorCard key={item.id} item={item} onAction={handleAction} />
-              ))}
-            </div>
-          </GlassPanel>
-
-          {panel !== 'none' ? (
-            <GlassPanel size="lg" animate={false}>
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <div className="eyebrow">Access placeholder</div>
-                  <h3 className="mt-2 text-heading-sm text-white">{panel === 'open' ? 'Public document preview' : panel === 'request' ? 'Investor access request' : 'PIN entry required'}</h3>
-                </div>
-                <PremiumButton onClick={() => setPanel('none')} variant="secondary">Close panel</PremiumButton>
-              </div>
-
-              <div className="meta-note mt-6">
-                {panel === 'open' && (
-                  <>
-                    <p>“{activeItem.title}” is a public review asset. Real files are not available yet; this is a safe preview placeholder.</p>
-                    <p className="mt-4 text-[color:var(--text-dim)]">Status: {activeItem.status}. Document type: {activeItem.documentType}.</p>
-                  </>
-                )}
-                {panel === 'request' && (
-                  <>
-                    <p>This placeholder simulates an investor access request. Actual approval, document review, and delivery are not enabled yet.</p>
-                    <p className="mt-4 text-[color:var(--text-dim)]">Submit your interest and await verification in the next milestone.</p>
-                  </>
-                )}
-                {panel === 'pin' && (
-                  <>
-                    <p>Enter a PIN to unlock the preview layer. No PIN is validated in this placeholder mode.</p>
-                    <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                      <input
-                        type="password"
-                        placeholder="Enter PIN"
-                        className="input-shell sm:w-64"
-                      />
-                      <PremiumButton variant="accent">Submit PIN</PremiumButton>
+                <OsPreviewCard
+                  key={item.id}
+                  eyebrow="Public Overview"
+                  title={item.title}
+                  summary={item.summary}
+                  mediaSrc={item.fileUrl.startsWith('/assets/') ? item.fileUrl : undefined}
+                  fallbackMediaSrc={assetRegistry.investorPlaceholder}
+                  mediaAlt={`${item.title} investor preview`}
+                  mediaClassName="h-44"
+                  badges={
+                    <>
+                      <StatusBadge variant="primary" size="sm">{item.visibility}</StatusBadge>
+                      <StatusBadge variant="neutral" size="sm">{item.documentType}</StatusBadge>
+                    </>
+                  }
+                  meta={
+                    <>
+                      <StatusBadge variant="neutral" size="sm">{item.category}</StatusBadge>
+                      <StatusBadge variant="success" size="sm">{item.status}</StatusBadge>
+                    </>
+                  }
+                  note={item.cautionNote ? `Caution: ${item.cautionNote}` : 'This stays a public-safe preview asset until real files are introduced.'}
+                  actions={
+                    <div className="os-preview-actions">
+                      <PremiumButton onClick={() => handleAction('open', item)} variant="accent">
+                        {getActionLabel(item.accessLevel)}
+                      </PremiumButton>
                     </div>
-                  </>
-                )}
-              </div>
-            </GlassPanel>
-          ) : null}
-        </main>
+                  }
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="os-preview-note">No public-safe review items match the current filter and search state.</div>
+          )}
+        </OsInteriorSection>
+
+        <OsInteriorSection
+          eyebrow="Controlled Review Set"
+          title="Access-gated placeholders"
+          intro="These entries demonstrate access states and review structure without exposing real investor documents or fake security theatre."
+          side={<StatusBadge variant="warning">{restrictedRecords.length} items</StatusBadge>}
+        >
+          {restrictedRecords.length > 0 ? (
+            <div className="os-preview-grid">
+              {restrictedRecords.map((item) => (
+                <OsPreviewCard
+                  key={item.id}
+                  eyebrow="Controlled Review"
+                  title={item.title}
+                  summary={item.summary}
+                  mediaSrc={item.fileUrl.startsWith('/assets/') ? item.fileUrl : undefined}
+                  fallbackMediaSrc={assetRegistry.pdfPlaceholder}
+                  mediaAlt={`${item.title} gated review placeholder`}
+                  mediaClassName="h-44"
+                  badges={
+                    <>
+                      <StatusBadge variant="warning" size="sm">{item.accessLevel}</StatusBadge>
+                      <StatusBadge variant="neutral" size="sm">{item.documentType}</StatusBadge>
+                    </>
+                  }
+                  meta={
+                    <>
+                      <StatusBadge variant="neutral" size="sm">{item.category}</StatusBadge>
+                      <StatusBadge variant="neutral" size="sm">{item.status}</StatusBadge>
+                    </>
+                  }
+                  note={item.cautionNote ? `Caution: ${item.cautionNote}` : 'This entry stays placeholder-safe until real review governance is added.'}
+                  actions={
+                    <div className="os-preview-actions">
+                      <PremiumButton
+                        onClick={() => handleAction(item.accessLevel === 'PIN Required' ? 'pin' : 'request', item)}
+                        variant={item.accessLevel === 'PIN Required' ? 'secondary' : 'accent'}
+                      >
+                        {getActionLabel(item.accessLevel)}
+                      </PremiumButton>
+                    </div>
+                  }
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="os-preview-note">No controlled review items match the current filter and search state.</div>
+          )}
+        </OsInteriorSection>
+
+        {panel !== 'none' ? (
+          <OsInteriorSection
+            eyebrow="Access Placeholder"
+            title={panelTitle}
+            intro="This panel exists to show the intended review flow without enabling live approval or document delivery."
+            side={
+              <PremiumButton onClick={() => setPanel('none')} variant="secondary">
+                Close panel
+              </PremiumButton>
+            }
+          >
+            <div className="os-preview-note">
+              {panel === 'open' ? (
+                <>
+                  <p>“{activeItem.title}” remains a public review asset. Real files are not exposed in this build.</p>
+                  <p className="mt-4 text-[color:var(--text-dim)]">
+                    Status: {activeItem.status}. Document type: {activeItem.documentType}.
+                  </p>
+                </>
+              ) : null}
+              {panel === 'request' ? (
+                <>
+                  <p>This placeholder simulates an investor access request without enabling actual approval, file delivery, or due-diligence exchange.</p>
+                  <p className="mt-4 text-[color:var(--text-dim)]">Submit interest now; verification and routing belong to a later milestone.</p>
+                </>
+              ) : null}
+              {panel === 'pin' ? (
+                <>
+                  <p>PIN entry is shown as a placeholder state only. No PIN validation is active in the current build.</p>
+                  <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                    <input
+                      type="password"
+                      aria-label="PIN placeholder input"
+                      placeholder="Enter PIN"
+                      className="input-shell os-search-input sm:w-64"
+                    />
+                    <PremiumButton variant="accent" disabled>
+                      Submit Placeholder
+                    </PremiumButton>
+                  </div>
+                </>
+              ) : null}
+            </div>
+          </OsInteriorSection>
+        ) : null}
+      </main>
     </div>
   )
 }

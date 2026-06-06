@@ -1,7 +1,13 @@
 import React, { useMemo, useState } from 'react'
+import {
+  OsActionStrip,
+  OsInteriorSection,
+  OsMetricCard,
+  OsPreviewCard
+} from '../components/os'
 import { videos } from '../content/videos.content'
-import VideoCard from '../components/cards/VideoCard'
-import { GlassPanel, PremiumButton, StatusBadge } from '../components/primitives'
+import { PremiumButton, StatusBadge } from '../components/primitives'
+import { assetRegistry } from '../data/assetRegistry'
 
 const categories = ['All', 'Founder Briefing', 'Product Demo', 'Project Walkthrough', 'Product Profile', 'GTR3', 'Media']
 
@@ -20,54 +26,133 @@ export default function VideoVaultApp() {
   }, [category, search])
 
   const featured = videos[0]
+  const filteredWithoutFeatured = filtered.filter((video) => video.id !== featured.id)
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[280px_1fr]">
-      <GlassPanel size="md" animate={false} className="h-fit">
-        <div className="mb-5">
-          <h3 className="text-heading-sm text-white">Video Vault</h3>
-          <p className="mt-2 text-body-sm">Filter by category or search video content.</p>
-        </div>
-        <input
-          type="search"
-          placeholder="Search videos"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="input-shell"
-        />
-        <div className="mt-5 space-y-2">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setCategory(cat)}
-              className={`filter-pill w-full text-left ${category === cat ? 'filter-pill-active' : ''}`}>
-              {cat}
-            </button>
-          ))}
-        </div>
-      </GlassPanel>
-
-      <div className="space-y-6">
-        <GlassPanel size="lg" animate={false}>
-          <div className="grid gap-4 lg:grid-cols-[1.5fr_1fr] items-center">
-            <div>
-              <StatusBadge variant="primary">Featured</StatusBadge>
-              <h3 className="mt-4 text-heading text-white">{featured.title}</h3>
-              <p className="mt-3 text-body">{featured.summary}</p>
-              <div className="mt-4 flex gap-3">
-                <PremiumButton variant="primary">Watch</PremiumButton>
-                {featured.relatedProjectId ? <PremiumButton variant="secondary">Related Project</PremiumButton> : null}
-              </div>
+    <div className="os-interior-layout">
+      <div className="os-interior-sidebar">
+        <OsInteriorSection
+          eyebrow="Video Vault"
+          title="Preview controls"
+          intro="Filter the library by category or keyword. This workspace stays placeholder-safe and does not imply live playback."
+          className="os-filter-panel"
+        >
+          <div className="os-filter-panel">
+            <input
+              type="search"
+              aria-label="Search video previews"
+              placeholder="Search videos"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              className="input-shell os-search-input"
+            />
+            <div className="os-filter-stack">
+              {categories.map((item) => (
+                <button
+                  key={item}
+                  type="button"
+                  onClick={() => setCategory(item)}
+                  className={`filter-pill os-filter-button ${category === item ? 'filter-pill-active' : ''}`}
+                >
+                  {item}
+                </button>
+              ))}
             </div>
-            <div className="flex h-52 items-center justify-center rounded-[1.25rem] border border-white/10 bg-[linear-gradient(180deg,rgba(88,214,218,0.16),rgba(6,12,18,0.1)),rgba(7,14,21,0.78)] text-slate-400">Featured video placeholder</div>
           </div>
-        </GlassPanel>
+        </OsInteriorSection>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {filtered.map((video) => (
-            <VideoCard key={video.id} video={video} />
-          ))}
+        <div className="os-metrics-grid xl:grid-cols-1">
+          <OsMetricCard label="Results" value={`${filtered.length}`} detail="Filtered preview items" tone="accent" />
+          <OsMetricCard label="Playback state" value="Preview only" detail="No live media claims" tone="warning" />
         </div>
+      </div>
+
+      <div className="os-interior-stack">
+        <OsInteriorSection
+          eyebrow="Featured Video"
+          title="A clean preview library for founder briefings and project walkthroughs."
+          intro="The vault now behaves like a review surface: one lead item, supporting previews underneath, and clear placeholder language."
+          side={<StatusBadge variant="success">{featured.status}</StatusBadge>}
+        >
+          <OsPreviewCard
+            eyebrow={featured.category}
+            title={featured.title}
+            summary={featured.summary}
+            mediaSrc={featured.thumbnail}
+            fallbackMediaSrc={assetRegistry.videoPlaceholder}
+            mediaAlt={`${featured.title} video placeholder`}
+            mediaClassName="h-64"
+            badges={
+              <>
+                <StatusBadge variant="neutral" size="sm">{featured.duration}</StatusBadge>
+                <StatusBadge variant="primary" size="sm">{featured.status}</StatusBadge>
+              </>
+            }
+            note="Playback routes stay disabled in this milestone. The purpose here is layout, hierarchy, and safe media preview structure."
+            actions={
+              <OsActionStrip
+                title="Video actions"
+                note="Media controls remain placeholder-safe until real player wiring is added."
+                actions={
+                  <>
+                    <PremiumButton variant="primary" disabled>
+                      Watch Placeholder
+                    </PremiumButton>
+                    {featured.relatedProjectId ? (
+                      <PremiumButton variant="secondary" disabled>
+                        Related Project Placeholder
+                      </PremiumButton>
+                    ) : null}
+                  </>
+                }
+              />
+            }
+            tone="feature"
+          />
+        </OsInteriorSection>
+
+        <OsInteriorSection
+          eyebrow="Library Preview"
+          title="Supporting media surfaces"
+          intro="Supporting items keep the same calmer review language without pretending they are live broadcasts."
+        >
+          {filteredWithoutFeatured.length > 0 ? (
+            <div className="os-preview-grid">
+              {filteredWithoutFeatured.map((video) => (
+                <OsPreviewCard
+                  key={video.id}
+                  eyebrow="Video Preview"
+                  title={video.title}
+                  summary={video.summary}
+                  mediaSrc={video.thumbnail}
+                  fallbackMediaSrc={assetRegistry.videoPlaceholder}
+                  mediaAlt={`${video.title} preview placeholder`}
+                  mediaClassName="h-44"
+                  badges={
+                    <>
+                      <StatusBadge variant="neutral" size="sm">{video.category}</StatusBadge>
+                      <StatusBadge variant="success" size="sm">{video.status}</StatusBadge>
+                    </>
+                  }
+                  meta={
+                    <>
+                      <StatusBadge variant="neutral" size="sm">{video.duration}</StatusBadge>
+                    </>
+                  }
+                  actions={
+                    <div className="os-preview-actions">
+                      <PremiumButton variant="ghost" disabled>
+                        Preview Placeholder
+                      </PremiumButton>
+                    </div>
+                  }
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="os-preview-note">No additional videos match the current filters.</div>
+          )}
+        </OsInteriorSection>
       </div>
     </div>
   )
