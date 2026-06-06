@@ -55,14 +55,17 @@ export default function GTR3Spotlight({
 
           <div className="gtr3-stage">
             <AssetThumbnail
-              src={assetRegistry.gtr3Placeholder}
+              src={assetRegistry.gtr3HeroPlaceholder}
               fallbackSrc={assetRegistry.gtr3Placeholder}
-              alt="GTR³ preview placeholder"
+              alt="GTR³ story preview placeholder"
               className="gtr3-stage-asset"
+              imageClassName="object-contain p-2"
+              sizes="(max-width: 1024px) 100vw, 36vw"
             />
             <div className="gtr3-stage-note">
               <p className="public-meta-line">
                 <span>{content.status}</span>
+                <span>Signature preview frame</span>
               </p>
               <ul className="gtr3-chapter-list">
                 {content.chapterPreviewItems.slice(0, 5).map((chapter) => (

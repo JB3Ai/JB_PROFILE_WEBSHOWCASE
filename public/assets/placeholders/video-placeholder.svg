@@ -4,10 +4,9 @@
   <rect x="120" y="140" width="960" height="520" rx="28" fill="url(#b)"/>
   <circle cx="600" cy="400" r="96" fill="#0D1A27" stroke="#58D6DA" stroke-opacity="0.5" stroke-width="4"/>
   <path d="M565 342L660 400L565 458V342Z" fill="#E9C98F"/>
-  <rect x="162" y="610" width="252" height="16" rx="8" fill="#D7DEE5" opacity="0.9"/>
-  <rect x="162" y="96" width="230" height="18" rx="9" fill="#58D6DA"/>
-  <text x="120" y="94" fill="#F6F7F1" font-family="Manrope, Arial, sans-serif" font-size="34" letter-spacing="6">VIDEO PREVIEW</text>
-  <text x="120" y="714" fill="#94A8BA" font-family="Manrope, Arial, sans-serif" font-size="28">Placeholder surface for founder briefings, demos, and teasers</text>
+  <rect x="162" y="96" width="264" height="18" rx="9" fill="#58D6DA"/>
+  <text x="120" y="94" fill="#F6F7F1" font-family="Manrope, Arial, sans-serif" font-size="30" letter-spacing="6">JB&#179;Ai VIDEO PREVIEW FRAME</text>
+  <text x="120" y="714" fill="#94A8BA" font-family="Manrope, Arial, sans-serif" font-size="28">Placeholder surface for founder briefings, demos, walkthroughs, and teasers</text>
   <defs>
     <linearGradient id="a" x1="74" y1="66" x2="1114" y2="742" gradientUnits="userSpaceOnUse">
       <stop stop-color="#58D6DA"/>
