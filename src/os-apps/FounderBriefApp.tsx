@@ -1,6 +1,13 @@
 import React from 'react'
+import {
+  OsActionStrip,
+  OsInteriorSection,
+  OsMetricCard,
+  OsPreviewCard
+} from '../components/os'
 import { founderProfile } from '../content/founder.content'
-import { GlassPanel, PremiumButton, StatusBadge } from '../components/primitives'
+import { PremiumButton, StatusBadge } from '../components/primitives'
+import { assetRegistry } from '../data/assetRegistry'
 
 const summaryCards = [
   {
@@ -17,53 +24,95 @@ const summaryCards = [
   }
 ]
 
+const storyPoints = [
+  {
+    label: 'Foundation',
+    copy: 'Technical foundations in electronics, automation, and embedded systems shaped the operating discipline behind the founder story.'
+  },
+  {
+    label: 'Recovery',
+    copy: 'Recovery work remains grounded in human outcomes, diagnostics, coordination, and systems that hold when pressure rises.'
+  },
+  {
+    label: 'Build Pattern',
+    copy: 'The working pattern stays consistent: observe, structure, test, and rebuild until the system becomes trustworthy.'
+  }
+]
+
 export default function FounderBriefApp() {
   return (
-    <div className="space-y-6">
-      <GlassPanel size="lg" animate={false}>
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-          <div>
-            <div className="eyebrow">Founder Brief</div>
-            <h2 className="mt-4 text-display text-white">Jonathan Blackburn</h2>
-            <p className="mt-4 text-body">{founderProfile.mediumBio}</p>
-          </div>
-          <GlassPanel size="md" animate={false} tone="muted" className="max-w-sm">
-            <p className="text-caption">Positioning</p>
-            <p className="mt-3 text-heading-sm text-white">{founderProfile.positioningLine}</p>
-          </GlassPanel>
+    <div className="os-interior-stack">
+      <OsInteriorSection
+        eyebrow="Founder Brief"
+        title="Jonathan Blackburn"
+        intro={founderProfile.mediumBio}
+        side={
+          <OsPreviewCard
+            eyebrow="Founder Profile Plate"
+            title={founderProfile.positioningLine}
+            summary={founderProfile.shortBio}
+            mediaSrc={assetRegistry.founderPortraitPlaceholder}
+            fallbackMediaSrc={assetRegistry.founderPortraitPlaceholder}
+            mediaAlt="Jonathan Blackburn founder profile placeholder"
+            mediaClassName="h-56"
+            badges={<StatusBadge variant="success" size="sm">Public-safe profile</StatusBadge>}
+            note="Portrait, longer biography layers, and founder media are still running in placeholder mode for this build."
+            tone="muted"
+          />
+        }
+      >
+        <div className="os-metrics-grid">
+          {summaryCards.map((card, index) => (
+            <OsMetricCard
+              key={card.title}
+              label={`Profile ${index + 1}`}
+              value={card.title}
+              detail={card.text}
+              tone={index === 0 ? 'accent' : index === 1 ? 'success' : 'warning'}
+            />
+          ))}
         </div>
-      </GlassPanel>
+      </OsInteriorSection>
 
-      <div className="grid gap-6 lg:grid-cols-3">
-        {summaryCards.map((card) => (
-          <div key={card.title} className="card h-full">
-            <h3 className="text-heading-sm text-white">{card.title}</h3>
-            <p className="mt-3 text-body">{card.text}</p>
+      <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+        <OsInteriorSection
+          eyebrow="Operating Story"
+          title="A founder path carried by structure, care, and precise rebuilding."
+          intro="The strongest version of this module is editorial rather than dashboard-heavy: fewer boxes, more clarity, and a clear link between systems work and human impact."
+          className="h-full"
+        >
+          <div className="os-preview-list">
+            {storyPoints.map((point) => (
+              <div key={point.label} className="os-preview-note">
+                <div className="os-preview-kicker">{point.label}</div>
+                <p className="os-preview-summary mt-2">{point.copy}</p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </OsInteriorSection>
 
-      <div className="grid gap-6 lg:grid-cols-[1.4fr_0.8fr]">
-        <GlassPanel size="md" animate={false}>
-          <h3 className="text-heading-sm text-white">Key story points</h3>
-          <ul className="mt-4 space-y-3 text-body">
-            <li>Technical foundation in electronics and automation.</li>
-            <li>Evidence-led ventures with recovery and healthcare focus.</li>
-            <li>Operating under pressure with human-centred AI systems.</li>
-          </ul>
-        </GlassPanel>
-        <GlassPanel size="md" animate={false} tone="muted">
-          <h3 className="text-heading-sm text-white">Next step</h3>
-          <p className="mt-3 text-body">GTR3 is being prepared as the next public layer for decision systems, trusted recovery, and executive-level resilience.</p>
-          <div className="mt-4">
-            <StatusBadge variant="warning">Coming Soon</StatusBadge>
-          </div>
-        </GlassPanel>
-      </div>
-
-      <div className="flex flex-wrap gap-3">
-        <PremiumButton variant="primary">Explore Timeline</PremiumButton>
-        <PremiumButton variant="secondary">Request Collaboration</PremiumButton>
+        <OsInteriorSection
+          eyebrow="Next Step"
+          title="GTR3 becomes the next narrative layer."
+          intro={founderProfile.gtr3Summary}
+          side={<StatusBadge variant="warning">Coming Soon</StatusBadge>}
+          className="h-full"
+        >
+          <OsActionStrip
+            title="Preview state"
+            note="This workspace stays manuscript-safe and placeholder-safe until the real GTR3 imagery and story assets are introduced."
+            actions={
+              <>
+                <PremiumButton variant="primary" disabled>
+                  Timeline Placeholder
+                </PremiumButton>
+                <PremiumButton variant="secondary" disabled>
+                  Collaboration Placeholder
+                </PremiumButton>
+              </>
+            }
+          />
+        </OsInteriorSection>
       </div>
     </div>
   )

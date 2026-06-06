@@ -1,7 +1,11 @@
 import React, { useMemo, useState } from 'react'
+import {
+  OsInteriorSection,
+  OsMetricCard,
+  OsPreviewCard
+} from '../components/os'
 import { socialLinks } from '../content/social.content'
-import SocialLinkCard from '../components/cards/SocialLinkCard'
-import { GlassPanel, StatusBadge } from '../components/primitives'
+import { PremiumButton, StatusBadge } from '../components/primitives'
 
 const groups = ['All', ...Array.from(new Set(socialLinks.map((link) => link.group)))]
 
@@ -21,61 +25,105 @@ export default function ConnectApp() {
       )
       .sort((a, b) => a.priority - b.priority)
   }, [search, selectedGroup])
+  const visibleLinks = filteredLinks.slice(0, 6)
 
   return (
-    <div className="space-y-6">
-      <GlassPanel size="lg" animate={false}>
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-          <div>
-            <div className="eyebrow">Connect Hub</div>
-            <h2 className="mt-2 text-heading text-white">Contact and channel dashboard</h2>
-            <p className="mt-3 max-w-2xl text-body">A controlled contact hierarchy for the founder story, proof channels, and the JB³Ai network.</p>
-          </div>
-          <GlassPanel size="md" animate={false} tone="muted" className="w-full max-w-xs">
-            <div className="text-caption">Network map</div>
-            <div className="mt-4 h-24 rounded-3xl bg-white/5" />
-          </GlassPanel>
-        </div>
-      </GlassPanel>
-
-      <div className="grid gap-6 lg:grid-cols-[240px_1fr]">
-        <GlassPanel size="md" animate={false} tone="muted" className="h-fit">
-          <div className="mb-5 text-caption">Filter groups</div>
-          <div className="space-y-2">
-            {groups.map((group) => (
-              <button
-                key={group}
-                onClick={() => setSelectedGroup(group)}
-                className={`filter-pill w-full text-left ${selectedGroup === group ? 'filter-pill-active' : ''}`}>
-                {group}
-              </button>
-            ))}
-          </div>
-        </GlassPanel>
-
-        <div className="space-y-6">
-          <GlassPanel size="md" animate={false}>
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <div className="eyebrow">Search</div>
-                <p className="mt-2 text-body-sm">Search contacts, platforms, and purpose text.</p>
-              </div>
-              <input
-                type="search"
-                value={search}
-                onChange={(event) => setSearch(event.target.value)}
-                placeholder="Search contacts or platforms"
-                className="input-shell sm:w-80"
-              />
+    <div className="os-interior-layout">
+      <div className="os-interior-sidebar">
+        <OsInteriorSection
+          eyebrow="Connect Controls"
+          title="Search and group channels"
+          intro="This module is now a cleaner next-action hub rather than a large social directory."
+          className="os-filter-panel"
+        >
+          <div className="os-filter-panel">
+            <input
+              type="search"
+              aria-label="Search contact and platform previews"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Search contacts or platforms"
+              className="input-shell os-search-input"
+            />
+            <div className="os-filter-stack">
+              {groups.map((item) => (
+                <button
+                  key={item}
+                  type="button"
+                  onClick={() => setSelectedGroup(item)}
+                  className={`filter-pill os-filter-button ${selectedGroup === item ? 'filter-pill-active' : ''}`}
+                >
+                  {item}
+                </button>
+              ))}
             </div>
-          </GlassPanel>
-
-          <div className="grid gap-6 md:grid-cols-2">
-            {filteredLinks.map((item) => (
-              <SocialLinkCard key={item.id} item={item} />
-            ))}
           </div>
+        </OsInteriorSection>
+
+        <div className="os-metrics-grid xl:grid-cols-1">
+          <OsMetricCard label="Visible channels" value={`${visibleLinks.length}`} detail="Top-priority preview links" tone="accent" />
+          <OsMetricCard label="Current group" value={selectedGroup} detail="Channel grouping" tone="success" />
         </div>
+      </div>
+
+      <div className="os-interior-stack">
+        <OsInteriorSection
+          eyebrow="Connect Hub"
+          title="A cleaner contact and next-action workspace."
+          intro="The goal here is clarity: channel purpose, visibility, and a controlled invitation to the right next step."
+          side={<StatusBadge variant="neutral">Placeholder-safe channels</StatusBadge>}
+        >
+          <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_320px]">
+            <div className="os-preview-note">
+              <div className="os-preview-kicker">Routing note</div>
+              <p className="os-preview-summary mt-2">
+                Public-facing and restricted contact routes are intentionally staged. Real outreach endpoints can be connected later without changing this interior structure.
+              </p>
+            </div>
+            <div className="os-preview-note">
+              <div className="os-preview-kicker">Priority window</div>
+              <p className="os-preview-summary mt-2">
+                This interior emphasizes the first few relevant channels instead of surfacing a giant directory. It stays useful on mobile and inside the dock-cleared window body.
+              </p>
+            </div>
+          </div>
+        </OsInteriorSection>
+
+        <OsInteriorSection
+          eyebrow="Channel Cards"
+          title="Available preview routes"
+          intro="Channels remain clearly marked as preview-safe until real routing and outreach logic are introduced."
+        >
+          {visibleLinks.length > 0 ? (
+            <div className="os-preview-grid">
+              {visibleLinks.map((item) => (
+                <OsPreviewCard
+                  key={item.id}
+                  eyebrow={item.group}
+                  title={item.label}
+                  summary={item.purpose}
+                  badges={
+                    <>
+                      <StatusBadge variant="primary" size="sm">{item.platform}</StatusBadge>
+                      <StatusBadge variant="neutral" size="sm">{item.visibility}</StatusBadge>
+                    </>
+                  }
+                  meta={<StatusBadge variant="neutral" size="sm">Priority {item.priority}</StatusBadge>}
+                  note={item.cautionNote ? `Caution: ${item.cautionNote}` : `Channel marker: ${item.iconName}`}
+                  actions={
+                    <div className="os-preview-actions">
+                      <PremiumButton variant="ghost" disabled>
+                        Channel Placeholder
+                      </PremiumButton>
+                    </div>
+                  }
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="os-preview-note">No channels match the current search and group filter.</div>
+          )}
+        </OsInteriorSection>
       </div>
     </div>
   )

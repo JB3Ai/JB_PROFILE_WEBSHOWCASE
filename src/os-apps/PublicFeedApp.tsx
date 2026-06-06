@@ -1,7 +1,12 @@
 import React, { useMemo, useState } from 'react'
+import {
+  OsActionStrip,
+  OsInteriorSection,
+  OsMetricCard,
+  OsPreviewCard
+} from '../components/os'
 import { feedPosts } from '../content/feed.content'
-import FeedPostCard from '../components/cards/FeedPostCard'
-import { GlassPanel, PremiumButton, StatusBadge } from '../components/primitives'
+import { PremiumButton, StatusBadge } from '../components/primitives'
 
 const categories = ['All', ...Array.from(new Set(feedPosts.map((post) => post.category)))]
 
@@ -25,84 +30,120 @@ export default function PublicFeedApp() {
   const featured = feedPosts[0]
 
   return (
-    <div className="space-y-8">
-      <GlassPanel size="lg" animate={false}>
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-          <div>
-            <div className="eyebrow">Public Feed</div>
-            <h2 className="mt-2 text-heading text-white">Featured Post</h2>
-            <p className="mt-3 max-w-2xl text-body">A public feed for curated signals, founder commentary, product updates, and business thinking.</p>
+    <div className="os-interior-layout">
+      <div className="os-interior-sidebar">
+        <OsInteriorSection
+          eyebrow="Feed Controls"
+          title="Signals and commentary"
+          intro="Search and filter the curated feed without pushing it back toward a social-media grid."
+          className="os-filter-panel"
+        >
+          <div className="os-filter-panel">
+            <input
+              type="search"
+              aria-label="Search public feed items"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Search Public Feed"
+              className="input-shell os-search-input"
+            />
+            <div className="os-filter-stack">
+              {categories.map((item) => (
+                <button
+                  key={item}
+                  type="button"
+                  onClick={() => setSelectedCategory(item)}
+                  className={`filter-pill os-filter-button ${selectedCategory === item ? 'filter-pill-active' : ''}`}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
           </div>
-          <GlassPanel size="md" animate={false} tone="muted">
-            <div className="text-caption">Latest Insight</div>
-            <div className="mt-3 text-heading-sm text-white">{featured.title}</div>
-          </GlassPanel>
+        </OsInteriorSection>
+
+        <div className="os-metrics-grid xl:grid-cols-1">
+          <OsMetricCard label="Visible signals" value={`${filteredPosts.length}`} detail="Filtered commentary posts" tone="accent" />
+          <OsMetricCard label="Source posture" value="Curated" detail="No live feed claims" tone="success" />
         </div>
+      </div>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-          <GlassPanel size="md" animate={false} tone="muted">
-            <StatusBadge variant="primary">{featured.category}</StatusBadge>
-            <h3 className="mt-4 text-heading text-white">{featured.title}</h3>
-            <div className="mt-3 flex flex-wrap gap-2">
-              <StatusBadge variant="neutral" size="sm">{featured.date}</StatusBadge>
-              <StatusBadge variant="neutral" size="sm">{featured.readTime}</StatusBadge>
+      <div className="os-interior-stack">
+        <OsInteriorSection
+          eyebrow="Featured Signal"
+          title="An executive commentary feed, not a social spam surface."
+          intro="Posts stay structured around insight, business impact, and the founder take. The layout now reads as commentary review instead of a stream of generic cards."
+          side={<StatusBadge variant="primary">{featured.category}</StatusBadge>}
+        >
+          <div className="grid gap-5 xl:grid-cols-[minmax(0,1.05fr)_320px]">
+            <OsPreviewCard
+              eyebrow="Lead Post"
+              title={featured.title}
+              summary={featured.summary}
+              badges={
+                <>
+                  <StatusBadge variant="neutral" size="sm">{featured.date}</StatusBadge>
+                  <StatusBadge variant="neutral" size="sm">{featured.readTime}</StatusBadge>
+                </>
+              }
+              note={`Jonathan's Take: ${featured.jonathanTake}`}
+              actions={
+                <OsActionStrip
+                  title="Feed actions"
+                  note="Source routing remains placeholder-safe. This is a structure pass, not a live media integration."
+                  actions={
+                    <>
+                      <PremiumButton variant="accent" disabled>
+                        Read Placeholder
+                      </PremiumButton>
+                      <PremiumButton variant="secondary" disabled>
+                        Source Placeholder
+                      </PremiumButton>
+                    </>
+                  }
+                />
+              }
+              tone="feature"
+            />
+            <div className="os-preview-note">
+              <div className="os-preview-kicker">Impact Summary</div>
+              <p className="os-preview-summary mt-2">{featured.businessImpact}</p>
             </div>
-            <p className="mt-5 text-body">{featured.summary}</p>
-            <p className="meta-note mt-6">Jonathan’s Take: {featured.jonathanTake}</p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <PremiumButton variant="accent">Read Post</PremiumButton>
-              <PremiumButton variant="secondary">Source Placeholder</PremiumButton>
-            </div>
-          </GlassPanel>
-
-          <GlassPanel size="md" animate={false}>
-            <div className="text-caption">Impact Summary</div>
-            <p className="mt-4 text-body">{featured.businessImpact}</p>
-            <div className="meta-note mt-6">
-              Source URL is a placeholder and is intentionally not linked to a real site.
-            </div>
-          </GlassPanel>
-        </div>
-      </GlassPanel>
-
-      <div className="grid gap-6 lg:grid-cols-[260px_1fr]">
-        <GlassPanel size="md" animate={false} tone="muted" className="h-fit">
-          <div className="mb-5 text-caption">Filter by category</div>
-          <div className="space-y-2">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`filter-pill w-full text-left ${selectedCategory === category ? 'filter-pill-active' : ''}`}>
-                {category}
-              </button>
-            ))}
           </div>
-        </GlassPanel>
+        </OsInteriorSection>
 
-        <div className="space-y-6">
-          <GlassPanel size="md" animate={false}>
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <div className="eyebrow">Search feed</div>
-                <p className="mt-2 text-body-sm">Search titles, summaries, takes, and tags.</p>
-              </div>
-              <input
-                type="search"
-                value={search}
-                onChange={(event) => setSearch(event.target.value)}
-                placeholder="Search Public Feed"
-                className="input-shell sm:w-80"
-              />
-            </div>
-          </GlassPanel>
-
-          <div className="grid gap-6">
+        <OsInteriorSection
+          eyebrow="Signal List"
+          title="Supporting commentary"
+          intro="Supporting items stay in a disciplined vertical rhythm with lighter metadata and clearer placeholder rules."
+        >
+          <div className="os-preview-list">
             {filteredPosts.map((post) => (
-              <FeedPostCard key={post.id} post={post} />
+              <OsPreviewCard
+                key={post.id}
+                eyebrow={post.category}
+                title={post.title}
+                summary={post.summary}
+                badges={
+                  <>
+                    <StatusBadge variant="neutral" size="sm">{post.date}</StatusBadge>
+                    <StatusBadge variant="neutral" size="sm">{post.readTime}</StatusBadge>
+                  </>
+                }
+                meta={<StatusBadge variant="primary" size="sm">{post.sourceLabel}</StatusBadge>}
+                note={`Jonathan's Take: ${post.jonathanTake}`}
+                actions={
+                  <div className="os-preview-actions">
+                    <PremiumButton variant="ghost" disabled>
+                      Read Placeholder
+                    </PremiumButton>
+                  </div>
+                }
+                tone="muted"
+              />
             ))}
           </div>
-        </div>
+        </OsInteriorSection>
       </div>
     </div>
   )
