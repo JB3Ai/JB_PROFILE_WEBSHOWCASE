@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+import React, { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { GlassPanel, PremiumButton, StatusBadge } from '../components/primitives'
 import {
   ExecutiveDesktop,
@@ -15,9 +15,28 @@ import type { AppId } from '../types/content.types'
 
 export default function RestrictedOS() {
   const [openApp, setOpenApp] = useState<AppId | string | null>(null)
+  const [launcherOpen, setLauncherOpen] = useState(false)
   const currentAppId = openApp && isAppId(openApp) ? openApp : null
   const activeApp = currentAppId ? appRegistry.find((app) => app.id === currentAppId) : undefined
   const ActiveAppComponent = currentAppId ? appComponents[currentAppId] : null
+
+  useEffect(() => {
+    if (!launcherOpen) return undefined
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setLauncherOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [launcherOpen])
+
+  const launchModule = (id: AppId) => {
+    setOpenApp(id)
+    setLauncherOpen(false)
+  }
 
   const desktopView = (
     <motion.section
@@ -35,11 +54,14 @@ export default function RestrictedOS() {
           </p>
 
           <div className="os-desktop-actions">
-            <PremiumButton variant="primary" onClick={() => setOpenApp('founder-brief')}>
+            <PremiumButton variant="primary" onClick={() => launchModule('founder-brief')}>
               Open Founder Brief
             </PremiumButton>
-            <PremiumButton variant="secondary" onClick={() => setOpenApp('evidence-vault')}>
+            <PremiumButton variant="secondary" onClick={() => launchModule('evidence-vault')}>
               Open Evidence Vault
+            </PremiumButton>
+            <PremiumButton variant="ghost" onClick={() => setLauncherOpen(true)}>
+              Open Launcher
             </PremiumButton>
           </div>
 
@@ -50,7 +72,7 @@ export default function RestrictedOS() {
           </div>
         </div>
 
-        <ExecutiveLauncher apps={appRegistry} onLaunch={setOpenApp} />
+        <ExecutiveLauncher apps={appRegistry} onLaunch={launchModule} />
       </div>
 
       <div className="os-panel-stack">
@@ -115,17 +137,51 @@ export default function RestrictedOS() {
 
   return (
     <ExecutiveDesktop
-      topBar={<ExecutiveTopBar activeApp={activeApp} />}
+      topBar={<ExecutiveTopBar activeApp={activeApp} onOpenLauncher={() => setLauncherOpen(true)} />}
       dock={
         <ExecutiveDock
           apps={appRegistry}
           activeAppId={currentAppId}
-          onLaunch={(id) => setOpenApp(id)}
+          onLaunch={launchModule}
           onClear={() => setOpenApp(null)}
         />
       }
     >
-      {openApp ? activeWindow : desktopView}
+      <>
+        {openApp ? activeWindow : desktopView}
+
+        <AnimatePresence>
+          {launcherOpen ? (
+            <motion.div
+              className="os-launcher-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <button
+                type="button"
+                aria-label="Close launcher"
+                className="os-launcher-backdrop"
+                onClick={() => setLauncherOpen(false)}
+              />
+              <motion.div
+                initial={{ opacity: 0, y: 18, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                transition={{ duration: 0.22 }}
+                className="os-launcher-overlay-frame"
+              >
+                <ExecutiveLauncher
+                  apps={appRegistry}
+                  onLaunch={launchModule}
+                  mode="overlay"
+                  onClose={() => setLauncherOpen(false)}
+                />
+              </motion.div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+      </>
     </ExecutiveDesktop>
   )
 }

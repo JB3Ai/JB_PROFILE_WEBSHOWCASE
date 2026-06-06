@@ -4,9 +4,10 @@ import type { AppRegistryItem } from '../../types/content.types'
 
 interface ExecutiveTopBarProps {
   activeApp?: AppRegistryItem
+  onOpenLauncher: () => void
 }
 
-export default function ExecutiveTopBar({ activeApp }: ExecutiveTopBarProps) {
+export default function ExecutiveTopBar({ activeApp, onOpenLauncher }: ExecutiveTopBarProps) {
   const todayLabel = useMemo(
     () =>
       new Intl.DateTimeFormat('en-GB', {
@@ -42,6 +43,9 @@ export default function ExecutiveTopBar({ activeApp }: ExecutiveTopBarProps) {
         </div>
 
         <div className="os-topbar-status">
+          <button type="button" onClick={onOpenLauncher} className="os-topbar-action">
+            Launcher
+          </button>
           <StatusBadge variant="success" size="sm">Public-safe mode</StatusBadge>
           <StatusBadge variant="neutral" size="sm">Static v1</StatusBadge>
           <div className="os-topbar-date">{todayLabel}</div>
