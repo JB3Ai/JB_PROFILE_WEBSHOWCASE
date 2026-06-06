@@ -7,5 +7,5 @@ export const founderProfile = {
   investorSummary: 'A disciplined leader translating disruptive technology, evidence validation, and strategic recovery into scalable ventures with risk-aware returns.',
   recoverySummary: 'Focused on recovery systems that support people and communities through healthcare coordination, diagnostics, and trusted infrastructure.',
   imedSummary: 'iMED Medical Group formed an important historical recovery and medical-systems chapter, blending clinical reliability with digital coordination during that period.',
-  gtr3Summary: 'GTR3 is the next phase of the OS narrative: a coming-soon intelligence layer for governance, trust, and resilient recovery.'
+  gtr3Summary: 'GTR³ is the next phase of the OS narrative: a coming-soon intelligence layer and the loading state of the third rise.'
 }

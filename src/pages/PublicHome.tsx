@@ -6,6 +6,8 @@ import PublicNav from '../components/navigation/PublicNav'
 import { PremiumButton } from '../components/primitives'
 import ConnectStrip from '../components/public/ConnectStrip'
 import EditorialSection from '../components/public/EditorialSection'
+import FounderManualSection from '../components/public/FounderManualSection'
+import FounderPhaseStrip from '../components/public/FounderPhaseStrip'
 import GTR3Spotlight from '../components/public/GTR3Spotlight'
 import ManifestoPanel from '../components/public/ManifestoPanel'
 import ProofBand, { type ProofBandItem } from '../components/public/ProofBand'
@@ -149,6 +151,8 @@ export default function PublicHome() {
 
           <ManifestoPanel />
 
+          <FounderManualSection />
+
           <EditorialSection
             id="timeline"
             lead="Founder Journey"
@@ -178,6 +182,8 @@ export default function PublicHome() {
               ))}
             </div>
           </EditorialSection>
+
+          <FounderPhaseStrip />
 
           <SelectedWorkRail
             projects={projects}

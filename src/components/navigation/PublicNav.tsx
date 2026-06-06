@@ -11,7 +11,7 @@ const navLinks = [
   { id: 'evidence-vault', label: 'Evidence' },
   { id: 'investor-room', label: 'Investor' },
   { id: 'timeline', label: 'Timeline' },
-  { id: 'gtr3', label: 'GTR3' },
+  { id: 'gtr3', label: 'GTR³' },
   { id: 'connect', label: 'Connect' }
 ] as const
 

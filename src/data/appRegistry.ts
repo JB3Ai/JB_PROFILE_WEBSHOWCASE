@@ -9,7 +9,7 @@ export const appRegistry: AppRegistryItem[] = [
   { id: 'public-feed', name: 'Public Feed', icon: '⟡', meta: 'Signal and Commentary Feed' },
   { id: 'evidence-vault', name: 'Evidence Vault', icon: '◆', meta: 'Proof and Documentation Layer' },
   { id: 'timeline', name: 'Founder Timeline', icon: '↗', meta: 'Milestone and History Layer' },
-  { id: 'gtr3', name: 'GTR3 Preview', icon: '△', meta: 'Coming Soon Story Layer' },
+  { id: 'gtr3', name: 'GTR³ Preview', icon: '△', meta: 'Coming Soon Story Layer' },
   { id: 'investor-room', name: 'Investor Room', icon: '⬢', meta: 'Controlled Access Review Layer' },
   { id: 'connect', name: 'Connect', icon: '◎', meta: 'Network and Contact Hub' }
 ]

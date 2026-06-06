@@ -5,6 +5,7 @@ import {
   OsMetricCard,
   OsPreviewCard
 } from '../components/os'
+import { thirdRiseStatement } from '../content/founderManual.content'
 import { founderProfile } from '../content/founder.content'
 import { PremiumButton, StatusBadge } from '../components/primitives'
 import { assetRegistry } from '../data/assetRegistry'
@@ -93,14 +94,14 @@ export default function FounderBriefApp() {
 
         <OsInteriorSection
           eyebrow="Next Step"
-          title="GTR3 becomes the next narrative layer."
+          title="GTR³ becomes the next narrative layer."
           intro={founderProfile.gtr3Summary}
           side={<StatusBadge variant="warning">Coming Soon</StatusBadge>}
           className="h-full"
         >
           <OsActionStrip
-            title="Preview state"
-            note="This workspace stays manuscript-safe and placeholder-safe until the real GTR3 imagery and story assets are introduced."
+            title={thirdRiseStatement}
+            note="This workspace stays manuscript-safe and placeholder-safe until the real GTR³ imagery and story assets are introduced."
             actions={
               <>
                 <PremiumButton variant="primary" disabled>

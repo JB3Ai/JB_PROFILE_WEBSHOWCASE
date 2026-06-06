@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { thirdRiseStatement } from '../../content/founderManual.content'
 import AssetThumbnail from '../media/AssetThumbnail'
 import { PremiumButton } from '../primitives'
 import { assetRegistry } from '../../data/assetRegistry'
@@ -27,8 +28,9 @@ export default function GTR3Spotlight({
           transition={{ duration: 0.75, ease: 'easeOut' }}
         >
           <div className="gtr3-copy">
-            <p className="public-kicker">GTR3 Spotlight</p>
+            <p className="public-kicker">GTR³ Spotlight</p>
             <h2 className="gtr3-title">{content.headline}</h2>
+            <p className="gtr3-statement">{thirdRiseStatement}</p>
             <p className="public-intro">{content.shortTeaser}</p>
             <p className="public-copy">{content.longTeaser}</p>
             <div className="gtr3-theme-grid">
@@ -55,7 +57,7 @@ export default function GTR3Spotlight({
             <AssetThumbnail
               src={assetRegistry.gtr3Placeholder}
               fallbackSrc={assetRegistry.gtr3Placeholder}
-              alt="GTR3 preview placeholder"
+              alt="GTR³ preview placeholder"
               className="gtr3-stage-asset"
             />
             <div className="gtr3-stage-note">

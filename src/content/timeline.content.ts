@@ -67,9 +67,9 @@ export const timelineEvents: TimelineEvent[] = [
   {
     id: 'gtr3-coming-soon',
     period: 'Coming soon',
-    title: 'GTR3 Coming Soon',
+    title: 'GTR³ Coming Soon',
     category: 'Future',
-    summary: 'Preparing GTR3 as the next public-facing layer for governance, trust, and resilient recovery.',
+    summary: 'Preparing GTR³ as the next public-facing layer for governance, trust, and resilient recovery.',
     visibility: 'Public Preview',
     tags: ['GTR3', 'future', 'teaser']
   }

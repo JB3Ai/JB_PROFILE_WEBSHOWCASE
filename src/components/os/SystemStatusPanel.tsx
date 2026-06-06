@@ -1,18 +1,11 @@
 import React from 'react'
 import { StatusBadge } from '../primitives'
+import { osManualLayers } from '../../content/founderManual.content'
 import type { AppRegistryItem } from '../../types/content.types'
 
 interface SystemStatusPanelProps {
   activeApp?: AppRegistryItem
 }
-
-const statusItems = [
-  ['Public-safe mode', 'Enabled'],
-  ['Live documents', 'Disabled'],
-  ['Investor placeholders', 'Locked'],
-  ['Media assets', 'Preview only'],
-  ['Last build', 'Static v1']
-] as const
 
 export default function SystemStatusPanel({ activeApp }: SystemStatusPanelProps) {
   return (
@@ -20,13 +13,13 @@ export default function SystemStatusPanel({ activeApp }: SystemStatusPanelProps)
       <div className="flex items-start justify-between gap-4">
         <div>
           <div className="eyebrow">System Status</div>
-          <h2 className="mt-4 text-heading-sm text-white">Preview safeguards</h2>
+          <h2 className="mt-4 text-heading-sm text-white">Manual mode</h2>
         </div>
         <StatusBadge variant="success" size="sm">Contained</StatusBadge>
       </div>
 
       <div className="os-status-list">
-        {statusItems.map(([label, value]) => (
+        {osManualLayers.map(([label, value]) => (
           <div key={label} className="os-status-item">
             <span className="os-status-label">{label}</span>
             <span className="os-status-value">{value}</span>

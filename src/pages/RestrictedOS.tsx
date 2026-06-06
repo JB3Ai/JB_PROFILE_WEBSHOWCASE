@@ -5,10 +5,12 @@ import {
   ExecutiveDesktop,
   ExecutiveDock,
   ExecutiveLauncher,
+  OsPhaseSystem,
   ExecutiveTopBar,
   ExecutiveWindow,
   SystemStatusPanel
 } from '../components/os'
+import { founderPhaseSystem } from '../content/founderManual.content'
 import { appComponents } from '../data/appComponents'
 import { appRegistry, isAppId } from '../data/appRegistry'
 import type { AppId } from '../types/content.types'
@@ -50,7 +52,7 @@ export default function RestrictedOS() {
           <StatusBadge variant="success">Preview shell ready</StatusBadge>
           <h1 className="mt-6 text-display text-white">Executive Command OS</h1>
           <p className="mt-4 max-w-3xl text-body-lg">
-            A controlled founder review environment for proof, project surfaces, investor-safe previews, and structured operating context. Launch a module to enter its dedicated workspace.
+            A private review layer built around the founder manual, the phase system, and a structured operating context for proof, projects, investor-safe previews, and story.
           </p>
 
           <div className="os-desktop-actions">
@@ -66,13 +68,15 @@ export default function RestrictedOS() {
           </div>
 
           <div className="os-desktop-meta">
-            <span>Private executive workstation</span>
-            <span>Placeholder-safe data only</span>
-            <span>Structured review shell</span>
+            <span>Founder manual active</span>
+            <span>Phase system online</span>
+            <span>Placeholder-safe review shell</span>
           </div>
         </div>
 
-        <ExecutiveLauncher apps={appRegistry} onLaunch={launchModule} />
+        <OsPhaseSystem apps={appRegistry} onLaunch={launchModule} />
+
+        <ExecutiveLauncher apps={appRegistry} onLaunch={launchModule} phaseGroups={founderPhaseSystem} />
       </div>
 
       <div className="os-panel-stack">
@@ -144,6 +148,7 @@ export default function RestrictedOS() {
           activeAppId={currentAppId}
           onLaunch={launchModule}
           onClear={() => setOpenApp(null)}
+          suppressHint={launcherOpen}
         />
       }
     >
@@ -171,6 +176,7 @@ export default function RestrictedOS() {
                 <ExecutiveLauncher
                   apps={appRegistry}
                   onLaunch={launchModule}
+                  phaseGroups={founderPhaseSystem}
                   mode="overlay"
                   onClose={() => setLauncherOpen(false)}
                 />
