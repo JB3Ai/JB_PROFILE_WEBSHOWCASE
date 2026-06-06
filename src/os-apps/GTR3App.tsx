@@ -5,6 +5,7 @@ import {
   OsPreviewCard,
   OsTimelineRow
 } from '../components/os'
+import { thirdRiseStatement } from '../content/founderManual.content'
 import { gtr3Content } from '../content/gtr3.content'
 import { assetRegistry } from '../data/assetRegistry'
 import { PremiumButton, StatusBadge } from '../components/primitives'
@@ -13,15 +14,15 @@ export default function GTR3App() {
   return (
     <div className="os-interior-stack">
       <OsInteriorSection
-        eyebrow="GTR3 Preview"
+        eyebrow="GTR³ Preview"
         title={gtr3Content.headline}
-        intro={gtr3Content.longTeaser}
+        intro={`${thirdRiseStatement} ${gtr3Content.longTeaser}`}
         side={<StatusBadge variant="warning">{gtr3Content.status}</StatusBadge>}
       >
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1.05fr)_320px]">
           <OsPreviewCard
             eyebrow={gtr3Content.title}
-            title={gtr3Content.shortTeaser}
+            title={thirdRiseStatement}
             summary="This module carries the strongest emotional tone in the OS. It should feel like a premium story layer held inside the command shell, not a generic card stack."
             note={gtr3Content.visibilityNote}
             tone="feature"
@@ -29,10 +30,10 @@ export default function GTR3App() {
           <OsPreviewCard
             eyebrow="Story Image"
             title="Preview placeholder"
-            summary="The final GTR3 visual asset is still pending. This placeholder keeps the layout stable and public-safe until the real book/site image layer is ready."
+            summary="The final GTR³ visual asset is still pending. This placeholder keeps the layout stable and public-safe until the real book/site image layer is ready."
             mediaSrc={assetRegistry.gtr3Placeholder}
             fallbackMediaSrc={assetRegistry.gtr3Placeholder}
-            mediaAlt="GTR3 placeholder artwork"
+            mediaAlt="GTR³ placeholder artwork"
             mediaClassName="h-60"
             badges={<StatusBadge variant="neutral" size="sm">Story layer</StatusBadge>}
             tone="muted"
@@ -77,7 +78,7 @@ export default function GTR3App() {
       </OsInteriorSection>
 
       <OsActionStrip
-        title="GTR3 actions"
+        title="GTR³ actions"
         note={gtr3Content.visibilityNote}
         actions={
           <>

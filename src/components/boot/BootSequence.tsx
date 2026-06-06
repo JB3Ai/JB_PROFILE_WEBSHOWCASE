@@ -9,7 +9,7 @@ const bootLines = [
   'Evidence vault standing by',
   'Project showcase online',
   'Investor room secured',
-  'GTR3 preview loading'
+  'GTR³ preview loading'
 ] as const
 
 type BootSequenceProps = {

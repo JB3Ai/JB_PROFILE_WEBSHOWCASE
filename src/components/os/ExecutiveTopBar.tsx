@@ -19,7 +19,7 @@ export default function ExecutiveTopBar({ activeApp, onOpenLauncher }: Executive
   )
 
   const activeTitle = activeApp?.name ?? 'Desktop Shell'
-  const activeMeta = activeApp?.meta ?? 'Module launcher ready'
+  const activeMeta = activeApp?.meta ?? 'Founder manual and module launcher ready'
 
   return (
     <header className="os-topbar">
@@ -47,7 +47,9 @@ export default function ExecutiveTopBar({ activeApp, onOpenLauncher }: Executive
             Launcher
           </button>
           <StatusBadge variant="success" size="sm">Public-safe mode</StatusBadge>
-          <StatusBadge variant="neutral" size="sm">Static v1</StatusBadge>
+          <StatusBadge variant="neutral" size="sm" className="os-topbar-status-optional">
+            Static v1
+          </StatusBadge>
           <div className="os-topbar-date">{todayLabel}</div>
         </div>
       </div>
