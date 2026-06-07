@@ -1,15 +1,16 @@
 <svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="1200" height="800" fill="#08111A"/>
   <rect x="54" y="54" width="1092" height="692" rx="36" stroke="url(#a)" stroke-opacity="0.22" stroke-width="2"/>
-  <path d="M140 602C256 452.667 388 378 536 378C684 378 816 452.667 932 602" stroke="#58D6DA" stroke-opacity="0.44" stroke-width="6" stroke-linecap="round"/>
-  <path d="M170 646C278 515.333 400 450 536 450C672 450 794 515.333 902 646" stroke="#74D3A4" stroke-opacity="0.42" stroke-width="6" stroke-linecap="round"/>
-  <path d="M204 684C306.667 575.333 417.333 521 536 521C654.667 521 765.333 575.333 868 684" stroke="#E9C98F" stroke-opacity="0.36" stroke-width="6" stroke-linecap="round"/>
-  <rect x="162" y="140" width="290" height="18" rx="9" fill="#E9C98F"/>
-  <rect x="162" y="200" width="402" height="14" rx="7" fill="#D7DEE5"/>
-  <rect x="162" y="248" width="360" height="14" rx="7" fill="#94A8BA"/>
-  <text x="162" y="108" fill="#F6F7F1" font-family="Manrope, Arial, sans-serif" font-size="34" letter-spacing="6">GTR3 PREVIEW</text>
-  <text x="758" y="178" fill="#D7DEE5" font-family="Fraunces, Georgia, serif" font-size="52">Third rise placeholder artwork</text>
-  <text x="758" y="246" fill="#94A8BA" font-family="Manrope, Arial, sans-serif" font-size="28">Used until approved story visuals or book-preview assets arrive</text>
+  <path d="M128 590C244 470.667 378 398 530 398C682 398 816 470.667 932 590" stroke="#58D6DA" stroke-opacity="0.42" stroke-width="8" stroke-linecap="round"/>
+  <path d="M164 650C272 546.667 394 495 530 495C666 495 788 546.667 896 650" stroke="#74D3A4" stroke-opacity="0.34" stroke-width="8" stroke-linecap="round"/>
+  <path d="M204 700C306.667 616 418 574 538 574C658 574 769.333 616 872 700" stroke="#E9C98F" stroke-opacity="0.28" stroke-width="6" stroke-linecap="round"/>
+  <rect x="150" y="138" width="286" height="18" rx="9" fill="#E9C98F"/>
+  <rect x="150" y="198" width="382" height="14" rx="7" fill="#D7DEE5"/>
+  <rect x="150" y="246" width="340" height="14" rx="7" fill="#94A8BA"/>
+  <text x="150" y="106" fill="#F6F7F1" font-family="Manrope, Arial, sans-serif" font-size="32" letter-spacing="6">GTR&#179; PREVIEW / OS STORY LAYER</text>
+  <text x="694" y="174" fill="#F6F7F1" font-family="Fraunces, Georgia, serif" font-size="66">GTR&#179;</text>
+  <text x="694" y="248" fill="#D7DEE5" font-family="Fraunces, Georgia, serif" font-size="44">Third rise loading</text>
+  <text x="694" y="314" fill="#94A8BA" font-family="Manrope, Arial, sans-serif" font-size="28">Preview-only artwork until approved book, site, or story-image assets arrive</text>
   <defs>
     <linearGradient id="a" x1="90" y1="84" x2="1114" y2="726" gradientUnits="userSpaceOnUse">
       <stop stop-color="#58D6DA"/>

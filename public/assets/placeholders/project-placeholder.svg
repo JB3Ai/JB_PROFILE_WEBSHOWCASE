@@ -7,9 +7,9 @@
   <rect x="660" y="184" width="388" height="18" rx="9" fill="#58D6DA"/>
   <rect x="660" y="250" width="310" height="14" rx="7" fill="#D7DEE5"/>
   <rect x="660" y="302" width="358" height="14" rx="7" fill="#94A8BA"/>
-  <rect x="660" y="400" width="266" height="54" rx="18" fill="#0D1A27" stroke="#74D3A4" stroke-opacity="0.4"/>
-  <text x="110" y="108" fill="#F6F7F1" font-family="Manrope, Arial, sans-serif" font-size="34" letter-spacing="6">PROJECT PREVIEW</text>
-  <text x="110" y="706" fill="#94A8BA" font-family="Manrope, Arial, sans-serif" font-size="28">Use until final project stills or screenshots are uploaded</text>
+  <text x="110" y="108" fill="#F6F7F1" font-family="Manrope, Arial, sans-serif" font-size="30" letter-spacing="6">JB&#179;Ai PROJECT PREVIEW FRAME</text>
+  <text x="660" y="390" fill="#F6F7F1" font-family="Fraunces, Georgia, serif" font-size="52">Case-study image placeholder</text>
+  <text x="660" y="452" fill="#94A8BA" font-family="Manrope, Arial, sans-serif" font-size="28">Used until approved project stills or screenshots are uploaded</text>
   <defs>
     <linearGradient id="a" x1="88" y1="72" x2="1118" y2="736" gradientUnits="userSpaceOnUse">
       <stop stop-color="#58D6DA"/>
