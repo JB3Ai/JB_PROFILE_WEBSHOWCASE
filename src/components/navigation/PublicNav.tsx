@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { PremiumButton } from '../primitives'
 import { scrollToSection } from '../../utils/scrollToSection'
 import { assetRegistry } from '../../data/assetRegistry'
+import { buildRequestAccessRoute } from '../../data/contactConfig'
 
 const navLinks = [
   { id: 'founder-brief', label: 'Founder' },
@@ -84,9 +85,21 @@ export default function PublicNav() {
 
             <div className="public-nav-actions">
               <PremiumButton variant="secondary" size="sm" onClick={() => nav('/login')}>
-                Enter OS
+                Preview Private OS
               </PremiumButton>
-              <PremiumButton variant="accent" size="sm" onClick={() => nav('/request-access')}>
+              <PremiumButton
+                variant="accent"
+                size="sm"
+                onClick={() =>
+                  nav(
+                    buildRequestAccessRoute({
+                      track: 'public-nav',
+                      reason: 'General access request',
+                      next: 'Request a conversation'
+                    })
+                  )
+                }
+              >
                 Request Access
               </PremiumButton>
             </div>

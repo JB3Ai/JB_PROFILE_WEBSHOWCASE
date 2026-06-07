@@ -24,6 +24,7 @@ import { socialLinks } from '../content/social.content'
 import { timelineEvents } from '../content/timeline.content'
 import { videos } from '../content/videos.content'
 import { assetRegistry } from '../data/assetRegistry'
+import { buildRequestAccessRoute } from '../data/contactConfig'
 import { scrollToSection } from '../utils/scrollToSection'
 
 export default function PublicHome() {
@@ -58,13 +59,27 @@ export default function PublicHome() {
 
   const handleFounderBriefClick = useCallback(() => {
     scrollToSection('founder-brief', {
-      fallback: () => nav('/request-access')
+      fallback: () =>
+        nav(
+          buildRequestAccessRoute({
+            track: 'founder-story',
+            reason: 'Founder story or profile review',
+            next: 'Request a conversation'
+          })
+        )
     })
   }, [nav])
 
   const handleProjectsClick = useCallback(() => {
     scrollToSection('projects', {
-      fallback: () => nav('/request-access')
+      fallback: () =>
+        nav(
+          buildRequestAccessRoute({
+            track: 'projects',
+            reason: 'Project walkthrough or case-study review',
+            next: 'Request project walkthrough'
+          })
+        )
     })
   }, [nav])
 
@@ -145,7 +160,15 @@ export default function PublicHome() {
           <PublicHeroCinematic
             onFounderStory={handleFounderBriefClick}
             onProjects={handleProjectsClick}
-            onRequestAccess={() => nav('/request-access')}
+            onRequestAccess={() =>
+              nav(
+                buildRequestAccessRoute({
+                  track: 'hero',
+                  reason: 'General access request',
+                  next: 'Request a conversation'
+                })
+              )
+            }
             onEnterPrivateOS={() => nav('/login')}
           />
 
@@ -187,7 +210,15 @@ export default function PublicHome() {
 
           <SelectedWorkRail
             projects={projects}
-            onRequestAccess={() => nav('/request-access')}
+            onRequestAccess={() =>
+              nav(
+                buildRequestAccessRoute({
+                  track: 'projects',
+                  reason: 'Project access request',
+                  next: 'Request project walkthrough'
+                })
+              )
+            }
             onEnterPrivateOS={() => nav('/login')}
           />
 
@@ -197,7 +228,7 @@ export default function PublicHome() {
             title="A refined public stream of founder briefings, product previews, and signal notes."
             intro="Video Vault, JB³ Daily Show, and the public feed are combined into a tighter preview band so the homepage feels curated rather than overfilled."
             items={mediaSignalItems}
-            ctaLabel="Enter Private OS"
+            ctaLabel="Preview Private OS"
             onCta={() => nav('/login')}
           />
 
@@ -208,7 +239,15 @@ export default function PublicHome() {
             intro="The trust layer stays minimal here: enough signal to establish credibility, without exposing private packs, investor files, or sensitive operating material."
             items={trustPreviewItems}
             ctaLabel="Request Evidence Access"
-            onCta={() => nav('/request-access')}
+            onCta={() =>
+              nav(
+                buildRequestAccessRoute({
+                  track: 'evidence',
+                  reason: 'Evidence or trust layer review',
+                  next: 'Request evidence review'
+                })
+              )
+            }
           />
 
           <EditorialSection
@@ -217,7 +256,18 @@ export default function PublicHome() {
             title="A premium review room for verified access, not theatre."
             intro={founderProfile.investorSummary}
             actions={
-              <PremiumButton variant="accent" onClick={() => nav('/request-access')}>
+              <PremiumButton
+                variant="accent"
+                onClick={() =>
+                  nav(
+                    buildRequestAccessRoute({
+                      track: 'investor',
+                      reason: 'Investor review request',
+                      next: 'Request investor review'
+                    })
+                  )
+                }
+              >
                 Request Investor Access
               </PremiumButton>
             }
@@ -253,13 +303,29 @@ export default function PublicHome() {
 
           <GTR3Spotlight
             content={gtr3Content}
-            onPrimaryAction={() => nav('/request-access')}
+            onPrimaryAction={() =>
+              nav(
+                buildRequestAccessRoute({
+                  track: 'gtr3',
+                  reason: 'GTR³ preview request',
+                  next: 'Request a conversation'
+                })
+              )
+            }
             onSecondaryAction={handleTimelineClick}
           />
 
           <ConnectStrip
             links={socialLinks}
-            onRequestAccess={() => nav('/request-access')}
+            onRequestAccess={() =>
+              nav(
+                buildRequestAccessRoute({
+                  track: 'connect',
+                  reason: 'General contact or access request',
+                  next: 'Request a conversation'
+                })
+              )
+            }
             onEnterPrivateOS={() => nav('/login')}
           />
         </motion.div>
