@@ -1,3 +1,4 @@
+import { buildMailtoUrl, buildRequestAccessRoute } from '../data/contactConfig'
 import type { SocialLink } from '../types/content.types'
 
 export const socialLinks: SocialLink[] = [
@@ -7,11 +8,15 @@ export const socialLinks: SocialLink[] = [
     group: 'Primary Contact',
     platform: 'Scheduler',
     purpose: 'Request a discovery or executive call with Jonathan Blackburn.',
-    url: '#',
+    url: buildRequestAccessRoute({
+      track: 'book-call',
+      reason: 'Conversation or collaboration',
+      next: 'Book a conversation'
+    }),
     visibility: 'Public',
     priority: 1,
     iconName: 'PhoneCall',
-    cautionNote: 'Placeholder booking URL; actual scheduling route is pending.'
+    cautionNote: 'Requests are reviewed manually before any scheduling route is confirmed.'
   },
   {
     id: 'email-jonathan',
@@ -19,11 +24,18 @@ export const socialLinks: SocialLink[] = [
     group: 'Primary Contact',
     platform: 'Email',
     purpose: 'Send a direct email to discuss projects, proof, or collaboration.',
-    url: '#',
+    url: buildMailtoUrl({
+      subject: 'Jonathan Blackburn OS enquiry',
+      bodyLines: [
+        'Name:',
+        'Organisation / context:',
+        'What would you like to discuss?'
+      ]
+    }),
     visibility: 'Public',
     priority: 2,
     iconName: 'Mail',
-    cautionNote: 'Placeholder email link; actual address is not published here.'
+    cautionNote: 'Direct email opens your local mail client.'
   },
   {
     id: 'linkedin',

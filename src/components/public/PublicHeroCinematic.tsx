@@ -50,7 +50,7 @@ export default function PublicHeroCinematic({
               </PremiumButton>
             </div>
             <button type="button" onClick={onEnterPrivateOS} className="public-link-button">
-              Enter Private OS
+              Preview Private OS
             </button>
           </motion.div>
 

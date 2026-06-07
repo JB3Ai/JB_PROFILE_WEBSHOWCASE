@@ -57,7 +57,7 @@ export default function SelectedWorkRail({
                 Request Project Access
               </PremiumButton>
               <PremiumButton variant="secondary" className="selected-work-cta-secondary" onClick={onEnterPrivateOS}>
-                Enter Private OS
+                Preview Private OS
               </PremiumButton>
             </div>
           </div>
