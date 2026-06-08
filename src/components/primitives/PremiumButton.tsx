@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
 interface PremiumButtonProps {
   children: React.ReactNode
@@ -9,6 +9,7 @@ interface PremiumButtonProps {
   className?: string
   disabled?: boolean
   type?: 'button' | 'submit' | 'reset'
+  ariaLabel?: string
 }
 
 export default function PremiumButton({
@@ -18,8 +19,10 @@ export default function PremiumButton({
   onClick,
   className = '',
   disabled = false,
-  type = 'button'
+  type = 'button',
+  ariaLabel
 }: PremiumButtonProps) {
+  const reduceMotion = useReducedMotion()
   const variantClass = {
     primary: 'btn-primary',
     secondary: 'btn-secondary',
@@ -39,9 +42,10 @@ export default function PremiumButton({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      whileHover={{ scale: disabled ? 1 : 1.02 }}
-      whileTap={{ scale: disabled ? 1 : 0.98 }}
-      className={`${variantClass} ${sizeClass} ${className} ${disabled ? 'opacity-50 cursor-not-allowed saturate-50' : ''}`}
+      aria-label={ariaLabel}
+      whileHover={reduceMotion || disabled ? undefined : { scale: 1.02 }}
+      whileTap={reduceMotion || disabled ? undefined : { scale: 0.98 }}
+      className={`btn ${variantClass} ${sizeClass} ${className} ${disabled ? 'opacity-50 cursor-not-allowed saturate-50' : ''}`}
     >
       {children}
     </motion.button>
