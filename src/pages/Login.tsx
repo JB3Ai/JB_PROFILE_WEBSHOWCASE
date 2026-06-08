@@ -62,9 +62,10 @@ export default function Login() {
             </div>
 
             <form className="conversion-form" onSubmit={submit}>
-              <label className="conversion-field">
+              <label className="conversion-field" htmlFor="preview-pin">
                 <span className="conversion-label">Demo preview PIN</span>
                 <input
+                  id="preview-pin"
                   value={pin}
                   onChange={(event) => setPin(event.target.value)}
                   className="input-shell conversion-pin-input"

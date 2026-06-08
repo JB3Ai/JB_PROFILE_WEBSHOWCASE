@@ -35,23 +35,65 @@ export default function PublicNav() {
   const [activeSection, setActiveSection] = useState<string>('hero')
 
   useEffect(() => {
+    const sections = sectionIds
+      .map((sectionId) => document.getElementById(sectionId))
+      .filter((section): section is HTMLElement => Boolean(section))
+
+    if (sections.length === 0) return undefined
+
+    if ('IntersectionObserver' in window) {
+      const visibleSections = new Set<string>()
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              visibleSections.add(entry.target.id)
+            } else {
+              visibleSections.delete(entry.target.id)
+            }
+          })
+
+          const currentSection = [...sectionIds].reverse().find((sectionId) => visibleSections.has(sectionId)) ?? 'hero'
+          setActiveSection((prev) => (prev === currentSection ? prev : currentSection))
+        },
+        {
+          rootMargin: '-28% 0px -52% 0px',
+          threshold: [0.1, 0.25, 0.5, 0.75]
+        }
+      )
+
+      sections.forEach((section) => observer.observe(section))
+      return () => observer.disconnect()
+    }
+
+    let frame: number | null = null
     const updateActiveSection = () => {
+      frame = null
       let currentSection = 'hero'
 
-      for (const sectionId of sectionIds) {
-        const section = document.getElementById(sectionId)
-        if (section && section.getBoundingClientRect().top <= 160) {
-          currentSection = sectionId
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= 160) {
+          currentSection = section.id
         }
       }
 
       setActiveSection((prev) => (prev === currentSection ? prev : currentSection))
     }
 
-    updateActiveSection()
-    window.addEventListener('scroll', updateActiveSection, { passive: true })
+    const handleScroll = () => {
+      if (frame !== null) return
+      frame = window.requestAnimationFrame(updateActiveSection)
+    }
 
-    return () => window.removeEventListener('scroll', updateActiveSection)
+    updateActiveSection()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (frame !== null) {
+        window.cancelAnimationFrame(frame)
+      }
+    }
   }, [])
 
   return (
@@ -75,6 +117,7 @@ export default function PublicNav() {
               {navLinks.map((link) => (
                 <button
                   key={link.id}
+                  type="button"
                   onClick={() => scrollToSection(link.id)}
                   className={`public-nav-link ${activeSection === link.id ? 'public-nav-link-active' : ''}`}
                 >

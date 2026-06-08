@@ -18,10 +18,11 @@ export function scrollToSection(sectionId: string, options: ScrollToSectionOptio
 
   const offset = options.offset ?? 112
   const top = target.getBoundingClientRect().top + window.scrollY - offset
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   window.scrollTo({
     top: Math.max(top, 0),
-    behavior: 'smooth'
+    behavior: reduceMotion ? 'auto' : 'smooth'
   })
 
   return true

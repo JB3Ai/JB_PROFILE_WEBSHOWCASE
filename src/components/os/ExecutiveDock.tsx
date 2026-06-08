@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import type { AppId, AppRegistryItem } from '../../types/content.types'
 
 interface ExecutiveDockProps {
@@ -17,6 +17,7 @@ export default function ExecutiveDock({
   onClear,
   suppressHint = false
 }: ExecutiveDockProps) {
+  const reduceMotion = useReducedMotion()
   const dockRef = useRef<HTMLDivElement | null>(null)
   const hintTimerRef = useRef<number | null>(null)
   const [showHint, setShowHint] = useState(false)
@@ -66,7 +67,7 @@ export default function ExecutiveDock({
           onScroll={() => setShowHint(false)}
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, delay: 0.15 }}
+          transition={reduceMotion ? { duration: 0 } : { duration: 0.45, delay: 0.15 }}
         >
           {apps.map((app, index) => {
             const isActive = activeAppId === app.id
@@ -78,11 +79,12 @@ export default function ExecutiveDock({
                 onClick={() => onLaunch(app.id)}
                 className={`os-dock-button ${isActive ? 'os-dock-button-active' : ''}`}
                 aria-pressed={isActive}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
+                aria-label={`${app.name}. ${isActive ? 'Active module.' : ''} ${app.meta}`}
+                whileHover={reduceMotion ? undefined : { scale: 1.03 }}
+                whileTap={reduceMotion ? undefined : { scale: 0.98 }}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.28, delay: 0.2 + index * 0.03 }}
+                transition={reduceMotion ? { duration: 0 } : { duration: 0.28, delay: 0.2 + index * 0.03 }}
               >
                 <span className="os-dock-button-icon" aria-hidden="true">
                   {app.icon}
@@ -94,7 +96,12 @@ export default function ExecutiveDock({
             )
           })}
 
-          <button type="button" onClick={onClear} className="os-dock-button os-dock-button-utility">
+          <button
+            type="button"
+            onClick={onClear}
+            className="os-dock-button os-dock-button-utility"
+            aria-label="Return to the desktop landing view"
+          >
             <span className="os-dock-button-icon" aria-hidden="true">⌂</span>
             <span className="os-dock-button-label">Desktop</span>
             <span className="os-dock-button-meta">Clear active view</span>

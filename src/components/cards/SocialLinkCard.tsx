@@ -1,5 +1,5 @@
 import React from 'react'
-import { PremiumButton, StatusBadge } from '../primitives'
+import { StatusBadge } from '../primitives'
 import type { SocialLink } from '../../types/content.types'
 
 export default function SocialLinkCard({ item }: { item: SocialLink }) {
@@ -20,8 +20,14 @@ export default function SocialLinkCard({ item }: { item: SocialLink }) {
       ) : null}
       <div className="mt-5 flex items-center justify-between gap-2">
         <div className="text-body-sm">Channel: {item.iconName}</div>
-        <a href={item.url} target="_blank" rel="noreferrer">
-          <PremiumButton variant="primary" size="sm">Open</PremiumButton>
+        <a
+          href={item.url}
+          target="_blank"
+          rel="noreferrer"
+          className="btn btn-primary btn-sm"
+          aria-label={`Open ${item.label} on ${item.platform}`}
+        >
+          Open
         </a>
       </div>
     </div>
