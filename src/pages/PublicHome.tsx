@@ -180,7 +180,7 @@ export default function PublicHome() {
             id="timeline"
             lead="Founder Journey"
             title="A founder path shaped by engineering, recovery, care, and rebuilding."
-            intro="The public journey is presented as narrative sequence rather than a grid of milestones, keeping the emphasis on rhythm, pressure, and progression."
+            intro="The public journey is shown as a sequence of proof chapters rather than a compressed biography, keeping the emphasis on pressure, progression, and what each phase built."
           >
             <div className="journey-track">
               {timelineEvents.map((event, index) => (

@@ -13,18 +13,18 @@ type ConnectStripProps = {
 const conversationLanes = [
   {
     id: 'collaboration',
-    title: 'Collaboration and project review',
-    summary: 'Use Request Access if you want a controlled introduction to projects, proof, or selected modules.'
+    title: 'Discuss a project',
+    summary: 'Use Request Access if you want a guided review of projects, proof, or selected modules.'
   },
   {
     id: 'media',
-    title: 'Media, speaking, or investor enquiry',
-    summary: 'Reach out directly for a human conversation around JB³Ai, OS³, founder story, or strategic review.'
+    title: 'Speaking, media, or investor enquiry',
+    summary: 'Start a direct founder conversation around JB³Ai, OS³, the story, or a strategic review.'
   },
   {
     id: 'preview',
-    title: 'Private OS preview',
-    summary: 'Step into the preview shell if you want to see how the Executive Command OS is structured.'
+    title: 'Preview Private OS',
+    summary: 'Enter the shell if you want to see how the Executive Command OS is structured before requesting deeper access.'
   }
 ]
 
@@ -47,10 +47,10 @@ export default function ConnectStrip({
         >
           <div>
             <p className="public-kicker">Connect</p>
-            <h2 className="public-title">Know what to do next, and where to take it.</h2>
+            <h2 className="public-title">Choose the right next conversation.</h2>
             <p className="public-intro">
-              Jonathan Blackburn OS now ends with a calmer invitation layer: request a controlled review, start a
-              conversation, or preview the private operating environment.
+              Request a controlled review, start a founder conversation, or step into the private operating
+              environment for a deeper preview.
             </p>
           </div>
 

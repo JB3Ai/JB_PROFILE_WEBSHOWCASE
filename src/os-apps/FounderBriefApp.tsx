@@ -16,27 +16,39 @@ const summaryCards = [
     text: founderProfile.publicSummary
   },
   {
-    title: 'Investor Summary',
+    title: 'Proof Chapters',
+    text: 'Elite Technologies, Trust in Hope, iMED, and JB³Ai form the four proof chapters behind the public founder story.'
+  },
+  {
+    title: 'Investor Lens',
     text: founderProfile.investorSummary
   },
   {
-    title: 'Recovery & iMED',
-    text: founderProfile.recoverySummary
+    title: 'Systems Philosophy',
+    text: 'Technology should serve real life. AI is not the product. Structure is the product.'
   }
 ]
 
 const storyPoints = [
   {
-    label: 'Foundation',
-    copy: 'Technical foundations in electronics, automation, and embedded systems shaped the operating discipline behind the founder story.'
+    label: 'Signal Roots',
+    copy: 'Electronics, AV, automation, and control systems built the habit of making signal clear, integration reliable, and output usable.'
   },
   {
-    label: 'Recovery',
-    copy: 'Recovery work remains grounded in human outcomes, diagnostics, coordination, and systems that hold when pressure rises.'
+    label: 'Elite Technologies',
+    copy: 'Elite Technologies turned those instincts into delivery: practical systems, enterprise-grade problem solving, and work that had to function outside the slide deck.'
   },
   {
-    label: 'Build Pattern',
-    copy: 'The working pattern stays consistent: observe, structure, test, and rebuild until the system becomes trustworthy.'
+    label: 'Trust in Hope',
+    copy: 'Trust in Hope made recovery a disciplined operating model, where accountability, routine, care, and rebuilding had to work together.'
+  },
+  {
+    label: 'iMED',
+    copy: 'iMED became the precision chapter: diagnostics, forensic toxicology, COVID-response coordination, DNA expansion, and compliance-minded systems built under pressure.'
+  },
+  {
+    label: 'JB³Ai & GTR³',
+    copy: 'JB³Ai and OS³ carry those lessons forward into AI for good, while GTR³ holds the more personal story of fatherhood, recovery, and the third rebuild still in progress.'
   }
 ]
 
@@ -78,8 +90,8 @@ export default function FounderBriefApp() {
       <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
         <OsInteriorSection
           eyebrow="Operating Story"
-          title="A founder path carried by structure, care, and precise rebuilding."
-          intro="The strongest version of this module is editorial rather than dashboard-heavy: fewer boxes, more clarity, and a clear link between systems work and human impact."
+          title="A founder path shaped by signal, structure, precision, and a quieter kind of ambition."
+          intro="This is the deeper founder profile: more precise than the public homepage, still public-safe, and organised around the chapters that shaped the current operating model."
           className="h-full"
         >
           <div className="os-preview-list">
@@ -94,14 +106,14 @@ export default function FounderBriefApp() {
 
         <OsInteriorSection
           eyebrow="Next Step"
-          title="GTR³ becomes the next narrative layer."
+          title="GTR³ holds the symbolic next chapter."
           intro={founderProfile.gtr3Summary}
           side={<StatusBadge variant="warning">Coming Soon</StatusBadge>}
           className="h-full"
         >
           <OsActionStrip
             title={thirdRiseStatement}
-            note="This workspace stays manuscript-safe and placeholder-safe until the real GTR³ imagery and story assets are introduced."
+            note="This workspace stays manuscript-safe and public-safe until the book, family, and deeper recovery layers are intentionally released."
             actions={
               <>
                 <PremiumButton variant="primary" disabled>

@@ -64,16 +64,16 @@ export const dailyShowEpisodes: DailyShowEpisode[] = [
   {
     id: 'gtr3-writing-the-story-live',
     episodeNumber: 5,
-    title: 'GTR3: Writing the Story Live',
-    category: 'GTR3 Reflection',
+    title: 'GTR³: Writing the Story Live',
+    category: 'GTR³ Reflection',
     status: 'Coming Soon',
     date: '2026-06-05',
     videoUrl: '#',
     thumbnail: '/thumbnails/daily-05.png',
-    summary: 'A reflective episode on crafting the GTR3 narrative, the third rise story, and founder intent.',
+    summary: 'A reflective episode on crafting the GTR³ narrative, the third-rise story, and founder intent.',
     articleNotes: 'Shares the writing process, early chapter themes, and how story becomes practice in the OS build.',
     relatedProjectId: 'gtr3',
-    tags: ['GTR3', 'story', 'reflection'],
+    tags: ['GTR³', 'story', 'reflection'],
     access: 'Preview'
   }
 ]

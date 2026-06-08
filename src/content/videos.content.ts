@@ -87,12 +87,12 @@ export const videos: VideoItem[] = [
   },
   {
     id: 'gtr3-coming-soon-teaser',
-    title: 'GTR3 Coming Soon Teaser',
-    category: 'GTR3',
+    title: 'GTR³ Coming Soon Teaser',
+    category: 'GTR³',
     status: 'Coming Soon',
     duration: '00:40',
     summary:
-      'A teaser for the GTR3 book and third-rise story layer inside Jonathan Blackburn OS.',
+      'A teaser for the GTR³ book and third-rise story layer inside Jonathan Blackburn OS.',
     relatedProjectId: null,
     thumbnail: '/assets/images/video-gtr3.jpg',
     videoUrl: '/assets/videos/gtr3-coming-soon.mp4',

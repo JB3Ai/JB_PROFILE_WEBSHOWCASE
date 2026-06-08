@@ -48,8 +48,8 @@ export default function ProjectShowcaseApp() {
       <div className="os-interior-stack">
         <OsInteriorSection
           eyebrow="Project Showcase"
-          title="Case-study previews in a calmer review format."
-          intro="The module now leads with one primary surface, then steps into supporting project previews below it rather than treating every item as equal-weight dashboard output."
+          title="Proof chapters expressed as products, systems, and founder builds."
+          intro="These projects are not disconnected app cards. They are proof chapters from one founder operating model, shown here in a calmer case-study review format."
           side={<StatusBadge variant="primary">{filter === 'All' ? 'Full range' : filter}</StatusBadge>}
         >
           {featured ? (
@@ -94,7 +94,7 @@ export default function ProjectShowcaseApp() {
         <OsInteriorSection
           eyebrow="Supporting Projects"
           title="Additional previews"
-          intro="Supporting work stays readable and structured, with lighter metadata and fewer competing actions."
+          intro="Supporting work stays structured as related proof chapters rather than a flat app grid."
         >
           {supporting.length > 0 ? (
             <div className="os-preview-grid">
