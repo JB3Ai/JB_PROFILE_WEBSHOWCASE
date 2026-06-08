@@ -91,7 +91,7 @@ export type FeedPostCategory =
   | 'Systems Thinking'
   | 'Founder Notes'
   | 'Product Update'
-  | 'GTR3 Journal'
+  | 'GTR³ Journal'
   | 'Security Signal'
 
 export type FeedPostStatus = 'Published' | 'Draft' | 'Coming Soon' | 'Demo Cut'
@@ -117,7 +117,7 @@ export type DailyShowCategory =
   | 'AI for Business'
   | 'Systems Thinking'
   | 'Build Log'
-  | 'GTR3 Reflection'
+  | 'GTR³ Reflection'
 
 export type DailyShowAccess = 'Public' | 'Subscriber' | 'Preview'
 

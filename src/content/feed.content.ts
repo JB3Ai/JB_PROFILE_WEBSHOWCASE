@@ -63,17 +63,17 @@ export const feedPosts: FeedPost[] = [
   },
   {
     id: 'gtr3-journal-the-third-rise',
-    title: 'GTR3 Journal: The Third Rise',
-    category: 'GTR3 Journal',
+    title: 'GTR³ Journal: The Third Rise',
+    category: 'GTR³ Journal',
     date: '2026-06-03',
     readTime: '5 min',
-    sourceLabel: 'GTR3 Notes',
+    sourceLabel: 'GTR³ Notes',
     sourceUrl: '#',
     summary: 'A journal entry exploring the third rise story, narrative framing, and the founder’s long-term vision.',
     jonathanTake: 'Story is the frame around systems; the third rise is both a metaphor and an operating discipline.',
     businessImpact: 'Helps investors and partners understand the cultural and narrative context behind the operating system design.',
     relatedProjectId: 'gtr3',
-    tags: ['GTR3', 'story', 'journal'],
+    tags: ['GTR³', 'story', 'journal'],
     status: 'Published'
   },
   {

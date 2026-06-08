@@ -23,14 +23,14 @@ export default function GTR3App() {
           <OsPreviewCard
             eyebrow={gtr3Content.title}
             title={thirdRiseStatement}
-            summary="This module carries the strongest emotional tone in the OS. It should feel like a premium story layer held inside the command shell, not a generic card stack."
+            summary="GTR³ is the symbolic layer of the third rebuild: not a flex, not a finished acquisition, but a story about fatherhood, discipline, recovery, and returning with more wisdom than noise."
             note={gtr3Content.visibilityNote}
             tone="feature"
           />
           <OsPreviewCard
             eyebrow="Story Image"
             title="Preview placeholder"
-            summary="The final GTR³ visual asset is still pending. This placeholder keeps the layout stable and public-safe until the real book/site image layer is ready."
+            summary="The final GTR³ visual asset is still pending. For now this preview plate holds space for a story image without pretending the third car or full manuscript already exists."
             mediaSrc={assetRegistry.gtr3Placeholder}
             fallbackMediaSrc={assetRegistry.gtr3Placeholder}
             mediaAlt="GTR³ placeholder artwork"
@@ -44,7 +44,7 @@ export default function GTR3App() {
       <OsInteriorSection
         eyebrow="Themes"
         title="Core emotional and structural threads"
-        intro="Each theme is treated as a story pillar rather than a dashboard stat."
+        intro="These themes are treated as story pillars rather than aspirational slogans or dashboard stats."
       >
         <div className="os-preview-grid">
           {gtr3Content.themes.map((theme) => (
@@ -62,7 +62,7 @@ export default function GTR3App() {
       <OsInteriorSection
         eyebrow="Chapter Preview"
         title="Story progression"
-        intro="Preview items are presented as a narrative track inside the OS shell rather than a plain bullet list."
+        intro="These preview beats track the founder story without exposing manuscript pages or private family material."
       >
         <div className="os-timeline-list">
           {gtr3Content.chapterPreviewItems.map((item, index) => (
@@ -78,7 +78,7 @@ export default function GTR3App() {
       </OsInteriorSection>
 
       <OsActionStrip
-        title="GTR³ actions"
+        title="GTR³ preview actions"
         note={gtr3Content.visibilityNote}
         actions={
           <>

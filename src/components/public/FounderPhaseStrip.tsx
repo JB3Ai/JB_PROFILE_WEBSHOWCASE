@@ -8,7 +8,7 @@ export default function FounderPhaseStrip() {
     <EditorialSection
       lead="Phase System"
       title="Four phases shape the founder blueprint."
-      intro="The public layer stays cinematic, but the deeper architecture follows a clear sequence: signal, structure, precision, and intelligence."
+      intro="The public layer stays cinematic, but the deeper story still follows a clear sequence: signal, structure, precision, and intelligence."
     >
       <div className="founder-phase-strip">
         {founderPhaseSystem.map((phase, index) => (

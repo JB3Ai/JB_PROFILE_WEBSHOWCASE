@@ -35,8 +35,9 @@ export default function PublicHeroCinematic({
             </h1>
             <p className="public-hero-quote">{founderProfile.coreQuote}</p>
             <p className="public-hero-body">
-              A premium founder platform shaped around resilient systems thinking, recovery under
-              pressure, and the discipline of building structures that hold when conditions do not.
+              Jonathan Blackburn is a founder and systems architect whose work evolved from
+              automation and control systems, through diagnostics and recovery, into AI systems
+              built to absorb complexity without losing the human being at the centre.
             </p>
             <div className="public-hero-actions">
               <PremiumButton variant="primary" size="lg" className="public-hero-cta public-hero-cta-primary" onClick={onFounderStory}>
@@ -76,7 +77,7 @@ export default function PublicHeroCinematic({
             <div className="public-stage-detail">
               <p className="public-stage-detail-title">JB³Ai portrait treatment</p>
               <p className="public-stage-detail-copy">
-                Recovery, systems, and proof held in a quieter editorial frame until approved founder photography is ready.
+                A founder story held in an editorial placeholder frame until approved portrait photography is ready.
               </p>
             </div>
           </motion.div>

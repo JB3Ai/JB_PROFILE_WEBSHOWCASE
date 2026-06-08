@@ -12,7 +12,7 @@ export default function FounderManualSection() {
       id="founder-manual"
       lead="Founder Manual"
       title="The operating principles behind the system."
-      intro="A lighter editorial layer that explains how pressure, rebuilding, systems, and human impact are held together inside Jonathan Blackburn OS."
+      intro="A short manual for how pressure, rebuilding, proof, and human impact are held together inside Jonathan Blackburn OS."
     >
       <div className="founder-manual-layout">
         <motion.div
@@ -25,9 +25,9 @@ export default function FounderManualSection() {
           <p className="founder-manual-kicker">Living Founder Blueprint</p>
           <h3 className="founder-manual-quote">{founderManualStatement}</h3>
           <p className="public-copy">
-            The system has a story. It is personal, technical, and shaped by recovery,
-            rebuilding, and the discipline of creating structures that keep working when
-            life does not stay simple.
+            The system has a story. It moves from signal and control, through recovery and
+            precision, into AI designed to serve real life. AI is not the product. Structure
+            is the product.
           </p>
         </motion.div>
 

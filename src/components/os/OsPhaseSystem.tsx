@@ -20,7 +20,7 @@ export default function OsPhaseSystem({ apps, onLaunch }: OsPhaseSystemProps) {
         </div>
         <p className="text-body-sm max-w-xl">
           The desktop shell stays simple at first glance, but the deeper review layer follows a
-          four-phase founder blueprint.
+          four-phase founder blueprint built across signal, recovery, precision, and intelligence.
         </p>
       </div>
 

@@ -4,22 +4,22 @@ export const founderManualPrinciples = [
   {
     number: '01',
     title: 'Structure Before Hope',
-    summary: 'Chaos is not solved by hope. Chaos is solved by systems.'
+    summary: 'Hope matters, but when pressure arrives, structure is what carries people through.'
   },
   {
     number: '02',
     title: 'People Before Platforms',
-    summary: 'Technology should protect, empower, and support human beings.'
+    summary: 'Technology should serve real life, not force people to reorganise themselves around broken systems.'
   },
   {
     number: '03',
     title: 'Proof Before Noise',
-    summary: 'Real systems are built on evidence, delivery, and accountability.'
+    summary: 'Credibility is earned through evidence, delivery, and accountability, not performance.'
   },
   {
     number: '04',
     title: 'Rebuild Before Retreat',
-    summary: 'Failure is not the end state. It is the next architecture brief.'
+    summary: 'When a chapter breaks, the work is to rebuild with more discipline, more clarity, and less illusion.'
   }
 ] as const
 
@@ -38,36 +38,36 @@ export const founderPhaseSystem: FounderPhase[] = [
     id: 'signal',
     label: 'Phase 01',
     title: 'Signal',
-    summary: 'Electronics, AV, Elite Technologies, early systems, sound, networks, control, and user experience.',
-    detail: 'The first phase is where signal integrity, control, and experience design became the foundation for everything that followed.',
-    highlights: ['Electronics', 'Automation', 'Control systems'],
+    summary: 'Electronics, AV, Elite Technologies, automation, control systems, and the first lessons in signal, reliability, and delivery.',
+    detail: 'This phase built the core instinct that if the signal is unstable, the whole system becomes noise. Clean control, disciplined integration, and usable output started here.',
+    highlights: ['Elite Technologies', 'Automation', 'Control systems'],
     appIds: ['founder-brief', 'timeline']
   },
   {
     id: 'structure',
     label: 'Phase 02',
     title: 'Structure',
-    summary: 'Recovery, Trust in Hope, human systems, discipline, accountability, and rebuilding.',
-    detail: 'This phase is about turning pressure into structure: care systems, recovery logic, and disciplined rebuilding when conditions do not cooperate.',
-    highlights: ['Recovery systems', 'Human coordination', 'Discipline'],
+    summary: 'Recovery, Trust in Hope, accountability, care systems, routine, and rebuilding the human operating system.',
+    detail: 'This phase turned pressure into structure: practical care, disciplined routines, and support systems that could carry real people instead of abstract ideas.',
+    highlights: ['Trust in Hope', 'Accountability', 'Rebuilding'],
     appIds: ['project-showcase', 'evidence-vault']
   },
   {
     id: 'precision',
     label: 'Phase 03',
     title: 'Precision',
-    summary: 'iMED, diagnostics, toxicology, DNA, compliance, laboratories, and high-stakes systems.',
-    detail: 'Precision is where laboratory thinking, evidence control, and compliance-grade systems sharpened the founder operating model.',
-    highlights: ['Diagnostics', 'Toxicology', 'Compliance'],
+    summary: 'iMED, diagnostics, forensic toxicology, COVID-response coordination, DNA expansion, and compliance-grade evidence systems.',
+    detail: 'Precision is where laboratory discipline sharpened the operating model: diagnostics had to stand up, evidence had to hold, and systems had to stay reliable under clinical and operational pressure.',
+    highlights: ['Diagnostics', 'Forensic toxicology', 'DNA systems'],
     appIds: ['investor-room', 'public-feed']
   },
   {
     id: 'intelligence',
     label: 'Phase 04',
     title: 'Intelligence',
-    summary: 'JB3Ai, OS³, AI for good, GTR³, automation, and founder operating systems.',
-    detail: 'The current phase links AI, automation, and story into a founder operating system built for resilient growth and human-first intelligence.',
-    highlights: ['JB3Ai', 'OS³', 'GTR³'],
+    summary: 'JB³Ai, OS³, AI for good, structured automation, and GTR³ as the symbolic layer of the third rise.',
+    detail: 'The current phase applies everything learned so far to AI and operating systems built for real life. AI is not the product. Structure is the product.',
+    highlights: ['JB³Ai', 'OS³', 'AI for good'],
     appIds: ['gtr3', 'jb3-daily', 'video-vault', 'connect']
   }
 ]
@@ -77,7 +77,7 @@ export const osManualLayers = [
   ['Story Layer', 'Active'],
   ['Evidence Layer', 'Withheld'],
   ['Investor Layer', 'Request Access'],
-  ['GTR³ Layer', 'Loading']
+  ['GTR³ Layer', 'Third rise loading']
 ] as const
 
 export const founderManualStatement =

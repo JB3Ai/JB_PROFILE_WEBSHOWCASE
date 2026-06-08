@@ -9,7 +9,7 @@ import { videos } from '../content/videos.content'
 import { PremiumButton, StatusBadge } from '../components/primitives'
 import { assetRegistry } from '../data/assetRegistry'
 
-const categories = ['All', 'Founder Briefing', 'Product Demo', 'Project Walkthrough', 'Product Profile', 'GTR3', 'Media']
+const categories = ['All', 'Founder Briefing', 'Product Demo', 'Project Walkthrough', 'Product Profile', 'GTR³', 'Media']
 
 export default function VideoVaultApp() {
   const [category, setCategory] = useState('All')
