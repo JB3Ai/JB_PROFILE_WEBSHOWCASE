@@ -25,9 +25,12 @@ import { timelineEvents } from '../content/timeline.content'
 import { videos } from '../content/videos.content'
 import { assetRegistry } from '../data/assetRegistry'
 import { buildRequestAccessRoute } from '../data/contactConfig'
+import { pageMetadata } from '../data/siteMetadata'
+import { usePageMetadata } from '../hooks/usePageMetadata'
 import { scrollToSection } from '../utils/scrollToSection'
 
 export default function PublicHome() {
+  usePageMetadata(pageMetadata.home)
   const nav = useNavigate()
   const [bootStatus, setBootStatus] = useState<'checking' | 'booting' | 'ready'>('checking')
   const [revealedFromBoot, setRevealedFromBoot] = useState(false)
