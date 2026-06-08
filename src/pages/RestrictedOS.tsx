@@ -13,9 +13,12 @@ import {
 import { founderPhaseSystem } from '../content/founderManual.content'
 import { appComponents } from '../data/appComponents'
 import { appRegistry, isAppId } from '../data/appRegistry'
+import { pageMetadata } from '../data/siteMetadata'
+import { usePageMetadata } from '../hooks/usePageMetadata'
 import type { AppId } from '../types/content.types'
 
 export default function RestrictedOS() {
+  usePageMetadata(pageMetadata.restrictedOs)
   const [openApp, setOpenApp] = useState<AppId | string | null>(null)
   const [launcherOpen, setLauncherOpen] = useState(false)
   const currentAppId = openApp && isAppId(openApp) ? openApp : null

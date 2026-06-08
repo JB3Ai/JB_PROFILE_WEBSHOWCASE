@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PremiumButton, StatusBadge } from '../components/primitives'
 import { buildRequestAccessRoute, openMailtoDraft } from '../data/contactConfig'
+import { pageMetadata } from '../data/siteMetadata'
+import { usePageMetadata } from '../hooks/usePageMetadata'
 
 export default function Login() {
+  usePageMetadata(pageMetadata.login)
   const [pin, setPin] = useState('')
   const [message, setMessage] = useState<string | null>(null)
   const nav = useNavigate()

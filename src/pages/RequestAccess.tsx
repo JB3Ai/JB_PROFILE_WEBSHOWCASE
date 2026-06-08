@@ -3,6 +3,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { PremiumButton, StatusBadge } from '../components/primitives'
 import { assetRegistry } from '../data/assetRegistry'
 import { buildMailtoUrl, CONTACT_EMAIL } from '../data/contactConfig'
+import { pageMetadata } from '../data/siteMetadata'
+import { usePageMetadata } from '../hooks/usePageMetadata'
 
 const accessAudience = [
   'Collaborators exploring a project, platform, or operating system review.',
@@ -19,6 +21,7 @@ const nextStepOptions = [
 ] as const
 
 export default function RequestAccess() {
+  usePageMetadata(pageMetadata.requestAccess)
   const nav = useNavigate()
   const [searchParams] = useSearchParams()
   const [submitted, setSubmitted] = useState(false)

@@ -1,0 +1,57 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#071018"/>
+  <rect x="30" y="30" width="1140" height="570" rx="28" fill="url(#panel)" stroke="url(#stroke)" stroke-width="2"/>
+  <circle cx="156" cy="142" r="82" fill="url(#orbA)" opacity="0.42"/>
+  <circle cx="1022" cy="140" r="92" fill="url(#orbB)" opacity="0.24"/>
+  <circle cx="998" cy="506" r="112" fill="url(#orbC)" opacity="0.18"/>
+  <path d="M132 122H248C336.366 122 408 193.634 408 282V436H291C202.634 436 131 364.366 131 276V122H132Z" fill="url(#markA)"/>
+  <path d="M270 186H328C386.542 186 434 233.458 434 292V407H376C317.458 407 270 359.542 270 301V186Z" fill="#08121B" fill-opacity="0.78"/>
+  <path d="M365 155L469 259" stroke="#E9C98F" stroke-width="20" stroke-linecap="round"/>
+  <rect x="516" y="124" width="532" height="56" rx="28" fill="rgba(88,214,218,0.12)" stroke="rgba(88,214,218,0.22)"/>
+  <text x="548" y="159" fill="#8EDFE0" font-family="Manrope, 'Segoe UI', sans-serif" font-size="24" font-weight="700" letter-spacing="5.5">
+    JONATHAN BLACKBURN OS
+  </text>
+  <text x="516" y="262" fill="#F6F7F1" font-family="Fraunces, Georgia, serif" font-size="68" font-weight="700">
+    Founder. Systems Architect.
+  </text>
+  <text x="516" y="332" fill="#F6F7F1" font-family="Fraunces, Georgia, serif" font-size="68" font-weight="700">
+    Builder under pressure.
+  </text>
+  <text x="516" y="418" fill="#D7DEE5" font-family="Manrope, 'Segoe UI', sans-serif" font-size="33" font-weight="500">
+    Not a portfolio. A living founder blueprint.
+  </text>
+  <text x="516" y="474" fill="#9AAEBD" font-family="Manrope, 'Segoe UI', sans-serif" font-size="28" font-weight="500">
+    Cinematic founder platform + private Executive Command OS
+  </text>
+  <text x="516" y="528" fill="#E9C98F" font-family="Manrope, 'Segoe UI', sans-serif" font-size="26" font-weight="700" letter-spacing="2.6">
+    SYSTEMS • RESILIENCE • AI FOR GOOD • GTR³
+  </text>
+  <defs>
+    <linearGradient id="panel" x1="120" y1="60" x2="1094" y2="586" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E1B28"/>
+      <stop offset="0.58" stop-color="#0A1520"/>
+      <stop offset="1" stop-color="#060F17"/>
+    </linearGradient>
+    <linearGradient id="stroke" x1="88" y1="48" x2="1112" y2="594" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#58D6DA"/>
+      <stop offset="0.54" stop-color="#74D3A4"/>
+      <stop offset="1" stop-color="#E9C98F"/>
+    </linearGradient>
+    <radialGradient id="orbA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(156 142) rotate(90) scale(82)">
+      <stop stop-color="#58D6DA"/>
+      <stop offset="1" stop-color="#58D6DA" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orbB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1022 140) rotate(90) scale(92)">
+      <stop stop-color="#74D3A4"/>
+      <stop offset="1" stop-color="#74D3A4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orbC" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(998 506) rotate(90) scale(112)">
+      <stop stop-color="#E9C98F"/>
+      <stop offset="1" stop-color="#E9C98F" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="markA" x1="132" y1="122" x2="408" y2="436" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#58D6DA"/>
+      <stop offset="1" stop-color="#74D3A4"/>
+    </linearGradient>
+  </defs>
+</svg>
