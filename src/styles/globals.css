@@ -983,7 +983,7 @@ textarea {
   }
 
   .public-stage-asset {
-    @apply absolute inset-x-6 bottom-[5.4rem] top-24 rounded-[1.8rem] border;
+    @apply absolute inset-x-6 bottom-[5.4rem] top-40 rounded-[1.8rem] border;
     border-color: rgba(173, 198, 220, 0.08);
     background:
       radial-gradient(circle at top center, rgba(233, 201, 143, 0.1), transparent 24%),
@@ -1046,6 +1046,11 @@ textarea {
 
   .founder-manual-stage {
     @apply grid gap-4 lg:pr-8;
+  }
+
+  .founder-manual-asset {
+    @apply mt-2 min-h-[20rem] rounded-[1.7rem];
+    box-shadow: 0 22px 54px rgba(1, 7, 16, 0.18);
   }
 
   .founder-manual-kicker,
@@ -2370,13 +2375,13 @@ textarea {
     }
 
     .public-hero-stage {
-      min-height: 20rem;
+      min-height: 25rem;
       padding: 0.85rem;
     }
 
     .public-stage-asset {
       inset-inline: 1rem;
-      top: 5.45rem;
+      top: 11rem;
       bottom: 4.7rem;
     }
 

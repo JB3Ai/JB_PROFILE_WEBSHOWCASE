@@ -64,12 +64,13 @@ export default function FounderBriefApp() {
             eyebrow="Founder Profile Plate"
             title={founderProfile.positioningLine}
             summary={founderProfile.shortBio}
-            mediaSrc={assetRegistry.founderPortraitPlaceholder}
+            mediaSrc={assetRegistry.founderProfileSide}
             fallbackMediaSrc={assetRegistry.founderPortraitPlaceholder}
-            mediaAlt="Jonathan Blackburn founder profile placeholder"
+            mediaAlt="Black-and-white side-profile portrait of Jonathan Blackburn."
             mediaClassName="h-56"
+            mediaImageClassName="object-cover object-[center_24%]"
             badges={<StatusBadge variant="success" size="sm">Public-safe profile</StatusBadge>}
-            note="Portrait, longer biography layers, and founder media are still running in placeholder mode for this build."
+            note="Approved public portrait treatment. Deeper biography and founder media remain intentionally withheld."
             tone="muted"
           />
         }

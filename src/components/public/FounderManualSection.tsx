@@ -5,6 +5,8 @@ import {
   founderManualPrinciples,
   founderManualStatement
 } from '../../content/founderManual.content'
+import { assetRegistry } from '../../data/assetRegistry'
+import AssetThumbnail from '../media/AssetThumbnail'
 
 export default function FounderManualSection() {
   return (
@@ -29,6 +31,14 @@ export default function FounderManualSection() {
             precision, into AI designed to serve real life. AI is not the product. Structure
             is the product.
           </p>
+          <AssetThumbnail
+            src={assetRegistry.founderEditorialBw}
+            fallbackSrc={assetRegistry.founderPortraitPlaceholder}
+            alt="Black-and-white editorial portrait of Jonathan Blackburn."
+            className="founder-manual-asset"
+            imageClassName="object-cover object-[center_24%]"
+            sizes="(max-width: 1024px) 100vw, 42vw"
+          />
         </motion.div>
 
         <div className="founder-manual-principles">

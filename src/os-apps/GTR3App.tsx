@@ -29,12 +29,13 @@ export default function GTR3App() {
           />
           <OsPreviewCard
             eyebrow="Story Image"
-            title="Preview placeholder"
-            summary="The final GTR³ visual asset is still pending. For now this preview plate holds space for a story image without pretending the third car or full manuscript already exists."
-            mediaSrc={assetRegistry.gtr3Placeholder}
+            title="GTR³ Loading"
+            summary="A conceptual teaser for the third-rise story. It signals the chapter still being written without implying that the third car has already been obtained."
+            mediaSrc={assetRegistry.gtr3LoadingHero}
             fallbackMediaSrc={assetRegistry.gtr3Placeholder}
-            mediaAlt="GTR³ placeholder artwork"
+            mediaAlt="Cinematic GTR³ Loading teaser image with a dark Nissan GT-R front view and progress bar."
             mediaClassName="h-60"
+            mediaImageClassName="object-contain bg-black/30 p-1"
             badges={<StatusBadge variant="neutral" size="sm">Story layer</StatusBadge>}
             tone="muted"
           />

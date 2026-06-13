@@ -9,6 +9,7 @@ interface OsPreviewCardProps {
   fallbackMediaSrc?: string
   mediaAlt?: string
   mediaClassName?: string
+  mediaImageClassName?: string
   badges?: React.ReactNode
   meta?: React.ReactNode
   note?: React.ReactNode
@@ -25,6 +26,7 @@ export default function OsPreviewCard({
   fallbackMediaSrc,
   mediaAlt,
   mediaClassName = 'h-52',
+  mediaImageClassName,
   badges,
   meta,
   note,
@@ -46,6 +48,7 @@ export default function OsPreviewCard({
           fallbackSrc={fallbackMediaSrc}
           alt={mediaAlt ?? `${title} preview`}
           className={`os-preview-media ${mediaClassName}`.trim()}
+          imageClassName={mediaImageClassName}
           overlay={badges ? <div className="os-preview-badges">{badges}</div> : undefined}
         />
       ) : null}

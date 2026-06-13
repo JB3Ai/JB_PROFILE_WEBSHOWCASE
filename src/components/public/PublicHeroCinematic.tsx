@@ -66,18 +66,18 @@ export default function PublicHeroCinematic({
               <p className="public-stage-line">{founderProfile.shortBio}</p>
             </div>
             <AssetThumbnail
-              src={assetRegistry.founderHeroPlaceholder}
+              src={assetRegistry.founderProfileSide}
               fallbackSrc={assetRegistry.founderPortraitPlaceholder}
-              alt="Jonathan Blackburn founder profile placeholder"
+              alt="Black-and-white side-profile portrait of Jonathan Blackburn."
               className="public-stage-asset"
-              imageClassName="object-cover object-center scale-[1.01]"
+              imageClassName="object-cover object-[center_28%] scale-[1.01]"
               loading="eager"
               sizes="(max-width: 1024px) 100vw, 44vw"
             />
             <div className="public-stage-detail">
-              <p className="public-stage-detail-title">JB³Ai portrait treatment</p>
+              <p className="public-stage-detail-title">Founder portrait</p>
               <p className="public-stage-detail-copy">
-                A founder story held in an editorial placeholder frame until approved portrait photography is ready.
+                An editorial profile treatment for the founder story behind Jonathan Blackburn OS.
               </p>
             </div>
           </motion.div>

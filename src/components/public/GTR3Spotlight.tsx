@@ -55,11 +55,11 @@ export default function GTR3Spotlight({
 
           <div className="gtr3-stage">
             <AssetThumbnail
-              src={assetRegistry.gtr3HeroPlaceholder}
+              src={assetRegistry.gtr3LoadingHero}
               fallbackSrc={assetRegistry.gtr3Placeholder}
-              alt="GTR³ story preview placeholder"
+              alt="Cinematic GTR³ Loading teaser image with a dark Nissan GT-R front view and progress bar."
               className="gtr3-stage-asset"
-              imageClassName="object-contain p-2"
+              imageClassName="object-contain bg-black/30 p-1"
               sizes="(max-width: 1024px) 100vw, 36vw"
             />
             <div className="gtr3-stage-note">
