@@ -1,4 +1,5 @@
 import type { VideoItem } from '../types/content.types'
+import { assetRegistry } from '../data/assetRegistry'
 
 export const videos: VideoItem[] = [
   {
@@ -10,7 +11,7 @@ export const videos: VideoItem[] = [
     summary:
       'A short introduction to Jonathan Blackburn OS, the founder-profile platform connecting story, evidence, projects, media, and systems thinking.',
     relatedProjectId: null,
-    thumbnail: '/assets/images/video-os-intro.jpg',
+    thumbnail: assetRegistry.videoPlaceholder,
     videoUrl: '/assets/videos/jonathan-blackburn-os-intro.mp4',
     access: 'public',
     tags: ['founder', 'os', 'intro']
