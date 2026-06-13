@@ -1,4 +1,5 @@
 import type { EvidenceItem } from '../types/content.types'
+import { assetRegistry } from '../data/assetRegistry'
 
 export const evidenceItems: EvidenceItem[] = [
   {
@@ -11,7 +12,7 @@ export const evidenceItems: EvidenceItem[] = [
       "A structured executive profile covering Jonathan Blackburn’s founder journey, business history, technical capability, and current JB³Ai direction.",
     documentType: "PDF / DOCX",
     fileUrl: "/assets/pdfs/executive-cv-portfolio.pdf",
-    thumbnail: "/assets/images/evidence-cv.jpg",
+    thumbnail: assetRegistry.evidencePlaceholder,
     tags: ["cv", "profile", "founder"],
     cautionNote:
       "Public version should remove private phone numbers, legacy contact details, and sensitive personal references."
