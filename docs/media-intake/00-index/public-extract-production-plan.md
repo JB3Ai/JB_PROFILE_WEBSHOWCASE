@@ -133,6 +133,9 @@ Related archive status:
 
 - GTR Archive Asset Review drafted in 19H, pending human review, no exports
   created, no raw images committed.
+- GTR Public WebP Export Pass drafted in 19I, four review-only WebP exports
+  created under `docs/media-intake/06-book-gtr3/exports`, no website wiring,
+  no public folder, children/private image not exported.
 
 ### Public Testimonial Extract Sheet
 
