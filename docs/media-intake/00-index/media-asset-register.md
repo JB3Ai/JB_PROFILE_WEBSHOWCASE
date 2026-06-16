@@ -125,6 +125,25 @@ Important:
 | `PDF-035` | `VIEWGRID Global Satellite Overlay The Sentinel Eye.pdf` | PDF | JB³Ai / ViewGrid | `INTERNAL` | Product source reference | Sensitive positioning; hold from public routes | `viewgrid-sentinel-eye-source-02.pdf` | Yes | Hold |
 | `PDF-036` | `VOICEGRID Call Centre Infrastructure.pdf` | PDF | JB³Ai / VoiceGrid | `INTERNAL` | Product source reference | Infrastructure detail; not public route material | `voicegrid-call-centre-source.pdf` | Yes | Hold |
 
+## 19C Public Extract Shortlist
+
+This shortlist identifies the first public-extract candidates for future editing,
+compression, redaction, and export. These assets are not approved for direct
+publication and must remain outside `public/` until a separate integration pass.
+
+| Shortlist ID | Asset ID | Original filename | Current classification | Proposed future output | Recommended use | Required redactions/edits | Safety notes | Priority | Publish readiness |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `19C-001` | `DOC-007` | `the founders story.docx` | `PUBLIC-EXTRACT` | Founder story extract / media-kit bio source | Public founder profile and future media kit | Remove private family, legal, case, and sensitive recovery detail; compress into short public-safe narrative | Strong story value, but source document must not be published raw | High | Needs extract |
+| `19C-002` | `DOC-005` | `03 - Lead with heart.md` | `PUBLIC-EXTRACT` | Founder operating principles extract | Founder Manual, speaking notes, public profile tone | Remove private names/context; keep principle-led language | Supports authored voice without needing sensitive detail | High | Needs edit |
+| `19C-003` | `PDF-004` | `Elite Technologies Company profile..pdf` | `PUBLIC-EXTRACT` | Historical Elite Technologies proof extract | Signal phase archive proof and founder systems origin | Remove old contact details, addresses, pricing, and current-operation cues | Historical framing only; avoid implying active Elite operations | High | Needs extract |
+| `19C-004` | `PDF-011` | `Trust In Hope Brochure 2.0.pdf` | `PUBLIC-EXTRACT` | Trust in Hope story extract | Structure phase public-safe recovery and service chapter | Remove personal names, contact details, and sensitive recovery specifics | Use recovery as structure/accountability lesson, not shock value | High | Needs extract |
+| `19C-005` | `PDF-013` | `company_profile2017.pdf` | `PUBLIC-EXTRACT` | Historical iMED profile extract | Precision phase historical diagnostics proof | Remove outdated contacts and any active-service wording | iMED must remain historical and not a current service claim | High | Needs extract |
+| `19C-006` | `PDF-017` | `Jewish_Achiever_finalist.pdf` | `PUBLIC-EXTRACT` | Award finalist proof card / media-kit proof point | Press and credibility proof pack | Use finalist wording only; verify rights and public source context | Avoid overstating award status | Medium | Needs edit |
+| `19C-007` | `PDF-010` | `JB³Ai Intelligence in Motion (Presentation) (1).pdf` | `PUBLIC-EXTRACT` | JB³Ai public overview extract | AI for good / founder platform overview | Remove investor, roadmap, private, or speculative claims | Keep public-facing, principle-led JB³Ai language only | High | Needs extract |
+| `19C-008` | `PDF-024` | `jb3ai-dash-the-operating-system.pdf` | `PUBLIC-EXTRACT` | OS³ public explainer extract | Executive Command OS / systems architecture proof | Remove sensitive roadmap or operational detail; simplify claims | Public overview only; no private OS workflow exposure | Medium | Needs extract |
+| `19C-009` | `VID-001` | `gtr-intro-vid.webm` | `PUBLIC-EXTRACT` | Short GTR³ teaser clip or still frame | GTR³ third-rise story and social teaser | Trim if needed; confirm no ownership implication; export compressed web format | GTR³ must remain aspirational and symbolic | Medium | Needs edit |
+| `19C-010` | `DOC-002` | `recomendations.docx` | `PUBLIC-EXTRACT` | Curated testimonial / recommendation extract | Public media kit credibility quotes | Remove private contacts, names unless approved, and sensitive context | Quote only approved excerpts; do not publish source doc | Medium | Needs extract |
+
 ## Intake Priority
 
 1. Founder introduction video, 30-60 seconds
