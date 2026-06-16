@@ -23,7 +23,7 @@ publication.
 
 | Source Asset ID | Source name | Future output name | Output type | Intended use | Public-safe summary | Required edits/redactions | Risk notes | Approval required before production | Recommended priority | Production status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `DOC-007` | `the founders story.docx` | Founder Bio Pack | Copy pack | Website bio, media kit, speaker intro | Convert source biography material into concise public founder biography options. | Produce 50-word, 150-word, and 300-word bios, plus speaker intro and media-kit founder profile. Remove private family, legal, case, and sensitive recovery detail. | Strong story source, but raw document must not be published or quoted without review. | Yes | High | Planned only |
+| `DOC-007` | `the founders story.docx` | Founder Bio Pack | Copy pack | Website bio, media kit, speaker intro | Convert source biography material into concise public founder biography options. | Produce 50-word, 150-word, and 300-word bios, plus speaker intro and media-kit founder profile. Remove private family, legal, case, and sensitive recovery detail. | Strong story source, but raw document must not be published or quoted without review. | Yes | High | Drafted in 19E, pending human review, not published |
 | `DOC-005` | `03 - Lead with heart.md` | Founder Principles Extract | Copy pack / quote set | Founder Manual support copy, quote cards, values language | Extract principle-led founder language that supports the authored voice of the site. | Produce leadership principles paragraph, quote card copy, and website values copy. Remove private names and context. | Keep grounded and specific; avoid motivational fluff or over-sharing. | Yes | High | Planned only |
 | `PDF-004` | `Elite Technologies Company profile..pdf` | Elite Technologies Historical Proof Extract | Historical proof extract | Signal phase proof, media-kit timeline entry | Summarize Elite Technologies as the early automation, AV, and systems foundation. | Produce Signal phase historical summary, automation/AV proof paragraph, and media-kit timeline entry. Remove old contacts, addresses, pricing, and current-operation cues. | Historical framing only; do not imply Elite Technologies is active unless separately verified and approved. | Yes | High | Planned only |
 | `PDF-011` | `Trust In Hope Brochure 2.0.pdf` | Trust In Hope Service-Era Extract | Historical service extract | Structure phase proof, recovery/service chapter | Extract public-safe material showing recovery, structure, service, and accountability. | Produce recovery/service historical summary, Structure phase proof paragraph, and public-safe mission extract. Remove personal names, contact details, and sensitive recovery specifics. | Recovery must be dignified and systems-led, not shock value. | Yes | High | Planned only |
@@ -153,7 +153,7 @@ Planned outputs:
 
 ## Approval Gate
 
-Every planned output remains `Planned only` until a future production milestone
-creates reviewed extracts. No output from this plan should be added to the
-website, `public/`, `assetRegistry.ts`, or public copy without a separate review
-and explicit approval.
+Every output remains unpublished until a future production milestone creates
+reviewed extracts and receives human approval. No output from this plan should
+be added to the website, `public/`, `assetRegistry.ts`, or public copy without a
+separate review and explicit approval.
