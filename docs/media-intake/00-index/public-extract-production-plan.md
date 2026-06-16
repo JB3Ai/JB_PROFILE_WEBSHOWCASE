@@ -129,6 +129,11 @@ Planned outputs:
 - 60-second teaser script
 - Video edit notes
 
+Related archive status:
+
+- GTR Archive Asset Review drafted in 19H, pending human review, no exports
+  created, no raw images committed.
+
 ### Public Testimonial Extract Sheet
 
 Source: `DOC-002`
