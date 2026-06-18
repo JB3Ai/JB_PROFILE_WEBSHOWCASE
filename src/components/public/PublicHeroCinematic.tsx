@@ -35,9 +35,7 @@ export default function PublicHeroCinematic({
             </h1>
             <p className="public-hero-quote">{founderProfile.coreQuote}</p>
             <p className="public-hero-body">
-              Jonathan Blackburn is a founder and systems architect whose work evolved from
-              automation and control systems, through diagnostics and recovery, into AI systems
-              built to absorb complexity without losing the human being at the centre.
+              {founderProfile.shortBio}
             </p>
             <div className="public-hero-actions">
               <PremiumButton variant="primary" size="lg" className="public-hero-cta public-hero-cta-primary" onClick={onFounderStory}>
