@@ -24,6 +24,11 @@ publication.
 - Document: `docs/media-intake/00-index/phase-19-consolidated-public-extract-index.md`
 - Status: Phase 19 Consolidated Public Extract Index drafted in 19O, pending human review, not published, not wired into website.
 
+## 19P Closeout Review Status
+
+- Document: `docs/media-intake/00-index/phase-19-closeout-review.md`
+- Status: Phase 19 Closeout Review drafted in 19P, pending human review, not published, not wired into website.
+
 ## Planned Public Extract Outputs
 
 | Source Asset ID | Source name | Future output name | Output type | Intended use | Public-safe summary | Required edits/redactions | Risk notes | Approval required before production | Recommended priority | Production status |
