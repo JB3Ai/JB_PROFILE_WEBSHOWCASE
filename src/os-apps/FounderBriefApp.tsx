@@ -25,7 +25,7 @@ const summaryCards = [
   },
   {
     title: 'Systems Philosophy',
-    text: 'Technology should serve real life. AI is not the product. Structure is the product.'
+    text: 'AI is useful only when it makes life and work clearer. Technology should serve real life. AI is not the product. Structure is the product.'
   }
 ]
 

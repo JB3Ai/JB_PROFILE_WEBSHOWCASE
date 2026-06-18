@@ -4,22 +4,32 @@ export const founderManualPrinciples = [
   {
     number: '01',
     title: 'Structure Before Hope',
-    summary: 'Hope matters, but when pressure arrives, structure is what carries people through.'
+    summary: 'Hope survives pressure when it is supported by structure.'
   },
   {
     number: '02',
     title: 'People Before Platforms',
-    summary: 'Technology should serve real life, not force people to reorganise themselves around broken systems.'
+    summary: 'Technology should serve people before it serves products.'
   },
   {
     number: '03',
     title: 'Proof Before Noise',
-    summary: 'Credibility is earned through evidence, delivery, and accountability, not performance.'
+    summary: 'Credibility comes from evidence, delivery, and calm execution.'
   },
   {
     number: '04',
     title: 'Rebuild Before Retreat',
-    summary: 'When a chapter breaks, the work is to rebuild with more discipline, more clarity, and less illusion.'
+    summary: 'A setback is not the end when the system can be rebuilt.'
+  },
+  {
+    number: '05',
+    title: 'Lead With Heart',
+    summary: 'Care is a leadership advantage, not a weakness.'
+  },
+  {
+    number: '06',
+    title: 'Intelligence Should Help',
+    summary: 'AI is useful only when it makes life and work clearer.'
   }
 ] as const
 
