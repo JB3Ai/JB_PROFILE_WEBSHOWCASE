@@ -12,6 +12,7 @@ import GTR3Spotlight from '../components/public/GTR3Spotlight'
 import ManifestoPanel from '../components/public/ManifestoPanel'
 import ProofBand, { type ProofBandItem } from '../components/public/ProofBand'
 import PublicHeroCinematic from '../components/public/PublicHeroCinematic'
+import ResourceLibrarySection from '../components/public/ResourceLibrarySection'
 import SelectedWorkRail from '../components/public/SelectedWorkRail'
 import SupportWorkStrip from '../components/public/SupportWorkStrip'
 import { dailyShowEpisodes } from '../content/dailyShow.content'
@@ -320,6 +321,8 @@ export default function PublicHome() {
           />
 
           <SupportWorkStrip />
+
+          <ResourceLibrarySection />
 
           <ConnectStrip
             links={socialLinks}
