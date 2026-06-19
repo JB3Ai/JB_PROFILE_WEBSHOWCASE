@@ -1,20 +1,45 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 
 const sponsorActions = [
-  { id: 'sponsor-isikolo', label: 'Sponsor Isikolo', mark: 'SI' },
-  { id: 'sponsor-learner', label: 'Sponsor a Learner', mark: 'SL' },
-  { id: 'fund-ai-credits', label: 'Fund AI Credits', mark: 'AI' },
-  { id: 'support-free-education', label: 'Support Free Education', mark: 'FE' },
-  { id: 'founding-sponsor', label: 'Become a Founding Sponsor', mark: 'FS' },
-  { id: 'gtr3-limited-edition', label: 'Reserve GTR³ Limited Edition', mark: 'G3' }
+  {
+    id: 'sponsor-isikolo',
+    label: 'Sponsor Isikolo',
+    mark: 'SI',
+    href: 'https://paybru.co.za/communities/jonoblackburn-become-a-founding-sponsor'
+  },
+  {
+    id: 'sponsor-learner',
+    label: 'Sponsor a Learner',
+    mark: 'SL',
+    href: 'https://paybru.co.za/communities/jonoblackburn-become-a-founding-sponsor'
+  },
+  {
+    id: 'fund-ai-credits',
+    label: 'Fund AI Credits',
+    mark: 'AI',
+    href: 'https://paypal.me/jonoblackburnza'
+  },
+  {
+    id: 'support-free-education',
+    label: 'Support Free Education',
+    mark: 'FE',
+    href: 'https://ko-fi.com/D0K721OP8E'
+  },
+  {
+    id: 'founding-sponsor',
+    label: 'Become a Founding Sponsor',
+    mark: 'FS',
+    href: 'https://paybru.co.za/communities/jonoblackburn-become-a-founding-sponsor'
+  },
+  {
+    id: 'gtr3-limited-edition',
+    label: 'Reserve GTR³ Limited Edition',
+    mark: 'G3',
+    href: 'https://paypal.me/jonoblackburnza'
+  }
 ]
 
 export default function SupportWorkStrip() {
-  const preventPlaceholderNavigation = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault()
-  }
-
   return (
     <section id="support-the-work" className="public-section section-anchor">
       <div className="container-shell-wide">
@@ -69,14 +94,15 @@ export default function SupportWorkStrip() {
               {sponsorActions.map((action) => (
                 <a
                   key={action.id}
-                  href="#"
-                  onClick={preventPlaceholderNavigation}
+                  href={action.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group rounded-[1.15rem] border px-4 py-4 transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/30"
                   style={{
                     borderColor: 'rgba(173, 198, 220, 0.12)',
                     background: 'rgba(255, 255, 255, 0.035)'
                   }}
-                  aria-label={`${action.label} placeholder support link`}
+                  aria-label={`${action.label} using a simple external support link`}
                 >
                   <span
                     className="mb-3 flex h-10 w-10 items-center justify-center rounded-full text-[11px] font-semibold tracking-[0.16em]"
@@ -90,7 +116,7 @@ export default function SupportWorkStrip() {
                   </span>
                   <span className="block text-sm font-semibold text-white">{action.label}</span>
                   <span className="mt-1 block text-[10px] uppercase tracking-[0.18em] text-slate-400">
-                    Coming soon
+                    External link
                   </span>
                 </a>
               ))}
