@@ -13,6 +13,7 @@ import ManifestoPanel from '../components/public/ManifestoPanel'
 import ProofBand, { type ProofBandItem } from '../components/public/ProofBand'
 import PublicHeroCinematic from '../components/public/PublicHeroCinematic'
 import SelectedWorkRail from '../components/public/SelectedWorkRail'
+import SupportWorkStrip from '../components/public/SupportWorkStrip'
 import { dailyShowEpisodes } from '../content/dailyShow.content'
 import { evidenceItems } from '../content/evidence.content'
 import { feedPosts } from '../content/feed.content'
@@ -317,6 +318,8 @@ export default function PublicHome() {
             }
             onSecondaryAction={handleTimelineClick}
           />
+
+          <SupportWorkStrip />
 
           <ConnectStrip
             links={socialLinks}
