@@ -1,12 +1,13 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const supportPlatforms = [
-  { id: 'paybru', label: 'PayBru', mark: 'PB' },
-  { id: 'buy-me-a-coffee', label: 'Buy Me a Coffee', mark: 'BMC' },
-  { id: 'paypal', label: 'PayPal', mark: 'PP' },
-  { id: 'ko-fi', label: 'Ko-fi', mark: 'KF' },
-  { id: 'stripe', label: 'Stripe', mark: 'ST' }
+const sponsorActions = [
+  { id: 'sponsor-isikolo', label: 'Sponsor Isikolo', mark: 'SI' },
+  { id: 'sponsor-learner', label: 'Sponsor a Learner', mark: 'SL' },
+  { id: 'fund-ai-credits', label: 'Fund AI Credits', mark: 'AI' },
+  { id: 'support-free-education', label: 'Support Free Education', mark: 'FE' },
+  { id: 'founding-sponsor', label: 'Become a Founding Sponsor', mark: 'FS' },
+  { id: 'gtr3-limited-edition', label: 'Reserve GTR³ Limited Edition', mark: 'G3' }
 ]
 
 export default function SupportWorkStrip() {
@@ -33,24 +34,41 @@ export default function SupportWorkStrip() {
           <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(320px,1fr)] lg:items-center">
             <div>
               <p className="public-kicker">Support</p>
-              <h2 className="public-title">Support the Work</h2>
-              <p className="public-intro">
-                Payment and membership links are being prepared. These options will support independent
-                software, writing, and open-source development work.
-              </p>
-              <p className="mt-4 text-xs leading-6" style={{ color: 'rgba(148, 168, 186, 0.82)' }}>
-                Support payments are not charitable donations and are not tax-deductible.
-              </p>
-              <p className="mt-3 text-xs leading-6" style={{ color: 'rgba(233, 201, 143, 0.86)' }}>
-                Supporter reward: qualifying supporters will be eligible for a limited-edition GTR³ book
-                copy when released.
+              <h2 className="public-title">Sponsor Isikolo</h2>
+              <div className="mt-4 space-y-3">
+                <p className="public-intro">Isikolo is built.</p>
+                <p className="public-copy">
+                  It is a free AI-powered education app created to support South African learners with
+                  schoolwork, study help, revision, explanations, and practical learning support.
+                </p>
+                <p className="public-copy">
+                  The mission is simple: keep Isikolo free for learners in South Africa.
+                </p>
+                <p className="public-copy">
+                  We are opening founding support to help fund the next phase: AI credits, hosting,
+                  platform infrastructure, curriculum content, local language support, learner access,
+                  and continued development.
+                </p>
+                <p className="public-copy">
+                  International supporters, sponsors, and partners can help make free access possible.
+                </p>
+                <p className="public-copy">
+                  Isikolo is built.
+                  <br />
+                  Now help keep it free.
+                </p>
+              </div>
+              <p className="mt-5 text-xs leading-6" style={{ color: 'rgba(148, 168, 186, 0.82)' }}>
+                Support payments are not charitable donations and are not tax-deductible. Support
+                contributes to independent education technology, learner access, AI credits, hosting,
+                content, and platform development.
               </p>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-              {supportPlatforms.map((platform) => (
+            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              {sponsorActions.map((action) => (
                 <a
-                  key={platform.id}
+                  key={action.id}
                   href="#"
                   onClick={preventPlaceholderNavigation}
                   className="group rounded-[1.15rem] border px-4 py-4 transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/30"
@@ -58,7 +76,7 @@ export default function SupportWorkStrip() {
                     borderColor: 'rgba(173, 198, 220, 0.12)',
                     background: 'rgba(255, 255, 255, 0.035)'
                   }}
-                  aria-label={`${platform.label} placeholder support link`}
+                  aria-label={`${action.label} placeholder support link`}
                 >
                   <span
                     className="mb-3 flex h-10 w-10 items-center justify-center rounded-full text-[11px] font-semibold tracking-[0.16em]"
@@ -68,9 +86,9 @@ export default function SupportWorkStrip() {
                     }}
                     aria-hidden="true"
                   >
-                    {platform.mark}
+                    {action.mark}
                   </span>
-                  <span className="block text-sm font-semibold text-white">{platform.label}</span>
+                  <span className="block text-sm font-semibold text-white">{action.label}</span>
                   <span className="mt-1 block text-[10px] uppercase tracking-[0.18em] text-slate-400">
                     Coming soon
                   </span>

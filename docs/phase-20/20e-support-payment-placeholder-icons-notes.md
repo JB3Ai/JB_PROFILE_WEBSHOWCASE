@@ -2,15 +2,23 @@
 
 ## Scope
 
-20E adds homepage-only placeholder support/payment platform buttons. This milestone does not add payment processing, checkout logic, backend routes, stored payment data, payment SDKs, embedded payment scripts, API keys, or live financial integration.
+20E adds a homepage-only Isikolo founding support section with placeholder sponsor/payment buttons. This milestone does not add payment processing, checkout logic, backend routes, stored payment data, payment SDKs, embedded payment scripts, API keys, or live financial integration.
 
-## Platforms Added
+## Section Repositioning
 
-- PayBru
-- Buy Me a Coffee
-- PayPal
-- Ko-fi
-- Stripe
+- The section was repositioned from generic personal support to Isikolo founding support.
+- Section title: `Sponsor Isikolo`.
+- Support is framed around keeping Isikolo free for learners in South Africa.
+- Support copy focuses on AI credits, hosting, platform infrastructure, curriculum content, local language support, learner access, and continued development.
+
+## Placeholder Buttons Added
+
+- Sponsor Isikolo
+- Sponsor a Learner
+- Fund AI Credits
+- Support Free Education
+- Become a Founding Sponsor
+- Reserve GTR³ Limited Edition
 
 ## Files Changed
 
@@ -24,8 +32,7 @@
 
 ## Supporter Reward Placeholder
 
-- A placeholder supporter reward line was added.
-- Wording: qualifying supporters will be eligible for a limited-edition GTR³ book copy when released.
+- A placeholder supporter reward pathway was added through the `Reserve GTR³ Limited Edition` button.
 - This is placeholder wording only.
 - No fulfillment system added.
 - No tier rules added.
@@ -46,8 +53,9 @@
 - No embedded payment scripts.
 - No stored payment data.
 - No charity, NPO, or tax-deductible wording.
-- Support is framed as independent software, writing, and open-source development support.
+- Support is framed as independent education technology, learner access, AI credits, hosting, content, and platform development.
 - Support payments are explicitly described as not charitable donations and not tax-deductible.
+- All links remain `#` placeholders.
 - Supporter reward language is placeholder-only and does not add fulfillment logic.
 - No `/os` changes.
 - No timeline changes.
