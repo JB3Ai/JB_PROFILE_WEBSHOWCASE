@@ -21,7 +21,7 @@ import { founderProfile } from '../content/founder.content'
 import { gtr3Content } from '../content/gtr3.content'
 import { investorRecords } from '../content/investor.content'
 import { projects } from '../content/projects.content'
-import { socialLinks } from '../content/social.content'
+import { homepageContactLinks } from '../content/social.content'
 import { timelineEvents } from '../content/timeline.content'
 import { videos } from '../content/videos.content'
 import { assetRegistry } from '../data/assetRegistry'
@@ -322,7 +322,7 @@ export default function PublicHome() {
           <SupportWorkStrip />
 
           <ConnectStrip
-            links={socialLinks}
+            links={homepageContactLinks}
             onRequestAccess={() =>
               nav(
                 buildRequestAccessRoute({
