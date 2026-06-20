@@ -7,6 +7,7 @@ export const assetRegistry = {
   imedLabPrecision: '/assets/images/imed-lab-precision.webp',
   gtr3LoadingHero: '/assets/images/gtr3-loading-hero.webp',
   eliteTechnologiesArchive: '/assets/images/elite-technologies-archive.webp',
+  isikoloAiCoverEducationVisual: '/assets/images/isikolo-ai-cover-education-visual.webp',
   founderHeroPlaceholder: '/assets/placeholders/founder-hero-placeholder.svg',
   founderPortraitPlaceholder: '/assets/placeholders/founder-placeholder.svg',
   gtr3HeroPlaceholder: '/assets/placeholders/gtr3-hero-placeholder.svg',
