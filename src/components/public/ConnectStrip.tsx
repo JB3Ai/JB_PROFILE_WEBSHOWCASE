@@ -33,7 +33,7 @@ export default function ConnectStrip({
   onRequestAccess,
   onEnterPrivateOS
 }: ConnectStripProps) {
-  const visibleLinks = links.slice(0, 3)
+  const visibleLinks = links.slice(0, 9)
 
   return (
     <section id="connect" className="public-section section-anchor public-section-last">
@@ -65,12 +65,23 @@ export default function ConnectStrip({
             </div>
 
             <div className="connect-strip-list">
-              {visibleLinks.map((link) => (
-                <div key={link.id} className="connect-strip-item">
-                  <span>{link.label}</span>
-                  <span>{link.platform}</span>
-                </div>
-              ))}
+              {visibleLinks.map((link) => {
+                const opensNewTab = link.url.startsWith('http')
+
+                return (
+                  <a
+                    key={link.id}
+                    className="connect-strip-item"
+                    href={link.url}
+                    target={opensNewTab ? '_blank' : undefined}
+                    rel={opensNewTab ? 'noopener noreferrer' : undefined}
+                    aria-label={`Open ${link.label} via ${link.platform}`}
+                  >
+                    <span>{link.label}</span>
+                    <span>{link.platform}</span>
+                  </a>
+                )
+              })}
             </div>
 
             <div className="connect-strip-actions">
