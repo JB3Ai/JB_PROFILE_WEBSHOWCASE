@@ -44,12 +44,12 @@ export default function SupportWorkStrip() {
     <section id="support-the-work" className="public-section section-anchor">
       <div className="container-shell-wide">
         <motion.div
-          className="rounded-[1.65rem] border p-5 md:p-7"
+          className="rounded-[1rem] border p-5 md:p-7"
           style={{
             borderColor: 'rgba(173, 198, 220, 0.12)',
             background:
-              'linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.012)), linear-gradient(180deg, rgba(9,17,26,0.94), rgba(5,11,17,0.98))',
-            boxShadow: '0 18px 42px rgba(1, 6, 12, 0.18)'
+              'linear-gradient(135deg, rgba(116,211,164,0.045), rgba(255,255,255,0.012) 38%, rgba(233,201,143,0.028)), linear-gradient(180deg, rgba(9,17,26,0.94), rgba(5,11,17,0.98))',
+            boxShadow: '0 14px 32px rgba(1, 6, 12, 0.16)'
           }}
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -97,7 +97,7 @@ export default function SupportWorkStrip() {
                   href={action.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group rounded-[1.15rem] border px-4 py-4 transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/30"
+                  className="group rounded-[0.85rem] border px-4 py-4 transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/25"
                   style={{
                     borderColor: 'rgba(173, 198, 220, 0.12)',
                     background: 'rgba(255, 255, 255, 0.035)'
@@ -105,7 +105,7 @@ export default function SupportWorkStrip() {
                   aria-label={`${action.label} using a simple external support link`}
                 >
                   <span
-                    className="mb-3 flex h-10 w-10 items-center justify-center rounded-full text-[11px] font-semibold tracking-[0.16em]"
+                    className="mb-3 flex h-10 w-10 items-center justify-center rounded-[0.7rem] text-[11px] font-semibold tracking-[0.16em]"
                     style={{
                       color: '#071018',
                       background: 'linear-gradient(135deg, rgba(233,201,143,0.94), rgba(116,211,164,0.86))'
