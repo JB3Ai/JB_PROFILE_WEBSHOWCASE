@@ -1270,6 +1270,86 @@ textarea {
     border-color: rgba(255, 255, 255, 0.08);
   }
 
+  .app-portfolio-card {
+    @apply relative grid gap-6 overflow-hidden rounded-[1rem] border p-5 md:p-6;
+    isolation: isolate;
+    border-color: rgba(173, 198, 220, 0.12);
+    background:
+      linear-gradient(135deg, rgba(233, 201, 143, 0.055), transparent 24%),
+      linear-gradient(180deg, rgba(13, 22, 32, 0.9), rgba(8, 14, 22, 0.94));
+    box-shadow: 0 18px 42px rgba(1, 7, 16, 0.18);
+  }
+
+  .app-portfolio-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: linear-gradient(90deg, rgba(88, 214, 218, 0.05), transparent 38%);
+    pointer-events: none;
+  }
+
+  .app-portfolio-card-with-image {
+    @apply lg:grid-cols-[minmax(0,1fr)_minmax(220px,0.42fr)] lg:items-center;
+  }
+
+  .app-portfolio-card-inactive {
+    filter: saturate(0.74);
+  }
+
+  .app-portfolio-card-copy {
+    @apply max-w-2xl;
+  }
+
+  .app-portfolio-card-meta {
+    @apply flex flex-wrap items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.24em];
+    color: rgba(148, 168, 186, 0.78);
+  }
+
+  .app-portfolio-card-meta span {
+    @apply rounded-[0.45rem] border px-2.5 py-1;
+    border-color: rgba(173, 198, 220, 0.12);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .app-portfolio-card-meta span:last-child {
+    border-color: rgba(233, 201, 143, 0.18);
+    color: rgba(233, 201, 143, 0.84);
+  }
+
+  .app-portfolio-card-title {
+    font-family: 'Fraunces', Georgia, serif;
+    @apply mt-4 text-3xl text-white md:text-4xl;
+    line-height: 1.02;
+  }
+
+  .app-portfolio-card-summary {
+    @apply mt-4 text-base leading-8 md:text-lg;
+    color: rgba(221, 232, 242, 0.88);
+  }
+
+  .app-portfolio-card-detail {
+    @apply mt-4 max-w-2xl text-sm leading-7;
+    color: rgba(180, 194, 207, 0.82);
+  }
+
+  .app-portfolio-card-risk {
+    @apply mt-5 rounded-[0.7rem] border px-3.5 py-3 text-xs leading-6;
+    border-color: rgba(233, 201, 143, 0.18);
+    background: rgba(233, 201, 143, 0.055);
+    color: rgba(233, 201, 143, 0.82);
+  }
+
+  .app-portfolio-card-actions {
+    @apply mt-6 flex flex-wrap gap-3;
+  }
+
+  .app-portfolio-card-asset {
+    @apply min-h-[15rem] rounded-[0.85rem];
+    box-shadow: 0 16px 32px rgba(1, 7, 16, 0.16);
+  }
+
   .investor-room-preview {
     @apply grid gap-8 border-y py-8 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)];
     border-color: rgba(255, 255, 255, 0.08);
@@ -2542,6 +2622,38 @@ textarea {
     .selected-work-row,
     .proof-band-row {
       gap: 0.9rem;
+    }
+
+    .app-portfolio-card {
+      gap: 1.1rem;
+      padding: 1rem;
+      border-radius: 0.85rem;
+    }
+
+    .app-portfolio-card-meta {
+      gap: 0.45rem;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+    }
+
+    .app-portfolio-card-title {
+      margin-top: 0.85rem;
+      font-size: 2rem;
+    }
+
+    .app-portfolio-card-summary {
+      margin-top: 0.9rem;
+      font-size: 0.98rem;
+      line-height: 1.75rem;
+    }
+
+    .app-portfolio-card-actions {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .app-portfolio-card-asset {
+      min-height: 13rem;
     }
 
     .asset-overlay {
