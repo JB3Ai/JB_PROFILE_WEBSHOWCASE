@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import BootSequence, { BOOT_SESSION_KEY } from '../components/boot/BootSequence'
 import PublicNav from '../components/navigation/PublicNav'
 import { PremiumButton } from '../components/primitives'
+import AppPortfolioCard from '../components/public/AppPortfolioCard'
 import ConnectStrip from '../components/public/ConnectStrip'
 import EditorialSection from '../components/public/EditorialSection'
 import FounderManualSection from '../components/public/FounderManualSection'
@@ -89,6 +90,10 @@ export default function PublicHome() {
 
   const handleTimelineClick = useCallback(() => {
     scrollToSection('timeline')
+  }, [])
+
+  const handleSupportEducationClick = useCallback(() => {
+    scrollToSection('support-the-work')
   }, [])
 
   const mediaSignalItems: ProofBandItem[] = [
@@ -318,6 +323,27 @@ export default function PublicHome() {
             }
             onSecondaryAction={handleTimelineClick}
           />
+
+          <EditorialSection
+            id="isikoloai"
+            lead="Public App"
+            title="IsikoloAI brings free AI-powered study support into focus."
+            intro="The first public app card is intentionally contained: one education-support product, one approved visual, and one clear path to support free learning access."
+          >
+            <AppPortfolioCard
+              name="IsikoloAI"
+              category="Education App"
+              status="Free Learning Support"
+              shortDescription="Free AI-powered study support for South African learners."
+              detail="IsikoloAI is a free education-support app designed to help South African learners access clearer explanations, revision help, study guidance, and practical learning support. The goal is to make AI-assisted education easier to reach, easier to understand, and useful for everyday schoolwork."
+              imageSrc={assetRegistry.isikoloAiCoverEducationVisual}
+              imageAlt="IsikoloAI cover artwork representing free AI education support for South African learners."
+              primaryCtaLabel="Explore IsikoloAI"
+              secondaryCtaLabel="Support Free Education"
+              onSecondaryAction={handleSupportEducationClick}
+              riskNote="Support helps fund AI credits, hosting, content, learner access, and continued platform development. Support payments are not charitable donations and are not tax-deductible."
+            />
+          </EditorialSection>
 
           <SupportWorkStrip />
 
