@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import BootSequence, { BOOT_SESSION_KEY } from '../components/boot/BootSequence'
 import PublicNav from '../components/navigation/PublicNav'
 import { PremiumButton } from '../components/primitives'
+import AppPortfolioCard, { type AppPortfolioCardProps } from '../components/public/AppPortfolioCard'
 import ConnectStrip from '../components/public/ConnectStrip'
 import EditorialSection from '../components/public/EditorialSection'
 import FounderManualSection from '../components/public/FounderManualSection'
@@ -12,7 +13,6 @@ import GTR3Spotlight from '../components/public/GTR3Spotlight'
 import ManifestoPanel from '../components/public/ManifestoPanel'
 import ProofBand, { type ProofBandItem } from '../components/public/ProofBand'
 import PublicHeroCinematic from '../components/public/PublicHeroCinematic'
-import SelectedWorkRail from '../components/public/SelectedWorkRail'
 import SupportWorkStrip from '../components/public/SupportWorkStrip'
 import { dailyShowEpisodes } from '../content/dailyShow.content'
 import { evidenceItems } from '../content/evidence.content'
@@ -20,7 +20,6 @@ import { feedPosts } from '../content/feed.content'
 import { founderProfile } from '../content/founder.content'
 import { gtr3Content } from '../content/gtr3.content'
 import { investorRecords } from '../content/investor.content'
-import { projects } from '../content/projects.content'
 import { homepageContactLinks } from '../content/social.content'
 import { timelineEvents } from '../content/timeline.content'
 import { videos } from '../content/videos.content'
@@ -29,6 +28,48 @@ import { buildRequestAccessRoute } from '../data/contactConfig'
 import { pageMetadata } from '../data/siteMetadata'
 import { usePageMetadata } from '../hooks/usePageMetadata'
 import { scrollToSection } from '../utils/scrollToSection'
+
+const batch01SelectedCards: AppPortfolioCardProps[] = [
+  {
+    name: 'OS³ Dash',
+    category: 'Founder OS³ / Operating Dashboard',
+    status: 'Command Dashboard',
+    shortDescription: 'Structure, visibility, and daily command for complex work.',
+    detail:
+      'OS³ Dash is a founder operating dashboard concept for organising priorities, approvals, workflows, and execution signals into one clearer command layer.',
+    imageSrc: assetRegistry.os3DashCommandDashboard,
+    imageAlt: 'OS³ Dash command dashboard concept showing structured workflow visibility.',
+    primaryCtaLabel: 'Preview OS³ Dash',
+    secondaryCtaLabel: 'Request Access',
+    riskNote: 'Private OS³ access, backend workflows, and operational dashboards remain gated.'
+  },
+  {
+    name: 'JB³Ai Super Agent OS',
+    category: 'AI Workforce Architecture',
+    status: 'Command Architecture',
+    shortDescription: 'A managed AI workforce architecture for structured execution.',
+    detail:
+      'JB³Ai Super Agent OS coordinates specialist AI-assisted roles across operations, research, development, creative work, growth, finance, legal support, voice, and founder workflows while keeping human approval and oversight central.',
+    imageSrc: assetRegistry.jb3aiSuperAgentOsArchitecture,
+    imageAlt: 'JB³Ai Super Agent OS architecture concept showing coordinated specialist workflows.',
+    primaryCtaLabel: 'Preview Super Agent OS',
+    secondaryCtaLabel: 'View Architecture',
+    riskNote: 'Human oversight remains central; no autonomous replacement or private workflow claims are approved.'
+  },
+  {
+    name: 'ClipboardAi',
+    category: 'Private Workspace',
+    status: 'Controlled Collaboration',
+    shortDescription: 'A structured workspace for communication, documents, and coordinated action.',
+    detail:
+      'ClipboardAi is a private workspace concept for organising communication, document sharing, team coordination, and follow-through in one controlled collaboration environment.',
+    imageSrc: assetRegistry.clipboardAiPrivateWorkspace,
+    imageAlt: 'ClipboardAi private workspace concept for structured communication and document coordination.',
+    primaryCtaLabel: 'Preview ClipboardAi',
+    secondaryCtaLabel: 'Request Workspace Review',
+    riskNote: 'Privacy and controlled collaboration language remains general until technical security claims are verified.'
+  }
+]
 
 export default function PublicHome() {
   usePageMetadata(pageMetadata.home)
@@ -75,7 +116,7 @@ export default function PublicHome() {
   }, [nav])
 
   const handleProjectsClick = useCallback(() => {
-    scrollToSection('projects', {
+    scrollToSection('product-architecture', {
       fallback: () =>
         nav(
           buildRequestAccessRoute({
@@ -118,11 +159,11 @@ export default function PublicHome() {
       fallbackImage: assetRegistry.videoPlaceholder
     },
     {
-      id: videos[2].id,
-      title: videos[2].title,
-      summary: videos[2].summary,
-      meta: `${videos[2].category} • ${videos[2].status}`,
-      image: videos[2].thumbnail,
+      id: videos[1].id,
+      title: videos[1].title,
+      summary: videos[1].summary,
+      meta: `${videos[1].category} • ${videos[1].status}`,
+      image: videos[1].thumbnail,
       fallbackImage: assetRegistry.videoPlaceholder
     }
   ]
@@ -212,19 +253,18 @@ export default function PublicHome() {
 
           <FounderPhaseStrip />
 
-          <SelectedWorkRail
-            projects={projects}
-            onRequestAccess={() =>
-              nav(
-                buildRequestAccessRoute({
-                  track: 'projects',
-                  reason: 'Project access request',
-                  next: 'Request project walkthrough'
-                })
-              )
-            }
-            onEnterPrivateOS={() => nav('/login')}
-          />
+          <EditorialSection
+            id="product-architecture"
+            lead="Product Architecture"
+            title="Selected OS³ modules, rendered with controlled public copy."
+            intro="This first Batch 01 rendering pass adds only the three visuals approved for optimisation and registry: OS³ Dash, JB³Ai Super Agent OS, and ClipboardAi. Held products remain out of view until separate reviews clear them."
+          >
+            <div className="grid gap-5">
+              {batch01SelectedCards.map((card) => (
+                <AppPortfolioCard key={card.name} {...card} />
+              ))}
+            </div>
+          </EditorialSection>
 
           <ProofBand
             id="video-vault"
