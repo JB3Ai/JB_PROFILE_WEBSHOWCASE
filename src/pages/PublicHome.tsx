@@ -13,7 +13,6 @@ import GTR3Spotlight from '../components/public/GTR3Spotlight'
 import ManifestoPanel from '../components/public/ManifestoPanel'
 import ProofBand, { type ProofBandItem } from '../components/public/ProofBand'
 import PublicHeroCinematic from '../components/public/PublicHeroCinematic'
-import SelectedWorkRail from '../components/public/SelectedWorkRail'
 import SupportWorkStrip from '../components/public/SupportWorkStrip'
 import { dailyShowEpisodes } from '../content/dailyShow.content'
 import { evidenceItems } from '../content/evidence.content'
@@ -21,7 +20,6 @@ import { feedPosts } from '../content/feed.content'
 import { founderProfile } from '../content/founder.content'
 import { gtr3Content } from '../content/gtr3.content'
 import { investorRecords } from '../content/investor.content'
-import { projects } from '../content/projects.content'
 import { homepageContactLinks } from '../content/social.content'
 import { timelineEvents } from '../content/timeline.content'
 import { videos } from '../content/videos.content'
@@ -118,7 +116,7 @@ export default function PublicHome() {
   }, [nav])
 
   const handleProjectsClick = useCallback(() => {
-    scrollToSection('projects', {
+    scrollToSection('product-architecture', {
       fallback: () =>
         nav(
           buildRequestAccessRoute({
@@ -161,11 +159,11 @@ export default function PublicHome() {
       fallbackImage: assetRegistry.videoPlaceholder
     },
     {
-      id: videos[2].id,
-      title: videos[2].title,
-      summary: videos[2].summary,
-      meta: `${videos[2].category} • ${videos[2].status}`,
-      image: videos[2].thumbnail,
+      id: videos[1].id,
+      title: videos[1].title,
+      summary: videos[1].summary,
+      meta: `${videos[1].category} • ${videos[1].status}`,
+      image: videos[1].thumbnail,
       fallbackImage: assetRegistry.videoPlaceholder
     }
   ]
@@ -254,20 +252,6 @@ export default function PublicHome() {
           </EditorialSection>
 
           <FounderPhaseStrip />
-
-          <SelectedWorkRail
-            projects={projects}
-            onRequestAccess={() =>
-              nav(
-                buildRequestAccessRoute({
-                  track: 'projects',
-                  reason: 'Project access request',
-                  next: 'Request project walkthrough'
-                })
-              )
-            }
-            onEnterPrivateOS={() => nav('/login')}
-          />
 
           <EditorialSection
             id="product-architecture"
