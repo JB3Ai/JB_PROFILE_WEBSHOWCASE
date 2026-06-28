@@ -222,6 +222,21 @@ export default function PublicHome() {
           <FounderManualSection />
 
           <EditorialSection
+            id="product-architecture"
+            lead="Product Architecture"
+            title="Selected OS³ modules, rendered with controlled public copy."
+            intro="This first Batch 01 rendering pass adds only the three visuals approved for optimisation and registry: OS³ Dash, JB³Ai Super Agent OS, and ClipboardAi. Held products remain out of view until separate reviews clear them."
+          >
+            <div className="grid gap-5">
+              {batch01SelectedCards.map((card) => (
+                <AppPortfolioCard key={card.name} {...card} />
+              ))}
+            </div>
+          </EditorialSection>
+
+          <SupportWorkStrip />
+
+          <EditorialSection
             id="timeline"
             lead="Founder Journey"
             title="A founder path shaped by engineering, recovery, care, and rebuilding."
@@ -253,18 +268,19 @@ export default function PublicHome() {
 
           <FounderPhaseStrip />
 
-          <EditorialSection
-            id="product-architecture"
-            lead="Product Architecture"
-            title="Selected OS³ modules, rendered with controlled public copy."
-            intro="This first Batch 01 rendering pass adds only the three visuals approved for optimisation and registry: OS³ Dash, JB³Ai Super Agent OS, and ClipboardAi. Held products remain out of view until separate reviews clear them."
-          >
-            <div className="grid gap-5">
-              {batch01SelectedCards.map((card) => (
-                <AppPortfolioCard key={card.name} {...card} />
-              ))}
-            </div>
-          </EditorialSection>
+          <GTR3Spotlight
+            content={gtr3Content}
+            onPrimaryAction={() =>
+              nav(
+                buildRequestAccessRoute({
+                  track: 'gtr3',
+                  reason: 'GTR³ preview request',
+                  next: 'Request a conversation'
+                })
+              )
+            }
+            onSecondaryAction={handleTimelineClick}
+          />
 
           <ProofBand
             id="video-vault"
@@ -344,22 +360,6 @@ export default function PublicHome() {
               </div>
             </motion.div>
           </EditorialSection>
-
-          <GTR3Spotlight
-            content={gtr3Content}
-            onPrimaryAction={() =>
-              nav(
-                buildRequestAccessRoute({
-                  track: 'gtr3',
-                  reason: 'GTR³ preview request',
-                  next: 'Request a conversation'
-                })
-              )
-            }
-            onSecondaryAction={handleTimelineClick}
-          />
-
-          <SupportWorkStrip />
 
           <ConnectStrip
             links={homepageContactLinks}
