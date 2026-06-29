@@ -224,8 +224,8 @@ export default function PublicHome() {
           <EditorialSection
             id="product-architecture"
             lead="Product Architecture"
-            title="Selected OS³ modules, rendered with controlled public copy."
-            intro="This first Batch 01 rendering pass adds only the three visuals approved for optimisation and registry: OS³ Dash, JB³Ai Super Agent OS, and ClipboardAi. Held products remain out of view until separate reviews clear them."
+            title="A controlled public preview of the OS³ product architecture."
+            intro="The platform layer now appears before the deeper founder-history and proof sections, giving visitors a clearer view of the systems being built: OS³ Dash, JB³Ai Super Agent OS, and ClipboardAi. Held products remain out of view until separate reviews clear them."
           >
             <div className="grid gap-5">
               {batch01SelectedCards.map((card) => (
@@ -239,8 +239,8 @@ export default function PublicHome() {
           <EditorialSection
             id="timeline"
             lead="Founder Journey"
-            title="A founder path shaped by engineering, recovery, care, and rebuilding."
-            intro="The public journey is shown as a sequence of proof chapters rather than a compressed biography, keeping the emphasis on pressure, progression, and what each phase built."
+            title="The founder path behind the systems."
+            intro="After the platform and Isikolo mission are clear, the public journey returns to the chapters that shaped the work: engineering, recovery, care, diagnostics, rebuilding, and the discipline of turning pressure into structure."
           >
             <div className="journey-track">
               {timelineEvents.map((event, index) => (
@@ -285,8 +285,8 @@ export default function PublicHome() {
           <ProofBand
             id="video-vault"
             lead="Media and Signals"
-            title="A refined public stream of founder briefings, product previews, and signal notes."
-            intro="Video Vault, JB³ Daily Show, and the public feed are combined into a tighter preview band so the homepage feels curated rather than overfilled."
+            title="A curated signal layer for briefings, previews, and public notes."
+            intro="After the product, mission, and founder arc are established, this band keeps media lightweight: selected briefings, JB³ Daily Show entries, and public feed signals without overfilling the homepage."
             items={mediaSignalItems}
             ctaLabel="Preview Private OS"
             onCta={() => nav('/login')}
@@ -295,8 +295,8 @@ export default function PublicHome() {
           <ProofBand
             id="evidence-vault"
             lead="Evidence and Trust"
-            title="Proof is shown with restraint, context, and public-safe boundaries."
-            intro="The trust layer stays minimal here: enough signal to establish credibility, without exposing private packs, investor files, or sensitive operating material."
+            title="Proof stays contextual, permission-aware, and restrained."
+            intro="The trust layer remains deliberately minimal: enough public signal to establish credibility, without exposing private packs, investor files, or sensitive operating material."
             items={trustPreviewItems}
             ctaLabel="Request Evidence Access"
             onCta={() =>
@@ -313,7 +313,7 @@ export default function PublicHome() {
           <EditorialSection
             id="investor-room"
             lead="Investor Access"
-            title="A premium review room for verified access, not theatre."
+            title="Verified review access for serious partners."
             intro={founderProfile.investorSummary}
             actions={
               <PremiumButton
@@ -341,7 +341,7 @@ export default function PublicHome() {
             >
               <div className="investor-room-copy">
                 <p className="public-copy">
-                  Public previews acknowledge the existence of due diligence, strategy, and commercial material without exposing private content or creating false secrecy theatre.
+                  Public previews acknowledge due diligence, strategy, and commercial material without exposing private content or overstating what belongs behind verified review.
                 </p>
               </div>
               <div className="investor-room-list">
