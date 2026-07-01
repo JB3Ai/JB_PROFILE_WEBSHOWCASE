@@ -67,6 +67,13 @@ const batch01SelectedCards: AppPortfolioCardProps[] = [
     imageAlt: 'ClipboardAi private workspace concept for structured communication and document coordination.',
     primaryCtaLabel: 'Preview ClipboardAi',
     secondaryCtaLabel: 'Request Workspace Review',
+    resourceLinks: [
+      {
+        label: 'View cut sheet',
+        href: '/resources/product-cutsheets/os3-core-clipboardai-cutsheet-v01.pdf',
+        ariaLabel: 'View ClipboardAi cut sheet'
+      }
+    ],
     riskNote: 'Privacy and controlled collaboration language remains general until technical security claims are verified.'
   }
 ]

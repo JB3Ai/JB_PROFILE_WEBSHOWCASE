@@ -39,6 +39,8 @@ const sponsorActions = [
   }
 ]
 
+const isikoloCutSheetHref = '/resources/product-cutsheets/os3-core-isikoloai-cutsheet-v01.pdf'
+
 export default function SupportWorkStrip() {
   return (
     <section id="support-the-work" className="public-section section-anchor">
@@ -88,6 +90,15 @@ export default function SupportWorkStrip() {
                 contributes to independent education technology, learner access, AI credits, hosting,
                 content, and platform development.
               </p>
+              <a
+                href={isikoloCutSheetHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="public-link-button"
+                aria-label="View IsikoloAI cut sheet"
+              >
+                View IsikoloAI cut sheet
+              </a>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
