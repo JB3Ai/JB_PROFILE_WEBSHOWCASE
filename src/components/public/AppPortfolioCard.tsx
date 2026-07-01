@@ -14,6 +14,11 @@ export type AppPortfolioCardProps = {
   imageAlt?: string
   primaryCtaLabel?: string
   secondaryCtaLabel?: string
+  resourceLinks?: Array<{
+    label: string
+    href: string
+    ariaLabel?: string
+  }>
   riskNote?: string
   disabled?: boolean
   comingSoon?: boolean
@@ -32,6 +37,7 @@ export default function AppPortfolioCard({
   imageAlt,
   primaryCtaLabel,
   secondaryCtaLabel,
+  resourceLinks,
   riskNote,
   disabled = false,
   comingSoon = false,
@@ -43,6 +49,7 @@ export default function AppPortfolioCard({
   const shouldRenderImage = Boolean(imageSrc && imageAlt)
   const primaryDisabled = isInactive || !onPrimaryAction
   const secondaryDisabled = isInactive || !onSecondaryAction
+  const hasResourceLinks = Boolean(resourceLinks?.length)
 
   return (
     <motion.article
@@ -64,7 +71,7 @@ export default function AppPortfolioCard({
         <p className="app-portfolio-card-summary">{shortDescription}</p>
         {detail ? <p className="app-portfolio-card-detail">{detail}</p> : null}
         {riskNote ? <p className="app-portfolio-card-risk">{riskNote}</p> : null}
-        {primaryCtaLabel || secondaryCtaLabel ? (
+        {primaryCtaLabel || secondaryCtaLabel || hasResourceLinks ? (
           <div className="app-portfolio-card-actions">
             {primaryCtaLabel ? (
               <PremiumButton
@@ -88,6 +95,18 @@ export default function AppPortfolioCard({
                 {secondaryCtaLabel}
               </PremiumButton>
             ) : null}
+            {resourceLinks?.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-ghost btn-sm"
+                aria-label={link.ariaLabel ?? `${link.label}: ${name}`}
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
         ) : null}
       </div>
