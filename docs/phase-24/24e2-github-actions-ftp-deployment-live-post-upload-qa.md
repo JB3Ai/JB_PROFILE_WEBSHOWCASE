@@ -20,7 +20,7 @@ Deployment method:
 - Manual trigger only: `workflow_dispatch`
 - Build output: `dist/`
 - Upload source: contents of `dist/`
-- Upload target: `${{ secrets.FTP_TARGET_DIR }}`
+- Upload target: `${{ secrets.CPANEL_FTP_REMOTE_DIR }}`
 - FTP credentials: GitHub Actions Secrets
 
 The workflow is manual-only for the first deployment pass. Automatic deploy-on-push is intentionally not enabled.
@@ -31,10 +31,10 @@ Required repository Actions secrets:
 
 | Secret | Purpose | Expected value pattern |
 | --- | --- | --- |
-| `FTP_SERVER` | FTP host | `ftp.jonoblackburn.com` |
-| `FTP_USERNAME` | FTP username | `jonoblac` |
-| `FTP_PASSWORD` | FTP password | hidden secret value |
-| `FTP_TARGET_DIR` | Remote web root | `/home/jonoblac/public_html/` |
+| `CPANEL_FTP_SERVER` | FTP host | `ftp.jonoblackburn.com` |
+| `CPANEL_FTP_USERNAME` | FTP username | `jonoblac` |
+| `CPANEL_FTP_PASSWORD` | FTP password | hidden secret value |
+| `CPANEL_FTP_REMOTE_DIR` | Remote web root | `/home/jonoblac/public_html/` |
 
 Alternative target if the host requires it:
 
@@ -105,10 +105,10 @@ The trailing slash is intentional. The workflow uploads the contents of `dist/`,
 Workflow deploy target:
 
 ```yaml
-server-dir: ${{ secrets.FTP_TARGET_DIR }}
+server-dir: ${{ secrets.CPANEL_FTP_REMOTE_DIR }}
 ```
 
-Expected secret value:
+Expected cPanel remote directory value:
 
 ```text
 /home/jonoblac/public_html/
@@ -135,10 +135,10 @@ Confirmed.
 The workflow references secrets only through the GitHub Actions secrets context:
 
 ```yaml
-${{ secrets.FTP_SERVER }}
-${{ secrets.FTP_USERNAME }}
-${{ secrets.FTP_PASSWORD }}
-${{ secrets.FTP_TARGET_DIR }}
+${{ secrets.CPANEL_FTP_SERVER }}
+${{ secrets.CPANEL_FTP_USERNAME }}
+${{ secrets.CPANEL_FTP_PASSWORD }}
+${{ secrets.CPANEL_FTP_REMOTE_DIR }}
 ```
 
 No FTP password or credential value was added to the workflow, docs, commits, PR body, or command output.
@@ -238,7 +238,7 @@ Current issue:
 
 | Issue | Impact | Resolution |
 | --- | --- | --- |
-| Required GitHub Actions Secrets were not visible through `gh secret list` in this environment. | Workflow should not be run until secrets are confirmed in GitHub settings. | Confirm or add `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, and `FTP_TARGET_DIR` under repo Actions Secrets, then run the workflow manually. |
+| Required GitHub Actions Secrets were not visible through `gh secret list` in this environment. | Workflow should not be run until secrets are confirmed in GitHub settings. | Confirm or add `CPANEL_FTP_SERVER`, `CPANEL_FTP_USERNAME`, `CPANEL_FTP_PASSWORD`, and `CPANEL_FTP_REMOTE_DIR` under repo Actions Secrets, then run the workflow manually. |
 
 No website source issue was found.
 
