@@ -1,0 +1,41 @@
+name: Deploy public site via FTP
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Validate deploy inputs
+        run: |
+          if [ -z "${{ secrets.FTP_PASSWORD }}" ]; then
+            echo "::error::Missing required secret FTP_PASSWORD. Add it in Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+          echo "Deploy target: ftp.jonoblackburn.com -> /public_html/"
+
+      - name: Deploy dist contents via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.jonoblackburn.com
+          username: jonoblac
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: /public_html/
