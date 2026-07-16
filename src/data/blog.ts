@@ -1,0 +1,68 @@
+import type { BlogPost } from '@/types';
+
+export const blogPosts: BlogPost[] = [
+  {
+    id: 'systems-over-hype',
+    title: 'Systems Over Hype: What I Learned Building 4 Companies',
+    excerpt: 'The difference between founders who survive and those who thrive isn\'t talent or luck. It\'s the systems they build before they need them.',
+    content: '',
+    category: 'Foundership',
+    author: 'Jonathan Blackburn',
+    date: '2026-06-28',
+    readTime: '8 min read',
+    featured: true,
+  },
+  {
+    id: 'ai-practical',
+    title: 'Practical AI: Building Tools That Actually Work',
+    excerpt: 'Most AI demos are theatre. Here\'s how to build AI systems that deliver real operational value without the smoke and mirrors.',
+    content: '',
+    category: 'Technology',
+    author: 'Jonathan Blackburn',
+    date: '2026-06-15',
+    readTime: '6 min read',
+  },
+  {
+    id: 'chaos-to-clarity',
+    title: 'From Chaos to Clarity: The Systems Architect\'s Mindset',
+    excerpt: 'Chaos is not solved by hope. It\'s solved by systems. Here\'s the framework I use to transform operational complexity into executable structure.',
+    content: '',
+    category: 'Leadership',
+    author: 'Jonathan Blackburn',
+    date: '2026-06-02',
+    readTime: '10 min read',
+    featured: true,
+  },
+  {
+    id: 'building-under-pressure',
+    title: 'Building Under Pressure: Lessons from the Trenches',
+    excerpt: 'When everything is on fire, most people panic. The best builders double down on their systems. Here\'s what 15 years of pressure-cooker entrepreneurship taught me.',
+    content: '',
+    category: 'Foundership',
+    author: 'Jonathan Blackburn',
+    date: '2026-05-20',
+    readTime: '12 min read',
+  },
+  {
+    id: 'africa-tech',
+    title: 'Why Africa Will Build the Next Generation of Infrastructure',
+    excerpt: 'The constraints that make building in Africa hard are the same constraints that produce the most resilient, innovative systems.',
+    content: '',
+    category: 'Technology',
+    author: 'Jonathan Blackburn',
+    date: '2026-05-08',
+    readTime: '7 min read',
+  },
+  {
+    id: 'smart-home-future',
+    title: 'The Future of Smart Homes Is Not Voice Control',
+    excerpt: 'True home intelligence isn\'t about asking a speaker to turn on lights. It\'s about systems that anticipate needs before you voice them.',
+    content: '',
+    category: 'Technology',
+    author: 'Jonathan Blackburn',
+    date: '2026-04-25',
+    readTime: '5 min read',
+  },
+];
+
+export const featuredPosts = blogPosts.filter(p => p.featured);
