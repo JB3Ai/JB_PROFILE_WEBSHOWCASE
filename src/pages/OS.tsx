@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/hooks/useAuth';
 import { osApps } from '@/data/osApps';
-import { Search, Newspaper, Satellite, User, TrendingUp, Download, BookOpen, X, Maximize2, LogOut, Lock } from 'lucide-react';
+import { Search, Newspaper, Satellite, User, TrendingUp, Download, BookOpen, X, Maximize2, LogOut, Lock, Mail, ArrowRight } from 'lucide-react';
 
 const iconMap: Record<string, any> = {
   Search, Newspaper, Satellite, User, TrendingUp, Download, BookOpen,
@@ -19,13 +19,18 @@ interface WindowState {
 }
 
 export default function OS() {
-  const { auth, logout } = useAuth();
+  const { auth, logout, requestOtp, verifyOtp } = useAuth();
   const nav = useNavigate();
   const [time, setTime] = useState(new Date());
   const [windows, setWindows] = useState<WindowState[]>([]);
   const [activeWindow, setActiveWindow] = useState<string | null>(null);
   const [showLogin, setShowLogin] = useState(!auth.isAuthenticated);
   const [loginEmail, setLoginEmail] = useState('');
+  const [loginName, setLoginName] = useState('');
+  const [otpInput, setOtpInput] = useState('');
+  const [otpCode, setOtpCode] = useState<string | null>(null);
+  const [loginStep, setLoginStep] = useState<'form' | 'otp'>('form');
+  const [loginError, setLoginError] = useState('');
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
@@ -33,13 +38,35 @@ export default function OS() {
   }, []);
 
   useEffect(() => {
-    if (!auth.isAuthenticated) setShowLogin(true);
+    if (!auth.isAuthenticated) {
+      setShowLogin(true);
+      setLoginStep('form');
+      setOtpCode(null);
+      setOtpInput('');
+    }
   }, [auth.isAuthenticated]);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleRequestOtp = (e: React.FormEvent) => {
     e.preventDefault();
-    if (loginEmail.trim()) {
+    if (!loginEmail.trim() || !loginName.trim()) return;
+    setLoginError('');
+    const code = requestOtp(loginEmail.trim(), loginName.trim(), 'client', 'access');
+    setOtpCode(code);
+    setLoginStep('otp');
+  };
+
+  const handleVerifyOtp = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (otpInput.length !== 6) {
+      setLoginError('Enter the 6-digit code');
+      return;
+    }
+    setLoginError('');
+    const result = verifyOtp(loginEmail, otpInput);
+    if (result.success) {
       setShowLogin(false);
+    } else {
+      setLoginError('Invalid or expired code');
     }
   };
 
@@ -87,20 +114,68 @@ export default function OS() {
             <h1 className="text-xl font-semibold text-white mb-1">OS³ Portal</h1>
             <p className="text-sm text-white/50">Private access to intelligence tools and founder assets.</p>
           </div>
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div>
-              <label className="block text-xs font-medium text-white/60 uppercase tracking-wider mb-1.5">Email</label>
+
+          {loginStep === 'otp' && (
+            <motion.form onSubmit={handleVerifyOtp} className="space-y-4" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+              <div className="text-center mb-2">
+                <div className="w-10 h-10 rounded-lg bg-copper-600/20 flex items-center justify-center mx-auto mb-2">
+                  <Mail className="w-5 h-5 text-copper-400" />
+                </div>
+                <p className="text-xs text-white/50">Enter the 6-digit code sent to <span className="text-white/70">{loginEmail}</span></p>
+              </div>
+
+              {otpCode && (
+                <div className="p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-center">
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-amber-400 mb-0.5">Demo Mode — OTP</p>
+                  <p className="text-xl font-mono font-bold text-amber-300 tracking-[0.3em]">{otpCode}</p>
+                </div>
+              )}
+
               <input
-                type="email" required
-                value={loginEmail} onChange={e => setLoginEmail(e.target.value)}
-                placeholder="you@company.com"
-                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-copper-500/50 transition-all"
+                type="text" inputMode="numeric" maxLength={6}
+                value={otpInput} onChange={e => setOtpInput(e.target.value.replace(/\D/g, ''))}
+                placeholder="000000"
+                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white text-center tracking-[0.3em] font-mono placeholder-white/20 outline-none focus:border-copper-500/50 transition-all"
               />
-            </div>
-            <button type="submit" className="w-full py-3 rounded-xl bg-copper-600 text-white text-sm font-medium hover:bg-copper-500 transition-colors">
-              Enter Portal
-            </button>
-          </form>
+              {loginError && <p className="text-xs text-red-400">{loginError}</p>}
+
+              <button type="submit" className="w-full py-3 rounded-xl bg-copper-600 text-white text-sm font-medium hover:bg-copper-500 transition-colors flex items-center justify-center gap-2">
+                Verify & Enter
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <p className="text-center text-xs text-white/30">
+                <button type="button" onClick={() => { setLoginStep('form'); setOtpCode(null); setOtpInput(''); }} className="text-copper-400 hover:text-copper-300">Use different email</button>
+              </p>
+            </motion.form>
+          )}
+
+          {loginStep === 'form' && (
+            <form onSubmit={handleRequestOtp} className="space-y-4">
+              <div>
+                <label className="block text-xs font-medium text-white/60 uppercase tracking-wider mb-1.5">Full Name</label>
+                <input
+                  type="text" required
+                  value={loginName} onChange={e => setLoginName(e.target.value)}
+                  placeholder="Your name"
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-copper-500/50 transition-all"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-white/60 uppercase tracking-wider mb-1.5">Email</label>
+                <input
+                  type="email" required
+                  value={loginEmail} onChange={e => setLoginEmail(e.target.value)}
+                  placeholder="you@company.com"
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-copper-500/50 transition-all"
+                />
+              </div>
+              {loginError && <p className="text-xs text-red-400">{loginError}</p>}
+              <button type="submit" className="w-full py-3 rounded-xl bg-copper-600 text-white text-sm font-medium hover:bg-copper-500 transition-colors">
+                Send Access Code
+              </button>
+            </form>
+          )}
+
           <p className="text-center text-xs text-white/30 mt-4">
             Don't have access? <button onClick={() => nav('/')} className="text-copper-400 hover:text-copper-300">Request access</button>
           </p>
@@ -131,7 +206,7 @@ export default function OS() {
           {time.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-xs text-white/40 hidden sm:block">{auth.email || auth.phoneNumber || 'Guest'}</span>
+          <span className="text-xs text-white/40 hidden sm:block">{auth.email || 'Guest'}</span>
           <button onClick={() => { logout(); nav('/'); }} className="p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/5 transition-colors" title="Logout">
             <LogOut className="w-4 h-4" />
           </button>

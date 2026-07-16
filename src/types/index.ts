@@ -85,11 +85,10 @@ export interface AuthState {
 }
 
 export interface LeadCaptureForm {
-  phoneNumber: string;
+  email: string;
   intent: 'investor' | 'client' | 'collaborator' | 'press';
   name: string;
-  email?: string;
-  company?: string;
+  mode: 'access' | 'news';
 }
 
 export interface OSApp {
