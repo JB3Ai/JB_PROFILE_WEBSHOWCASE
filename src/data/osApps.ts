@@ -9,7 +9,7 @@ export const osApps: OSApp[] = [
     category: 'intelligence',
     gated: true,
     content: 'InvestigatorAi transforms exported WhatsApp data into structured forensic reports. Upload a .zip export, and the system generates a complete timeline with transcription, media analysis, and sequence reconstruction. Built for legal professionals, investigators, and compliance teams.',
-    pdfUrl: '/assets/pdfs/JB3Ai-Forensic-Intelligence-Systems-Overview.pdf',
+    pdfUrl: '/assets/pdfs/OS³ InvestigatorAi CUTSHEET.pdf',
   },
   {
     id: 'newsroom-ai',
@@ -19,7 +19,7 @@ export const osApps: OSApp[] = [
     category: 'intelligence',
     gated: true,
     content: 'NewsroomAi is a live intelligence dashboard combining 24 news feeds, social monitoring, and situational awareness tools. Access real-time feeds, filter by topic, and create custom briefing reports.',
-    pdfUrl: '/assets/pdfs/JB3Ai-Newsroom-Intelligence-Overview.pdf',
+    pdfUrl: '/assets/pdfs/OS³ NewsRoomAi CUTSHEET.pdf',
   },
   {
     id: 'viewgrid',
@@ -29,7 +29,7 @@ export const osApps: OSApp[] = [
     category: 'intelligence',
     gated: true,
     content: 'ViewGrid provides open-source satellite and aerial surveillance access. Monitor locations, track movements, and gather visual intelligence from orbital and drone imagery sources.',
-    pdfUrl: '/assets/pdfs/JB3Ai-ViewGrid-Intelligence-Overview.pdf',
+    pdfUrl: '/assets/pdfs/Global Satellite Overlay The Sentinel Eye-compressed.pdf',
   },
   {
     id: 'cv-profile',
@@ -39,7 +39,7 @@ export const osApps: OSApp[] = [
     category: 'profile',
     gated: true,
     content: 'Full executive profile including business history, technical stack, awards and recognition, professional recommendations, and current strategic direction.',
-    pdfUrl: '/assets/pdfs/executive-cv-portfolio.pdf',
+    pdfUrl: '/assets/pdfs/Jonathan_Blackburn_Premium_Resume.pdf',
   },
   {
     id: 'investment-deck',
@@ -49,7 +49,7 @@ export const osApps: OSApp[] = [
     category: 'investment',
     gated: true,
     content: 'Complete investment overview for JB³Ai and the OS³ ecosystem. Includes product architecture, market sizing, competitive landscape, financial projections, and use of funds.',
-    pdfUrl: '/assets/pdfs/JB3Ai-Investment-Deck-Intelligence-in-Motion.pdf',
+    pdfUrl: '/assets/pdfs/JB³Ai Investment Deck Intelligence in Motion (Presentation).pdf',
   },
   {
     id: 'downloads',
@@ -68,6 +68,6 @@ export const osApps: OSApp[] = [
     category: 'content',
     gated: false,
     content: 'Read exclusive excerpts from the GTR³ manuscript. Three chapters covering the rise of Elite Technologies, the building of iMED, and the launch of JB³Ai. Updated as the book progresses.',
-    pdfUrl: '/assets/pdfs/GTR3-Publishing-Sneak-Peek.pdf',
+    pdfUrl: '/assets/pdfs/GTR3_Publishing_sneak_peek.pdf',
   },
 ];
