@@ -13,5 +13,4 @@ dist/
 Thumbs.db
 
 # Large assets — deploy via FTP only
-public/assets/pdfs/IsikoloAi for learners.pdf
 public/assets/videos/iMED Company Profile.mp4
