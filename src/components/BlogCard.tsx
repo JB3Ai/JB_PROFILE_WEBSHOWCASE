@@ -16,24 +16,32 @@ export function BlogCard({ post, index = 0, variant = 'default' }: BlogCardProps
     <motion.article
       className={cn(
         'group cursor-pointer',
-        isFeatured && 'lg:col-span-2 lg:grid lg:grid-cols-2 lg:gap-8'
+        isFeatured && 'md:grid md:grid-cols-5 md:gap-8 items-center'
       )}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
     >
-      {/* Cover image placeholder */}
+      {/* Cover image */}
       <div className={cn(
-        'relative aspect-[16/9] rounded-2xl overflow-hidden bg-gradient-to-br from-warm-100 to-warm-200 mb-5',
-        isFeatured && 'lg:aspect-auto lg:h-full lg:mb-0'
+        'relative aspect-[16/9] rounded-2xl overflow-hidden mb-5',
+        isFeatured && 'md:aspect-[4/3] md:col-span-2 md:mb-0'
       )}>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-6xl font-light text-ink-200 select-none">
-            {post.title.charAt(0)}
-          </span>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {post.coverImage ? (
+          <img 
+            src={post.coverImage} 
+            alt={post.title}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-warm-100 to-warm-200">
+            <span className="text-6xl font-light text-ink-200 select-none">
+              {post.title.charAt(0)}
+            </span>
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
         {isFeatured && (
           <span className="absolute top-4 left-4 px-3 py-1 bg-copper-600 text-white text-xs font-medium rounded-full">
@@ -42,7 +50,7 @@ export function BlogCard({ post, index = 0, variant = 'default' }: BlogCardProps
         )}
       </div>
 
-      <div className="flex flex-col">
+      <div className={cn('flex flex-col', isFeatured && 'md:col-span-3')}>
         {/* Meta */}
         <div className="flex items-center gap-3 mb-3">
           <span className="text-caption uppercase tracking-[0.1em] text-copper-600">

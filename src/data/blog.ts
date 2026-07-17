@@ -11,6 +11,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-06-28',
     readTime: '8 min read',
     featured: true,
+    coverImage: '/assets/images/founder-editorial-bw.webp',
   },
   {
     id: 'ai-practical',
@@ -21,6 +22,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Jonathan Blackburn',
     date: '2026-06-15',
     readTime: '6 min read',
+    coverImage: '/assets/images/jb3ai-super-agent-os-architecture.webp',
   },
   {
     id: 'chaos-to-clarity',
@@ -32,16 +34,18 @@ export const blogPosts: BlogPost[] = [
     date: '2026-06-02',
     readTime: '10 min read',
     featured: true,
+    coverImage: '/assets/images/gtr3-loading-hero.webp',
   },
   {
     id: 'building-under-pressure',
     title: 'Building Under Pressure: Lessons from the Trenches',
-    excerpt: 'When everything is on fire, most people panic. The best builders double down on their systems. Here\'s what 15 years of pressure-cooker entrepreneurship taught me.',
+    excerpt: 'When everything is on fire, most people panic. The best builders double down on their systems. Here\'s what 20 years of pressure-cooker entrepreneurship taught me.',
     content: '',
     category: 'Foundership',
     author: 'Jonathan Blackburn',
     date: '2026-05-20',
     readTime: '12 min read',
+    coverImage: '/assets/images/imed-lab-precision.webp',
   },
   {
     id: 'africa-tech',
@@ -52,6 +56,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Jonathan Blackburn',
     date: '2026-05-08',
     readTime: '7 min read',
+    coverImage: '/assets/images/os3-dash-command-dashboard.webp',
   },
   {
     id: 'smart-home-future',
@@ -62,6 +67,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Jonathan Blackburn',
     date: '2026-04-25',
     readTime: '5 min read',
+    coverImage: '/assets/images/clipboard-ai-private-workspace.webp',
   },
 ];
 

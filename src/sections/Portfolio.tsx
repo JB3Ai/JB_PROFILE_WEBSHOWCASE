@@ -85,9 +85,12 @@ export function Portfolio({ onOpenGate }: PortfolioProps) {
                     )}
                   >
                     <div className="relative aspect-[16/10] bg-gradient-to-br from-ink-100 to-warm-100 overflow-hidden">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-4xl font-light text-ink-300">{app.title.charAt(0)}</span>
-                      </div>
+                      <img 
+                        src={app.thumbnail} 
+                        alt={app.title} 
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                      />
                       {app.category === 'gated' && (
                         <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-ink-900/80 text-white text-xs font-medium flex items-center gap-1.5">
                           <Lock className="w-3 h-3" />

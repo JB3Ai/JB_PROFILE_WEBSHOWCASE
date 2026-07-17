@@ -19,7 +19,7 @@ export function Founder() {
         <div className="content-max-width">
           <SectionHeader
             label="Founder"
-            title="Fifteen years of building."
+            title="Twenty-five years of building."
             description="From electronics and automation to recovery systems, iMED, JB³Ai, and OS³. 
                          Built through collapse, rebuilt through discipline, and still climbing."
           />

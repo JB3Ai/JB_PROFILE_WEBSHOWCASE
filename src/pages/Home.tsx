@@ -7,6 +7,8 @@ import { Isikulo } from '@/sections/Isikulo';
 import { Evidence } from '@/sections/Evidence';
 import { GTR3 } from '@/sections/GTR3';
 import { Timeline } from '@/sections/Timeline';
+import { Blog } from '@/sections/Blog';
+import { DailyShow } from '@/sections/DailyShow';
 import { Footer } from '@/sections/Footer';
 import { GateModal } from '@/components/GateModal';
 import { useAuth } from '@/hooks/useAuth';
@@ -54,6 +56,8 @@ export default function Home() {
         <Evidence />
         <GTR3 />
         <Timeline />
+        <Blog />
+        <DailyShow />
       </main>
       <Footer onOpenGate={handleOpenGate} />
       <GateModal

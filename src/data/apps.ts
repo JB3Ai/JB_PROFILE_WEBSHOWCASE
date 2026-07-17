@@ -106,6 +106,19 @@ export const apps: App[] = [
     tags: ['Satellite', 'Surveillance', 'Open Source', 'OSINT'],
     externalLink: '/assets/pdfs/Global Satellite Overlay The Sentinel Eye-compressed.pdf',
   },
+  {
+    id: 'coming-soon',
+    title: 'JB³ Coming Soon',
+    tagline: 'The next intelligence layer is loading.',
+    description: 'A new JB³Ai module is in final development. Preview access will be available to portal members first.',
+    longDescription: 'The next intelligence layer in the OS³ ecosystem is in final development. Stay tuned for early access through the portal.',
+    category: 'public',
+    status: 'coming-soon',
+    thumbnail: '/assets/images/artwork-curated/os3-dash-command-dashboard.jpg',
+    tags: ['AI', 'Intelligence', 'Coming Soon'],
+    featured: false,
+    externalLink: '#',
+  },
 ];
 
 export const publicApps = apps.filter(a => a.category === 'public');

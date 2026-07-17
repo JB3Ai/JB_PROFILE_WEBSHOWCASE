@@ -24,7 +24,7 @@ export function GateModal({ isOpen, onClose, onRequest, onVerify, otpCode, conte
   const [mode, setMode] = useState<'access' | 'news'>('access');
   const [intent, setIntent] = useState(context);
   const [otpInput, setOtpInput] = useState('');
-  const [error, setError] = useState('');
+  const [newsletter, setNewsletter] = useState(false);
   const [step, setStep] = useState<'form' | 'otp' | 'success'>('form');
 
   const config = contextConfig[context];
@@ -184,6 +184,19 @@ export function GateModal({ isOpen, onClose, onRequest, onVerify, otpCode, conte
                       className="w-full rounded-xl border border-ink-200 px-4 py-3 text-sm text-ink-900 outline-none focus:border-copper-400 focus:ring-2 focus:ring-copper-100 transition-all bg-white"
                     />
                     <p className="text-[11px] text-ink-400 mt-1.5">Your access code will be sent via email</p>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setNewsletter(!newsletter)}
+                      className={`mt-0.5 w-5 h-5 rounded-md border flex items-center justify-center transition-colors ${newsletter ? 'bg-copper-600 border-copper-600' : 'border-ink-300 bg-white hover:border-copper-400'}`}
+                    >
+                      {newsletter && <Check className="w-3.5 h-3.5 text-white" />}
+                    </button>
+                    <label className="text-sm text-ink-600 leading-relaxed cursor-pointer" onClick={() => setNewsletter(!newsletter)}>
+                      Keep me updated with JB³Ai news and product developments
+                    </label>
                   </div>
 
                   {mode === 'access' && (

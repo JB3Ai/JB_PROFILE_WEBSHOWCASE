@@ -36,14 +36,14 @@ export function Blog() {
             </motion.a>
           </div>
 
-          {/* Featured posts */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {/* Featured posts — large cards */}
+          <div className="space-y-10 mb-16">
             {featuredPosts.map((post, i) => (
               <BlogCard key={post.id} post={post} index={i} variant="featured" />
             ))}
           </div>
 
-          {/* Post list */}
+          {/* Post list — smaller grid */}
           <div className="border-t border-ink-100 pt-12">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogPosts.filter(p => !p.featured).map((post, i) => (

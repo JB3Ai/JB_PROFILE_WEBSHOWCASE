@@ -64,7 +64,7 @@ export function Navbar({ onOpenGate }: NavbarProps) {
                 className="px-4 py-2.5 rounded-xl text-sm font-medium text-ink-600 hover:text-ink-900 hover:bg-warm-100 transition-all duration-200 flex items-center gap-1.5"
               >
                 <Lock className="w-3.5 h-3.5" />
-                Investor Room
+                OS³ Portal
               </button>
               <button
                 onClick={() => onOpenGate('client')}
@@ -114,7 +114,7 @@ export function Navbar({ onOpenGate }: NavbarProps) {
               <div className="mt-6 flex flex-col gap-3 w-64">
                 <button onClick={() => { setMobileOpen(false); onOpenGate('investor'); }} className="btn-secondary w-full justify-center">
                   <Lock className="w-4 h-4 mr-2" />
-                  Investor Room
+                  OS³ Portal
                 </button>
                 <button onClick={() => { setMobileOpen(false); onOpenGate('client'); }} className="btn-primary w-full justify-center">
                   Request Access
