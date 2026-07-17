@@ -11,7 +11,7 @@ const platformIcons: Record<string, any> = {
   buymeacoffee: Coffee,
   paypal: Globe,
   paybru: Heart,
-  ko-fi: Coffee,
+  'ko-fi': Coffee,
   other: Globe,
 };
 
