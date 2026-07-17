@@ -11,6 +11,7 @@ export interface App {
   metrics?: { label: string; value: string }[];
   featured?: boolean;
   externalLink?: string;
+  videoUrl?: string;
 }
 
 export interface TimelineEvent {

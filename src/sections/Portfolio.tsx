@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from '@/components/SectionHeader';
 import { apps, publicApps, gatedApps } from '@/data/apps';
-import { Lock, ArrowUpRight, ExternalLink } from 'lucide-react';
+import { Lock, ArrowUpRight, ExternalLink, Play } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 type FilterTab = 'all' | 'public' | 'gated' | 'featured';
@@ -126,7 +126,19 @@ export function Portfolio({ onOpenGate }: PortfolioProps) {
                           ))}
                         </div>
                       )}
-                      <div className="flex gap-2">
+                      <div className="flex flex-wrap items-center gap-3">
+                        {app.videoUrl && (
+                          <a 
+                            href={app.videoUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center text-sm font-medium text-copper-600 hover:text-copper-700 transition-colors"
+                          >
+                            <Play className="w-4 h-4 mr-1.5 fill-current" />
+                            Watch Demo
+                            <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
+                          </a>
+                        )}
                         {app.category === 'gated' ? (
                           <button
                             onClick={() => onOpenGate('client')}
@@ -137,11 +149,13 @@ export function Portfolio({ onOpenGate }: PortfolioProps) {
                             <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
                           </button>
                         ) : (
-                          <a href={app.externalLink || '#'} className="inline-flex items-center text-sm font-medium text-copper-600 hover:text-copper-700 transition-colors">
-                            <ExternalLink className="w-4 h-4 mr-1.5" />
-                            Open App
-                            <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
-                          </a>
+                          app.externalLink && app.externalLink !== '#' && (
+                            <a href={app.externalLink} className="inline-flex items-center text-sm font-medium text-copper-600 hover:text-copper-700 transition-colors">
+                              <ExternalLink className="w-4 h-4 mr-1.5" />
+                              Open App
+                              <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
+                            </a>
+                          )
                         )}
                       </div>
                     </div>

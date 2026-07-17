@@ -13,6 +13,7 @@ export const apps: App[] = [
     tags: ['AI Music', 'Generative Audio', 'Culture'],
     featured: true,
     externalLink: '/assets/pdfs/OS³ DukeBoxLONDON Ai CUTSHEET.pdf',
+    videoUrl: 'https://www.youtube.com/watch?v=f1uMKVptX7k',
   },
   {
     id: 'isikulo-ai',
@@ -30,6 +31,7 @@ export const apps: App[] = [
       { label: 'Cost', value: 'Free' },
     ],
     externalLink: '/assets/pdfs/OS³ IsiKoloAi CUTSHEET.pdf',
+    videoUrl: 'https://www.youtube.com/watch?v=1cVZU5uBae8',
   },
   {
     id: 'clipboard-ai',
@@ -43,6 +45,7 @@ export const apps: App[] = [
     tags: ['Security', 'Encryption', 'Collaboration', 'Open Source'],
     featured: true,
     externalLink: '/assets/pdfs/OS³ ClipboardAi CUTSHEET.pdf',
+    videoUrl: 'https://www.youtube.com/watch?v=r257344f95k',
   },
   {
     id: 'voicegrid-ai',
@@ -56,6 +59,7 @@ export const apps: App[] = [
     tags: ['Voice', 'Call Centre', 'Multilingual', 'AI'],
     featured: true,
     externalLink: '/assets/pdfs/OS³ VoiceGridAi Telephone CUTSHEET.pdf',
+    videoUrl: 'https://www.youtube.com/watch?v=ADj33oWqv7g',
   },
   {
     id: 'superagents',
@@ -69,6 +73,7 @@ export const apps: App[] = [
     tags: ['AI Workforce', 'WhatsApp', 'Automation', 'Multilingual'],
     featured: true,
     externalLink: '/assets/pdfs/JB3Ai_Super_Agent_DASH.pdf',
+    videoUrl: 'https://www.youtube.com/watch?v=xqNDDVj560A',
   },
   {
     id: 'investigator-ai',
@@ -81,6 +86,7 @@ export const apps: App[] = [
     thumbnail: '/assets/images/artwork-curated/investigator-ai-product.jpg',
     tags: ['Forensics', 'Investigation', 'WhatsApp', 'OSINT'],
     externalLink: '/assets/pdfs/OS³ InvestigatorAi CUTSHEET.pdf',
+    videoUrl: 'https://www.youtube.com/watch?v=tEnyEt0iiSY',
   },
   {
     id: 'newsroom-ai',
@@ -93,6 +99,7 @@ export const apps: App[] = [
     thumbnail: '/assets/images/artwork-curated/os3-dash-real.png',
     tags: ['Intelligence', 'News', 'Dashboard', 'OSINT'],
     externalLink: '/assets/pdfs/OS³ NewsRoomAi CUTSHEET.pdf',
+    videoUrl: 'https://www.youtube.com/watch?v=cm9Jr95PnrU',
   },
   {
     id: 'viewgrid',
@@ -105,6 +112,7 @@ export const apps: App[] = [
     thumbnail: '/assets/images/artwork-curated/viewgrid-project.jpg',
     tags: ['Satellite', 'Surveillance', 'Open Source', 'OSINT'],
     externalLink: '/assets/pdfs/Global Satellite Overlay The Sentinel Eye-compressed.pdf',
+    videoUrl: 'https://www.youtube.com/watch?v=LQXoyAzxNJ0',
   },
   {
     id: 'coming-soon',
@@ -118,6 +126,7 @@ export const apps: App[] = [
     tags: ['AI', 'Intelligence', 'Coming Soon'],
     featured: false,
     externalLink: '#',
+    videoUrl: 'https://www.youtube.com/watch?v=ADj33oWqv7g',
   },
 ];
 
