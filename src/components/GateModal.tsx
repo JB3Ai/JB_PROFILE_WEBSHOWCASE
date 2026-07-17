@@ -7,33 +7,54 @@ interface GateModalProps {
   onClose: () => void;
   onRequest: (data: { email: string; intent: 'investor' | 'client' | 'collaborator' | 'press'; name: string; mode: 'access' | 'news' }) => void;
   onVerify: (email: string, code: string) => boolean;
+  onSubmitLead?: (data: { name: string; email: string; intent: string; mode: string; newsletter: boolean }) => Promise<{ success: boolean; error?: string }>;
   otpCode: string | null;
   context: 'investor' | 'client' | 'collaborator' | 'press';
 }
 
 const contextConfig = {
   investor: { title: 'Investor Access', subtitle: 'Receive your private due diligence portal link via email.', cta: 'Request Investor Access' },
-  client: { title: 'Advisory Access', subtitle: 'Receive your private access OTP via email.', cta: 'Request Access' },
+  client: { title: 'Advisory Access', subtitle: 'Receive your private access link via email.', cta: 'Request Access' },
   collaborator: { title: 'Collaboration Portal', subtitle: 'Partner access to JB³Ai systems and roadmap.', cta: 'Request Collaboration Access' },
   press: { title: 'Press Inquiries', subtitle: 'Media kit, founder briefs, and press assets.', cta: 'Request Press Kit' },
 };
 
-export function GateModal({ isOpen, onClose, onRequest, onVerify, otpCode, context }: GateModalProps) {
+export function GateModal({ isOpen, onClose, onRequest, onVerify, onSubmitLead, otpCode, context }: GateModalProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [mode, setMode] = useState<'access' | 'news'>('access');
   const [intent, setIntent] = useState(context);
   const [otpInput, setOtpInput] = useState('');
   const [newsletter, setNewsletter] = useState(false);
+  const [error, setError] = useState('');
   const [step, setStep] = useState<'form' | 'otp' | 'success'>('form');
+  const [submitting, setSubmitting] = useState(false);
 
   const config = contextConfig[context];
 
-  const handleRequest = (e: React.FormEvent) => {
+  const handleRequest = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !email.trim()) return;
     setError('');
+    setSubmitting(true);
+
+    // Submit to Supabase if handler provided
+    if (onSubmitLead) {
+      const result = await onSubmitLead({
+        name: name.trim(),
+        email: email.trim(),
+        intent,
+        mode,
+        newsletter,
+      });
+      if (!result.success) {
+        console.warn('Lead submission failed:', result.error);
+        // Don't block the flow — still proceed with OTP
+      }
+    }
+
     onRequest({ email: email.trim(), intent, name: name.trim(), mode });
+    setSubmitting(false);
     setStep('otp');
   };
 
@@ -52,6 +73,7 @@ export function GateModal({ isOpen, onClose, onRequest, onVerify, otpCode, conte
         setOtpInput('');
         setName('');
         setEmail('');
+        setNewsletter(false);
         onClose();
       }, 1800);
     } else {
@@ -214,8 +236,8 @@ export function GateModal({ isOpen, onClose, onRequest, onVerify, otpCode, conte
                     </div>
                   )}
 
-                  <button type="submit" className="btn-primary w-full justify-center mt-2">
-                    {mode === 'news' ? 'Subscribe' : config.cta}
+                  <button type="submit" disabled={submitting} className="btn-primary w-full justify-center mt-2 disabled:opacity-50">
+                    {submitting ? 'Submitting...' : mode === 'news' ? 'Subscribe' : config.cta}
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </button>
                 </form>

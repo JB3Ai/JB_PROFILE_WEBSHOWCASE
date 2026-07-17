@@ -15,7 +15,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
-  const { requestOtp, verifyOtp } = useAuth();
+  const { requestOtp, verifyOtp, submitLead } = useAuth();
   const nav = useNavigate();
   const [gateOpen, setGateOpen] = useState(false);
   const [gateContext, setGateContext] = useState<'investor' | 'client' | 'collaborator' | 'press'>('client');
@@ -65,6 +65,7 @@ export default function Home() {
         onClose={() => { setGateOpen(false); setOtpCode(null); setPendingEmail(''); }}
         onRequest={handleRequest}
         onVerify={handleVerify}
+        onSubmitLead={submitLead}
         otpCode={otpCode}
         context={gateContext}
       />
