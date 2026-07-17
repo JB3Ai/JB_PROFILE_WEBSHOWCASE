@@ -19,7 +19,7 @@ export default function Home() {
   const nav = useNavigate();
   const [gateOpen, setGateOpen] = useState(false);
   const [gateContext, setGateContext] = useState<'investor' | 'client' | 'collaborator' | 'press'>('client');
-  const [pendingEmail, setPendingEmail] = useState('');
+  const [, setPendingEmail] = useState('');
   const [otpCode, setOtpCode] = useState<string | null>(null);
 
   const handleOpenGate = (context: 'investor' | 'client' | 'collaborator' | 'press' = 'client') => {

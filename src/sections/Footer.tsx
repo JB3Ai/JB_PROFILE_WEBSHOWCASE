@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { ArrowUpRight, Mail, MapPin, Coffee, Globe, Heart, Linkedin, Youtube, Instagram, MessageCircle, Twitter, Facebook, Send, BookOpen, Gamepad2, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, Mail, MapPin, Coffee, Globe, Heart, Linkedin, Youtube, Instagram, MessageCircle, Twitter, Facebook, Send, BookOpen, ExternalLink } from 'lucide-react';
 
 interface FooterProps {
   onOpenGate: (context: 'investor' | 'client' | 'collaborator' | 'press') => void;
@@ -32,12 +32,6 @@ const contactLinks = [
   { name: 'jono@jonoblackburn.com', url: 'mailto:jono@jonoblackburn.com', icon: Mail },
   { name: 'WhatsApp', url: 'https://wa.me/27719691848', icon: MessageCircle },
   { name: 'WhatsApp Channel', url: 'https://lnkd.in/dPizUzb9', icon: MessageCircle },
-];
-
-const gamingLinks = [
-  { name: 'PlayStation: JonoElite7', url: '#', icon: Gamepad2 },
-  { name: 'Xbox: JonoElite7#9271', url: '#', icon: Gamepad2 },
-  { name: 'Roblox: Jonoelite74', url: '#', icon: Gamepad2 },
 ];
 
 export function Footer({ onOpenGate }: FooterProps) {
