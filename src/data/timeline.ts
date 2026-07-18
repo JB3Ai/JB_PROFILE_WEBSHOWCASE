@@ -60,7 +60,7 @@ export const timelineEvents: TimelineEvent[] = [
   {
     id: 'gtr3-coming-soon',
     year: 'Coming Soon',
-    title: 'GTR³ — The Third Rise',
+    title: 'GTR³ - The Third Rise',
     category: 'future',
     description: 'Preparing GTR³ as the symbolic third-rise layer: fatherhood, rebuilding, discipline, and the wiser return still being written.',
     tags: ['GTR3', 'future', 'teaser'],

@@ -44,7 +44,7 @@ export const osApps: OSApp[] = [
   {
     id: 'investment-deck',
     title: 'Investment Deck',
-    description: 'JB³Ai Investment Deck — Intelligence in Motion. Product overview, market opportunity, and strategic roadmap.',
+    description: 'JB³Ai Investment Deck - Intelligence in Motion. Product overview, market opportunity, and strategic roadmap.',
     icon: 'TrendingUp',
     category: 'investment',
     gated: true,

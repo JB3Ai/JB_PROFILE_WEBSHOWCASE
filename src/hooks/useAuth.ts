@@ -90,7 +90,7 @@ export function useAuth() {
       if (Date.now() > payload.expiresAt) return { success: false };
       if (payload.code !== inputCode) return { success: false };
 
-      // Success — grant access
+      // Success - grant access
       const accessLevel = payload.mode === 'news' ? 'public' : (payload.intent as AuthState['accessLevel']);
       setAuth({
         isAuthenticated: true,

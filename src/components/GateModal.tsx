@@ -49,7 +49,7 @@ export function GateModal({ isOpen, onClose, onRequest, onVerify, onSubmitLead, 
       });
       if (!result.success) {
         console.warn('Lead submission failed:', result.error);
-        // Don't block the flow — still proceed with OTP
+        // Don't block the flow - still proceed with OTP
       }
     }
 
@@ -139,7 +139,7 @@ export function GateModal({ isOpen, onClose, onRequest, onVerify, onSubmitLead, 
                   {/* DEMO MODE: show OTP on screen */}
                   {otpCode && (
                     <div className="p-3 rounded-xl bg-amber-50 border border-amber-200 text-center">
-                      <p className="text-[10px] font-semibold uppercase tracking-wider text-amber-700 mb-1">Demo Mode — OTP</p>
+                      <p className="text-[10px] font-semibold uppercase tracking-wider text-amber-700 mb-1">Demo Mode - OTP</p>
                       <p className="text-2xl font-mono font-bold text-amber-800 tracking-[0.3em]">{otpCode}</p>
                       <p className="text-[10px] text-amber-600 mt-1">In production this is sent via email</p>
                     </div>

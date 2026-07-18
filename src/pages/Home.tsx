@@ -46,7 +46,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-warm-50">
+    <div className="min-h-screen bg-warm-50 texture-grain">
       <Navbar onOpenGate={handleOpenGate} />
       <main>
         <Hero onOpenGate={() => handleOpenGate('client')} />
@@ -55,9 +55,9 @@ export default function Home() {
         <Isikulo />
         <Evidence />
         <GTR3 />
+        <DailyShow />
         <Timeline />
         <Blog />
-        <DailyShow />
       </main>
       <Footer onOpenGate={handleOpenGate} />
       <GateModal

@@ -8,13 +8,10 @@ interface HeroProps {
 export function Hero({ onOpenGate }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background image with gradient overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('/assets/images/artwork-curated/founder-hero-alt.jpg')` }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink-950/90 via-ink-900/70 to-ink-950/50" />
+      {/* Background: dark gradient only */}
+      <div className="absolute inset-0 bg-gradient-to-br from-ink-950 via-ink-900 to-ink-950" />
       <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-transparent to-ink-950/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink-950/90 via-ink-900/70 to-ink-950/50" />
 
       {/* Subtle ambient light */}
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-copper-600/10 rounded-full blur-[120px]" />
@@ -42,7 +39,7 @@ export function Hero({ onOpenGate }: HeroProps) {
                 animate={{ opacity: 1, y: 0 }} 
                 transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               >
-                Jonathan
+                Jono
                 <br />
                 <span className="text-copper-400">Blackburn</span>
               </motion.h1>
@@ -65,7 +62,7 @@ export function Hero({ onOpenGate }: HeroProps) {
                 transition={{ duration: 0.7, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
               >
                 South African entrepreneur and systems builder. Smart-home automation, recovery architectures, 
-                diagnostics platforms, and practical AI — built to turn operational complexity into clarity.
+                diagnostics platforms, and practical AI - built to turn operational complexity into clarity.
               </motion.p>
 
               <motion.div 
@@ -97,7 +94,7 @@ export function Hero({ onOpenGate }: HeroProps) {
                   <div className="relative aspect-[4/5] overflow-hidden">
                     <img 
                       src="/assets/images/artwork-curated/founder-profile-side.png" 
-                      alt="Jonathan Blackburn"
+                      alt="Jono Blackburn"
                       className="w-full h-full object-cover object-top"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/20 to-transparent" />

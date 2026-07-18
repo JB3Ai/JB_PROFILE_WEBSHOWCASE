@@ -9,17 +9,17 @@ export const gtr3Content = {
     "The first rise was built through electronics, AV, automation, and control. The second was shaped through recovery, Trust in Hope, and the precision demands of diagnostics, toxicology, COVID response, and DNA systems at iMED. The third is being written now through JB³Ai, OS³, fatherhood, and a quieter kind of ambition: building structures that can hold a life, a business, and the pressure around them without losing the human being inside them.",
   chapters: [
     {
-      title: 'GTR1 — Elite Technologies',
+      title: 'GTR1 - Elite Technologies',
       summary:
         "The first journey begins in darkness. After twelve years of addiction, repeated stays in rehabilitation, arrests, and broken trust, Jonathan reached his early twenties unable to imagine a future beyond survival. Recovery came through structure, accountability, and the discipline of taking life one day at a time. From those modest beginnings grew Elite Technologies, an audio-visual and automation company that designed sophisticated boardrooms, control rooms, and intelligent environments. The first GT-R arrived as a symbol of transformation. But success carried its own dangers. When the first collapse came, it brought bankruptcy and the painful realisation that achievement without balance can still leave a person empty. On the day his first daughter was born, the car that had symbolised success had to be sold. One chapter closed as another began.",
     },
     {
-      title: 'GTR2 — Trust In Hope and iMED',
+      title: 'GTR2 - Trust In Hope and iMED',
       summary:
         "The second journey began with service. Jonathan transformed his home into Trust In Hope, a recovery house for people rebuilding their lives after addiction. Inside that house, residents were given structure, boundaries, accountability, and practical support. It was through this work that he encountered unreliable drug tests and false accusations. People deserved evidence they could trust. That small operation evolved into iMED Medical Group, encompassing distribution, forensic toxicology, laboratory systems, pharmaceuticals, PCR testing, and DNA services. During the COVID-19 pandemic, that ability to build under pressure became critical. The second GT-R came during this era. Yet once again, pressure returned. Financial strain, operational complexity, and forces beyond any single person's control began to close in. The second collapse did not erase what had been built, but it dismantled the life surrounding it.",
     },
     {
-      title: 'GTR3 — JB³Ai and the Third Rise',
+      title: 'GTR3 - JB³Ai and the Third Rise',
       summary:
         "The third chapter begins differently because the man entering it is no longer the same person who began the first two. After losing everything twice, success no longer means what it once did. The knowledge gathered across addiction, recovery, electronics, engineering, laboratories, compliance, leadership, fatherhood, and failure now converges in JB³Ai. The foundation is a philosophy shaped by lived experience: people are often broken by complexity long before the systems around them fail. The third GT-R has not yet arrived. Unlike most memoirs, this story is not being written from the comfort of a finished victory. It is being written during the climb, while the outcome remains uncertain and the final chapter is still unfolding.",
     },

@@ -16,7 +16,7 @@ export function Evidence() {
   const { ref, isVisible } = useScrollReveal();
   return (
     <section id="evidence" className="relative py-24 lg:py-32">
-      <div className="absolute inset-0 bg-white" />
+      <div className="absolute inset-0 bg-white texture-grain" />
       <div className="relative z-10 section-padding" ref={ref}>
         <div className="content-max-width">
           <SectionHeader

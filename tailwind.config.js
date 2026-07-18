@@ -78,6 +78,16 @@ module.exports = {
           900: '#1c1917',
           950: '#0c0a09',
         },
+        // Ndebele pattern palette (Isikulo)
+        ndebele: {
+          red: '#d9382b',
+          gold: '#f5b301',
+          teal: '#159a9c',
+          blue: '#2b5ea7',
+          orange: '#e86a1c',
+          black: '#141414',
+          white: '#faf8f5',
+        },
       },
       fontFamily: {
         sans: [

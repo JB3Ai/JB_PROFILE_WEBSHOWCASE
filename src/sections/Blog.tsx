@@ -10,7 +10,7 @@ export function Blog() {
 
   return (
     <section id="insights" className="relative py-24 lg:py-32">
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-warm-50/30 to-white" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-warm-50/30 to-white texture-grain" />
       
       <div className="relative z-10 section-padding" ref={ref}>
         <div className="content-max-width">
@@ -36,14 +36,14 @@ export function Blog() {
             </motion.a>
           </div>
 
-          {/* Featured posts — large cards */}
+          {/* Featured posts - large cards */}
           <div className="space-y-10 mb-16">
             {featuredPosts.map((post, i) => (
               <BlogCard key={post.id} post={post} index={i} variant="featured" />
             ))}
           </div>
 
-          {/* Post list — smaller grid */}
+          {/* Post list - smaller grid */}
           <div className="border-t border-ink-100 pt-12">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogPosts.filter(p => !p.featured).map((post, i) => (

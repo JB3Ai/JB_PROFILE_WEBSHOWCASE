@@ -11,7 +11,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-06-28',
     readTime: '8 min read',
     featured: true,
-    coverImage: '/assets/images/founder-editorial-bw.webp',
+    coverImage: '/assets/images/founder-imed-team.png',
   },
   {
     id: 'ai-practical',
@@ -22,7 +22,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Jonathan Blackburn',
     date: '2026-06-15',
     readTime: '6 min read',
-    coverImage: '/assets/images/jb3ai-super-agent-os-architecture.webp',
+    coverImage: '/assets/images/building-tools-dashboard.jpg',
   },
   {
     id: 'chaos-to-clarity',
@@ -56,7 +56,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Jonathan Blackburn',
     date: '2026-05-08',
     readTime: '7 min read',
-    coverImage: '/assets/images/os3-dash-command-dashboard.webp',
+    coverImage: '/assets/images/artwork-curated/voicegrid-project.png',
   },
   {
     id: 'smart-home-future',

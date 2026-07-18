@@ -186,7 +186,7 @@ export default function OS() {
 
               {otpCode && (
                 <div className="p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-center">
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-amber-400 mb-0.5">Demo Mode — OTP</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-amber-400 mb-0.5">Demo Mode - OTP</p>
                   <p className="text-xl font-mono font-bold text-amber-300 tracking-[0.3em]">{otpCode}</p>
                 </div>
               )}

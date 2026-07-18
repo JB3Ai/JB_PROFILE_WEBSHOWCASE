@@ -28,7 +28,7 @@ export function Portfolio({ onOpenGate }: PortfolioProps) {
 
   return (
     <section id="products" className="relative py-24 lg:py-32">
-      <div className="absolute inset-0 bg-white" />
+      <div className="absolute inset-0 bg-white texture-grain" />
       <div className="relative z-10 section-padding">
         <div className="content-max-width">
           <SectionHeader
@@ -84,11 +84,11 @@ export function Portfolio({ onOpenGate }: PortfolioProps) {
                         : 'border-ink-100 bg-white'
                     )}
                   >
-                    <div className="relative aspect-[16/10] bg-gradient-to-br from-ink-100 to-warm-100 overflow-hidden">
+                    <div className="relative aspect-[16/10] bg-ink-900 overflow-hidden flex items-center justify-center">
                       <img 
                         src={app.thumbnail} 
                         alt={app.title} 
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                         onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                       />
                       {app.category === 'gated' && (

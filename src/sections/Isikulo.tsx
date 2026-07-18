@@ -3,9 +3,29 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { SectionHeader } from '@/components/SectionHeader';
 import { supportTiers, supportLinks, sponsorActions } from '@/data/fundraising';
-import { Zap, BookOpen, GraduationCap, Cpu, Heart, Globe, Coffee, ArrowUpRight, ChevronDown, ChevronUp, Video } from 'lucide-react';
+import { Zap, BookOpen, GraduationCap, Cpu, Heart, Globe, Coffee, ArrowUpRight, ChevronDown, ChevronUp, Video, HeartHandshake, Award } from 'lucide-react';
 
 const iconMap: Record<string, any> = { Zap, BookOpen, GraduationCap, Cpu };
+
+// Ndebele colour rotation for the sponsor tier icons
+const tierIconStyles = [
+  { chip: 'bg-ndebele-teal/10 group-hover:bg-ndebele-teal/20', icon: 'text-ndebele-teal' },
+  { chip: 'bg-ndebele-red/10 group-hover:bg-ndebele-red/20', icon: 'text-ndebele-red' },
+  { chip: 'bg-ndebele-gold/15 group-hover:bg-ndebele-gold/25', icon: 'text-ndebele-gold' },
+  { chip: 'bg-ndebele-blue/10 group-hover:bg-ndebele-blue/20', icon: 'text-ndebele-blue' },
+];
+
+// Quick action icons (payment gateways / sponsor actions)
+const actionIcons: Record<string, any> = { GraduationCap, HeartHandshake, Zap, Coffee, Award, BookOpen };
+
+const actionIconStyles = [
+  'bg-ndebele-teal/10 text-ndebele-teal',
+  'bg-ndebele-gold/15 text-ndebele-gold',
+  'bg-ndebele-red/10 text-ndebele-red',
+  'bg-ndebele-blue/10 text-ndebele-blue',
+  'bg-ndebele-orange/10 text-ndebele-orange',
+  'bg-copper-50 text-copper-600',
+];
 
 const platformIcons: Record<string, any> = {
   buymeacoffee: Coffee,
@@ -21,7 +41,10 @@ export function Isikulo() {
 
   return (
     <section id="isikulo" className="relative py-24 lg:py-32">
-      <div className="absolute inset-0 bg-gradient-to-b from-copper-50/40 via-warm-50 to-white" />
+      <div className="absolute inset-0 bg-gradient-to-b from-copper-50/40 via-warm-50 to-white texture-grain" />
+      {/* Ndebele pattern band */}
+      <div className="absolute top-0 left-0 right-0 h-3 ndebele-band" />
+      <div className="absolute top-3 left-0 right-0 h-px bg-ink-900/10" />
       <div className="relative z-10 section-padding" ref={ref}>
         <div className="content-max-width">
           <SectionHeader
@@ -37,7 +60,7 @@ export function Isikulo() {
             transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
             <p className="text-body-lg text-ink-600 leading-relaxed text-balance">
-              Five working products are at final-launch stage. Isikulo AI is free for South African learners — 
+              Five working products are at final-launch stage. Isikulo AI is free for South African learners - 
               your support keeps it that way. Every contribution funds AI tokens, infrastructure, and the final 
               5% of build time needed to launch the full OS³ ecosystem. This is not charity. It is an investment 
               in practical, free education technology that reaches learners who would otherwise be left behind. 
@@ -55,9 +78,11 @@ export function Isikulo() {
           >
             <div className="absolute top-0 right-0 w-96 h-96 bg-copper-600/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-copper-800/10 rounded-full blur-3xl" />
+            {/* Ndebele pattern band across the top of the mission card */}
+            <div className="absolute top-0 left-0 right-0 h-2.5 ndebele-band" />
             <div className="relative z-10 grid lg:grid-cols-2 gap-10 items-center">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-medium border border-emerald-500/30 mb-5">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ndebele-gold/15 text-ndebele-gold text-xs font-medium border border-ndebele-gold/30 mb-5">
                   <Heart className="w-3 h-3" />
                   Free for South African Learners
                 </div>
@@ -86,7 +111,7 @@ export function Isikulo() {
                       <div className="mt-6 pt-6 border-t border-white/10 space-y-4">
                         <p className="text-sm text-white/60 leading-relaxed">
                           Isikulo was built from the ground up to address a specific gap: learners in South Africa 
-                          who need help with homework, revision, and understanding concepts — but cannot afford 
+                          who need help with homework, revision, and understanding concepts - but cannot afford 
                           private tutors or paid AI subscriptions. The platform runs on donated AI credits and 
                           community funding. Every rand or dollar contributed goes directly to keeping the 
                           service online, expanding the curriculum coverage, and adding voice support in more 
@@ -121,20 +146,20 @@ export function Isikulo() {
                 </button>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-5 rounded-xl bg-white/5 border border-white/10">
-                  <span className="block text-2xl font-semibold text-white">11</span>
+                <div className="p-5 rounded-xl bg-white/5 border border-white/10 border-t-2 border-t-ndebele-teal">
+                  <span className="block text-2xl font-semibold text-ndebele-teal">11</span>
                   <span className="text-xs text-white/50">Languages Supported</span>
                 </div>
-                <div className="p-5 rounded-xl bg-white/5 border border-white/10">
-                  <span className="block text-2xl font-semibold text-white">R0</span>
+                <div className="p-5 rounded-xl bg-white/5 border border-white/10 border-t-2 border-t-ndebele-gold">
+                  <span className="block text-2xl font-semibold text-ndebele-gold">R0</span>
                   <span className="text-xs text-white/50">Cost to Learners</span>
                 </div>
-                <div className="p-5 rounded-xl bg-white/5 border border-white/10">
-                  <span className="block text-2xl font-semibold text-white">SA</span>
+                <div className="p-5 rounded-xl bg-white/5 border border-white/10 border-t-2 border-t-ndebele-red">
+                  <span className="block text-2xl font-semibold text-ndebele-red">SA</span>
                   <span className="text-xs text-white/50">Full Curriculum</span>
                 </div>
-                <div className="p-5 rounded-xl bg-white/5 border border-white/10">
-                  <span className="block text-2xl font-semibold text-white">95%</span>
+                <div className="p-5 rounded-xl bg-white/5 border border-white/10 border-t-2 border-t-ndebele-blue">
+                  <span className="block text-2xl font-semibold text-ndebele-blue">95%</span>
                   <span className="text-xs text-white/50">Build Complete</span>
                 </div>
               </div>
@@ -146,13 +171,18 @@ export function Isikulo() {
             <h3 className="text-display-md text-ink-900 text-balance mb-8 text-center">
               Sponsor the Final 5%
             </h3>
-            <p className="text-center text-ink-500 max-w-2xl mx-auto mb-10 text-balance">
-              Isikulo AI is free for South African learners. Your support keeps it that way. 
-              Five working products are at final-launch stage. Sponsor the final 5%.
+            <p className="text-center text-ink-500 max-w-3xl mx-auto mb-10 text-balance">
+              Five products are built, tested, and standing at the launch line. What remains is the final 5% - 
+              the AI tokens, server time, and finishing hours that turn a working system into a launched one. 
+              Your sponsorship goes straight into that last stretch: keeping Isikulo AI free for every South 
+              African learner, powering the OS³ ecosystem launch, and proving that practical technology, built 
+              under pressure, can carry a generation of learners forward. This is not charity. It is fuel for 
+              systems that already work.
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {supportTiers.map((tier, i) => {
                 const Icon = iconMap[tier.icon] || Zap;
+                const style = tierIconStyles[i % tierIconStyles.length];
                 return (
                   <motion.a
                     key={tier.id}
@@ -164,8 +194,8 @@ export function Isikulo() {
                     transition={{ duration: 0.5, delay: 0.1 * i, ease: [0.16, 1, 0.3, 1] }}
                     className="group block p-6 rounded-2xl bg-white border border-ink-100 hover:border-copper-300 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-copper-50 flex items-center justify-center mb-4 group-hover:bg-copper-100 transition-colors">
-                      <Icon className="w-5 h-5 text-copper-600" />
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-colors ${style.chip}`}>
+                      <Icon className={`w-5 h-5 ${style.icon}`} />
                     </div>
                     <h4 className="text-base font-semibold text-ink-900 mb-1">{tier.label}</h4>
                     <p className="text-sm text-copper-600 font-medium mb-2">
@@ -210,20 +240,24 @@ export function Isikulo() {
           <div className="mt-12">
             <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-ink-500 mb-4">Quick Actions</h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-              {sponsorActions.map((action) => (
-                <a
-                  key={action.id}
-                  href={action.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex flex-col items-center text-center p-4 rounded-xl bg-white border border-ink-100 hover:border-copper-300 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5"
-                >
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-copper-200 to-copper-300 flex items-center justify-center mb-2">
-                    <span className="text-[10px] font-bold text-copper-800">{action.mark}</span>
-                  </div>
-                  <span className="text-xs font-medium text-ink-700">{action.label}</span>
-                </a>
-              ))}
+              {sponsorActions.map((action, i) => {
+                const ActionIcon = actionIcons[action.icon] || Zap;
+                const style = actionIconStyles[i % actionIconStyles.length];
+                return (
+                  <a
+                    key={action.id}
+                    href={action.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col items-center text-center p-4 rounded-xl bg-white border border-ink-100 hover:border-copper-300 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5"
+                  >
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-transform duration-300 group-hover:scale-110 ${style}`}>
+                      <ActionIcon className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs font-medium text-ink-700">{action.label}</span>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>

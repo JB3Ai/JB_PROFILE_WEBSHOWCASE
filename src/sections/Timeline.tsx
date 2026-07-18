@@ -19,7 +19,7 @@ export function Timeline() {
   const { ref, isVisible } = useScrollReveal();
   return (
     <section id="timeline" className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-white to-warm-50/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-warm-100 via-copper-50/60 to-warm-100 texture-weave" />
       <div className="relative z-10 section-padding" ref={ref}>
         <div className="content-max-width">
           <SectionHeader

@@ -24,7 +24,7 @@ export function GTR3() {
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.1, duration: 0.6 }}
             >
-              GTR³ — The Journey of Breaking, Building, and Becoming
+              GTR³ - The Journey of Breaking, Building, and Becoming
             </motion.h2>
             <motion.p
               className="text-body-lg text-ink-500 text-balance"
@@ -74,8 +74,22 @@ export function GTR3() {
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-              <div className="max-w-2xl">
+            <div className="absolute top-0 right-0 w-72 h-72 bg-copper-600/10 rounded-full blur-3xl" />
+            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-10">
+              {/* Book cover visual */}
+              <div className="shrink-0 mx-auto lg:mx-0">
+                <div className="relative w-44 lg:w-52">
+                  <img
+                    src="/assets/images/gtr3-book-coming-soon.png"
+                    alt="GTR³ - Coming Soon. The Rebuild Journey, written by Jono Blackburn"
+                    className="w-full rounded-xl shadow-2xl border border-white/10 -rotate-2 hover:rotate-0 transition-transform duration-500"
+                  />
+                  <span className="absolute -top-3 -right-3 px-3 py-1 rounded-full bg-copper-500 text-white text-[11px] font-semibold shadow-lg">
+                    Coming Soon
+                  </span>
+                </div>
+              </div>
+              <div className="flex-1 max-w-2xl">
                 <div className="flex items-center gap-2 mb-3">
                   <BookOpen className="w-5 h-5 text-copper-400" />
                   <span className="text-xs uppercase tracking-[0.15em] text-copper-400">Coming Soon</span>
@@ -93,7 +107,7 @@ export function GTR3() {
                   rel="noopener noreferrer"
                   className="btn-accent"
                 >
-                  Reserve Now — R900 / $50
+                  Reserve Now - R900 / $50
                   <ArrowUpRight className="w-4 h-4 ml-1" />
                 </a>
               </div>
