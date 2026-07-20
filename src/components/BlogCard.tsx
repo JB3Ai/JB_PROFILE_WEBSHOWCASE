@@ -13,9 +13,12 @@ export function BlogCard({ post, index = 0, variant = 'default' }: BlogCardProps
   const isFeatured = variant === 'featured';
 
   return (
-    <motion.article
+    <motion.a
+      href={post.link || 'https://medium.com/@jono_12764'}
+      target="_blank"
+      rel="noopener noreferrer"
       className={cn(
-        'group cursor-pointer',
+        'group cursor-pointer block',
         isFeatured && 'md:grid md:grid-cols-5 md:gap-8 items-center'
       )}
       initial={{ opacity: 0, y: 24 }}
@@ -94,6 +97,6 @@ export function BlogCard({ post, index = 0, variant = 'default' }: BlogCardProps
           </span>
         </div>
       </div>
-    </motion.article>
+    </motion.a>
   );
 }

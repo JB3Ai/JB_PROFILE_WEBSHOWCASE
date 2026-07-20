@@ -23,7 +23,9 @@ export function Blog() {
               />
             </div>
             <motion.a
-              href="#"
+              href="https://medium.com/@jono_12764"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-medium text-ink-600 hover:text-copper-600 
                          transition-colors duration-200"
               initial={{ opacity: 0 }}

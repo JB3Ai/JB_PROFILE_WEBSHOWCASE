@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from '@/components/SectionHeader';
 import { apps, publicApps, gatedApps } from '@/data/apps';
-import { Lock, ArrowUpRight, ExternalLink, Play } from 'lucide-react';
+import { Lock, Download, ExternalLink, Play } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 type FilterTab = 'all' | 'public' | 'gated' | 'featured';
@@ -126,7 +126,7 @@ export function Portfolio({ onOpenGate }: PortfolioProps) {
                           ))}
                         </div>
                       )}
-                      <div className="flex flex-wrap items-center gap-3">
+                      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                         {app.videoUrl && (
                           <a 
                             href={app.videoUrl} 
@@ -136,26 +136,24 @@ export function Portfolio({ onOpenGate }: PortfolioProps) {
                           >
                             <Play className="w-4 h-4 mr-1.5 fill-current" />
                             Watch Demo
-                            <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
                           </a>
                         )}
-                        {app.category === 'gated' ? (
-                          <button
-                            onClick={() => onOpenGate('client')}
+                        <button
+                          onClick={() => onOpenGate('client')}
+                          className="inline-flex items-center text-sm font-medium text-copper-600 hover:text-copper-700 transition-colors"
+                        >
+                          <ExternalLink className="w-4 h-4 mr-1.5" />
+                          Open App
+                        </button>
+                        {app.externalLink && app.externalLink !== '#' && (
+                          <a 
+                            href={app.externalLink}
+                            download
                             className="inline-flex items-center text-sm font-medium text-copper-600 hover:text-copper-700 transition-colors"
                           >
-                            <Lock className="w-4 h-4 mr-1.5" />
-                            Access via Portal
-                            <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
-                          </button>
-                        ) : (
-                          app.externalLink && app.externalLink !== '#' && (
-                            <a href={app.externalLink} className="inline-flex items-center text-sm font-medium text-copper-600 hover:text-copper-700 transition-colors">
-                              <ExternalLink className="w-4 h-4 mr-1.5" />
-                              Open App
-                              <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
-                            </a>
-                          )
+                            <Download className="w-4 h-4 mr-1.5" />
+                            Download PDF
+                          </a>
                         )}
                       </div>
                     </div>

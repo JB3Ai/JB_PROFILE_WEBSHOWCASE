@@ -66,6 +66,7 @@ export interface BlogPost {
   readTime: string;
   featured?: boolean;
   coverImage?: string;
+  link?: string;
 }
 
 export interface GTR3Chapter {

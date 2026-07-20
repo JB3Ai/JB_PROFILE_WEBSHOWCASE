@@ -12,6 +12,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '8 min read',
     featured: true,
     coverImage: '/assets/images/founder-imed-team.png',
+    link: 'https://medium.com/@jono_12764',
   },
   {
     id: 'ai-practical',
@@ -23,6 +24,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-06-15',
     readTime: '6 min read',
     coverImage: '/assets/images/building-tools-dashboard.jpg',
+    link: 'https://medium.com/@jono_12764/practical-ai-building-tools-that-actually-work-bdb2606df060',
   },
   {
     id: 'chaos-to-clarity',
@@ -35,6 +37,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '10 min read',
     featured: true,
     coverImage: '/assets/images/gtr3-loading-hero.webp',
+    link: 'https://medium.com/@jono_12764',
   },
   {
     id: 'building-under-pressure',
@@ -46,6 +49,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-05-20',
     readTime: '12 min read',
     coverImage: '/assets/images/imed-lab-precision.webp',
+    link: 'https://medium.com/@jono_12764/building-under-pressure-lessons-from-the-trenches-20e49e1434f9',
   },
   {
     id: 'africa-tech',
@@ -57,6 +61,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-05-08',
     readTime: '7 min read',
     coverImage: '/assets/images/artwork-curated/voicegrid-project.png',
+    link: 'https://medium.com/@jono_12764/why-africa-will-build-the-next-generation-of-infrastructure-4345ac7dd220',
   },
   {
     id: 'smart-home-future',
@@ -68,6 +73,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-04-25',
     readTime: '5 min read',
     coverImage: '/assets/images/clipboard-ai-private-workspace.webp',
+    link: 'https://medium.com/@jono_12764/the-future-of-smart-homes-is-not-voice-control-6e217b2f623b',
   },
 ];
 
