@@ -8,7 +8,7 @@ export const evidenceItems: EvidenceItem[] = [
     type: 'publication',
     visibility: 'Public Preview',
     fileUrl: '/assets/pdfs/Jonathan_Blackburn_Premium_Resume.pdf',
-    thumbnail: '/assets/images/evidence-cv.jpg',
+    thumbnail: '/assets/images/artwork-curated/founder-profile-side.png',
     tags: ['cv', 'profile', 'founder'],
     cautionNote: 'Public version should remove private phone numbers, legacy contact details, and sensitive personal references.',
   },
