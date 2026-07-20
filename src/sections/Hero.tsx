@@ -39,7 +39,7 @@ export function Hero({ onOpenGate }: HeroProps) {
                 animate={{ opacity: 1, y: 0 }} 
                 transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               >
-                Jono
+                Jonathan
                 <br />
                 <span className="text-copper-400">Blackburn</span>
               </motion.h1>
@@ -61,8 +61,8 @@ export function Hero({ onOpenGate }: HeroProps) {
                 animate={{ opacity: 1, y: 0 }} 
                 transition={{ duration: 0.7, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
               >
-                South African entrepreneur and systems builder. Smart-home automation, recovery architectures, 
-                diagnostics platforms, and practical AI - built to turn operational complexity into clarity.
+                A South African entrepreneur and systems builder turning operational complexity into clarity 
+                through smart-home automation, recovery architectures, diagnostics platforms, and practical AI.
               </motion.p>
 
               <motion.div 
@@ -94,7 +94,7 @@ export function Hero({ onOpenGate }: HeroProps) {
                   <div className="relative aspect-[4/5] overflow-hidden">
                     <img 
                       src="/assets/images/artwork-curated/founder-profile-side.png" 
-                      alt="Jono Blackburn"
+                      alt="Jonathan Blackburn"
                       className="w-full h-full object-cover object-top"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/20 to-transparent" />
@@ -117,7 +117,7 @@ export function Hero({ onOpenGate }: HeroProps) {
                     <span className="text-caption uppercase tracking-[0.12em] text-copper-400 mb-2 block">Founder Profile</span>
                     <p className="text-sm text-white/70 leading-relaxed">
                       Jonathan Blackburn is a South African entrepreneur and systems builder whose work spans 
-                      smart-home automation, recovery service structures, diagnostics, laboratory systems, and JB³Ai.
+                      smart-home automation, recovery service structures, diagnostics, laboratory systems, and JB³.
                     </p>
                     <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
                       <div className="flex gap-4">

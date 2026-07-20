@@ -59,13 +59,15 @@ export function Isikulo() {
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
+            <p className="text-body-lg text-ink-600 leading-relaxed text-balance mb-4">
+              Five working products are at the final-launch stage. Your support goes directly into the final 
+              5%: the server time, AI tokens, and development hours needed to bring the full OS³ ecosystem online.
+            </p>
             <p className="text-body-lg text-ink-600 leading-relaxed text-balance">
-              Five working products are at final-launch stage. Isikulo AI is free for South African learners - 
-              your support keeps it that way. Every contribution funds AI tokens, infrastructure, and the final 
-              5% of build time needed to launch the full OS³ ecosystem. This is not charity. It is an investment 
-              in practical, free education technology that reaches learners who would otherwise be left behind. 
-              Whether you sponsor a learner, fund AI credits, or reserve the GTR³ book, you are fueling systems 
-              that are already proven and ready to scale.
+              While keeping Isikulo AI free for South African learners remains our core educational mission, 
+              your contributions also directly fund JB³ infrastructure, hardware recovery, and my continued 
+              build time. This is not charity. It is an investment in practical, proven technology that is 
+              ready to scale.
             </p>
           </motion.div>
 
@@ -171,14 +173,6 @@ export function Isikulo() {
             <h3 className="text-display-md text-ink-900 text-balance mb-8 text-center">
               Sponsor the Final 5%
             </h3>
-            <p className="text-center text-ink-500 max-w-3xl mx-auto mb-10 text-balance">
-              Five products are built, tested, and standing at the launch line. What remains is the final 5% - 
-              the AI tokens, server time, and finishing hours that turn a working system into a launched one. 
-              Your sponsorship goes straight into that last stretch: keeping Isikulo AI free for every South 
-              African learner, powering the OS³ ecosystem launch, and proving that practical technology, built 
-              under pressure, can carry a generation of learners forward. This is not charity. It is fuel for 
-              systems that already work.
-            </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {supportTiers.map((tier, i) => {
                 const Icon = iconMap[tier.icon] || Zap;

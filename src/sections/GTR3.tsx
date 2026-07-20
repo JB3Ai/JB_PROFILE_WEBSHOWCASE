@@ -24,7 +24,7 @@ export function GTR3() {
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.1, duration: 0.6 }}
             >
-              GTR³ - The Journey of Breaking, Building, and Becoming
+              GTR³: The Journey of Breaking, Building, and Becoming
             </motion.h2>
             <motion.p
               className="text-body-lg text-ink-500 text-balance"
@@ -96,8 +96,9 @@ export function GTR3() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Reserve GTR³ Limited Edition</h3>
                 <p className="text-white/60 text-sm leading-relaxed">
-                  The third GT-R has not yet arrived. Unlike most memoirs, this story is being written during the climb, 
-                  while the outcome remains uncertain and the final chapter is still unfolding.
+                  Sponsor my build time and reserve a limited edition physical copy of the GTR³ manuscript. 
+                  The third GT-R has not yet arrived. Unlike most memoirs, this story is being written during 
+                  the climb, while the outcome remains uncertain and the final chapter is still unfolding.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 shrink-0">

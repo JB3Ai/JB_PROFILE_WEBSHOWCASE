@@ -21,7 +21,7 @@ export function Evidence() {
         <div className="content-max-width">
           <SectionHeader
             label="Evidence"
-            title="Proof over promises."
+            title="The Architecture of Proof"
             description="Verified documents, awards, certificates, recommendations, and historical proof layers. 
                          Not pitch-deck claims. Evidence that stands up."
           />

@@ -15,7 +15,7 @@ export const supportTiers: SponsorTier[] = [
     label: 'Reserve GTR³ Limited Edition',
     amountZAR: 900,
     amountUSD: 50,
-    description: 'Sponsor build time and reserve a limited edition copy of the GTR³ book.',
+    description: 'Sponsor my build time and reserve a limited edition physical copy of the GTR³ manuscript.',
     icon: 'BookOpen',
     href: 'https://paypal.me/jonoblackburnza',
   },
@@ -30,10 +30,10 @@ export const supportTiers: SponsorTier[] = [
   },
   {
     id: 'hardware-recovery',
-    label: 'Hardware Recovery',
+    label: 'Hardware Recovery & Ecosystem',
     amountZAR: 4500,
     amountUSD: 250,
-    description: 'Help toward hardware recovery and development tools.',
+    description: 'Direct support toward hardware recovery, development tools, and core OS³ infrastructure.',
     icon: 'Cpu',
     href: 'https://paybru.co.za/communities/jonoblackburn-become-a-founding-sponsor',
   },
@@ -42,10 +42,10 @@ export const supportTiers: SponsorTier[] = [
 export const supportLinks: FundraisingLink[] = [
   {
     id: 'buymeacoffee',
-    label: 'Buy Me a Coffee',
+    label: 'Platform Support (Buy Me a Coffee)',
     href: 'https://www.buymeacoffee.com/jonoblackburn',
     platform: 'buymeacoffee',
-    description: 'International support hub. Once-off, monthly, updates, GTR³ previews, and community access.',
+    description: 'Once-off or monthly support for ongoing platform development, updates, and community access.',
   },
   {
     id: 'paybru',
@@ -66,7 +66,7 @@ export const supportLinks: FundraisingLink[] = [
     label: 'Ko-fi',
     href: 'https://ko-fi.com/D0K721OP8E',
     platform: 'other',
-    description: 'Support free education and platform development.',
+    description: 'Once-off or monthly support for ongoing platform development, updates, and community access.',
   },
 ];
 

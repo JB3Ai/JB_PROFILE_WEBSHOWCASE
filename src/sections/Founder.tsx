@@ -46,7 +46,7 @@ export function Founder() {
           <SectionHeader
             label="Founder"
             title="Twenty-five years of building."
-            description="From electronics and automation to recovery systems, iMED, JB³Ai, and OS³. 
+            description="From electronics and automation to recovery systems, iMED, JB³, and OS³. 
                          Built through collapse, rebuilt through discipline, and still climbing."
           />
 
@@ -86,7 +86,7 @@ export function Founder() {
             <div className="relative z-10">
               <blockquote className="text-xl lg:text-2xl font-light leading-relaxed text-white/90 max-w-3xl text-balance">
                 "The knowledge gathered across addiction, recovery, electronics, engineering, laboratories, 
-                compliance, leadership, fatherhood, and failure now converges in JB³Ai. The foundation is a 
+                compliance, leadership, fatherhood, and failure now converges in JB³. The foundation is a 
                 philosophy shaped by lived experience: people are often broken by complexity long before 
                 the systems around them fail."
               </blockquote>

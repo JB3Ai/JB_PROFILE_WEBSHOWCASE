@@ -18,7 +18,7 @@ export function DailyShow() {
         <div className="content-max-width">
           <SectionHeader
             label="Content"
-            title="JB³Ai The Daily Logic Show."
+            title="JB³ The Daily Logic Show."
             align="left"
             light
           />
@@ -34,7 +34,7 @@ export function DailyShow() {
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                 <img 
                   src="/assets/images/artwork-curated/daily-show-cover.png" 
-                  alt="JB³Ai The Daily Logic Show"
+                  alt="JB³ The Daily Logic Show"
                   className="w-full aspect-video object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/20 to-transparent" />

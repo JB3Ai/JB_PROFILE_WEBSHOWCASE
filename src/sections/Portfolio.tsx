@@ -32,8 +32,8 @@ export function Portfolio({ onOpenGate }: PortfolioProps) {
       <div className="relative z-10 section-padding">
         <div className="content-max-width">
           <SectionHeader
-            label="Product Architecture"
-            title="A controlled public preview of the OS³ ecosystem."
+            label="Projects"
+            title="The OS³ Ecosystem: Live Architecture"
             description="Eight working systems. Five public. Three gated. 
                          The platform layer before the deeper founder history and proof sections."
           />
