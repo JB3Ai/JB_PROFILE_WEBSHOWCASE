@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight, Lock } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 interface NavbarProps {
   onOpenGate: (context: 'investor' | 'client' | 'collaborator' | 'press') => void;
@@ -58,7 +59,8 @@ export function Navbar({ onOpenGate }: NavbarProps) {
               ))}
             </div>
 
-            <div className="hidden lg:flex items-center gap-2">
+            <div className="hidden lg:flex items-center gap-3">
+              <ThemeToggle />
               <button
                 onClick={() => onOpenGate('investor')}
                 className="px-4 py-2.5 rounded-xl text-sm font-medium text-ink-600 hover:text-ink-900 hover:bg-warm-100 transition-all duration-200 flex items-center gap-1.5"
@@ -75,13 +77,16 @@ export function Navbar({ onOpenGate }: NavbarProps) {
               </button>
             </div>
 
-            <button
-              className="lg:hidden p-2 rounded-xl text-ink-700 hover:bg-warm-100"
-              onClick={() => setMobileOpen(true)}
-              aria-label="Open menu"
-            >
-              <Menu className="w-5 h-5" />
-            </button>
+            <div className="lg:hidden flex items-center gap-3">
+              <ThemeToggle />
+              <button
+                className="p-2 rounded-xl text-ink-700 hover:bg-warm-100"
+                onClick={() => setMobileOpen(true)}
+                aria-label="Open menu"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
       </nav>

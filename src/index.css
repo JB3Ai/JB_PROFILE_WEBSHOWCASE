@@ -212,3 +212,183 @@
     display: none;
   }
 }
+
+
+/* ==========================================================================
+   3-state theme system
+   - No data-theme attribute  -> DEFAULT (current premium warm/copper look)
+   - data-theme="day"         -> Deep Slate & Silver (cool-toned, light)
+   - data-theme="dark"        -> Near-black with teal glow accents
+   ========================================================================== */
+
+:root {
+  /* DEFAULT palette channels (identical to original hex values) */
+  --copper-50: 253 246 240;
+  --copper-100: 249 232 216;
+  --copper-200: 242 207 179;
+  --copper-300: 232 173 130;
+  --copper-400: 219 136 86;
+  --copper-500: 196 102 58;
+  --copper-600: 168 78 46;
+  --copper-700: 140 62 40;
+  --copper-800: 115 53 38;
+  --copper-900: 96 47 36;
+  --copper-950: 54 22 16;
+  --warm-50: 250 250 249;
+  --warm-100: 245 245 244;
+  --warm-200: 231 229 228;
+  --warm-300: 214 211 209;
+  --warm-400: 168 162 158;
+  --warm-500: 120 113 108;
+  --warm-600: 87 83 78;
+  --warm-700: 68 64 60;
+  --warm-800: 41 37 36;
+  --warm-900: 28 25 23;
+  --warm-950: 12 10 9;
+}
+
+/* ---------------- DAY: Deep Slate & Silver ---------------- */
+[data-theme='day'] {
+  --copper-50: 243 246 248;
+  --copper-100: 230 236 241;
+  --copper-200: 203 215 224;
+  --copper-300: 159 180 197;
+  --copper-400: 107 139 163;
+  --copper-500: 68 96 124;
+  --copper-600: 44 62 80;
+  --copper-700: 37 54 71;
+  --copper-800: 31 45 59;
+  --copper-900: 24 36 47;
+  --copper-950: 16 24 32;
+  --warm-50: 248 249 250;
+  --warm-100: 241 243 244;
+  --warm-200: 226 230 233;
+  --warm-300: 205 212 217;
+  --warm-400: 154 167 176;
+  --warm-500: 113 128 139;
+  --warm-600: 89 102 111;
+  --warm-700: 69 79 86;
+  --warm-800: 44 52 57;
+  --warm-900: 33 39 43;
+  --warm-950: 20 24 27;
+}
+
+/* Day: neutral text shifts toward slate */
+[data-theme='day'] .text-ink-900 { color: #2c3e50; }
+[data-theme='day'] .text-ink-800 { color: #253647; }
+[data-theme='day'] .text-ink-700 { color: #3e5970; }
+[data-theme='day'] .text-ink-600 { color: #546e7e; }
+[data-theme='day'] .text-ink-500 { color: #647785; }
+[data-theme='day'] .text-ink-400 { color: #8496a2; }
+[data-theme='day'] .text-ink-300 { color: #a5b5c0; }
+[data-theme='day'] .border-ink-100 { border-color: #e6ecf1; }
+[data-theme='day'] .border-ink-200 { border-color: #d1dbe2; }
+[data-theme='day'] .border-ink-300 { border-color: #aebfcb; }
+[data-theme='day'] .bg-white { background-color: #fbfcfd; }
+
+/* Day: dark structural surfaces become deep slate */
+[data-theme='day'] .bg-ink-900 { background-color: #2c3e50; }
+[data-theme='day'] .bg-ink-950 { background-color: #243342; }
+[data-theme='day'] .from-ink-950 {
+  --tw-gradient-from: #243342 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 51 66 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+[data-theme='day'] .from-ink-950\/80 {
+  --tw-gradient-from: rgb(36 51 66 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 51 66 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+[data-theme='day'] .from-ink-950\/90 {
+  --tw-gradient-from: rgb(36 51 66 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(36 51 66 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+[data-theme='day'] .via-ink-900 {
+  --tw-gradient-to: rgb(36 51 66 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #2c3e50 var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+[data-theme='day'] .via-ink-900\/70 {
+  --tw-gradient-to: rgb(36 51 66 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(44 62 80 / 0.7) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+[data-theme='day'] .via-ink-950\/20 {
+  --tw-gradient-to: rgb(36 51 66 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(36 51 66 / 0.2) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+[data-theme='day'] .to-ink-950 { --tw-gradient-to: #243342 var(--tw-gradient-to-position); }
+[data-theme='day'] .to-ink-950\/30 { --tw-gradient-to: rgb(36 51 66 / 0.3) var(--tw-gradient-to-position); }
+[data-theme='day'] .to-ink-950\/50 { --tw-gradient-to: rgb(36 51 66 / 0.5) var(--tw-gradient-to-position); }
+[data-theme='day'] .from-ink-900 {
+  --tw-gradient-from: #2c3e50 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(44 62 80 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+[data-theme='day'] .to-ink-900 { --tw-gradient-to: #2c3e50 var(--tw-gradient-to-position); }
+[data-theme='day'] .to-ink-800 { --tw-gradient-to: #34495e var(--tw-gradient-to-position); }
+
+/* ---------------- DARK: near-black + teal glow ---------------- */
+[data-theme='dark'] {
+  color-scheme: dark;
+  --copper-50: 4 47 46;
+  --copper-100: 19 78 74;
+  --copper-200: 17 94 89;
+  --copper-300: 15 118 110;
+  --copper-400: 45 212 191;
+  --copper-500: 20 184 166;
+  --copper-600: 13 148 136;
+  --copper-700: 15 118 110;
+  --copper-800: 17 94 89;
+  --copper-900: 19 78 74;
+  --copper-950: 4 47 46;
+  --warm-50: 13 17 23;
+  --warm-100: 22 28 36;
+  --warm-200: 35 44 56;
+  --warm-300: 51 64 79;
+  --warm-400: 77 93 112;
+  --warm-500: 100 118 137;
+  --warm-600: 132 150 166;
+  --warm-700: 165 179 192;
+  --warm-800: 198 208 217;
+  --warm-900: 226 232 236;
+  --warm-950: 244 247 249;
+}
+
+/* Dark: surfaces and text */
+[data-theme='dark'] .bg-white { background-color: #131a23; }
+[data-theme='dark'] .text-ink-900 { color: #eef2f5; }
+[data-theme='dark'] .text-ink-800 { color: #dde4e9; }
+[data-theme='dark'] .text-ink-700 { color: #c3ccd3; }
+[data-theme='dark'] .text-ink-600 { color: #a3aeb8; }
+[data-theme='dark'] .text-ink-500 { color: #8d99a5; }
+[data-theme='dark'] .text-ink-400 { color: #77838f; }
+[data-theme='dark'] .text-ink-300 { color: #5d6a76; }
+[data-theme='dark'] .border-ink-100 { border-color: #232c38; }
+[data-theme='dark'] .border-ink-200 { border-color: #2e3947; }
+[data-theme='dark'] .border-ink-300 { border-color: #3b4757; }
+[data-theme='dark'] .bg-ink-50 { background-color: #161c24; }
+
+/* Dark: keep light text on dark surfaces (warm channels inverted above) */
+[data-theme='dark'] .text-warm-50 { color: #f4f7f9; }
+[data-theme='dark'] .text-warm-100 { color: #e2e8ec; }
+
+/* Dark: light-section gradient stops flip to dark surface */
+[data-theme='dark'] .from-white {
+  --tw-gradient-from: #131a23 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(19 26 35 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+[data-theme='dark'] .to-white { --tw-gradient-to: #131a23 var(--tw-gradient-to-position); }
+[data-theme='dark'] .via-white {
+  --tw-gradient-to: rgb(19 26 35 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #131a23 var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+[data-theme='dark'] .from-ink-50 {
+  --tw-gradient-from: #161c24 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(22 28 36 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+/* Dark: CTA keeps its copper identity (per reference mock) */
+[data-theme='dark'] .btn-accent { background-color: #a84e2e; }
+[data-theme='dark'] .btn-accent:hover { background-color: #c4663a; }
