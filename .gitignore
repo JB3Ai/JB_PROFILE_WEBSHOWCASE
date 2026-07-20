@@ -14,3 +14,8 @@ Thumbs.db
 
 # Large assets — deploy via FTP only
 public/assets/videos/iMED Company Profile.mp4
+
+# Large asset files - host on cPanel instead
+public/assets/pdfs/
+public/assets/videos/
+public/assets/images/daily-show/*_raw.png
