@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { SectionHeader } from '@/components/SectionHeader';
 import { supportTiers, supportLinks, sponsorActions } from '@/data/fundraising';
-import { Zap, BookOpen, GraduationCap, Cpu, Heart, Globe, Coffee, ArrowUpRight, ChevronDown, ChevronUp, Video, HeartHandshake, Award } from 'lucide-react';
+import { Zap, BookOpen, GraduationCap, Cpu, Heart, Globe, Coffee, ArrowUpRight, ChevronDown, ChevronUp, Video, HeartHandshake, Award, Download } from 'lucide-react';
 
 const iconMap: Record<string, any> = { Zap, BookOpen, GraduationCap, Cpu };
 
@@ -136,16 +136,26 @@ export function Isikulo() {
                   )}
                 </AnimatePresence>
 
-                <button
-                  onClick={() => setExpanded(!expanded)}
-                  className="mt-4 inline-flex items-center gap-2 text-sm text-copper-400 hover:text-copper-300 transition-colors"
-                >
-                  {expanded ? (
-                    <>Less details <ChevronUp className="w-4 h-4" /></>
-                  ) : (
-                    <>Read more about the mission <ChevronDown className="w-4 h-4" /></>
-                  )}
-                </button>
+                <div className="mt-4 flex flex-wrap items-center gap-4">
+                  <button
+                    onClick={() => setExpanded(!expanded)}
+                    className="inline-flex items-center gap-2 text-sm text-copper-400 hover:text-copper-300 transition-colors"
+                  >
+                    {expanded ? (
+                      <>Less details <ChevronUp className="w-4 h-4" /></>
+                    ) : (
+                      <>Read more about the mission <ChevronDown className="w-4 h-4" /></>
+                    )}
+                  </button>
+                  <a
+                    href="/assets/pdfs/isikoloAD-compressed.pdf"
+                    download
+                    className="inline-flex items-center gap-2 text-sm text-copper-400 hover:text-copper-300 transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    Download Isikulo Overview
+                  </a>
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-5 rounded-xl bg-white/5 border border-white/10 border-t-2 border-t-ndebele-teal">

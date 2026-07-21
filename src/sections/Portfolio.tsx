@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from '@/components/SectionHeader';
 import { apps, publicApps, gatedApps } from '@/data/apps';
-import { Lock, Download, ExternalLink, Play } from 'lucide-react';
+import { Lock, Download, ExternalLink, FileText, Play } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 type FilterTab = 'all' | 'public' | 'gated' | 'featured';
@@ -138,13 +138,6 @@ export function Portfolio({ onOpenGate }: PortfolioProps) {
                             Watch Demo
                           </a>
                         )}
-                        <button
-                          onClick={() => onOpenGate('client')}
-                          className="inline-flex items-center text-sm font-medium text-copper-600 hover:text-copper-700 transition-colors"
-                        >
-                          <ExternalLink className="w-4 h-4 mr-1.5" />
-                          Open App
-                        </button>
                         {app.externalLink && app.externalLink !== '#' && (
                           <a 
                             href={app.externalLink}
@@ -152,9 +145,26 @@ export function Portfolio({ onOpenGate }: PortfolioProps) {
                             className="inline-flex items-center text-sm font-medium text-copper-600 hover:text-copper-700 transition-colors"
                           >
                             <Download className="w-4 h-4 mr-1.5" />
-                            Download PDF
+                            Download Cutsheet
                           </a>
                         )}
+                        {app.brochureUrl && (
+                          <a 
+                            href={app.brochureUrl}
+                            download
+                            className="inline-flex items-center text-sm font-medium text-copper-600 hover:text-copper-700 transition-colors"
+                          >
+                            <FileText className="w-4 h-4 mr-1.5" />
+                            Download Brochure
+                          </a>
+                        )}
+                        <button
+                          onClick={() => onOpenGate('client')}
+                          className="inline-flex items-center text-sm font-medium text-copper-600 hover:text-copper-700 transition-colors"
+                        >
+                          <ExternalLink className="w-4 h-4 mr-1.5" />
+                          Open App
+                        </button>
                       </div>
                     </div>
                   </motion.div>

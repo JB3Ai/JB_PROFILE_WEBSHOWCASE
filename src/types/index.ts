@@ -12,6 +12,7 @@ export interface App {
   featured?: boolean;
   externalLink?: string;
   videoUrl?: string;
+  brochureUrl?: string;
 }
 
 export interface TimelineEvent {
@@ -103,4 +104,5 @@ export interface OSApp {
   content?: string;
   pdfUrl?: string;
   imageUrl?: string;
+  files?: { label: string; url: string }[];
 }

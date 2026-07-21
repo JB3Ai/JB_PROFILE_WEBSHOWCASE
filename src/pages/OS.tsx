@@ -18,6 +18,7 @@ interface WindowState {
   title: string;
   content: string;
   pdfUrl?: string;
+  files?: { label: string; url: string }[];
   category: string;
   isMaximized: boolean;
   isMinimized: boolean;
@@ -115,6 +116,7 @@ export default function OS() {
       title: app.title,
       content: app.content || '',
       pdfUrl: app.pdfUrl,
+      files: app.files,
       category: app.category,
       isMaximized: false,
       isMinimized: false,
@@ -352,6 +354,23 @@ export default function OS() {
             <div className="p-6 bg-ink-900/95 overflow-y-auto" style={{ height: win.isMaximized ? 'calc(100% - 40px)' : `${win.height - 40}px` }}>
               <p className="text-sm text-white/70 leading-relaxed mb-6 whitespace-pre-line">{win.content}</p>
               
+              {win.files && win.files.length > 0 && (
+                <div className="space-y-2 mb-6">
+                  {win.files.map((file) => (
+                    <a
+                      key={file.url}
+                      href={file.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-copper-500/40 hover:bg-white/10 transition-colors group"
+                    >
+                      <Download className="w-4 h-4 text-copper-400 shrink-0" />
+                      <span className="text-sm text-white/80 group-hover:text-white transition-colors">{file.label}</span>
+                    </a>
+                  ))}
+                </div>
+              )}
+
               {win.pdfUrl && (
                 <div className="space-y-3">
                   <a

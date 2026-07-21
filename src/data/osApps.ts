@@ -49,7 +49,7 @@ export const osApps: OSApp[] = [
     category: 'investment',
     gated: true,
     content: 'Complete investment overview for JB³Ai and the OS³ ecosystem. Includes product architecture, market sizing, competitive landscape, financial projections, and use of funds.',
-    pdfUrl: '/assets/pdfs/JB³Ai Investment Deck Intelligence in Motion (Presentation).pdf',
+    pdfUrl: '/assets/pdfs/JB³Ai Investment Deck Intelligence in Motion-compressed.pdf',
   },
   {
     id: 'downloads',
@@ -58,7 +58,15 @@ export const osApps: OSApp[] = [
     icon: 'Download',
     category: 'downloads',
     gated: false,
-    content: 'Access demo files, code repositories, product cut sheets, and technical documentation. Updated regularly as new products reach public release.',
+    content: 'Private document library for portal members. Product cut sheets, intelligence overviews, executive profile, and strategic documentation.',
+    files: [
+      { label: 'OS³ InvestigatorAi CUTSHEET', url: '/assets/pdfs/OS³ InvestigatorAi CUTSHEET.pdf' },
+      { label: 'OS³ NewsRoomAi CUTSHEET', url: '/assets/pdfs/OS³ NewsRoomAi CUTSHEET.pdf' },
+      { label: 'OS³ ClipboardAi CUTSHEET', url: '/assets/pdfs/OS³ ClipboardAi CUTSHEET.pdf' },
+      { label: 'JB³Ai Forensic Intelligence Systems Overview V2', url: '/assets/pdfs/JB³Ai Forensic Intelligence Systems OverviewV2.pdf' },
+      { label: 'Dual-Layer Intelligence for Eagle Star X JB³Ai', url: '/assets/pdfs/Dual-Layer Intelligence for Eagle StarXJB³Ai.pdf' },
+      { label: 'Executive CV: Jonathan Blackburn', url: '/assets/pdfs/Jonathan_Blackburn_Premium_Resume.pdf' },
+    ],
   },
   {
     id: 'gtr3-sneak-peek',
