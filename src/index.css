@@ -4,64 +4,64 @@
 
 @layer base {
   :root {
-    --background: 30 8% 98%;
-    --foreground: 30 6% 10%;
-    --card: 30 8% 99%;
-    --card-foreground: 30 6% 10%;
-    --popover: 30 8% 99%;
-    --popover-foreground: 30 6% 10%;
-    --primary: 24 8% 12%;
-    --primary-foreground: 30 8% 98%;
-    --secondary: 30 6% 94%;
-    --secondary-foreground: 24 8% 12%;
-    --muted: 30 6% 94%;
-    --muted-foreground: 30 4% 46%;
-    --accent: 18 52% 48%;
-    --accent-foreground: 30 8% 99%;
+    --background: 45 41% 91%;
+    --foreground: 0 0% 10%;
+    --card: 40 43% 98%;
+    --card-foreground: 0 0% 10%;
+    --popover: 40 43% 98%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 36 43% 50%;
+    --primary-foreground: 45 41% 91%;
+    --secondary: 43 36% 86%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 43 36% 86%;
+    --muted-foreground: 30 19% 34%;
+    --accent: 36 43% 50%;
+    --accent-foreground: 45 41% 91%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 30 8% 88%;
-    --input: 30 8% 88%;
-    --ring: 18 52% 48%;
-    --radius: 0.625rem;
-    --sidebar-background: 30 8% 98%;
-    --sidebar-foreground: 30 6% 25%;
-    --sidebar-primary: 24 8% 12%;
-    --sidebar-primary-foreground: 30 8% 98%;
-    --sidebar-accent: 30 6% 94%;
-    --sidebar-accent-foreground: 24 8% 12%;
-    --sidebar-border: 30 8% 90%;
-    --sidebar-ring: 18 52% 48%;
+    --destructive-foreground: 40 43% 98%;
+    --border: 36 43% 50%;
+    --input: 36 43% 50%;
+    --ring: 36 43% 50%;
+    --radius: 0.5rem;
+    --sidebar-background: 45 41% 91%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 36 43% 50%;
+    --sidebar-primary-foreground: 45 41% 91%;
+    --sidebar-accent: 43 36% 86%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 36 43% 50%;
+    --sidebar-ring: 36 43% 50%;
   }
 
   .dark {
-    --background: 30 6% 6%;
-    --foreground: 30 8% 96%;
-    --card: 30 6% 8%;
-    --card-foreground: 30 8% 96%;
-    --popover: 30 6% 8%;
-    --popover-foreground: 30 8% 96%;
-    --primary: 30 8% 96%;
-    --primary-foreground: 30 6% 6%;
-    --secondary: 30 4% 15%;
-    --secondary-foreground: 30 8% 96%;
-    --muted: 30 4% 15%;
-    --muted-foreground: 30 4% 60%;
-    --accent: 18 52% 52%;
-    --accent-foreground: 30 8% 99%;
+    --background: 0 0% 4%;
+    --foreground: 45 41% 91%;
+    --card: 0 0% 8%;
+    --card-foreground: 45 41% 91%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 45 41% 91%;
+    --primary: 36 43% 50%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 45 41% 91%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 36 49% 64%;
+    --accent: 36 43% 50%;
+    --accent-foreground: 0 0% 10%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 30 4% 18%;
-    --input: 30 4% 18%;
-    --ring: 18 52% 52%;
-    --sidebar-background: 30 6% 8%;
-    --sidebar-foreground: 30 8% 90%;
-    --sidebar-primary: 18 52% 52%;
-    --sidebar-primary-foreground: 30 8% 99%;
-    --sidebar-accent: 30 4% 15%;
-    --sidebar-accent-foreground: 30 8% 90%;
-    --sidebar-border: 30 4% 18%;
-    --sidebar-ring: 18 52% 52%;
+    --destructive-foreground: 45 41% 91%;
+    --border: 36 43% 50%;
+    --input: 36 43% 50%;
+    --ring: 36 43% 50%;
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 45 41% 91%;
+    --sidebar-primary: 36 43% 50%;
+    --sidebar-primary-foreground: 0 0% 10%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 45 41% 91%;
+    --sidebar-border: 36 43% 50%;
+    --sidebar-ring: 36 43% 50%;
   }
 }
 
@@ -392,3 +392,14 @@
 /* Dark: CTA keeps its copper identity (per reference mock) */
 [data-theme='dark'] .btn-accent { background-color: #a84e2e; }
 [data-theme='dark'] .btn-accent:hover { background-color: #c4663a; }
+
+/* Warm Editorial: soft heritage-gold pulse (replaces legacy neon pulse) */
+@keyframes subtlePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(180, 138, 74, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(180, 138, 74, 0.25);
+  }
+}
