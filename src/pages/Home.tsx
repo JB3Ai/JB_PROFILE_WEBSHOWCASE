@@ -12,6 +12,7 @@ import { DailyShow } from '@/sections/DailyShow';
 import { Footer } from '@/sections/Footer';
 import { GateModal } from '@/components/GateModal';
 import { useAuth } from '@/hooks/useAuth';
+import { sendLeadEmail } from '@/lib/notify';
 import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
@@ -29,12 +30,23 @@ export default function Home() {
     setGateOpen(true);
   };
 
-  const handleRequest = (data: { email: string; intent: 'investor' | 'client' | 'collaborator' | 'press'; name: string; mode: 'access' | 'news' }) => {
+  const handleRequest = (data: { email: string; intent: 'investor' | 'client' | 'collaborator' | 'press'; name: string; mode: 'access' | 'news'; newsletter: boolean }) => {
     const code = requestOtp(data.email, data.name, data.intent, data.mode);
     setPendingEmail(data.email);
+    // Show the code on screen as a fallback until the email is confirmed sent
     setOtpCode(code);
-    // DEMO: In production, this code is sent via email API (Supabase/Resend).
-    // For now, the modal displays it so the user can test the flow.
+    // Email the code to the visitor and the lead notification to the owner.
+    // On success, hide the on-screen fallback so the code only lives in the inbox.
+    sendLeadEmail({
+      name: data.name,
+      email: data.email,
+      intent: data.intent,
+      mode: data.mode,
+      newsletter: data.newsletter,
+      code,
+    }).then((sent) => {
+      if (sent) setOtpCode(null);
+    });
   };
 
   const handleVerify = (email: string, code: string) => {

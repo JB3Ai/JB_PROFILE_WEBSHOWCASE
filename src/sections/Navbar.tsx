@@ -38,11 +38,11 @@ export function Navbar({ onOpenGate }: NavbarProps) {
       >
         <div className="section-padding">
           <div className="content-max-width flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-copper-600 flex items-center justify-center">
-                <span className="text-white text-xs font-semibold">JB</span>
+            <Link to="/" className="flex items-center gap-3">
+              <div className="flex h-8 w-8 items-center justify-center rounded border border-primary/50 bg-transparent text-sm font-bold text-primary shadow-sm transition-colors hover:border-primary hover:bg-primary/5">
+                JB³
               </div>
-              <span className="text-sm font-semibold text-ink-900 tracking-tight hidden sm:block">
+              <span className="text-sm font-medium tracking-wide text-foreground hidden sm:block">
                 Jonathan Blackburn
               </span>
             </Link>

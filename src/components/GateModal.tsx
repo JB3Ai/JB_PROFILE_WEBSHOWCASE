@@ -5,7 +5,7 @@ import { Lock, ArrowRight, X, Check, Mail, Shield, Newspaper } from 'lucide-reac
 interface GateModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onRequest: (data: { email: string; intent: 'investor' | 'client' | 'collaborator' | 'press'; name: string; mode: 'access' | 'news' }) => void;
+  onRequest: (data: { email: string; intent: 'investor' | 'client' | 'collaborator' | 'press'; name: string; mode: 'access' | 'news'; newsletter: boolean }) => void;
   onVerify: (email: string, code: string) => boolean;
   onSubmitLead?: (data: { name: string; email: string; intent: string; mode: string; newsletter: boolean }) => Promise<{ success: boolean; error?: string }>;
   otpCode: string | null;
@@ -53,7 +53,7 @@ export function GateModal({ isOpen, onClose, onRequest, onVerify, onSubmitLead, 
       }
     }
 
-    onRequest({ email: email.trim(), intent, name: name.trim(), mode });
+    onRequest({ email: email.trim(), intent, name: name.trim(), mode, newsletter });
     setSubmitting(false);
     setStep('otp');
   };
@@ -136,12 +136,12 @@ export function GateModal({ isOpen, onClose, onRequest, onVerify, onSubmitLead, 
                     <p className="text-xs text-ink-500 mt-1">We sent a 6-digit code to <span className="font-medium text-ink-700">{email}</span></p>
                   </div>
 
-                  {/* DEMO MODE: show OTP on screen */}
+                  {/* FALLBACK: show OTP on screen only if the email could not be sent */}
                   {otpCode && (
                     <div className="p-3 rounded-xl bg-amber-50 border border-amber-200 text-center">
-                      <p className="text-[10px] font-semibold uppercase tracking-wider text-amber-700 mb-1">Demo Mode - OTP</p>
+                      <p className="text-[10px] font-semibold uppercase tracking-wider text-amber-700 mb-1">Email unavailable - your code</p>
                       <p className="text-2xl font-mono font-bold text-amber-800 tracking-[0.3em]">{otpCode}</p>
-                      <p className="text-[10px] text-amber-600 mt-1">In production this is sent via email</p>
+                      <p className="text-[10px] text-amber-600 mt-1">Normally delivered to your inbox</p>
                     </div>
                   )}
 
