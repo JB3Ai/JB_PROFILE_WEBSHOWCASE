@@ -43,8 +43,8 @@ export function Isikulo() {
     <section id="isikulo" className="relative py-24 lg:py-32">
       <div className="absolute inset-0 bg-gradient-to-b from-copper-50/40 via-warm-50 to-white texture-grain" />
       {/* Ndebele pattern band */}
-      <div className="absolute top-0 left-0 right-0 h-3 ndebele-band" />
-      <div className="absolute top-3 left-0 right-0 h-px bg-ink-900/10" />
+      <div className="absolute top-0 left-0 right-0 h-5 ndebele-band" />
+      <div className="absolute top-5 left-0 right-0 h-px bg-ink-900/10" />
       <div className="relative z-10 section-padding" ref={ref}>
         <div className="content-max-width">
           <SectionHeader
@@ -81,7 +81,7 @@ export function Isikulo() {
             <div className="absolute top-0 right-0 w-96 h-96 bg-copper-600/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-copper-800/10 rounded-full blur-3xl" />
             {/* Ndebele pattern band across the top of the mission card */}
-            <div className="absolute top-0 left-0 right-0 h-2.5 ndebele-band" />
+            <div className="absolute top-0 left-0 right-0 h-6 ndebele-band" />
             <div className="relative z-10 grid lg:grid-cols-2 gap-10 items-center">
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ndebele-gold/15 text-ndebele-gold text-xs font-medium border border-ndebele-gold/30 mb-5">
