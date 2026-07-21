@@ -66,7 +66,7 @@ export const apps: App[] = [
     id: 'superagents',
     title: 'JB³ SuperAgents',
     tagline: 'Multilingual AI workforce architecture',
-    description: 'Multilingual AI workforce for operations, research, finance, legal, and founder workflows.',
+    description: 'Multilingual AI workforce for operations, research, finance, legal, WhatsApp and Telegram integration, Google or Microsoft, and founder workflows.',
     longDescription: 'A managed AI workforce architecture for structured execution. Coordinates specialist AI-assisted roles across operations, research, development, creative work, growth, finance, legal support, voice, and founder workflows.',
     category: 'public',
     status: 'live',
