@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { Navbar } from '@/sections/Navbar';
 import { Hero } from '@/sections/Hero';
 import { Founder } from '@/sections/Founder';
@@ -11,6 +12,8 @@ import { Blog } from '@/sections/Blog';
 import { DailyShow } from '@/sections/DailyShow';
 import { Footer } from '@/sections/Footer';
 import { GateModal } from '@/components/GateModal';
+import BootSequence, { BOOT_SESSION_KEY } from '@/components/boot/BootSequence';
+import OSAuthSequence from '@/components/boot/OSAuthSequence';
 import { useAuth } from '@/hooks/useAuth';
 import { sendLeadEmail } from '@/lib/notify';
 import { useNavigate } from 'react-router-dom';
@@ -20,8 +23,19 @@ export default function Home() {
   const nav = useNavigate();
   const [gateOpen, setGateOpen] = useState(false);
   const [gateContext, setGateContext] = useState<'investor' | 'client' | 'collaborator' | 'press'>('client');
-  const [, setPendingEmail] = useState('');
+  const [pendingEmail, setPendingEmail] = useState('');
   const [otpCode, setOtpCode] = useState<string | null>(null);
+  // Cinematic boot: shown once per browser session before the homepage reveals
+  const [booted, setBooted] = useState(() => {
+    try { return sessionStorage.getItem(BOOT_SESSION_KEY) === '1'; } catch { return false; }
+  });
+  // Secure OS entry handshake: plays after OTP success, before routing to /os
+  const [authing, setAuthing] = useState(false);
+
+  const completeBoot = () => {
+    try { sessionStorage.setItem(BOOT_SESSION_KEY, '1'); } catch {}
+    setBooted(true);
+  };
 
   const handleOpenGate = (context: 'investor' | 'client' | 'collaborator' | 'press' = 'client') => {
     setGateContext(context);
@@ -52,7 +66,9 @@ export default function Home() {
   const handleVerify = (email: string, code: string) => {
     const result = verifyOtp(email, code);
     if (result.success && result.mode === 'access') {
-      setTimeout(() => nav('/os'), 1200);
+      // Play the secure-entry handshake, then route into the private OS
+      setPendingEmail(email);
+      setAuthing(true);
     }
     return result.success;
   };
@@ -81,6 +97,21 @@ export default function Home() {
         otpCode={otpCode}
         context={gateContext}
       />
+
+      {/* Public landing boot: brand introduction, once per session */}
+      <AnimatePresence>
+        {!booted && <BootSequence onComplete={completeBoot} />}
+      </AnimatePresence>
+
+      {/* Private OS entry: secure handshake after OTP success */}
+      <AnimatePresence>
+        {authing && (
+          <OSAuthSequence
+            userEmail={pendingEmail || 'Guest'}
+            onComplete={() => nav('/os')}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
