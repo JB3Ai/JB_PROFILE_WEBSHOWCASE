@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { ArrowUpRight, Mail, MapPin, Coffee, Globe, Heart, Linkedin, Youtube, Instagram, MessageCircle, Twitter, Facebook, Send, BookOpen, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, Mail, MapPin, Coffee, Globe, Heart, Linkedin, Youtube, Instagram, MessageCircle, Twitter, Facebook, Send, BookOpen, ExternalLink, Github } from 'lucide-react';
 
 interface FooterProps {
   onOpenGate: (context: 'investor' | 'client' | 'collaborator' | 'press') => void;
@@ -11,6 +11,7 @@ const socialLinks = [
   { name: 'LinkedIn', url: 'https://www.linkedin.com/in/jonathanblackburn0793120688/', icon: Linkedin },
   { name: 'LinkedIn Company', url: 'https://www.linkedin.com/company/jb%C2%B3ai/', icon: Linkedin },
   { name: 'X / Twitter', url: 'https://x.com/JonoBlackburn7', icon: Twitter },
+  { name: 'GitHub', url: 'https://github.com/JB3Ai/', icon: Github },
   { name: 'Instagram', url: 'https://www.instagram.com/jb3a.i', icon: Instagram },
   { name: 'Instagram (Personal)', url: 'https://www.instagram.com/jonoblackburn5/', icon: Instagram },
   { name: 'YouTube', url: 'https://www.youtube.com/@JB3Ai', icon: Youtube },
