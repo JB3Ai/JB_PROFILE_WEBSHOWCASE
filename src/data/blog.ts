@@ -12,7 +12,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '8 min read',
     featured: true,
     coverImage: '/assets/images/founder-imed-team.png',
-    link: 'https://medium.com/@jono_12764',
+    link: 'https://medium.com/@jono_12764/systems-over-hype-what-i-learned-building-four-companies-3a3494e79929',
   },
   {
     id: 'ai-practical',
@@ -37,7 +37,7 @@ export const blogPosts: BlogPost[] = [
     readTime: '10 min read',
     featured: true,
     coverImage: '/assets/images/gtr3-loading-hero.webp',
-    link: 'https://medium.com/@jono_12764',
+    link: 'https://medium.com/@jono_12764/from-chaos-to-clarity-the-systems-architects-mindset-f56f5278fc5b',
   },
   {
     id: 'building-under-pressure',

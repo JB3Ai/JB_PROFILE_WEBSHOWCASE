@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { SectionHeader } from '@/components/SectionHeader';
 import { supportTiers, supportLinks, sponsorActions } from '@/data/fundraising';
-import { Zap, BookOpen, GraduationCap, Cpu, Heart, Globe, Coffee, ArrowUpRight, ChevronDown, ChevronUp, Video, HeartHandshake, Award, Download } from 'lucide-react';
+import { Zap, BookOpen, GraduationCap, Cpu, Heart, Globe, Coffee, ArrowUpRight, ArrowRight, ChevronDown, ChevronUp, Video, HeartHandshake, Award, Download } from 'lucide-react';
 
 const iconMap: Record<string, any> = { Zap, BookOpen, GraduationCap, Cpu };
 
@@ -180,9 +181,18 @@ export function Isikulo() {
 
           {/* Sponsor the Final 5% */}
           <div className="mt-16">
-            <h3 className="text-display-md text-ink-900 text-balance mb-8 text-center">
-              Sponsor the Final 5%
-            </h3>
+            <div className="relative mb-8">
+              <h3 className="text-display-md text-ink-900 text-balance text-center">
+                Sponsor the Final 5%
+              </h3>
+              <Link
+                to="/wishlist"
+                className="absolute right-0 top-1/2 -translate-y-1/2 hidden sm:inline-flex text-sm font-medium text-copper-600 hover:text-copper-700 transition-colors items-center gap-2"
+              >
+                View Full Wishlist
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {supportTiers.map((tier, i) => {
                 const Icon = iconMap[tier.icon] || Zap;
@@ -213,6 +223,15 @@ export function Isikulo() {
                   </motion.a>
                 );
               })}
+            </div>
+            <div className="mt-6 text-center sm:hidden">
+              <Link
+                to="/wishlist"
+                className="inline-flex items-center gap-2 text-sm font-medium text-copper-600 hover:text-copper-700 transition-colors"
+              >
+                View Full Wishlist
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
 

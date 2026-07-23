@@ -167,7 +167,7 @@ export function Portfolio({ onOpenGate }: PortfolioProps) {
                             className="inline-flex items-center text-sm font-medium text-copper-600 hover:text-copper-700 transition-colors"
                           >
                             <Download className="w-4 h-4 mr-1.5" />
-                            Download Cutsheet
+                            {app.id === 'consulting-accelerator' ? 'Download JB³Ai Consulting Brief' : 'Download Cutsheet'}
                           </a>
                         )}
                         {app.brochureUrl && (

@@ -56,7 +56,7 @@ export function DailyShow() {
                   </p>
                 </div>
                 <a 
-                  href="https://www.youtube.com/@JB3Ai" 
+                  href="https://www.youtube.com/@JB3AiTheDailyLogicShow" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center hover:bg-white/30 transition-colors group"
@@ -107,7 +107,7 @@ export function DailyShow() {
 
               <div className="flex flex-wrap gap-3">
                 <a 
-                  href="https://www.youtube.com/@JB3Ai" 
+                  href="https://www.youtube.com/@JB3AiTheDailyLogicShow" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="btn-accent"

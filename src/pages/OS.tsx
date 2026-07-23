@@ -1,16 +1,23 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/hooks/useAuth';
 import { osApps } from '@/data/osApps';
+import OSFiles from '@/components/os/OSFiles';
+import OSNotepad from '@/components/os/OSNotepad';
+import OSCalculator from '@/components/os/OSCalculator';
+import OSInvestment from '@/components/os/OSInvestment';
+import OSGTR3Preview from '@/components/os/OSGTR3Preview';
 import { 
   Search, Newspaper, Satellite, User, TrendingUp, Download, BookOpen, 
   X, Maximize2, Minimize2, LogOut, Lock, Mail, ArrowRight, 
-  Phone, FileText, ExternalLink, Menu, ChevronRight
+  Phone, FileText, ExternalLink, Menu, ChevronRight,
+  FolderLock, SquarePen, Calculator
 } from 'lucide-react';
 
 const iconMap: Record<string, any> = {
   Search, Newspaper, Satellite, User, TrendingUp, Download, BookOpen, FileText,
+  FolderLock, SquarePen, Calculator,
 };
 
 interface WindowState {
@@ -44,7 +51,9 @@ const desktopIcons: DesktopIcon[] = [
   { id: 'desk-4', appId: 'cv-profile', label: 'CV Profile', x: 20, y: 290 },
   { id: 'desk-5', appId: 'investment-deck', label: 'Investment', x: 20, y: 380 },
   { id: 'desk-6', appId: 'gtr3-sneak-peek', label: 'GTR³ Book', x: 20, y: 470 },
-  { id: 'desk-7', appId: 'downloads', label: 'Downloads', x: 20, y: 560 },
+  { id: 'desk-7', appId: 'files', label: 'Files', x: 20, y: 560 },
+  { id: 'desk-8', appId: 'notepad', label: 'Notepad', x: 116, y: 20 },
+  { id: 'desk-9', appId: 'calculator', label: 'Calculator', x: 116, y: 110 },
 ];
 
 export default function OS() {
@@ -76,6 +85,16 @@ export default function OS() {
       setOtpInput('');
     }
   }, [auth.isAuthenticated]);
+
+  // Welcome notepad opens by default on OS entry (once per session)
+  const notepadAutoOpened = useRef(false);
+  useEffect(() => {
+    if (!showLogin && auth.isAuthenticated && !notepadAutoOpened.current) {
+      notepadAutoOpened.current = true;
+      openApp('notepad');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showLogin, auth.isAuthenticated]);
 
   const handleRequestOtp = (e: React.FormEvent) => {
     e.preventDefault();
@@ -123,8 +142,8 @@ export default function OS() {
       zIndex: zIndexCounter + 1,
       x: 60 + offset,
       y: 40 + offset,
-      width: 640,
-      height: 480,
+      width: app.width ?? 640,
+      height: app.height ?? 480,
     };
     setWindows(prev => [...prev, newWindow]);
     setActiveWindow(appId);
@@ -275,7 +294,7 @@ export default function OS() {
         </div>
         <div className="flex items-center gap-3">
           <span className="text-xs text-white/40 hidden sm:block">{auth.email || 'Guest'}</span>
-          <button onClick={() => { logout(); nav('/'); }} className="p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/5 transition-colors" title="Logout">
+          <button onClick={() => { logout(); nav('/'); }} className="p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/5 transition-colors" title="Exit OS">
             <LogOut className="w-4 h-4" />
           </button>
         </div>
@@ -352,8 +371,16 @@ export default function OS() {
 
             {/* Window Content */}
             <div className="p-6 bg-ink-900/95 overflow-y-auto" style={{ height: win.isMaximized ? 'calc(100% - 40px)' : `${win.height - 40}px` }}>
-              <p className="text-sm text-white/70 leading-relaxed mb-6 whitespace-pre-line">{win.content}</p>
-              
+              {win.content && (
+                <p className="text-sm text-white/70 leading-relaxed mb-6 whitespace-pre-line">{win.content}</p>
+              )}
+
+              {win.id === 'files' && <OSFiles />}
+              {win.id === 'notepad' && <OSNotepad />}
+              {win.id === 'calculator' && <OSCalculator />}
+              {win.id === 'investment-deck' && <OSInvestment />}
+              {win.id === 'gtr3-sneak-peek' && <OSGTR3Preview />}
+
               {win.files && win.files.length > 0 && (
                 <div className="space-y-2 mb-6">
                   {win.files.map((file) => (
@@ -442,7 +469,7 @@ export default function OS() {
       <AnimatePresence>
         {showDock && (
           <motion.div
-            className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[150] flex items-center gap-2 px-3 py-2 rounded-2xl bg-ink-900/70 backdrop-blur-xl border border-white/10 shadow-2xl"
+            className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[150] flex items-center gap-2 px-3 py-2 rounded-2xl bg-ink-900/70 backdrop-blur-xl border border-white/10 shadow-2xl max-w-[calc(100vw-2rem)] overflow-x-auto"
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
@@ -487,7 +514,7 @@ export default function OS() {
                 <LogOut className="w-6 h-6 text-white/70" />
               </div>
               <div className="absolute bottom-full mb-2 px-2 py-1 rounded-md bg-ink-800 text-white text-[10px] font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                Logout
+                Exit OS
               </div>
             </button>
           </motion.div>
