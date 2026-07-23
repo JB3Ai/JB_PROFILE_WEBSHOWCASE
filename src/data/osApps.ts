@@ -76,6 +76,6 @@ export const osApps: OSApp[] = [
     category: 'content',
     gated: false,
     content: 'Read exclusive excerpts from the GTR³ manuscript. Three chapters covering the rise of Elite Technologies, the building of iMED, and the launch of JB³Ai. Updated as the book progresses.',
-    pdfUrl: '/assets/pdfs/GTR3_Publishing_sneak_peek.pdf',
+    pdfUrl: '/assets/pdfs/GTR3_Publishing sneak peek.pdf',
   },
 ];

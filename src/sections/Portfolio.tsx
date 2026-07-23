@@ -61,6 +61,28 @@ export function Portfolio({ onOpenGate }: PortfolioProps) {
             ))}
           </div>
 
+          {/* Restricted clearance notice: shows only on the Portal Only tab */}
+          <AnimatePresence>
+            {activeTab === 'gated' && (
+              <motion.div
+                initial={{ opacity: 0, height: 0, y: -10 }}
+                animate={{ opacity: 1, height: 'auto', y: 0 }}
+                exit={{ opacity: 0, height: 0, y: -10 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="mx-auto max-w-3xl mt-8 overflow-hidden"
+              >
+                <div className="rounded border border-primary/30 bg-primary/5 p-4 text-center shadow-sm">
+                  <p className="text-xs sm:text-sm text-foreground/80 tracking-wide">
+                    <strong className="text-primary font-medium tracking-widest uppercase mr-2">
+                      Restricted Clearance:
+                    </strong>
+                    Due to the sensitive and confidential nature of these intelligence tools, public deployment is strictly prohibited. Live demonstration and architecture review require verified clearance via the Private OS.
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           <div className="mt-12">
             <AnimatePresence mode="wait">
               <motion.div
