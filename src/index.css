@@ -372,6 +372,11 @@
 [data-theme='dark'] .text-warm-50 { color: #f4f7f9; }
 [data-theme='dark'] .text-warm-100 { color: #e2e8ec; }
 
+/* Nav brand lockup: explicit contrast across all three themes.
+   Tailwind dark: variant never fires here; the switcher sets data-theme, not a .dark class. */
+.nav-brand-name { color: #18181b; }
+[data-theme='dark'] .nav-brand-name { color: #f4f7f9; }
+
 /* Dark: light-section gradient stops flip to dark surface */
 [data-theme='dark'] .from-white {
   --tw-gradient-from: #131a23 var(--tw-gradient-from-position);
