@@ -149,7 +149,7 @@ export function Isikulo() {
                     )}
                   </button>
                   <a
-                    href="/assets/pdfs/isikoloAD-compressed.pdf"
+                    href="/assets/pdfs/IsikoloAiforlearners.pdf"
                     download
                     className="inline-flex items-center gap-2 text-sm text-copper-400 hover:text-copper-300 transition-colors"
                   >

@@ -31,7 +31,7 @@ export const apps: App[] = [
       { label: 'Cost', value: 'Free' },
     ],
     externalLink: '/assets/pdfs/OS³ IsiKoloAi CUTSHEET.pdf',
-    brochureUrl: '/assets/pdfs/IsikoloAi for learners.pdf',
+    brochureUrl: '/assets/pdfs/IsikoloAiforlearners.pdf',
   },
   {
     id: 'clipboard-ai',
