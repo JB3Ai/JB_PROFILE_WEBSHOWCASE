@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /os
+
+Sitemap: https://www.jonoblackburn.com/sitemap.xml

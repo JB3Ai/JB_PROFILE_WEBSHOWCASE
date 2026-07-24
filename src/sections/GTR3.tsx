@@ -82,6 +82,8 @@ export function GTR3() {
                   <img
                     src="/assets/images/gtr3-book-coming-soon.png"
                     alt="GTR³ - Coming Soon. The Rebuild Journey, written by Jono Blackburn"
+                    width={784}
+                    height={1120}
                     className="w-full rounded-xl shadow-2xl border border-white/10 -rotate-2 hover:rotate-0 transition-transform duration-500"
                   />
                   <span className="absolute -top-3 -right-3 px-3 py-1 rounded-full bg-copper-500 text-white text-[11px] font-semibold shadow-lg">
