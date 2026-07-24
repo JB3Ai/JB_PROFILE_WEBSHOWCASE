@@ -15,10 +15,16 @@ import { GateModal } from '@/components/GateModal';
 import BootSequence, { BOOT_SESSION_KEY } from '@/components/boot/BootSequence';
 import OSAuthSequence from '@/components/boot/OSAuthSequence';
 import { useAuth } from '@/hooks/useAuth';
+import { usePageMeta } from '@/hooks/usePageMeta';
 import { sendLeadEmail } from '@/lib/notify';
 import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
+  usePageMeta({
+    title: 'Jonathan Blackburn OS | Founder Blueprint & Command OS',
+    description: 'Official site of Jonathan Blackburn. Explore JB³Ai products, systems architecture insights, recovery frameworks, and entrepreneurial ventures built under pressure.',
+    canonical: '/',
+  });
   const { requestOtp, verifyOtp, submitLead } = useAuth();
   const nav = useNavigate();
   const [gateOpen, setGateOpen] = useState(false);

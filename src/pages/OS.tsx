@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/hooks/useAuth';
+import { usePageMeta } from '@/hooks/usePageMeta';
 import { osApps } from '@/data/osApps';
 import OSFiles from '@/components/os/OSFiles';
 import OSNotepad from '@/components/os/OSNotepad';
@@ -57,6 +58,11 @@ const desktopIcons: DesktopIcon[] = [
 ];
 
 export default function OS() {
+  usePageMeta({
+    title: 'JB³ Private OS | Secure Intelligence Portal',
+    description: 'Restricted JB³ intelligence portal. Verified clearance required to access live architecture and confidential briefings.',
+    canonical: '/os',
+  });
   const { auth, logout, requestOtp, verifyOtp } = useAuth();
   const nav = useNavigate();
   const [time, setTime] = useState(new Date());

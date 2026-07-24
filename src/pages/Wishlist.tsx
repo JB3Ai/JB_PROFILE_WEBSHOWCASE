@@ -13,6 +13,7 @@ import {
   WISHLIST_GOAL_ZAR, WISHLIST_GOAL_USD, WISHLIST_RAISED_ZAR, WISHLIST_SHARE_URL,
   type WishlistCategory,
 } from '@/data/wishlist';
+import { usePageMeta } from '@/hooks/usePageMeta';
 
 const iconMap: Record<string, any> = {
   Layers, Server, Cpu, Zap, Cloud, Github, Palette, Image, Video, Bot,
@@ -60,6 +61,11 @@ const cardHover =
   'transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/60 hover:bg-primary/5 hover:shadow-[0_16px_40px_-16px_rgba(180,138,74,0.25)]';
 
 export default function Wishlist() {
+  usePageMeta({
+    title: 'Wishlist 2026 | JB³Ai Mission Funding',
+    description: 'Fund the final 5% of the JB³Ai ecosystem. Sponsor AI tokens, hardware recovery, and learner access to keep Isikolo AI free for South African students.',
+    canonical: '/wishlist',
+  });
   const [activeFilter, setActiveFilter] = useState<FilterKey>('all');
   const [showToast, setShowToast] = useState(false);
 
