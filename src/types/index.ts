@@ -34,6 +34,7 @@ export interface EvidenceItem {
   thumbnail?: string;
   visibility?: 'Public' | 'Public Preview' | 'Investor Only' | 'Historical';
   fileUrl?: string;
+  videoUrl?: string;
   tags?: string[];
   cautionNote?: string;
 }

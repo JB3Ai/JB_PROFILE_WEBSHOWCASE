@@ -4,7 +4,7 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { SectionHeader } from '@/components/SectionHeader';
 import { publicEvidence } from '@/data/evidence';
 import { GlassCard } from '@/components/GlassCard';
-import { FileText, Award, FileCheck, MessageSquare, Lock, X, Maximize2 } from 'lucide-react';
+import { FileText, Award, FileCheck, MessageSquare, Lock, X, Maximize2, Play } from 'lucide-react';
 
 const IMAGE_RE = /\.(png|jpe?g|webp|gif)$/i;
 
@@ -18,13 +18,14 @@ const typeIcons: Record<string, any> = {
 export function Evidence() {
   const { ref, isVisible } = useScrollReveal();
   const [lightbox, setLightbox] = useState<string | null>(null);
+  const [video, setVideo] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!lightbox) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setLightbox(null); };
+    if (!lightbox && !video) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setLightbox(null); setVideo(null); } };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [lightbox]);
+  }, [lightbox, video]);
   return (
     <section id="evidence" className="relative py-24 lg:py-32">
       <div className="absolute inset-0 bg-white texture-grain" />
@@ -87,6 +88,15 @@ export function Evidence() {
                         </a>
                       )
                     )}
+                    {item.videoUrl && (
+                      <button
+                        onClick={() => setVideo(item.videoUrl!)}
+                        className="text-sm font-medium text-copper-600 hover:text-copper-700 transition-colors inline-flex items-center ml-4"
+                      >
+                        View Video
+                        <Play className="w-3.5 h-3.5 ml-1" />
+                      </button>
+                    )}
                   </GlassCard>
                 </motion.div>
               );
@@ -123,6 +133,41 @@ export function Evidence() {
                 src={lightbox}
                 alt="Evidence document preview"
                 className="w-full max-h-[82vh] object-contain rounded-xl bg-white shadow-2xl border border-ink-100"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {video && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-ink-950/85 backdrop-blur-sm p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setVideo(null)}
+          >
+            <motion.div
+              className="relative max-w-4xl w-full"
+              initial={{ opacity: 0, scale: 0.95, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.97, y: 8 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setVideo(null)}
+                aria-label="Close video"
+                className="absolute -top-3 -right-3 z-10 w-9 h-9 rounded-full bg-white shadow-lg border border-ink-100 flex items-center justify-center text-ink-500 hover:text-ink-900 transition-colors"
+              >
+                <X className="w-4 h-4" />
+              </button>
+              <video
+                src={video}
+                controls
+                autoPlay
+                className="w-full max-h-[82vh] rounded-xl bg-black shadow-2xl border border-white/10"
               />
             </motion.div>
           </motion.div>

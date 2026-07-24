@@ -74,6 +74,7 @@ export const evidenceItems: EvidenceItem[] = [
     description: "A historical proof chapter covering iMED's diagnostic, forensic, COVID-response, laboratory, and medical systems work.",
     type: 'publication',
     visibility: 'Historical',
+    videoUrl: '/assets/videos/iMED%20Company%20Profile.mp4',
     thumbnail: '/assets/images/evidence-imed.jpg',
     tags: ['imed', 'laboratory', 'historical'],
     cautionNote: 'iMED should be presented as a historical chapter, not as an active operating service.',
