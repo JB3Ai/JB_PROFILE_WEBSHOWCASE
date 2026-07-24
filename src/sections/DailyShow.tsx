@@ -125,6 +125,16 @@ export function DailyShow() {
                   Personal Channel
                   <ArrowUpRight className="w-4 h-4 ml-2" />
                 </a>
+                <a 
+                  href="https://www.youtube.com/@JB3Ai" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn-secondary !bg-white/10 !border-white/20 !text-white hover:!bg-white/20"
+                >
+                  <Youtube className="w-4 h-4 mr-2" />
+                  JB³ Channel
+                  <ArrowUpRight className="w-4 h-4 ml-2" />
+                </a>
               </div>
             </motion.div>
           </div>
