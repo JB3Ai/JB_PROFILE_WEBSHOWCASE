@@ -14,7 +14,7 @@ import OSNews from '@/components/os/OSNews';
 import OSPhotos from '@/components/os/OSPhotos';
 import {
   Search, Newspaper, Satellite, User, TrendingUp, Download, BookOpen,
-  X, Maximize2, Minimize2, LogOut, Lock, Mail, ArrowRight,
+  X, Minus, Square, LogOut, Lock, Mail, ArrowRight,
   Phone, FileText, ExternalLink, Menu, ChevronRight,
   FolderLock, SquarePen, Calculator, Rss, Images, ShieldAlert
 } from 'lucide-react';
@@ -78,6 +78,7 @@ export default function OS() {
   const [loginName, setLoginName] = useState('');
   const [zIndexCounter, setZIndexCounter] = useState(100);
   const [showDock, setShowDock] = useState(true);
+  const [dockHover, setDockHover] = useState<number | null>(null);
   const [disclaimerAccepted, setDisclaimerAccepted] = useState(() => {
     try { return sessionStorage.getItem('jb_os_disclaimer') === '1'; } catch { return false; }
   });
@@ -176,22 +177,30 @@ export default function OS() {
 
   if (showLogin) {
     return (
-      <div className="min-h-screen bg-ink-950 flex items-center justify-center p-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(196,102,58,0.08),transparent_50%)]" />
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: '40px 40px',
-        }} />
+      <div className="min-h-screen bg-[#05080F] flex items-center justify-center p-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0B0F19] via-[#05080F] to-[#0B0F19]" />
+        <div
+          className="absolute inset-0 opacity-30 bg-cover bg-center"
+          style={{ backgroundImage: `url('/assets/images/os-wallpaper.jpg')` }}
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(196,102,58,0.10),transparent_55%)]" />
         <motion.div
-          className="relative w-full max-w-md rounded-2xl bg-ink-900/80 border border-white/10 backdrop-blur-xl p-8"
+          className="relative w-full max-w-md rounded-2xl bg-[#0B0F19]/85 border border-white/10 backdrop-blur-xl p-8 shadow-[0_0_60px_rgba(180,138,74,0.12)]"
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
         >
           <div className="text-center mb-8">
-            <div className="w-14 h-14 rounded-xl bg-copper-600/20 flex items-center justify-center mx-auto mb-4">
+            <div className="w-14 h-14 rounded-xl bg-copper-600/20 border border-copper-500/20 flex items-center justify-center mx-auto mb-4 shadow-[0_0_24px_rgba(180,138,74,0.18)]">
               <Lock className="w-7 h-7 text-copper-400" />
             </div>
             <h1 className="text-xl font-semibold text-white mb-1">OS³ Portal</h1>
             <p className="text-sm text-white/50">Private access to intelligence tools and founder assets.</p>
+            <div className="flex items-center justify-center gap-2 mt-3">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
+              </span>
+              <span className="text-[10px] font-mono tracking-[0.18em] text-emerald-400/80">SECURE CHANNEL READY</span>
+            </div>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4">
@@ -201,7 +210,7 @@ export default function OS() {
                 type="text" required
                 value={loginName} onChange={e => setLoginName(e.target.value)}
                 placeholder="Your name"
-                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-copper-500/50 transition-all"
+                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-copper-500/50 focus:shadow-[0_0_18px_rgba(180,138,74,0.12)] transition-all"
               />
             </div>
             <div>
@@ -210,10 +219,10 @@ export default function OS() {
                 type="email" required
                 value={loginEmail} onChange={e => setLoginEmail(e.target.value)}
                 placeholder="you@company.com"
-                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-copper-500/50 transition-all"
+                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-copper-500/50 focus:shadow-[0_0_18px_rgba(180,138,74,0.12)] transition-all"
               />
             </div>
-            <button type="submit" className="w-full py-3 rounded-xl bg-copper-600 text-white text-sm font-medium hover:bg-copper-500 transition-colors flex items-center justify-center gap-2">
+            <button type="submit" className="w-full py-3 rounded-xl bg-copper-600 text-white text-sm font-medium hover:bg-copper-500 hover:shadow-[0_0_24px_rgba(196,102,58,0.35)] transition-all flex items-center justify-center gap-2">
               Enter Private OS
               <ArrowRight className="w-4 h-4" />
             </button>
@@ -228,20 +237,21 @@ export default function OS() {
   }
 
   return (
-    <div className="min-h-screen bg-ink-950 text-white relative overflow-hidden select-none">
-      {/* Desktop Background */}
+    <div className="min-h-screen bg-[#05080F] text-white relative overflow-hidden select-none">
+      {/* Desktop Background: deep slate + hex texture + gold ambience */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0B0F19] via-[#05080F] to-[#0B0F19]" />
       <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url('/assets/images/artwork-curated/os3-dash-command-dashboard.jpg')` }}
+        className="absolute inset-0 opacity-45 bg-cover bg-center"
+        style={{ backgroundImage: `url('/assets/images/os-wallpaper.jpg')` }}
       />
-      <div className="absolute inset-0 bg-ink-950/70 backdrop-blur-sm" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(196,102,58,0.06),transparent_40%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(196,102,58,0.04),transparent_40%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(196,102,58,0.07),transparent_45%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(180,138,74,0.05),transparent_45%)]" />
+      <div className="absolute inset-0 bg-[#05080F]/35" />
 
       {/* Top Bar */}
-      <div className="relative z-50 h-10 flex items-center justify-between px-4 bg-ink-900/60 backdrop-blur-xl border-b border-white/5">
+      <div className="relative z-50 h-10 flex items-center justify-between px-4 bg-[#0B0F19]/70 backdrop-blur-xl border-b border-white/5">
         <div className="flex items-center gap-3">
-          <div className="w-6 h-6 rounded-md bg-copper-600 flex items-center justify-center">
+          <div className="w-6 h-6 rounded-md bg-copper-600 flex items-center justify-center shadow-[0_0_14px_rgba(196,102,58,0.45)]">
             <span className="text-white text-[10px] font-bold">JB</span>
           </div>
           <span className="text-xs font-medium text-white/70">OS³</span>
@@ -251,10 +261,17 @@ export default function OS() {
             </button>
           </div>
         </div>
-        <div className="text-xs text-white/50 font-mono">
-          {time.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
+        <div className="flex items-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+          </span>
+          <span className="text-[10px] font-mono tracking-[0.18em] text-emerald-400/80 hidden xs:block sm:block">SYSTEMS NOMINAL</span>
         </div>
         <div className="flex items-center gap-3">
+          <span className="text-xs text-white/50 font-mono">
+            {time.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
+          </span>
           <span className="text-xs text-white/40 hidden sm:block">{auth.email || 'Guest'}</span>
           <button onClick={() => { logout(); nav('/'); }} className="p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/5 transition-colors" title="Exit OS">
             <LogOut className="w-4 h-4" />
@@ -277,7 +294,7 @@ export default function OS() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center group-hover:bg-white/15 transition-colors shadow-lg">
+                <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center group-hover:bg-white/15 group-hover:border-copper-500/30 group-hover:shadow-[0_0_24px_rgba(180,138,74,0.25)] transition-all shadow-lg">
                   <Icon className="w-7 h-7 text-copper-400" />
                 </div>
                 <span className="text-[11px] text-white/80 font-medium text-center leading-tight drop-shadow-lg px-1 py-0.5 rounded bg-black/20 backdrop-blur-sm">
@@ -298,9 +315,12 @@ export default function OS() {
             dragMomentum={false}
             onDragStart={() => bringToFront(win.id)}
             onClick={() => bringToFront(win.id)}
-            className={`fixed z-[60] rounded-xl overflow-hidden shadow-2xl border border-white/10 ${
+            className={`fixed z-[60] rounded-xl overflow-hidden border transition-shadow duration-300 ${
               win.isMaximized ? 'inset-4' : ''
-            } ${activeWindow === win.id ? 'ring-1 ring-copper-500/30' : ''}`}
+            } ${activeWindow === win.id
+              ? 'border-copper-500/30 shadow-[0_0_50px_rgba(180,138,74,0.16)]'
+              : 'border-white/10 shadow-2xl'
+            }`}
             style={{
               zIndex: win.zIndex,
               ...(win.isMaximized ? {} : { left: win.x, top: win.y, width: win.width, height: win.height }),
@@ -310,29 +330,41 @@ export default function OS() {
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Window Title Bar */}
-            <div className="h-10 flex items-center justify-between px-4 bg-ink-800/90 backdrop-blur-xl border-b border-white/5 cursor-move">
+            {/* Window Title Bar: traffic lights + centered mono title */}
+            <div className="h-10 flex items-center px-4 bg-[#15181E]/95 backdrop-blur-xl border-b border-white/5 cursor-move relative">
               <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-white/90">{win.title}</span>
+                <button
+                  onClick={() => closeWindow(win.id)}
+                  className="group w-3 h-3 rounded-full bg-[#E63946]/70 hover:bg-[#E63946] transition-colors flex items-center justify-center"
+                  title="Close"
+                >
+                  <X className="w-2 h-2 text-transparent group-hover:text-white/90 transition-colors" />
+                </button>
+                <button
+                  onClick={() => minimizeWindow(win.id)}
+                  className="group w-3 h-3 rounded-full bg-[#FACC15]/70 hover:bg-[#FACC15] transition-colors flex items-center justify-center"
+                  title="Minimize"
+                >
+                  <Minus className="w-2 h-2 text-transparent group-hover:text-black/70 transition-colors" />
+                </button>
+                <button
+                  onClick={() => maximizeWindow(win.id)}
+                  className="group w-3 h-3 rounded-full bg-[#4ADE80]/70 hover:bg-[#4ADE80] transition-colors flex items-center justify-center"
+                  title="Maximize"
+                >
+                  <Square className="w-1.5 h-1.5 text-transparent group-hover:text-black/70 transition-colors" />
+                </button>
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center gap-2 pointer-events-none">
+                <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-white/45">{win.title}</span>
                 {win.category === 'intelligence' && (
                   <span className="px-1.5 py-0.5 rounded bg-red-500/20 text-red-400 text-[10px] font-medium">INTEL</span>
                 )}
               </div>
-              <div className="flex items-center gap-1">
-                <button onClick={() => minimizeWindow(win.id)} className="p-1 rounded-md text-white/40 hover:text-white hover:bg-white/5 transition-colors">
-                  <Minimize2 className="w-3.5 h-3.5" />
-                </button>
-                <button onClick={() => maximizeWindow(win.id)} className="p-1 rounded-md text-white/40 hover:text-white hover:bg-white/5 transition-colors">
-                  <Maximize2 className="w-3.5 h-3.5" />
-                </button>
-                <button onClick={() => closeWindow(win.id)} className="p-1 rounded-md text-white/40 hover:text-red-400 hover:bg-red-500/10 transition-colors">
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              </div>
             </div>
 
             {/* Window Content */}
-            <div className="p-6 bg-ink-900/95 overflow-y-auto" style={{ height: win.isMaximized ? 'calc(100% - 40px)' : `${win.height - 40}px` }}>
+            <div className="p-6 bg-[#0B0F19]/95 overflow-y-auto" style={{ height: win.isMaximized ? 'calc(100% - 40px)' : `${win.height - 40}px` }}>
               {win.content && (
                 <p className="text-sm text-white/70 leading-relaxed mb-6 whitespace-pre-line">{win.content}</p>
               )}
@@ -353,7 +385,7 @@ export default function OS() {
                       href={file.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-copper-500/40 hover:bg-white/10 transition-colors group"
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-copper-500/40 hover:bg-white/10 hover:shadow-[0_0_18px_rgba(180,138,74,0.10)] transition-all group"
                     >
                       <Download className="w-4 h-4 text-copper-400 shrink-0" />
                       <span className="text-sm text-white/80 group-hover:text-white transition-colors">{file.label}</span>
@@ -368,7 +400,7 @@ export default function OS() {
                     href={win.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-copper-600/20 text-copper-400 text-sm font-medium hover:bg-copper-600/30 transition-colors border border-copper-500/20"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-copper-600/20 text-copper-400 text-sm font-medium hover:bg-copper-600/30 hover:shadow-[0_0_20px_rgba(180,138,74,0.15)] transition-all border border-copper-500/20"
                   >
                     <Download className="w-4 h-4" />
                     Download PDF
@@ -429,20 +461,22 @@ export default function OS() {
         ))}
       </AnimatePresence>
 
-      {/* Dock */}
+      {/* Dock with magnification physics */}
       <AnimatePresence>
         {showDock && (
           <motion.div
-            className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[150] flex items-center gap-2 px-3 py-2 rounded-2xl bg-ink-900/70 backdrop-blur-xl border border-white/10 shadow-2xl max-w-[calc(100vw-2rem)] overflow-x-auto"
+            className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[150] flex items-end gap-1.5 px-3 py-2 rounded-2xl bg-[#0B0F19]/80 backdrop-blur-xl border border-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.55)] max-w-[calc(100vw-2rem)] overflow-x-auto"
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-            {osApps.map((app) => {
+            {osApps.map((app, index) => {
               const Icon = iconMap[app.icon] || FileText;
               const isOpen = windows.some(w => w.id === app.id && !w.isMinimized);
               const isMinimized = windows.some(w => w.id === app.id && w.isMinimized);
+              const dist = dockHover === null ? null : Math.abs(index - dockHover);
+              const scale = dist === null ? 1 : dist === 0 ? 1.3 : dist === 1 ? 1.12 : dist === 2 ? 1.04 : 1;
               return (
                 <button
                   key={app.id}
@@ -451,33 +485,41 @@ export default function OS() {
                     else if (isOpen) bringToFront(app.id);
                     else openApp(app.id);
                   }}
-                  className="group relative flex flex-col items-center"
+                  onMouseEnter={() => setDockHover(index)}
+                  onMouseLeave={() => setDockHover(null)}
+                  className="group relative flex flex-col items-center transition-transform duration-200 ease-out"
+                  style={{ transform: `scale(${scale}) translateY(${dist === 0 ? -6 : 0}px)` }}
                 >
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-200 ${
-                    isOpen ? 'bg-white/15' : 'bg-white/5 hover:bg-white/10'
+                    isOpen
+                      ? 'bg-white/15 shadow-[0_0_18px_rgba(180,138,74,0.20)]'
+                      : 'bg-white/5 hover:bg-white/10'
                   }`}>
                     <Icon className={`w-6 h-6 ${isOpen ? 'text-copper-400' : 'text-white/70'}`} />
                   </div>
                   {/* Tooltip */}
-                  <div className="absolute bottom-full mb-2 px-2 py-1 rounded-md bg-ink-800 text-white text-[10px] font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  <div className="absolute bottom-full mb-2 px-2 py-1 rounded-md bg-[#15181E] border border-white/10 text-white text-[10px] font-mono tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                     {app.title}
                   </div>
                   {/* Active dot */}
                   {(isOpen || isMinimized) && (
-                    <div className="absolute -bottom-1 w-1 h-1 rounded-full bg-copper-400" />
+                    <div className="absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.9)]" />
                   )}
                 </button>
               );
             })}
-            <div className="w-px h-8 bg-white/10 mx-1" />
+            <div className="w-px h-8 bg-white/10 mx-1 self-center" />
             <button
               onClick={() => { logout(); nav('/'); }}
-              className="group relative flex flex-col items-center"
+              onMouseEnter={() => setDockHover(osApps.length)}
+              onMouseLeave={() => setDockHover(null)}
+              className="group relative flex flex-col items-center transition-transform duration-200 ease-out"
+              style={{ transform: `scale(${dockHover === osApps.length ? 1.3 : 1}) translateY(${dockHover === osApps.length ? -6 : 0}px)` }}
             >
               <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/5 hover:bg-white/10 transition-all">
                 <LogOut className="w-6 h-6 text-white/70" />
               </div>
-              <div className="absolute bottom-full mb-2 px-2 py-1 rounded-md bg-ink-800 text-white text-[10px] font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              <div className="absolute bottom-full mb-2 px-2 py-1 rounded-md bg-[#15181E] border border-white/10 text-white text-[10px] font-mono tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                 Exit OS
               </div>
             </button>
@@ -495,7 +537,7 @@ export default function OS() {
               <button
                 key={win.id}
                 onClick={() => restoreWindow(win.id)}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-ink-800/80 backdrop-blur-md border border-white/10 text-xs text-white/70 hover:text-white hover:bg-ink-700/80 transition-colors"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#15181E]/85 backdrop-blur-md border border-white/10 text-xs text-white/70 hover:text-white hover:border-copper-500/30 transition-colors"
               >
                 <Icon className="w-4 h-4 text-copper-400" />
                 {win.title}
@@ -515,16 +557,16 @@ export default function OS() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="absolute inset-0 bg-ink-950/80 backdrop-blur-md" />
+            <div className="absolute inset-0 bg-[#05080F]/85 backdrop-blur-md" />
             <motion.div
-              className="relative w-full max-w-lg rounded-2xl bg-ink-900/95 border border-copper-500/20 p-8 shadow-2xl"
+              className="relative w-full max-w-lg rounded-2xl bg-[#0B0F19]/95 border border-copper-500/20 p-8 shadow-[0_0_60px_rgba(180,138,74,0.12)]"
               initial={{ opacity: 0, scale: 0.95, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.97 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-copper-600/20 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-copper-600/20 border border-copper-500/20 flex items-center justify-center shrink-0">
                   <ShieldAlert className="w-5 h-5 text-copper-400" />
                 </div>
                 <div>
@@ -539,7 +581,7 @@ export default function OS() {
               </div>
               <button
                 onClick={acceptDisclaimer}
-                className="w-full py-3 rounded-xl bg-copper-600 text-white text-sm font-medium hover:bg-copper-500 transition-colors"
+                className="w-full py-3 rounded-xl bg-copper-600 text-white text-sm font-medium hover:bg-copper-500 hover:shadow-[0_0_24px_rgba(196,102,58,0.35)] transition-all"
               >
                 Accept and Enter
               </button>
