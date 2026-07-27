@@ -105,6 +105,7 @@ export interface OSApp {
   content?: string;
   pdfUrl?: string;
   imageUrl?: string;
+  externalUrl?: string;
   files?: { label: string; url: string }[];
   width?: number;
   height?: number;

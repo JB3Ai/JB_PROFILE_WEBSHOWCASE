@@ -16,12 +16,13 @@ import {
   Search, Newspaper, Satellite, User, TrendingUp, Download, BookOpen,
   X, Minus, Square, LogOut, Lock, Mail, ArrowRight,
   Phone, FileText, ExternalLink, Menu, ChevronRight,
-  FolderLock, SquarePen, Calculator, Rss, Images, ShieldAlert
+  FolderLock, SquarePen, Calculator, Rss, Images, ShieldAlert,
+  Power, Contact, CalendarClock, Globe
 } from 'lucide-react';
 
 const iconMap: Record<string, any> = {
   Search, Newspaper, Satellite, User, TrendingUp, Download, BookOpen, FileText,
-  FolderLock, SquarePen, Calculator, Rss, Images,
+  FolderLock, SquarePen, Calculator, Rss, Images, Contact, CalendarClock, Globe,
 };
 
 interface WindowState {
@@ -60,6 +61,9 @@ const desktopIcons: DesktopIcon[] = [
   { id: 'desk-9', appId: 'calculator', label: 'Calculator', x: 116, y: 110 },
   { id: 'desk-10', appId: 'news', label: 'News', x: 116, y: 200 },
   { id: 'desk-11', appId: 'photos', label: 'Photos', x: 116, y: 290 },
+  { id: 'desk-12', appId: 'contacts', label: 'Contacts', x: 116, y: 380 },
+  { id: 'desk-13', appId: 'book-session', label: 'Book 30min', x: 116, y: 470 },
+  { id: 'desk-14', appId: 'jb3-website', label: 'JB³ Site', x: 116, y: 560 },
 ];
 
 export default function OS() {
@@ -127,6 +131,10 @@ export default function OS() {
     }
     const app = osApps.find(a => a.id === appId);
     if (!app) return;
+    if (app.externalUrl) {
+      window.open(app.externalUrl, '_blank', 'noopener,noreferrer');
+      return;
+    }
 
     const offset = windows.length * 30;
     const newWindow: WindowState = {
@@ -273,8 +281,8 @@ export default function OS() {
             {time.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
           </span>
           <span className="text-xs text-white/40 hidden sm:block">{auth.email || 'Guest'}</span>
-          <button onClick={() => { logout(); nav('/'); }} className="p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/5 transition-colors" title="Exit OS">
-            <LogOut className="w-4 h-4" />
+          <button onClick={() => { logout(); nav('/'); }} className="p-1.5 rounded-lg text-white/40 hover:text-red-400 hover:bg-red-500/10 transition-colors" title="Shutdown: exit to jonoblackburn.com">
+            <Power className="w-4 h-4" />
           </button>
         </div>
       </div>
@@ -376,6 +384,24 @@ export default function OS() {
               {win.id === 'gtr3-sneak-peek' && <OSGTR3Preview />}
               {win.id === 'news' && <OSNews />}
               {win.id === 'photos' && <OSPhotos />}
+              {win.id === 'contacts' && (
+                <div className="space-y-3">
+                  <iframe
+                    src="https://jonoblackburncontact.kimi.page"
+                    title="All My Contacts"
+                    className="w-full h-[430px] rounded-lg bg-white border border-white/10"
+                  />
+                  <a
+                    href="https://jonoblackburncontact.kimi.page"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs text-copper-400 hover:text-copper-300 transition-colors"
+                  >
+                    Open full directory in a new tab
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              )}
 
               {win.files && win.files.length > 0 && (
                 <div className="space-y-2 mb-6">
