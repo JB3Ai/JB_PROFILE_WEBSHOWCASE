@@ -3,22 +3,25 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/hooks/useAuth';
 import { usePageMeta } from '@/hooks/usePageMeta';
+import { sendLeadEmail } from '@/lib/notify';
 import { osApps } from '@/data/osApps';
 import OSFiles from '@/components/os/OSFiles';
 import OSNotepad from '@/components/os/OSNotepad';
 import OSCalculator from '@/components/os/OSCalculator';
 import OSInvestment from '@/components/os/OSInvestment';
 import OSGTR3Preview from '@/components/os/OSGTR3Preview';
-import { 
-  Search, Newspaper, Satellite, User, TrendingUp, Download, BookOpen, 
-  X, Maximize2, Minimize2, LogOut, Lock, Mail, ArrowRight, 
+import OSNews from '@/components/os/OSNews';
+import OSPhotos from '@/components/os/OSPhotos';
+import {
+  Search, Newspaper, Satellite, User, TrendingUp, Download, BookOpen,
+  X, Maximize2, Minimize2, LogOut, Lock, Mail, ArrowRight,
   Phone, FileText, ExternalLink, Menu, ChevronRight,
-  FolderLock, SquarePen, Calculator
+  FolderLock, SquarePen, Calculator, Rss, Images, ShieldAlert
 } from 'lucide-react';
 
 const iconMap: Record<string, any> = {
   Search, Newspaper, Satellite, User, TrendingUp, Download, BookOpen, FileText,
-  FolderLock, SquarePen, Calculator,
+  FolderLock, SquarePen, Calculator, Rss, Images,
 };
 
 interface WindowState {
@@ -55,6 +58,8 @@ const desktopIcons: DesktopIcon[] = [
   { id: 'desk-7', appId: 'files', label: 'Files', x: 20, y: 560 },
   { id: 'desk-8', appId: 'notepad', label: 'Notepad', x: 116, y: 20 },
   { id: 'desk-9', appId: 'calculator', label: 'Calculator', x: 116, y: 110 },
+  { id: 'desk-10', appId: 'news', label: 'News', x: 116, y: 200 },
+  { id: 'desk-11', appId: 'photos', label: 'Photos', x: 116, y: 290 },
 ];
 
 export default function OS() {
@@ -63,7 +68,7 @@ export default function OS() {
     description: 'Restricted JB³ intelligence portal. Verified clearance required to access live architecture and confidential briefings.',
     canonical: '/os',
   });
-  const { auth, logout, requestOtp, verifyOtp } = useAuth();
+  const { auth, logout, authenticate, submitLead } = useAuth();
   const nav = useNavigate();
   const [time, setTime] = useState(new Date());
   const [windows, setWindows] = useState<WindowState[]>([]);
@@ -71,12 +76,11 @@ export default function OS() {
   const [showLogin, setShowLogin] = useState(!auth.isAuthenticated);
   const [loginEmail, setLoginEmail] = useState('');
   const [loginName, setLoginName] = useState('');
-  const [otpInput, setOtpInput] = useState('');
-  const [otpCode, setOtpCode] = useState<string | null>(null);
-  const [loginStep, setLoginStep] = useState<'form' | 'otp'>('form');
-  const [loginError, setLoginError] = useState('');
   const [zIndexCounter, setZIndexCounter] = useState(100);
   const [showDock, setShowDock] = useState(true);
+  const [disclaimerAccepted, setDisclaimerAccepted] = useState(() => {
+    try { return sessionStorage.getItem('jb_os_disclaimer') === '1'; } catch { return false; }
+  });
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
@@ -86,9 +90,6 @@ export default function OS() {
   useEffect(() => {
     if (!auth.isAuthenticated) {
       setShowLogin(true);
-      setLoginStep('form');
-      setOtpCode(null);
-      setOtpInput('');
     }
   }, [auth.isAuthenticated]);
 
@@ -102,28 +103,19 @@ export default function OS() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showLogin, auth.isAuthenticated]);
 
-  const handleRequestOtp = (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (!loginEmail.trim() || !loginName.trim()) return;
-    setLoginError('');
-    const code = requestOtp(loginEmail.trim(), loginName.trim(), 'client', 'access');
-    setOtpCode(code);
-    setLoginStep('otp');
+    authenticate(loginEmail.trim(), 'client');
+    // Capture the lead and notify the owner (fire and forget)
+    submitLead({ name: loginName.trim(), email: loginEmail.trim(), intent: 'client', mode: 'access', newsletter: false });
+    sendLeadEmail({ name: loginName.trim(), email: loginEmail.trim(), intent: 'client', mode: 'access', newsletter: false });
+    setShowLogin(false);
   };
 
-  const handleVerifyOtp = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (otpInput.length !== 6) {
-      setLoginError('Enter the 6-digit code');
-      return;
-    }
-    setLoginError('');
-    const result = verifyOtp(loginEmail, otpInput);
-    if (result.success) {
-      setShowLogin(false);
-    } else {
-      setLoginError('Invalid or expired code');
-    }
+  const acceptDisclaimer = () => {
+    try { sessionStorage.setItem('jb_os_disclaimer', '1'); } catch {}
+    setDisclaimerAccepted(true);
   };
 
   const openApp = useCallback((appId: string) => {
@@ -134,7 +126,7 @@ export default function OS() {
     }
     const app = osApps.find(a => a.id === appId);
     if (!app) return;
-    
+
     const offset = windows.length * 30;
     const newWindow: WindowState = {
       id: appId,
@@ -202,66 +194,30 @@ export default function OS() {
             <p className="text-sm text-white/50">Private access to intelligence tools and founder assets.</p>
           </div>
 
-          {loginStep === 'otp' && (
-            <motion.form onSubmit={handleVerifyOtp} className="space-y-4" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-              <div className="text-center mb-2">
-                <div className="w-10 h-10 rounded-lg bg-copper-600/20 flex items-center justify-center mx-auto mb-2">
-                  <Mail className="w-5 h-5 text-copper-400" />
-                </div>
-                <p className="text-xs text-white/50">Enter the 6-digit code sent to <span className="text-white/70">{loginEmail}</span></p>
-              </div>
-
-              {otpCode && (
-                <div className="p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-center">
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-amber-400 mb-0.5">Demo Mode - OTP</p>
-                  <p className="text-xl font-mono font-bold text-amber-300 tracking-[0.3em]">{otpCode}</p>
-                </div>
-              )}
-
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label className="block text-xs font-medium text-white/60 uppercase tracking-wider mb-1.5">Full Name</label>
               <input
-                type="text" inputMode="numeric" maxLength={6}
-                value={otpInput} onChange={e => setOtpInput(e.target.value.replace(/\D/g, ''))}
-                placeholder="000000"
-                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white text-center tracking-[0.3em] font-mono placeholder-white/20 outline-none focus:border-copper-500/50 transition-all"
+                type="text" required
+                value={loginName} onChange={e => setLoginName(e.target.value)}
+                placeholder="Your name"
+                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-copper-500/50 transition-all"
               />
-              {loginError && <p className="text-xs text-red-400">{loginError}</p>}
-
-              <button type="submit" className="w-full py-3 rounded-xl bg-copper-600 text-white text-sm font-medium hover:bg-copper-500 transition-colors flex items-center justify-center gap-2">
-                Verify & Enter
-                <ArrowRight className="w-4 h-4" />
-              </button>
-              <p className="text-center text-xs text-white/30">
-                <button type="button" onClick={() => { setLoginStep('form'); setOtpCode(null); setOtpInput(''); }} className="text-copper-400 hover:text-copper-300">Use different email</button>
-              </p>
-            </motion.form>
-          )}
-
-          {loginStep === 'form' && (
-            <form onSubmit={handleRequestOtp} className="space-y-4">
-              <div>
-                <label className="block text-xs font-medium text-white/60 uppercase tracking-wider mb-1.5">Full Name</label>
-                <input
-                  type="text" required
-                  value={loginName} onChange={e => setLoginName(e.target.value)}
-                  placeholder="Your name"
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-copper-500/50 transition-all"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-white/60 uppercase tracking-wider mb-1.5">Email</label>
-                <input
-                  type="email" required
-                  value={loginEmail} onChange={e => setLoginEmail(e.target.value)}
-                  placeholder="you@company.com"
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-copper-500/50 transition-all"
-                />
-              </div>
-              {loginError && <p className="text-xs text-red-400">{loginError}</p>}
-              <button type="submit" className="w-full py-3 rounded-xl bg-copper-600 text-white text-sm font-medium hover:bg-copper-500 transition-colors">
-                Send Access Code
-              </button>
-            </form>
-          )}
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-white/60 uppercase tracking-wider mb-1.5">Email</label>
+              <input
+                type="email" required
+                value={loginEmail} onChange={e => setLoginEmail(e.target.value)}
+                placeholder="you@company.com"
+                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-copper-500/50 transition-all"
+              />
+            </div>
+            <button type="submit" className="w-full py-3 rounded-xl bg-copper-600 text-white text-sm font-medium hover:bg-copper-500 transition-colors flex items-center justify-center gap-2">
+              Enter Private OS
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </form>
 
           <p className="text-center text-xs text-white/30 mt-4">
             Don't have access? <button onClick={() => nav('/')} className="text-copper-400 hover:text-copper-300">Request access</button>
@@ -274,7 +230,7 @@ export default function OS() {
   return (
     <div className="min-h-screen bg-ink-950 text-white relative overflow-hidden select-none">
       {/* Desktop Background */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url('/assets/images/artwork-curated/os3-dash-command-dashboard.jpg')` }}
       />
@@ -386,6 +342,8 @@ export default function OS() {
               {win.id === 'calculator' && <OSCalculator />}
               {win.id === 'investment-deck' && <OSInvestment />}
               {win.id === 'gtr3-sneak-peek' && <OSGTR3Preview />}
+              {win.id === 'news' && <OSNews />}
+              {win.id === 'photos' && <OSPhotos />}
 
               {win.files && win.files.length > 0 && (
                 <div className="space-y-2 mb-6">
@@ -416,8 +374,8 @@ export default function OS() {
                     Download PDF
                   </a>
                   <div className="mt-3 rounded-lg bg-ink-800/50 border border-white/5 overflow-hidden">
-                    <iframe 
-                      src={win.pdfUrl} 
+                    <iframe
+                      src={win.pdfUrl}
                       className="w-full h-80 bg-white"
                       title={win.title}
                     />
@@ -547,6 +505,48 @@ export default function OS() {
           })}
         </div>
       )}
+
+      {/* Portal Disclaimer: shown once per session on OS entry */}
+      <AnimatePresence>
+        {!disclaimerAccepted && (
+          <motion.div
+            className="fixed inset-0 z-[300] flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="absolute inset-0 bg-ink-950/80 backdrop-blur-md" />
+            <motion.div
+              className="relative w-full max-w-lg rounded-2xl bg-ink-900/95 border border-copper-500/20 p-8 shadow-2xl"
+              initial={{ opacity: 0, scale: 0.95, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-copper-600/20 flex items-center justify-center shrink-0">
+                  <ShieldAlert className="w-5 h-5 text-copper-400" />
+                </div>
+                <div>
+                  <h2 className="text-lg font-semibold text-white">Portal Disclaimer</h2>
+                  <p className="text-xs text-white/40">Review before continuing</p>
+                </div>
+              </div>
+              <div className="space-y-3 text-sm text-white/60 leading-relaxed mb-6">
+                <p>This private portal contains preview material, concept demonstrations, and confidential documentation relating to Jonathan Blackburn and JB³Ai. Content is provided for review purposes only.</p>
+                <p>Nothing in this portal constitutes an offer of securities, investment advice, or a solicitation of any kind. Product demonstrations may display simulated data.</p>
+                <p>Do not distribute, reproduce, or share portal content without written permission.</p>
+              </div>
+              <button
+                onClick={acceptDisclaimer}
+                className="w-full py-3 rounded-xl bg-copper-600 text-white text-sm font-medium hover:bg-copper-500 transition-colors"
+              >
+                Accept and Enter
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

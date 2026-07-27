@@ -7,9 +7,9 @@ import { Portfolio } from '@/sections/Portfolio';
 import { Isikulo } from '@/sections/Isikulo';
 import { Evidence } from '@/sections/Evidence';
 import { GTR3 } from '@/sections/GTR3';
+import { DailyShow } from '@/sections/DailyShow';
 import { Timeline } from '@/sections/Timeline';
 import { Blog } from '@/sections/Blog';
-import { DailyShow } from '@/sections/DailyShow';
 import { Footer } from '@/sections/Footer';
 import { GateModal } from '@/components/GateModal';
 import BootSequence, { BOOT_SESSION_KEY } from '@/components/boot/BootSequence';
@@ -25,17 +25,16 @@ export default function Home() {
     description: 'Official site of Jonathan Blackburn. Explore JB³Ai products, systems architecture insights, recovery frameworks, and entrepreneurial ventures built under pressure.',
     canonical: '/',
   });
-  const { requestOtp, verifyOtp, submitLead } = useAuth();
+  const { submitLead, authenticate } = useAuth();
   const nav = useNavigate();
   const [gateOpen, setGateOpen] = useState(false);
   const [gateContext, setGateContext] = useState<'investor' | 'client' | 'collaborator' | 'press'>('client');
   const [pendingEmail, setPendingEmail] = useState('');
-  const [otpCode, setOtpCode] = useState<string | null>(null);
   // Cinematic boot: shown once per browser session before the homepage reveals
   const [booted, setBooted] = useState(() => {
     try { return sessionStorage.getItem(BOOT_SESSION_KEY) === '1'; } catch { return false; }
   });
-  // Secure OS entry handshake: plays after OTP success, before routing to /os
+  // Secure OS entry handshake: plays after access is granted, before routing to /os
   const [authing, setAuthing] = useState(false);
 
   const completeBoot = () => {
@@ -45,38 +44,25 @@ export default function Home() {
 
   const handleOpenGate = (context: 'investor' | 'client' | 'collaborator' | 'press' = 'client') => {
     setGateContext(context);
-    setOtpCode(null);
     setPendingEmail('');
     setGateOpen(true);
   };
 
   const handleRequest = (data: { email: string; intent: 'investor' | 'client' | 'collaborator' | 'press'; name: string; mode: 'access' | 'news'; newsletter: boolean }) => {
-    const code = requestOtp(data.email, data.name, data.intent, data.mode);
     setPendingEmail(data.email);
-    // Show the code on screen as a fallback until the email is confirmed sent
-    setOtpCode(code);
-    // Email the code to the visitor and the lead notification to the owner.
-    // On success, hide the on-screen fallback so the code only lives in the inbox.
+    // Notify the owner with the lead details. No visitor code required.
     sendLeadEmail({
       name: data.name,
       email: data.email,
       intent: data.intent,
       mode: data.mode,
       newsletter: data.newsletter,
-      code,
-    }).then((sent) => {
-      if (sent) setOtpCode(null);
     });
-  };
-
-  const handleVerify = (email: string, code: string) => {
-    const result = verifyOtp(email, code);
-    if (result.success && result.mode === 'access') {
+    if (data.mode === 'access') {
+      authenticate(data.email, data.intent);
       // Play the secure-entry handshake, then route into the private OS
-      setPendingEmail(email);
       setAuthing(true);
     }
-    return result.success;
   };
 
   return (
@@ -96,11 +82,9 @@ export default function Home() {
       <Footer onOpenGate={handleOpenGate} />
       <GateModal
         isOpen={gateOpen}
-        onClose={() => { setGateOpen(false); setOtpCode(null); setPendingEmail(''); }}
+        onClose={() => { setGateOpen(false); setPendingEmail(''); }}
         onRequest={handleRequest}
-        onVerify={handleVerify}
         onSubmitLead={submitLead}
-        otpCode={otpCode}
         context={gateContext}
       />
 
@@ -109,7 +93,7 @@ export default function Home() {
         {!booted && <BootSequence onComplete={completeBoot} />}
       </AnimatePresence>
 
-      {/* Private OS entry: secure handshake after OTP success */}
+      {/* Private OS entry: secure handshake after access is granted */}
       <AnimatePresence>
         {authing && (
           <OSAuthSequence

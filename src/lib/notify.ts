@@ -4,14 +4,12 @@ export interface LeadEmailPayload {
   intent: string;
   mode: 'access' | 'news' | string;
   newsletter: boolean;
-  code?: string;
 }
 
 /**
  * Posts the lead to the cPanel PHP mailer (public/api/lead.php).
- * The endpoint emails the owner a notification and emails the
- * visitor their 6-digit access/confirmation code.
- * Returns true when the server confirmed at least one email sent.
+ * The endpoint emails the owner a notification with the lead details.
+ * Returns true when the server confirmed the send.
  * Fails soft (false) in local dev or if the endpoint is missing.
  */
 export async function sendLeadEmail(payload: LeadEmailPayload): Promise<boolean> {
