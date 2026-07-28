@@ -27,7 +27,7 @@ export function Portfolio({ onOpenGate }: PortfolioProps) {
     : apps.filter(a => a.featured);
 
   return (
-    <section id="products" className="relative py-24 lg:py-32">
+    <section id="products" className="relative min-h-[300px] w-full py-24 lg:py-32">
       <div className="absolute inset-0 bg-white texture-grain" />
       <div className="relative z-10 section-padding">
         <div className="content-max-width">

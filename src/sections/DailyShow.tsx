@@ -7,7 +7,7 @@ export function DailyShow() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="daily-show" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="daily-show" className="relative min-h-[300px] w-full py-24 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-ink-950 via-ink-900 to-ink-800" />
       
       {/* Ambient glow */}
@@ -41,7 +41,7 @@ export function DailyShow() {
                 <div className="absolute bottom-6 left-6 right-6">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="px-2 py-1 rounded-md bg-red-600/90 text-white text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-white animate-none md:animate-pulse" />
                       Live
                     </span>
                     <span className="px-2 py-1 rounded-md bg-white/10 text-white/70 text-[10px] font-medium">
@@ -59,7 +59,7 @@ export function DailyShow() {
                   href="https://www.youtube.com/@JB3AiTheDailyLogicShow" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center hover:bg-white/30 transition-colors group"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/25 md:bg-white/20 backdrop-blur-none md:backdrop-blur-md border border-white/30 flex items-center justify-center hover:bg-white/30 transition-colors group"
                 >
                   <Play className="w-7 h-7 text-white fill-white ml-1" />
                 </a>

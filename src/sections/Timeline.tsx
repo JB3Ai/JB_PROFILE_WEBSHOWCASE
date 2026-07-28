@@ -18,7 +18,7 @@ const categoryColors: Record<string, string> = {
 export function Timeline() {
   const { ref, isVisible } = useScrollReveal();
   return (
-    <section id="timeline" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="timeline" className="relative min-h-[300px] w-full py-24 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-warm-100 via-copper-50/60 to-warm-100 texture-weave" />
       <div className="relative z-10 section-padding" ref={ref}>
         <div className="content-max-width">

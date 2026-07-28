@@ -41,7 +41,7 @@ export function Isikulo() {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <section id="isikulo" className="relative py-24 lg:py-32">
+    <section id="isikulo" className="relative min-h-[300px] w-full py-24 lg:py-32">
       <div className="absolute inset-0 bg-gradient-to-b from-copper-50/40 via-warm-50 to-white texture-grain" />
       {/* Ndebele pattern band */}
       <div className="absolute top-0 left-0 right-0 h-5 ndebele-band" />

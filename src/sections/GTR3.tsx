@@ -6,7 +6,7 @@ import { BookOpen, ArrowUpRight } from 'lucide-react';
 export function GTR3() {
   const { ref, isVisible } = useScrollReveal();
   return (
-    <section id="gtr3" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="gtr3" className="relative min-h-[300px] w-full py-24 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-copper-50/50 via-white to-warm-50/50" />
       <div className="relative z-10 section-padding" ref={ref}>
         <div className="content-max-width">

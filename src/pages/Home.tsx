@@ -21,8 +21,8 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
   usePageMeta({
-    title: 'Jonathan Blackburn OS | Founder Blueprint & Command OS',
-    description: 'Official site of Jonathan Blackburn. Explore JB³Ai products, systems architecture insights, recovery frameworks, and entrepreneurial ventures built under pressure.',
+    title: 'Jonathan Blackburn: Systems Architect & Entrepreneur | JB³ OS',
+    description: 'South African entrepreneur building AI systems, smart-home automation, and recovery architectures. Founder of JB³, iMED, and the OS³ ecosystem.',
     canonical: '/',
   });
   const { submitLead, authenticate } = useAuth();

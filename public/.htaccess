@@ -9,8 +9,14 @@
 
   # Legacy indexed routes -> homepage anchors
   RewriteRule ^jono/?$ /#founder [L,R=301,NE]
+  RewriteRule ^about/?$ /#founder [L,R=301,NE]
   RewriteRule ^imed/?$ /#products [L,R=301,NE]
+  RewriteRule ^current-projects/?$ /#products [L,R=301,NE]
   RewriteRule ^current-projects-mobile/?$ /#products [L,R=301,NE]
+  RewriteRule ^special-projects/?$ /#products [L,R=301,NE]
+  RewriteRule ^special-projects-mobile/?$ /#products [L,R=301,NE]
+  RewriteRule ^seed2shelf/?$ /#products [L,R=301,NE]
+  RewriteRule ^seed2shelf-mobile/?$ /#products [L,R=301,NE]
 
   # SPA fallback (React Router)
   RewriteRule ^index\.html$ - [L]

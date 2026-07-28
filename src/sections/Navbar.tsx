@@ -32,7 +32,7 @@ export function Navbar({ onOpenGate }: NavbarProps) {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'py-3 bg-warm-50/90 backdrop-blur-2xl border-b border-ink-200/20 shadow-sm'
+            ? 'py-3 bg-warm-50/95 backdrop-blur-none md:bg-warm-50/90 md:backdrop-blur-2xl border-b border-ink-200/20 shadow-sm'
             : 'py-5 bg-transparent'
         }`}
       >
@@ -94,7 +94,7 @@ export function Navbar({ onOpenGate }: NavbarProps) {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed inset-0 z-[60] bg-warm-50/98 backdrop-blur-2xl flex flex-col"
+            className="fixed inset-0 z-[60] bg-warm-50 md:bg-warm-50/98 backdrop-blur-none md:backdrop-blur-2xl flex flex-col"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

@@ -9,7 +9,7 @@ export function Blog() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="insights" className="relative py-24 lg:py-32">
+    <section id="insights" className="relative min-h-[300px] w-full py-24 lg:py-32">
       <div className="absolute inset-0 bg-gradient-to-b from-white via-warm-50/30 to-white texture-grain" />
       
       <div className="relative z-10 section-padding" ref={ref}>

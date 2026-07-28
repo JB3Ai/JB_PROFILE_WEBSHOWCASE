@@ -54,13 +54,12 @@ export function Footer({ onOpenGate }: FooterProps) {
               <div className="relative z-10 grid lg:grid-cols-2 gap-10 items-center">
                 <div>
                   <h2 className="text-display-md text-white text-balance mb-4">
-                    High-value availability.
+                    Strategic Availability.
                     <br />
-                    <span className="text-copper-400">Not desperation.</span>
+                    <span className="text-copper-400">Focused Impact.</span>
                   </h2>
                   <p className="text-white/60 text-lg leading-relaxed max-w-md text-balance">
-                    Selectively advising founders and leadership teams who are building 
-                    systems under pressure. Limited engagements, maximum impact.
+                    Selectively partnering with founders, executives, and leadership teams navigating high-pressure systems architecture. Limited quarterly engagements to ensure absolute depth.
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 lg:justify-end">
@@ -86,11 +85,11 @@ export function Footer({ onOpenGate }: FooterProps) {
                 </div>
                 <span className="text-sm font-semibold text-white tracking-tight">Jonathan Blackburn</span>
               </Link>
-              <p className="text-sm text-white/50 leading-relaxed max-w-sm mb-5">
-                South African entrepreneur and systems builder. 
+              <p className="text-sm text-zinc-200 leading-relaxed max-w-md mb-5">
+                South African entrepreneur and systems builder.
                 Turning operational complexity into structure, clarity, and practical AI for good.
               </p>
-              <div className="flex items-center gap-2 text-sm text-white/40">
+              <div className="text-xs text-zinc-300 font-medium flex items-center gap-1.5">
                 <MapPin className="w-4 h-4" />
                 <span>South Africa · Global</span>
               </div>

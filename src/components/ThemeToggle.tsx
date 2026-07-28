@@ -42,7 +42,7 @@ export function ThemeToggle() {
     <div
       role="group"
       aria-label="Theme switch"
-      className="flex items-center rounded-full border border-ink-200/60 bg-white/70 backdrop-blur-md p-0.5 shadow-xs"
+      className="flex items-center rounded-full border border-ink-200/60 bg-white/95 md:bg-white/70 backdrop-blur-none md:backdrop-blur-md p-0.5 shadow-xs"
     >
       {STATES.map(({ key, label, icon: Icon }) => {
         const active = theme === key;

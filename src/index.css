@@ -89,11 +89,11 @@
 
 @layer components {
   .glass-surface {
-    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-glass;
+    @apply bg-white/95 md:bg-white/70 backdrop-blur-none md:backdrop-blur-xl border border-white/20 shadow-glass;
   }
 
   .glass-surface-dark {
-    @apply bg-ink-900/60 backdrop-blur-xl border border-white/10 shadow-glass;
+    @apply bg-ink-900/95 md:bg-ink-900/60 backdrop-blur-none md:backdrop-blur-xl border border-white/10 shadow-glass;
   }
 
   .hairline-border {
@@ -113,7 +113,7 @@
   }
 
   .nav-glass {
-    @apply bg-warm-50/80 backdrop-blur-2xl border-b border-ink-200/30;
+    @apply bg-warm-50/95 md:bg-warm-50/80 backdrop-blur-none md:backdrop-blur-2xl border-b border-ink-200/30;
   }
 
   .btn-primary {

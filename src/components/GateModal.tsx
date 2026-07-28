@@ -67,7 +67,7 @@ export function GateModal({ isOpen, onClose, onRequest, onSubmitLead, context }:
           className="fixed inset-0 z-[70] flex items-center justify-center p-4"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
         >
-          <div className="absolute inset-0 bg-ink-950/60 backdrop-blur-xl" onClick={onClose} />
+          <div className="absolute inset-0 bg-ink-950/90 md:bg-ink-950/60 backdrop-blur-none md:backdrop-blur-xl" onClick={onClose} />
           <motion.div
             className="relative w-full max-w-md rounded-2xl bg-white border border-ink-100 shadow-2xl overflow-hidden"
             initial={{ scale: 0.95, opacity: 0, y: 20 }}

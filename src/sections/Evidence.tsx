@@ -27,7 +27,7 @@ export function Evidence() {
     return () => window.removeEventListener('keydown', onKey);
   }, [lightbox, video]);
   return (
-    <section id="evidence" className="relative py-24 lg:py-32">
+    <section id="evidence" className="relative min-h-[300px] w-full py-24 lg:py-32">
       <div className="absolute inset-0 bg-white texture-grain" />
       <div className="relative z-10 section-padding" ref={ref}>
         <div className="content-max-width">
@@ -108,7 +108,7 @@ export function Evidence() {
       <AnimatePresence>
         {lightbox && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-ink-950/80 backdrop-blur-sm p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-ink-950/95 md:bg-ink-950/80 backdrop-blur-none md:backdrop-blur-sm p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -142,7 +142,7 @@ export function Evidence() {
       <AnimatePresence>
         {video && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-ink-950/85 backdrop-blur-sm p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-ink-950/95 md:bg-ink-950/85 backdrop-blur-none md:backdrop-blur-sm p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

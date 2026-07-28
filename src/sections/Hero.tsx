@@ -22,12 +22,12 @@ export function Hero({ onOpenGate }: HeroProps) {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <motion.div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8"
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 md:bg-white/10 backdrop-blur-none md:backdrop-blur-md border border-white/20 mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               >
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-none md:animate-pulse" />
                 <span className="text-caption uppercase tracking-[0.12em] text-white/80">
                   Founder. Systems Architect. Builder under pressure.
                 </span>

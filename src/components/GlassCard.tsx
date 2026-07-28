@@ -12,7 +12,7 @@ export function GlassCard({ children, className, hover = true, onClick }: GlassC
   return (
     <motion.div
       className={cn(
-        'relative overflow-hidden rounded-2xl bg-white/60 backdrop-blur-xl border border-ink-200/50',
+        'relative overflow-hidden rounded-2xl bg-white/95 md:bg-white/60 backdrop-blur-none md:backdrop-blur-xl border border-ink-200/50',
         'shadow-elevated transition-shadow duration-500',
         hover && 'hover:shadow-glass-lg hover:border-ink-300/60',
         onClick && 'cursor-pointer',

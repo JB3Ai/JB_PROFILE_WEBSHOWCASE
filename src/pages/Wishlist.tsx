@@ -117,7 +117,7 @@ export default function Wishlist() {
                 Wishlist 2026
               </span>
               <h1 className="text-3xl lg:text-5xl font-semibold tracking-tight text-ink-900 mb-4">
-                Annual Sponsorships &amp; Infrastructure
+                Strategic Infrastructure &amp; Sponsorships
               </h1>
               <p className="text-base lg:text-lg text-ink-500 leading-relaxed max-w-2xl mx-auto">
                 Empowering development, AI research, hardware investments, and production hosting.
@@ -130,7 +130,7 @@ export default function Wishlist() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               aria-label="Donation Progress Tracker"
-              className="rounded-xl backdrop-blur-md bg-white/60 border border-primary/20 shadow-[0_8px_32px_-8px_rgba(180,138,74,0.15)] p-6 lg:p-8 mb-10 max-w-3xl mx-auto"
+              className="rounded-xl backdrop-blur-none md:backdrop-blur-md bg-white/95 md:bg-white/60 border border-primary/20 shadow-[0_8px_32px_-8px_rgba(180,138,74,0.15)] p-6 lg:p-8 mb-10 max-w-3xl mx-auto"
             >
               <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
                 <h2 className="flex items-center gap-2 text-base font-semibold text-ink-900">
@@ -202,7 +202,7 @@ export default function Wishlist() {
                       animate={{ opacity: 1, scale: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.92, y: -12 }}
                       transition={{ duration: 0.35, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
-                      className={`relative rounded-xl border border-primary/20 bg-background/80 backdrop-blur-sm p-6 flex flex-col items-center text-center ${cardHover}`}
+                      className={`relative rounded-xl border border-primary/20 bg-background/95 md:bg-background/80 backdrop-blur-none md:backdrop-blur-sm p-6 flex flex-col items-center text-center ${cardHover}`}
                     >
                       <span className="absolute top-3.5 right-3.5 text-[10px] font-semibold uppercase tracking-wider text-ink-400 border border-ink-200 rounded-full px-2.5 py-0.5">
                         {item.badge}
@@ -240,7 +240,7 @@ export default function Wishlist() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="rounded-xl backdrop-blur-md bg-white/60 border border-primary/20 shadow-[0_8px_32px_-8px_rgba(180,138,74,0.15)] p-8 max-w-3xl mx-auto text-center mb-16"
+              className="rounded-xl backdrop-blur-none md:backdrop-blur-md bg-white/95 md:bg-white/60 border border-primary/20 shadow-[0_8px_32px_-8px_rgba(180,138,74,0.15)] p-8 max-w-3xl mx-auto text-center mb-16"
             >
               <p className="text-xs uppercase tracking-[0.12em] text-ink-400 font-semibold mb-2">
                 Estimated Total Wishlist Goal
@@ -275,7 +275,7 @@ export default function Wishlist() {
                   return (
                     <article
                       key={method.id}
-                      className={`rounded-xl border border-primary/20 bg-background/80 backdrop-blur-sm p-6 flex flex-col items-center text-center ${cardHover}`}
+                      className={`rounded-xl border border-primary/20 bg-background/95 md:bg-background/80 backdrop-blur-none md:backdrop-blur-sm p-6 flex flex-col items-center text-center ${cardHover}`}
                     >
                       <div className="w-14 h-14 rounded-2xl border border-primary/20 bg-primary/5 flex items-center justify-center mb-4">
                         <Icon className="w-7 h-7 text-primary" />
