@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from '@/components/SectionHeader';
 import { apps, publicApps, gatedApps } from '@/data/apps';
+import { EcosystemMatrix } from '@/components/EcosystemMatrix';
 import { Lock, Download, ExternalLink, FileText, Play } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -194,6 +195,8 @@ export function Portfolio({ onOpenGate }: PortfolioProps) {
               </motion.div>
             </AnimatePresence>
           </div>
+
+          <EcosystemMatrix />
         </div>
       </div>
     </section>

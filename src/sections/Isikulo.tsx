@@ -156,6 +156,14 @@ export function Isikulo() {
                     <Download className="w-4 h-4" />
                     Download Isikulo Overview
                   </a>
+                  <a
+                    href="/assets/pdfs/The Bridge of Voices_ The Story of Isikolo AI.pdf"
+                    download
+                    className="inline-flex items-center gap-2 text-sm text-copper-400 hover:text-copper-300 transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    The Bridge of Voices: The Isikulo AI Story
+                  </a>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">

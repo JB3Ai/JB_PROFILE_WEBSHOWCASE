@@ -21,6 +21,7 @@ const systemRecords: FileItem[] = [
   { label: 'OS³ NewsRoomAi Cutsheet', url: '/assets/pdfs/OS³ NewsRoomAi CUTSHEET.pdf' },
   { label: 'OS³ ClipboardAi Cutsheet', url: '/assets/pdfs/OS³ ClipboardAi CUTSHEET.pdf' },
   { label: 'Jonathan Blackburn: Executive Resume', url: '/assets/pdfs/Jonathan_Blackburn_Premium_Resume.pdf' },
+  { label: 'The Bridge of Voices: The Story of Isikolo AI', url: '/assets/pdfs/The Bridge of Voices_ The Story of Isikolo AI.pdf' },
 ];
 
 function FileRow({ file }: { file: FileItem }) {

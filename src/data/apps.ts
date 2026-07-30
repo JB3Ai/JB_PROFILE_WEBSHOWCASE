@@ -12,7 +12,7 @@ export const apps: App[] = [
     thumbnail: '/assets/images/artwork-curated/dukebox-project.jpg',
     tags: ['AI Music', 'Generative Audio', 'Culture'],
     featured: true,
-    externalLink: '/assets/pdfs/OS³ DukeBoxLONDON Ai CUTSHEET.pdf',
+    externalLink: '/assets/pdfs/The DUKEBOX Cutsheet.pdf',
     brochureUrl: '/assets/pdfs/Cyber-Noir Music Console Magazine Cover.pdf',
   },
   {
@@ -30,7 +30,8 @@ export const apps: App[] = [
       { label: 'Languages', value: '11' },
       { label: 'Cost', value: 'Free' },
     ],
-    externalLink: '/assets/pdfs/OS³ IsiKoloAi CUTSHEET.pdf',
+    externalLink: '/assets/pdfs/OS³ IsikuloAi CUTSHEET.pdf',
+    videoUrl: 'https://www.youtube.com/watch?v=IQnM2uDoVQ0',
     brochureUrl: '/assets/pdfs/IsikoloAiforlearners.pdf',
   },
   {
@@ -44,6 +45,7 @@ export const apps: App[] = [
     thumbnail: '/assets/images/artwork-curated/clipboard-product.png',
     tags: ['Security', 'Encryption', 'Collaboration', 'Open Source'],
     featured: true,
+    externalLink: '/assets/pdfs/OS³ ClipboardAi CUTSHEET.pdf',
     videoUrl: 'https://www.youtube.com/watch?v=xqNDDVj560A',
     brochureUrl: '/assets/pdfs/JB³ OS³ Dash The Operating System-compressed.pdf',
   },
@@ -74,6 +76,7 @@ export const apps: App[] = [
     tags: ['AI Workforce', 'WhatsApp', 'Automation', 'Multilingual'],
     featured: true,
     externalLink: '/assets/pdfs/JB3Ai_Super_Agent_Operating_System_V5.pdf',
+    brochureUrl: '/assets/pdfs/JB3Ai_Super_Agent_DASH.pdf',
   },
   {
     id: 'investigator-ai',
