@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { apps } from '@/data/apps';
-import { Download, FileText, ExternalLink, Play, Lock } from 'lucide-react';
+import { Download, FileText, ExternalLink, Play, Lock, ChevronDown, X } from 'lucide-react';
 
 /**
  * Cutsheets that exist in /assets/pdfs/ but are intentionally served only
@@ -20,9 +21,34 @@ function PathText({ path }: { path: string }) {
 }
 
 export function EcosystemMatrix() {
+  const [open, setOpen] = useState(false);
+
+  if (!open) {
+    return (
+      <div className="mt-16 flex justify-center">
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-5 py-2.5 text-sm font-medium text-ink-600 shadow-sm transition-colors hover:border-copper-400 hover:text-copper-600"
+        >
+          Asset Matrix: Ecosystem Downloads and Links
+          <ChevronDown className="w-4 h-4" />
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="mt-16">
-      <div className="text-center mb-6">
+      <div className="relative text-center mb-6">
+        <button
+          type="button"
+          onClick={() => setOpen(false)}
+          aria-label="Close Asset Matrix"
+          className="absolute right-0 top-0 inline-flex items-center gap-1.5 rounded-full border border-ink-200 bg-white px-3 py-1.5 text-xs font-medium text-ink-500 shadow-sm transition-colors hover:border-copper-400 hover:text-copper-600"
+        >
+          <X className="w-3.5 h-3.5" /> Close
+        </button>
         <span className="block text-xs font-semibold uppercase tracking-[0.12em] text-copper-600 mb-2">
           Asset Matrix
         </span>
@@ -142,6 +168,16 @@ export function EcosystemMatrix() {
             })}
           </tbody>
         </table>
+      </div>
+
+      <div className="mt-4 text-center">
+        <button
+          type="button"
+          onClick={() => setOpen(false)}
+          className="inline-flex items-center gap-1.5 rounded-full border border-ink-200 bg-white px-4 py-2 text-xs font-medium text-ink-500 shadow-sm transition-colors hover:border-copper-400 hover:text-copper-600"
+        >
+          <X className="w-3.5 h-3.5" /> Close Asset Matrix
+        </button>
       </div>
     </div>
   );
