@@ -5,6 +5,7 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { SectionHeader } from '@/components/SectionHeader';
 import { supportTiers, supportLinks, sponsorActions } from '@/data/fundraising';
 import { Zap, BookOpen, GraduationCap, Cpu, Heart, Globe, Coffee, ArrowUpRight, ArrowRight, ChevronDown, ChevronUp, Video, HeartHandshake, Award, Download } from 'lucide-react';
+import { SponsorPay } from '@/components/SponsorPay';
 
 const iconMap: Record<string, any> = { Zap, BookOpen, GraduationCap, Cpu };
 
@@ -239,6 +240,7 @@ export function Isikulo() {
                 );
               })}
             </div>
+            <SponsorPay />
             <div className="mt-6 text-center sm:hidden">
               <Link
                 to="/wishlist"
