@@ -75,6 +75,12 @@ nav button:hover::after{width:100%;}
   transition:box-shadow .35s;
 }
 .hd-call:hover{box-shadow:0 0 22px rgba(255,158,64,.6);}
+.hd-home{
+  font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cyan);border:1px solid rgba(0,217,255,.35);padding:8px 14px;border-radius:4px;
+  text-decoration:none;transition:box-shadow .35s,border-color .35s;white-space:nowrap;
+}
+.hd-home:hover{border-color:rgba(0,217,255,.7);box-shadow:0 0 18px rgba(0,217,255,.45);}
 .hd-clock{display:none;}
 
 /* ============ FOOTER ============ */
@@ -438,6 +444,7 @@ html:not(.gsap-on) .hd-call:hover{transform:translateY(-1px);}
     <img class="hd-logo" src="assets/emblem.png" alt="JB³Ai emblem">
     <div class="hd-title">JB³Ai <span>// CONTACT</span></div>
   </div>
+  <a class="hd-home" href="/">&larr; Main Site</a>
   <nav>
     <button data-open="m1">Properties</button>
     <button data-open="m2">Social</button>

@@ -12,6 +12,7 @@ import { Timeline } from '@/sections/Timeline';
 import { Blog } from '@/sections/Blog';
 import { Footer } from '@/sections/Footer';
 import { GateModal } from '@/components/GateModal';
+import { ExitIntent } from '@/components/ExitIntent';
 import BootSequence, { BOOT_SESSION_KEY } from '@/components/boot/BootSequence';
 import OSAuthSequence from '@/components/boot/OSAuthSequence';
 import { useAuth } from '@/hooks/useAuth';
@@ -80,6 +81,7 @@ export default function Home() {
         <Blog />
       </main>
       <Footer onOpenGate={handleOpenGate} />
+      <ExitIntent />
       <GateModal
         isOpen={gateOpen}
         onClose={() => { setGateOpen(false); setPendingEmail(''); }}

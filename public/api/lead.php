@@ -44,6 +44,7 @@ $name       = clean($data['name'] ?? '');
 $email      = filter_var($data['email'] ?? '', FILTER_VALIDATE_EMAIL);
 $intent     = clean($data['intent'] ?? '', 40);
 $mode       = clean($data['mode'] ?? 'access', 20);
+$phone      = clean($data['phone'] ?? '', 40);
 $newsletter = (!empty($data['newsletter']) && $data['newsletter'] !== 'false') ? 'Yes' : 'No';
 $code       = clean($data['code'] ?? '', 10);
 
@@ -69,6 +70,9 @@ if ($mode !== 'news') {
     $lines[] = "Access type: $intent";
 }
 $lines[] = "Newsletter opt-in: $newsletter";
+if ($phone !== '') {
+    $lines[] = "Phone: $phone";
+}
 if ($code !== '') {
     $lines[] = "OTP issued: $code";
 }

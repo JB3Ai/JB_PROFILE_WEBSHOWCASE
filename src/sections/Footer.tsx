@@ -71,6 +71,10 @@ export function Footer({ onOpenGate }: FooterProps) {
                     <Mail className="w-4 h-4 mr-2" />
                     Direct Email
                   </a>
+                  <a href="/contact" className="btn-secondary">
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Get in Touch
+                  </a>
                 </div>
               </div>
             </div>

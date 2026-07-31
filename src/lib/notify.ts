@@ -4,6 +4,7 @@ export interface LeadEmailPayload {
   intent: string;
   mode: 'access' | 'news' | string;
   newsletter: boolean;
+  phone?: string;
 }
 
 /**
