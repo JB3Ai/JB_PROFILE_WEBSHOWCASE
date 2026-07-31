@@ -43,7 +43,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 img{user-select:none;}
 
 /* ============ SHADER + OVERLAYS ============ */
-#gl{position:fixed;inset:0;z-index:0;width:100%;height:100%;}
+#gl{position:fixed;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;}
 .scanlines{
   position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.5;
   background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.22) 3px 4px);
@@ -374,15 +374,19 @@ html:not(.gsap-on) .hd-call:hover{transform:translateY(-1px);}
 }
 @media (max-width:960px){
   nav{display:none;}
-  .stage{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:20px;overflow:hidden;}
+  /* Mobile: switch from fixed app-shell to normal scrolling document.
+     The larger type scale made the identity panel taller than the shell
+     allowed, crushing the card deck and leaving the page stuck. */
+  html,body{overflow:auto;height:auto;}
+  header{position:static;height:auto;padding:12px 16px;flex-wrap:wrap;gap:10px;}
+  footer{position:static;height:auto;padding:12px 16px;}
+  .stage{position:static;inset:auto;display:block;overflow:visible;min-height:0;padding:22px 16px;}
   .id-panel{justify-content:flex-start;}
+  .deck{overflow:visible;margin-top:24px;}
   .wordmark{font-size:clamp(2.6rem,9vw,4.4rem);flex-direction:row;gap:.18em;flex-wrap:wrap;}
   .tagline{margin-top:14px;font-size:11.5px;}
   .stats{margin-top:18px;flex-wrap:wrap;}
   .cta-row{margin-top:18px;}
-  .deck{overflow-y:auto;grid-auto-rows:minmax(148px,auto);padding-bottom:6px;}
-  .deck::-webkit-scrollbar{width:6px;}
-  .deck::-webkit-scrollbar-thumb{background:rgba(0,217,255,.25);border-radius:3px;}
   .swipe-hint{display:block;}
 }
 @media (max-width:640px){

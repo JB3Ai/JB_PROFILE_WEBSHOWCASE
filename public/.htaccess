@@ -30,6 +30,13 @@
   AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
 </IfModule>
 
+# HTML shells must always revalidate so visitors never run a stale bundle
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
 # Long-lived caching for hashed build assets and media
 <IfModule mod_expires.c>
   ExpiresActive On
