@@ -231,7 +231,7 @@ export const wishlistPaymentMethods: WishlistPaymentMethod[] = [
     pill: 'Once-off / Monthly',
     cta: 'Support Now',
     icon: 'Coffee',
-    href: 'https://www.buymeacoffee.com/jonoblackburn',
+    href: 'https://buymeacoffee.com/jb3ai',
   },
   {
     id: 'paybru',

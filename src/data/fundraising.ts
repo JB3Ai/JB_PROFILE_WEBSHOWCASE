@@ -43,7 +43,7 @@ export const supportLinks: FundraisingLink[] = [
   {
     id: 'buymeacoffee',
     label: 'Platform Support (Buy Me a Coffee)',
-    href: 'https://www.buymeacoffee.com/jonoblackburn',
+    href: 'https://buymeacoffee.com/jb3ai',
     platform: 'buymeacoffee',
     description: 'Once-off or monthly support for ongoing platform development, updates, and community access.',
   },
