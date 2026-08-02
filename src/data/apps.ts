@@ -124,7 +124,7 @@ export const apps: App[] = [
     longDescription: 'Strategic AI implementation, specialized venture scaling, and elite technological consulting for high-impact organizations. Founder-led engagements: systems architecture, operational turnarounds, AI product strategy, and special projects.',
     category: 'public',
     status: 'live',
-    thumbnail: '/assets/images/artwork-curated/jb3ai-super-agent-os-architecture.jpg',
+    thumbnail: '/assets/images/artwork-curated/consulting-accelerator-card.png',
     tags: ['Consulting', 'Accelerator', 'Advisory'],
     featured: false,
     externalLink: '/assets/pdfs/jb3ai-consulting-and-accelerator-compressed.pdf',
