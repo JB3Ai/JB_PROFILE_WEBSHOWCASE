@@ -97,7 +97,7 @@ export function GateModal({ isOpen, onClose, onRequest, onSubmitLead, context }:
                     <Check className="w-7 h-7 text-emerald-600" />
                   </div>
                   <h4 className="text-lg font-semibold text-ink-900 mb-1">
-                    {mode === 'news' ? 'Subscribed' : 'Access Granted'}
+                    {mode === 'news' ? 'Intelligence Received' : 'Access Granted'}
                   </h4>
                   <p className="text-sm text-ink-500">
                     {mode === 'news' ? 'Welcome to the JB³Ai network.' : 'Entering the private portal...'}
@@ -123,12 +123,12 @@ export function GateModal({ isOpen, onClose, onRequest, onSubmitLead, context }:
                       className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-medium transition-all ${mode === 'news' ? 'bg-white text-ink-900 shadow-sm' : 'text-ink-500 hover:text-ink-700'}`}
                     >
                       <Newspaper className="w-3.5 h-3.5" />
-                      Sign Up for News
+                      Strategic Intelligence
                     </button>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-[0.1em] text-ink-500 mb-1.5">Full Name</label>
+                    <label className="block text-xs font-semibold uppercase tracking-[0.1em] text-ink-500 mb-1.5">Legal Name</label>
                     <input
                       type="text" required
                       value={name} onChange={e => setName(e.target.value)}
@@ -138,7 +138,7 @@ export function GateModal({ isOpen, onClose, onRequest, onSubmitLead, context }:
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-[0.1em] text-ink-500 mb-1.5">Email</label>
+                    <label className="block text-xs font-semibold uppercase tracking-[0.1em] text-ink-500 mb-1.5">Contact Address</label>
                     <input
                       type="email" required
                       value={email} onChange={e => setEmail(e.target.value)}
@@ -177,7 +177,7 @@ export function GateModal({ isOpen, onClose, onRequest, onSubmitLead, context }:
                   )}
 
                   <button type="submit" disabled={submitting} className="btn-primary w-full justify-center mt-2 disabled:opacity-50">
-                    {submitting ? 'Submitting...' : mode === 'news' ? 'Subscribe' : config.cta}
+                    {submitting ? 'Submitting...' : mode === 'news' ? 'Initialize Access' : config.cta}
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </button>
                 </form>
