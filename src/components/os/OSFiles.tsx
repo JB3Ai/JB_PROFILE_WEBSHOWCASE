@@ -8,20 +8,20 @@ interface FileItem {
 const intelligenceBriefings: FileItem[] = [
   {
     label: 'Dual-Layer Intelligence: Eagle Star X JB³Ai',
-    url: '/assets/pdfs/Dual-Layer Intelligence for Eagle StarXJB³Ai-compressed.pdf',
+    url: '/assets/pdfs/dual-layer-intelligence-for-eagle-starxjb3ai-compressed.pdf',
   },
   {
     label: 'JB³Ai Forensic Intelligence Systems Overview',
-    url: '/assets/pdfs/JB³Ai Forensic Intelligence Systems OverviewV2-compressed.pdf',
+    url: '/assets/pdfs/jb3ai-forensic-intelligence-systems-overviewv2-compressed.pdf',
   },
 ];
 
 const systemRecords: FileItem[] = [
-  { label: 'OS³ InvestigatorAi Cutsheet', url: '/assets/pdfs/OS³ InvestigatorAi CUTSHEET.pdf' },
-  { label: 'OS³ NewsRoomAi Cutsheet', url: '/assets/pdfs/OS³ NewsRoomAi CUTSHEET.pdf' },
-  { label: 'OS³ ClipboardAi Cutsheet', url: '/assets/pdfs/OS³ ClipboardAi CUTSHEET.pdf' },
-  { label: 'Jonathan Blackburn: Executive Resume', url: '/assets/pdfs/Jonathan_Blackburn_Premium_Resume.pdf' },
-  { label: 'The Bridge of Voices: The Story of Isikolo AI', url: '/assets/pdfs/The Bridge of Voices_ The Story of Isikolo AI.pdf' },
+  { label: 'OS³ InvestigatorAi Cutsheet', url: '/assets/pdfs/os3-investigatorai-cutsheet.pdf' },
+  { label: 'OS³ NewsRoomAi Cutsheet', url: '/assets/pdfs/os3-newsroomai-cutsheet.pdf' },
+  { label: 'OS³ ClipboardAi Cutsheet', url: '/assets/pdfs/os3-clipboardai-cutsheet.pdf' },
+  { label: 'Jonathan Blackburn: Executive Resume', url: '/assets/pdfs/jonathan-blackburn-premium-resume.pdf' },
+  { label: 'The Bridge of Voices: The Story of Isikolo AI', url: '/assets/pdfs/the-bridge-of-voices-the-story-of-isikolo-ai.pdf' },
 ];
 
 function FileRow({ file }: { file: FileItem }) {

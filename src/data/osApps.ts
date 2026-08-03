@@ -9,7 +9,7 @@ export const osApps: OSApp[] = [
     category: 'intelligence',
     gated: true,
     content: 'InvestigatorAi transforms exported WhatsApp data into structured forensic reports. Upload a .zip export, and the system generates a complete timeline with transcription, media analysis, and sequence reconstruction. Built for legal professionals, investigators, and compliance teams.',
-    pdfUrl: '/assets/pdfs/OS³ InvestigatorAi CUTSHEET.pdf',
+    pdfUrl: '/assets/pdfs/os3-investigatorai-cutsheet.pdf',
   },
   {
     id: 'newsroom-ai',
@@ -19,7 +19,7 @@ export const osApps: OSApp[] = [
     category: 'intelligence',
     gated: true,
     content: 'NewsroomAi is a live intelligence dashboard combining 24 news feeds, social monitoring, and situational awareness tools. Access real-time feeds, filter by topic, and create custom briefing reports.',
-    pdfUrl: '/assets/pdfs/OS³ NewsRoomAi CUTSHEET.pdf',
+    pdfUrl: '/assets/pdfs/os3-newsroomai-cutsheet.pdf',
   },
   {
     id: 'viewgrid',
@@ -29,7 +29,7 @@ export const osApps: OSApp[] = [
     category: 'intelligence',
     gated: true,
     content: 'ViewGrid provides open-source satellite and aerial surveillance access. Monitor locations, track movements, and gather visual intelligence from orbital and drone imagery sources.',
-    pdfUrl: '/assets/pdfs/Global Satellite Overlay The Sentinel Eye-compressed.pdf',
+    pdfUrl: '/assets/pdfs/global-satellite-overlay-the-sentinel-eye-compressed.pdf',
   },
   {
     id: 'cv-profile',
@@ -39,7 +39,7 @@ export const osApps: OSApp[] = [
     category: 'profile',
     gated: true,
     content: 'Full executive profile including business history, technical stack, awards and recognition, professional recommendations, and current strategic direction.',
-    pdfUrl: '/assets/pdfs/Jonathan_Blackburn_Premium_Resume.pdf',
+    pdfUrl: '/assets/pdfs/jonathan-blackburn-premium-resume.pdf',
   },
   {
     id: 'investment-deck',
@@ -49,7 +49,7 @@ export const osApps: OSApp[] = [
     category: 'investment',
     gated: true,
     content: '',
-    pdfUrl: '/assets/pdfs/JB³Ai Investment Deck Intelligence in Motion-compressed.pdf',
+    pdfUrl: '/assets/pdfs/jb3ai-investment-deck-intelligence-in-motion-compressed.pdf',
   },
   {
     id: 'files',
@@ -92,7 +92,7 @@ export const osApps: OSApp[] = [
     category: 'content',
     gated: false,
     content: '',
-    pdfUrl: '/assets/pdfs/GTR3_Publishing sneak peek.pdf',
+    pdfUrl: '/assets/pdfs/gtr3-publishing-sneak-peek.pdf',
   },
   {
     id: 'news',

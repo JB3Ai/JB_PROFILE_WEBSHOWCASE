@@ -8,8 +8,8 @@ import { Download, FileText, ExternalLink, Play, Lock, ChevronDown, X } from 'lu
  * matrix documents their location without exposing a public download.
  */
 const GATED_CUTSHEETS: Record<string, string> = {
-  'investigator-ai': '/assets/pdfs/OS³ InvestigatorAi CUTSHEET.pdf',
-  'newsroom-ai': '/assets/pdfs/OS³ NewsRoomAi CUTSHEET.pdf',
+  'investigator-ai': '/assets/pdfs/os3-investigatorai-cutsheet.pdf',
+  'newsroom-ai': '/assets/pdfs/os3-newsroomai-cutsheet.pdf',
 };
 
 function PathText({ path }: { path: string }) {

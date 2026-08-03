@@ -150,7 +150,7 @@ export function Isikulo() {
                     )}
                   </button>
                   <a
-                    href="/assets/pdfs/IsikoloAiforlearners.pdf"
+                    href="/assets/pdfs/isikoloaiforlearners.pdf"
                     download
                     className="inline-flex items-center gap-2 text-sm text-copper-400 hover:text-copper-300 transition-colors"
                   >
@@ -158,7 +158,7 @@ export function Isikulo() {
                     Download Isikulo Overview
                   </a>
                   <a
-                    href="/assets/pdfs/The Bridge of Voices_ The Story of Isikolo AI.pdf"
+                    href="/assets/pdfs/the-bridge-of-voices-the-story-of-isikolo-ai.pdf"
                     download
                     className="inline-flex items-center gap-2 text-sm text-copper-400 hover:text-copper-300 transition-colors"
                   >

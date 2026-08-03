@@ -26,7 +26,7 @@ export const supportTiers: SponsorTier[] = [
     amountUSD: 100,
     description: 'Help sponsor learner access and platform expansion for South African students.',
     icon: 'GraduationCap',
-    href: 'https://paybru.co.za/communities/jonoblackburn-become-a-founding-sponsor',
+    href: 'https://paybru.co.za/communities/the-proof-is-built-now-we-need-launch-fuel',
   },
   {
     id: 'hardware-recovery',
@@ -35,7 +35,7 @@ export const supportTiers: SponsorTier[] = [
     amountUSD: 250,
     description: 'Direct support toward hardware recovery, development tools, and core OS³ infrastructure.',
     icon: 'Cpu',
-    href: 'https://paybru.co.za/communities/jonoblackburn-become-a-founding-sponsor',
+    href: 'https://paybru.co.za/communities/the-proof-is-built-now-we-need-launch-fuel',
   },
 ];
 
@@ -50,7 +50,7 @@ export const supportLinks: FundraisingLink[] = [
   {
     id: 'paybru',
     label: 'PayBru (South Africa)',
-    href: 'https://paybru.co.za/communities/jonoblackburn-become-a-founding-sponsor',
+    href: 'https://paybru.co.za/communities/the-proof-is-built-now-we-need-launch-fuel',
     platform: 'paybru',
     description: 'Local support in ZAR. Bank payouts, founding sponsor tiers, and community memberships.',
   },
@@ -76,14 +76,14 @@ export const sponsorActions = [
     label: 'Sponsor Isikulo',
     mark: 'SI',
     icon: 'GraduationCap',
-    href: 'https://paybru.co.za/communities/jonoblackburn-become-a-founding-sponsor',
+    href: 'https://paybru.co.za/communities/the-proof-is-built-now-we-need-launch-fuel',
   },
   {
     id: 'sponsor-learner',
     label: 'Sponsor a Learner',
     mark: 'SL',
     icon: 'HeartHandshake',
-    href: 'https://paybru.co.za/communities/jonoblackburn-become-a-founding-sponsor',
+    href: 'https://paybru.co.za/communities/the-proof-is-built-now-we-need-launch-fuel',
   },
   {
     id: 'fund-ai-credits',
@@ -104,7 +104,7 @@ export const sponsorActions = [
     label: 'Become a Founding Sponsor',
     mark: 'FS',
     icon: 'Award',
-    href: 'https://paybru.co.za/communities/jonoblackburn-become-a-founding-sponsor',
+    href: 'https://paybru.co.za/communities/the-proof-is-built-now-we-need-launch-fuel',
   },
   {
     id: 'gtr3-limited-edition',

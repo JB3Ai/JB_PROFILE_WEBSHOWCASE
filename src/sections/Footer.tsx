@@ -137,7 +137,7 @@ export function Footer({ onOpenGate }: FooterProps) {
               <h4 className="text-xs font-semibold text-white/60 uppercase tracking-[0.1em] mb-4">Support</h4>
               <ul className="space-y-2.5">
                 <li><a href="https://buymeacoffee.com/jb3ai" target="_blank" rel="noopener noreferrer" className="text-sm text-white/40 hover:text-white transition-colors inline-flex items-center gap-1.5"><Coffee className="w-3 h-3" /> Buy Me a Coffee</a></li>
-                <li><a href="https://paybru.co.za/communities/jonoblackburn-become-a-founding-sponsor" target="_blank" rel="noopener noreferrer" className="text-sm text-white/40 hover:text-white transition-colors inline-flex items-center gap-1.5"><Heart className="w-3 h-3" /> PayBru (SA)</a></li>
+                <li><a href="https://paybru.co.za/communities/the-proof-is-built-now-we-need-launch-fuel" target="_blank" rel="noopener noreferrer" className="text-sm text-white/40 hover:text-white transition-colors inline-flex items-center gap-1.5"><Heart className="w-3 h-3" /> PayBru (SA)</a></li>
                 <li><a href="https://paypal.me/jonoblackburnza" target="_blank" rel="noopener noreferrer" className="text-sm text-white/40 hover:text-white transition-colors inline-flex items-center gap-1.5"><Globe className="w-3 h-3" /> PayPal</a></li>
                 <li><a href="https://ko-fi.com/D0K721OP8E" target="_blank" rel="noopener noreferrer" className="text-sm text-white/40 hover:text-white transition-colors inline-flex items-center gap-1.5"><Coffee className="w-3 h-3" /> Ko-fi</a></li>
                 <li><button onClick={() => onOpenGate('investor')} className="text-sm text-white/40 hover:text-white transition-colors">OS³ Portal</button></li>

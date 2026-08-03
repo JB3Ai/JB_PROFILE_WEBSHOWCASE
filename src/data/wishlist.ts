@@ -240,7 +240,7 @@ export const wishlistPaymentMethods: WishlistPaymentMethod[] = [
     pill: 'Founding Sponsor',
     cta: 'Founding Sponsor',
     icon: 'Shield',
-    href: 'https://paybru.co.za/communities/jonoblackburn-become-a-founding-sponsor',
+    href: 'https://paybru.co.za/communities/the-proof-is-built-now-we-need-launch-fuel',
   },
   {
     id: 'paypal',
