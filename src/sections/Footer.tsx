@@ -208,6 +208,18 @@ export function Footer({ onOpenGate }: FooterProps) {
               Private OS³ Portal
             </Link>
           </div>
+
+          <div className="mt-6 pt-4 border-t border-white/5 text-center">
+            <a
+              href={`https://github.com/JB3Ai/JB_PROFILE_WEBSHOWCASE/commit/${__COMMIT_HASH__}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[10px] font-mono tracking-wider text-white/20 hover:text-copper-400 transition-colors"
+              title="View this build on GitHub"
+            >
+              build {__COMMIT_HASH__}
+            </a>
+          </div>
         </div>
       </div>
     </footer>
