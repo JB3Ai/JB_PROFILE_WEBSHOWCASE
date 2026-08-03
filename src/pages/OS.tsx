@@ -147,7 +147,7 @@ export default function OS() {
       isMaximized: false,
       isMinimized: false,
       zIndex: zIndexCounter + 1,
-      x: 60 + offset,
+      x: 280 + offset,
       y: 40 + offset,
       width: app.width ?? 640,
       height: app.height ?? 480,

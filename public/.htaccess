@@ -18,10 +18,15 @@
   RewriteRule ^seed2shelf/?$ /#products [L,R=301,NE]
   RewriteRule ^seed2shelf-mobile/?$ /#products [L,R=301,NE]
 
-  # SPA fallback (React Router)
+  # Contact page: redirect /contact to /contact/ so Apache serves the directory index
+  RewriteRule ^contact$ /contact/ [L,R=301]
+
+  # SPA fallback (React Router) — only for non-file, non-directory requests
+  # Exclude /contact/ so the standalone contact page is served directly
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !^/contact/
   RewriteRule . /index.html [L]
 </IfModule>
 
