@@ -166,7 +166,7 @@ export function Isikulo() {
                     The Bridge of Voices: The Isikulo AI Story
                   </a>
                   <a
-                    href="/contact"
+                    href="/contact/"
                     className="inline-flex items-center gap-2 rounded-full border border-copper-400/50 px-4 py-1.5 text-sm font-medium text-copper-300 transition-colors hover:bg-copper-400/10 hover:border-copper-400"
                   >
                     Get in Touch

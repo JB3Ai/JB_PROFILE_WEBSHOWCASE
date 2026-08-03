@@ -61,13 +61,13 @@ export function Navbar({ onOpenGate }: NavbarProps) {
 
             <div className="hidden lg:flex items-center gap-3">
               <ThemeToggle />
-              <Link
-                to="/contact"
+              <a
+                href="/contact/"
                 className="p-2.5 rounded-xl text-sm font-medium text-ink-600 hover:text-ink-900 hover:bg-warm-100 transition-all duration-200"
                 aria-label="Contact"
               >
                 <Mail className="w-4 h-4" />
-              </Link>
+              </a>
               <button
                 onClick={() => onOpenGate('client')}
                 className="btn-primary text-sm py-2.5 px-4"

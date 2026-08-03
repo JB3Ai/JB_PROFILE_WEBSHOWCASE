@@ -113,7 +113,7 @@ export function GTR3() {
                   Reserve Now - R900 / $50
                   <ArrowUpRight className="w-4 h-4 ml-1" />
                 </a>
-                <a href="/contact" className="btn-secondary">
+                <a href="/contact/" className="btn-secondary">
                   Get in Touch
                 </a>
               </div>
