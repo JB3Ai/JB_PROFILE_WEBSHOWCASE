@@ -127,7 +127,7 @@ export const apps: App[] = [
     thumbnail: '/assets/images/artwork-curated/consulting-accelerator-card.png',
     tags: ['Consulting', 'Accelerator', 'Advisory'],
     featured: false,
-    externalLink: '/assets/pdfs/jb3ai-consulting-and-accelerator-compressed.pdf',
+    externalLink: '/assets/pdfs/jb3ai-consulting-accelerator-brief.pdf',
   },
 ];
 
