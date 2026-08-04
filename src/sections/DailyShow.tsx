@@ -32,9 +32,11 @@ export function DailyShow() {
               className="relative"
             >
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                <img 
-                  src="/assets/images/artwork-curated/daily-show-cover.png" 
+                <img
+                  src="/assets/images/artwork-curated/daily-show-cover.png"
                   alt="JB³ The Daily Logic Show"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full aspect-video object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/20 to-transparent" />

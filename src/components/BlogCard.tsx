@@ -32,9 +32,11 @@ export function BlogCard({ post, index = 0, variant = 'default' }: BlogCardProps
         isFeatured && 'md:aspect-[4/3] md:col-span-2 md:mb-0'
       )}>
         {post.coverImage ? (
-          <img 
-            src={post.coverImage} 
+          <img
+            src={post.coverImage}
             alt={post.title}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
         ) : (

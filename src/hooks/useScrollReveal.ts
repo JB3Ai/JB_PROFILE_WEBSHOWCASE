@@ -17,6 +17,7 @@ export function useScrollReveal<T extends HTMLElement = HTMLDivElement>(
     const element = ref.current;
     if (!element) return;
 
+    // Primary: reveal when scrolled into view
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -32,7 +33,27 @@ export function useScrollReveal<T extends HTMLElement = HTMLDivElement>(
     );
 
     observer.observe(element);
-    return () => observer.disconnect();
+
+    // Fail-safe: on heavy mobile loads, image decoding can starve
+    // IntersectionObserver callbacks and leave sections invisible.
+    // If the element is already near the viewport after a short grace
+    // period, reveal it regardless.
+    const fallback = window.setTimeout(() => {
+      try {
+        const rect = element.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 2) {
+          setIsVisible(true);
+          if (triggerOnce) observer.unobserve(element);
+        }
+      } catch {
+        setIsVisible(true);
+      }
+    }, 1500);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, [threshold, rootMargin, triggerOnce]);
 
   return { ref, isVisible };

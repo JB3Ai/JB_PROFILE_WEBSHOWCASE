@@ -108,9 +108,11 @@ export function Portfolio({ onOpenGate }: PortfolioProps) {
                     )}
                   >
                     <div className="relative aspect-[16/10] bg-ink-900 overflow-hidden flex items-center justify-center">
-                      <img 
-                        src={app.thumbnail} 
-                        alt={app.title} 
+                      <img
+                        src={app.thumbnail}
+                        alt={app.title}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                         onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                       />

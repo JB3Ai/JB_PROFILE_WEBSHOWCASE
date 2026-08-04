@@ -39,7 +39,7 @@ export function Hero({ onOpenGate }: HeroProps) {
                 animate={{ opacity: 1, y: 0 }} 
                 transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               >
-                Jonathan
+                Jono
                 <br />
                 <span className="text-copper-400">Blackburn</span>
               </motion.h1>
