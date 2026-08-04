@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Feather } from 'lucide-react';
+import { ArrowRight, ArrowUp, Feather } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { SectionHeader } from '@/components/SectionHeader';
 import { BlogCard } from '@/components/BlogCard';
@@ -52,6 +52,18 @@ export function Blog() {
                 <BlogCard key={post.id} post={post} index={i} />
               ))}
             </div>
+          </div>
+
+          {/* Back to top */}
+          <div className="mt-16 flex justify-center">
+            <button
+              type="button"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-5 py-2.5 text-sm font-medium text-ink-600 transition-all duration-300 hover:border-copper-400 hover:text-copper-600 hover:-translate-y-0.5 shadow-sm"
+            >
+              <ArrowUp className="w-4 h-4" />
+              Back to top
+            </button>
           </div>
         </div>
       </div>

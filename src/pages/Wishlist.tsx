@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft, ArrowRight, Copy, Check,
   Layers, Server, Cpu, Zap, Cloud, Github, Palette, Image, Video, Bot,
-  LayoutGrid, Mail, Laptop, Code2, Star, Settings,
+  LayoutGrid, Mail, Laptop, Code2, Star, Settings, Sparkles,
   Coffee, Shield, CreditCard, Heart,
   Twitter, Facebook, Linkedin, MessageCircle, Target,
 } from 'lucide-react';
@@ -17,7 +17,7 @@ import { usePageMeta } from '@/hooks/usePageMeta';
 
 const iconMap: Record<string, any> = {
   Layers, Server, Cpu, Zap, Cloud, Github, Palette, Image, Video, Bot,
-  LayoutGrid, Mail, Laptop, Code2, Star, Settings,
+  LayoutGrid, Mail, Laptop, Code2, Star, Settings, Sparkles,
   Coffee, Shield, CreditCard, Heart,
 };
 

@@ -1,4 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
+import { Copy, Check } from 'lucide-react';
+
+const BTC_ADDRESS = 'bc1q2ztwzh86f050sdpcwjgrhk0t6kj69r2q40aak0';
 
 /**
  * Sponsorship payment buttons.
@@ -22,7 +25,24 @@ declare global {
 export function SponsorPay() {
   const [amount, setAmount] = useState(25);
   const [sdkReady, setSdkReady] = useState(false);
+  const [btcCopied, setBtcCopied] = useState(false);
   const btnRef = useRef<HTMLDivElement>(null);
+
+  const copyBtcAddress = async () => {
+    try {
+      await navigator.clipboard.writeText(BTC_ADDRESS);
+    } catch {
+      // Clipboard API fallback for older browsers
+      const ta = document.createElement('textarea');
+      ta.value = BTC_ADDRESS;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch { /* ignore */ }
+      document.body.removeChild(ta);
+    }
+    setBtcCopied(true);
+    window.setTimeout(() => setBtcCopied(false), 2000);
+  };
 
   useEffect(() => {
     if (!PAYPAL_CLIENT_ID) return;
@@ -145,6 +165,22 @@ export function SponsorPay() {
           <p className="text-sm font-semibold text-ink-900">Bitcoin</p>
           <p className="text-xs text-ink-400 mt-0.5">Scan to send BTC</p>
         </div>
+        <button
+          type="button"
+          onClick={copyBtcAddress}
+          className="inline-flex max-w-full items-center gap-2 rounded-full border border-ink-200 bg-warm-50 px-3 py-1.5 text-[11px] font-mono text-ink-600 transition-colors hover:border-copper-400 hover:text-copper-600"
+          title={BTC_ADDRESS}
+        >
+          <span className="truncate">{BTC_ADDRESS}</span>
+          {btcCopied ? (
+            <Check className="w-3.5 h-3.5 shrink-0 text-emerald-600" />
+          ) : (
+            <Copy className="w-3.5 h-3.5 shrink-0" />
+          )}
+        </button>
+        <p className="text-[10px] text-ink-400 -mt-1">
+          {btcCopied ? 'Address copied' : 'Tap to copy wallet address'}
+        </p>
       </div>
     </div>
   );
