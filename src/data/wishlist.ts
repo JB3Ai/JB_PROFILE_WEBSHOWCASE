@@ -23,8 +23,8 @@ export interface WishlistPaymentMethod {
   href: string;
 }
 
-export const WISHLIST_GOAL_ZAR = 164016;
-export const WISHLIST_GOAL_USD = 9940;
+export const WISHLIST_GOAL_ZAR = 179717;
+export const WISHLIST_GOAL_USD = 10892;
 export const WISHLIST_RAISED_ZAR = 15800;
 export const WISHLIST_SHARE_URL = 'https://jonoblackburn.com/wishlist';
 
