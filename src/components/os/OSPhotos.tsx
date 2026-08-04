@@ -8,15 +8,15 @@ interface Photo {
 }
 
 const photos: Photo[] = [
-  { src: '/assets/images/foundersmall.png', caption: 'Jonathan Blackburn, founder portrait' },
-  { src: '/assets/images/artwork-curated/founder-profile-side.png', caption: 'Founder profile' },
+  { src: '/assets/images/foundersmall.jpg', caption: 'Jonathan Blackburn, founder portrait' },
+  { src: '/assets/images/artwork-curated/founder-profile-side.jpg', caption: 'Founder profile' },
   { src: '/assets/images/artwork-curated/founder-studio.jpg', caption: 'Studio session' },
   { src: '/assets/images/artwork-curated/founder-editorial-bw.jpg', caption: 'Editorial series' },
-  { src: '/assets/images/founder-imed-team.png', caption: 'The iMED chapter, with the team' },
+  { src: '/assets/images/founder-imed-team.jpg', caption: 'The iMED chapter, with the team' },
   { src: '/assets/images/evidence-top-empowerment.jpg', caption: 'Top Empowerment Awards 2022, finalist' },
   { src: '/assets/images/evidence-jewish-achiever.jpg', caption: 'Absa Jewish Achiever Awards 2022, finalist' },
   { src: '/assets/images/cediaaward.JPG', caption: 'CEDIA recognition, Elite Technologies' },
-  { src: '/assets/images/evidence-topco-magazine.png', caption: 'Impumelelo magazine feature, Topco Media' },
+  { src: '/assets/images/evidence-topco-magazine.jpg', caption: 'Impumelelo magazine feature, Topco Media' },
 ];
 
 export default function OSPhotos() {

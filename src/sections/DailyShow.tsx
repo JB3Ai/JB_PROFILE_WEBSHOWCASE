@@ -33,7 +33,7 @@ export function DailyShow() {
             >
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                 <img
-                  src="/assets/images/artwork-curated/daily-show-cover.png"
+                  src="/assets/images/artwork-curated/daily-show-cover.jpg"
                   alt="JB³ The Daily Logic Show"
                   loading="lazy"
                   decoding="async"

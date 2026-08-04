@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { SectionHeader } from '@/components/SectionHeader';
 import { supportTiers, supportLinks, sponsorActions } from '@/data/fundraising';
-import { Zap, BookOpen, GraduationCap, Cpu, Heart, Globe, Coffee, ArrowUpRight, ArrowRight, ChevronDown, ChevronUp, Video, HeartHandshake, Award, Download } from 'lucide-react';
+import { Zap, BookOpen, GraduationCap, Cpu, Heart, Globe, Coffee, ArrowUpRight, ArrowRight, ChevronDown, ChevronUp, Video, HeartHandshake, Award, Download, Youtube } from 'lucide-react';
 import { SponsorPay } from '@/components/SponsorPay';
 
 const iconMap: Record<string, any> = { Zap, BookOpen, GraduationCap, Cpu };
@@ -75,7 +75,7 @@ export function Isikulo() {
 
           {/* Isikulo Mission Card */}
           <motion.div
-            className="mt-12 rounded-2xl bg-gradient-to-br from-ink-900 to-ink-950 p-8 lg:p-12 text-white overflow-hidden relative"
+            className="isikulo-mission-card mt-12 rounded-2xl bg-gradient-to-br from-ink-900 to-ink-950 p-8 lg:p-12 text-white overflow-hidden relative"
             initial={{ opacity: 0, y: 30 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -139,6 +139,15 @@ export function Isikulo() {
                 </AnimatePresence>
 
                 <div className="mt-4 flex flex-wrap items-center gap-4">
+                  <a
+                    href="https://www.youtube.com/@JB3Ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-copper-600 px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-copper-500"
+                  >
+                    <Youtube className="w-4 h-4" />
+                    Watch Now
+                  </a>
                   <button
                     onClick={() => setExpanded(!expanded)}
                     className="inline-flex items-center gap-2 text-sm text-copper-400 hover:text-copper-300 transition-colors"

@@ -17,6 +17,21 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
     const timer3 = setTimeout(() => setStep(3), 3200) // System Ready
     const timer4 = setTimeout(() => onComplete(), 4200) // Trigger exit
 
+    // Use the boot window as a buffer: warm the cache with the first
+    // below-the-fold images so they are ready before the user scrolls.
+    const preload = [
+      '/assets/images/artwork-curated/dukebox-project.jpg',
+      '/assets/images/artwork-curated/isikolo-web.jpg',
+      '/assets/images/artwork-curated/clipboard-product.jpg',
+      '/assets/images/artwork-curated/voicegrid-interface.jpg',
+      '/assets/images/artwork-curated/superagents-registry.jpg',
+      '/assets/images/ndebele-pattern.jpg',
+    ];
+    preload.forEach((src) => {
+      const img = new window.Image();
+      img.src = src;
+    });
+
     return () => {
       clearTimeout(timer1)
       clearTimeout(timer2)

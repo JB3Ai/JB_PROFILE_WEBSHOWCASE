@@ -11,7 +11,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-06-28',
     readTime: '8 min read',
     featured: true,
-    coverImage: '/assets/images/founder-imed-team.png',
+    coverImage: '/assets/images/founder-imed-team.jpg',
     link: 'https://medium.com/@jono_12764/systems-over-hype-what-i-learned-building-four-companies-3a3494e79929',
   },
   {
@@ -60,7 +60,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Jonathan Blackburn',
     date: '2026-05-08',
     readTime: '7 min read',
-    coverImage: '/assets/images/artwork-curated/voicegrid-project.png',
+    coverImage: '/assets/images/artwork-curated/voicegrid-project.jpg',
     link: 'https://medium.com/@jono_12764/why-africa-will-build-the-next-generation-of-infrastructure-4345ac7dd220',
   },
   {

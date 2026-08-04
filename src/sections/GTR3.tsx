@@ -80,7 +80,7 @@ export function GTR3() {
               <div className="shrink-0 mx-auto lg:mx-0">
                 <div className="relative w-44 lg:w-52">
                   <img
-                    src="/assets/images/gtr3-book-coming-soon.png"
+                    src="/assets/images/gtr3-book-coming-soon.jpg"
                     alt="GTR³ - Coming Soon. The Rebuild Journey, written by Jono Blackburn"
                     loading="lazy"
                     decoding="async"

@@ -163,7 +163,7 @@
 
   /* Ndebele pattern band (Isikulo) */
   .ndebele-band {
-    background-image: url('/assets/images/ndebele-pattern.png');
+    background-image: url('/assets/images/ndebele-pattern.jpg');
     background-size: auto 220%;
     background-position: center;
     background-repeat: repeat-x;
@@ -326,6 +326,16 @@
 }
 [data-theme='day'] .to-ink-900 { --tw-gradient-to: #2c3e50 var(--tw-gradient-to-position); }
 [data-theme='day'] .to-ink-800 { --tw-gradient-to: #34495e var(--tw-gradient-to-position); }
+
+/* Day: copper links and borders sit on the deep-slate Isikulo mission card.
+   The day copper scale is too muted there, so brighten them for that card only. */
+[data-theme='day'] .isikulo-mission-card .text-copper-400,
+[data-theme='day'] .isikulo-mission-card .text-copper-300 { color: #f4c9a1; }
+[data-theme='day'] .isikulo-mission-card .text-copper-400:hover,
+[data-theme='day'] .isikulo-mission-card .text-copper-300:hover { color: #fbe3cd; }
+[data-theme='day'] .isikulo-mission-card .border-copper-400\/50 { border-color: rgb(244 201 161 / 0.55); }
+[data-theme='day'] .isikulo-mission-card .bg-copper-600 { background-color: #b86a3d; }
+[data-theme='day'] .isikulo-mission-card .bg-copper-600:hover { background-color: #cd7f4b; }
 
 /* ---------------- DARK: near-black + teal glow ---------------- */
 [data-theme='dark'] {

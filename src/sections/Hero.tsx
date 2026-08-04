@@ -93,7 +93,7 @@ export function Hero({ onOpenGate }: HeroProps) {
                 <div className="relative rounded-3xl bg-white/10 backdrop-blur-2xl border border-white/20 shadow-2xl overflow-hidden">
                   <div className="relative aspect-[4/5] overflow-hidden">
                     <img 
-                      src="/assets/images/artwork-curated/founder-profile-side.png" 
+                      src="/assets/images/artwork-curated/founder-profile-side.jpg" 
                       alt="Jonathan Blackburn"
                       className="w-full h-full object-cover object-top"
                     />
