@@ -37,7 +37,11 @@ const platformIcons: Record<string, any> = {
   other: Globe,
 };
 
-export function Isikulo() {
+interface IsikuloProps {
+  onOpenGate?: (context?: 'investor' | 'client' | 'collaborator' | 'press') => void;
+}
+
+export function Isikulo({ onOpenGate }: IsikuloProps) {
   const { ref, isVisible } = useScrollReveal();
   const [expanded, setExpanded] = useState(false);
 
@@ -245,6 +249,21 @@ export function Isikulo() {
                       Contribute
                       <ArrowUpRight className="w-4 h-4 ml-1" />
                     </div>
+                    {tier.id === 'gtr3-reserve' && onOpenGate && (
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          onOpenGate('client');
+                        }}
+                        className="mt-3 pt-3 w-full flex items-center gap-2 border-t border-ink-100 text-sm font-medium text-copper-600 hover:text-copper-700 transition-colors"
+                      >
+                        <BookOpen className="w-4 h-4" />
+                        GTR³ Publishing Sneak Peek
+                        <span className="ml-auto text-[10px] uppercase tracking-wider text-ink-400">Portal</span>
+                      </button>
+                    )}
                   </motion.a>
                 );
               })}

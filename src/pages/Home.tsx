@@ -73,7 +73,7 @@ export default function Home() {
         <Hero onOpenGate={() => handleOpenGate('client')} />
         <Founder />
         <Portfolio onOpenGate={handleOpenGate} />
-        <Isikulo />
+        <Isikulo onOpenGate={handleOpenGate} />
         <Evidence />
         <GTR3 />
         <DailyShow />

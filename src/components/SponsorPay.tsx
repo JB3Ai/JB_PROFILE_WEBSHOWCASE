@@ -55,7 +55,28 @@ export function SponsorPay() {
   const sdkActive = !!PAYPAL_CLIENT_ID;
 
   return (
-    <div className="mt-10 mx-auto max-w-xl">
+    <div className="mt-10 mx-auto max-w-5xl grid gap-6 lg:grid-cols-[1fr_1.5fr_1fr] items-stretch">
+      {/* Buy Me a Coffee QR */}
+      <a
+        href="https://buymeacoffee.com/jb3ai"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm text-center flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 hover:border-copper-300 group"
+      >
+        <img
+          src="/assets/images/qr-buymeacoffee.jpg"
+          alt="Buy Me a Coffee QR code"
+          loading="lazy"
+          decoding="async"
+          className="w-32 h-32 rounded-xl border border-ink-100"
+        />
+        <div>
+          <p className="text-sm font-semibold text-ink-900">Buy Me a Coffee</p>
+          <p className="text-xs text-ink-400 mt-0.5">Scan or tap to support</p>
+        </div>
+      </a>
+
+      {/* PayPal Quick Sponsor */}
       <div className="rounded-2xl border border-ink-100 bg-white p-6 sm:p-8 shadow-sm text-center">
         <h4 className="text-lg font-semibold text-ink-900 tracking-tight">
           Quick Sponsor
@@ -109,6 +130,21 @@ export function SponsorPay() {
             </p>
           </div>
         )}
+      </div>
+
+      {/* Bitcoin QR */}
+      <div className="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm text-center flex flex-col items-center justify-center gap-3">
+        <img
+          src="/assets/images/qr-bitcoin.png"
+          alt="Bitcoin wallet QR code"
+          loading="lazy"
+          decoding="async"
+          className="w-32 h-32 rounded-xl border border-ink-100"
+        />
+        <div>
+          <p className="text-sm font-semibold text-ink-900">Bitcoin</p>
+          <p className="text-xs text-ink-400 mt-0.5">Scan to send BTC</p>
+        </div>
       </div>
     </div>
   );
